@@ -1,16 +1,20 @@
+
+import './App.css';
 import { Route, Routes } from "react-router-dom";
-import Home from "./components/Home/Home.jsx";
-import Login from "./components/Login/Login.jsx";
-import style from "./App.module.css";
-const App = () => {
+import Login from './component/Login/Login.jsx';
+import Home from './component/Home/Home';
+
+function App() {
   return (
-    <div className={style.appContainer}>
+    <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+  <Route path="/" element={<Login/>}/>
+  <Route path='/home' element={<Home/>}/>
+
+ </Routes>
+     
     </div>
   );
-};
+}
 
 export default App;
