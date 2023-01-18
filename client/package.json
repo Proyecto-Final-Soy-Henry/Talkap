@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^1.12.1",
+    "@react-oauth/google": "^0.6.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -14,6 +16,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
     "socket.io-client": "^4.5.4",
     "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4"
