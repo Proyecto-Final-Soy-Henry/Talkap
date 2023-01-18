@@ -7,6 +7,7 @@ export  function userValidator (user){
             'Content-Type': 'application/json'
         }
        })
+       .catch(error=>console.log(error))
 
 
 }

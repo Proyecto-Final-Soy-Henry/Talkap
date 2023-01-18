@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userValidator } from "../../services/validator.js";
+
 export default function Home() {
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
@@ -12,6 +13,7 @@ export default function Home() {
       navigate("/");
     } else {
       userValidator(user);
+      
     }
   }, [isAuthenticated, navigate, user]);
 
@@ -27,4 +29,3 @@ export default function Home() {
     </div>
   );
 }
-//comentario de prueba
