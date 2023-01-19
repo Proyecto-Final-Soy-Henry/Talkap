@@ -1,14 +1,10 @@
 import './UserList.css'
-import { useEffect } from "react";
-import {useDispatch, useSelector } from "react-redux"
-import {getUserList} from '../../services/getUserList.js'
+import {useSelector } from "react-redux"
 
 export default function UserList(){
-    const dispatch = useDispatch();
     
-    useEffect(()=>{
-       getUserList(dispatch) 
-    },[dispatch])
+    
+
    
      const {list} =  useSelector(state=>state.users)
     return(<div className='user-list'>
