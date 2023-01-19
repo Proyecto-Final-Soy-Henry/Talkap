@@ -23,12 +23,13 @@ io.on('connection', (socket) => {
  socket.on('message',(value)=>{
   //RENVIO EL MENSAJE a todos los clientes
   socket.broadcast.emit('message',{
+  
     message:value,
     user:socket.id,
   });
  });
 
-
+socket.emit('hola',mensaje)
 
 });
 
