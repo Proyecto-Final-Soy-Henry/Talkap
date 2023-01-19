@@ -1,10 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
-const routes =  require('./routes/index.js');
 const cors =  require('cors');
 const {Server} =  require ('socket.io');
 const http =  require('http');
-
+const  handleUsers =  require('./routes/handlers/handleUsers.js');
 const server =  express();
 const httpServer = http.createServer(server)
 const io =  new Server(httpServer,{
@@ -14,26 +13,22 @@ const io =  new Server(httpServer,{
 });
 
 //Pongo a escuchar io
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-// escuchando el mensaje enviado desdel el cliente
- socket.on('message',(value)=>{
-  //RENVIO EL MENSAJE a todos los clientes
-  socket.broadcast.emit('message',{
-  
-    message:value,
-    user:socket.id,
-  });
- });
+io.on("connection", (socket) => {
+  console.log(`Connected: ${socket.id}`);
 
-socket.emit('hola',mensaje)
+  socket.on('disconnect', () =>
+     console.log(`Disconnected: ${socket.id}`));
 
+     
+     socket.on('join', async (user) => {
+      //recibo el usuario 
+      console.log(`Socket id: ${socket.id} Usuario: ${user.name}`);
+      //funcion que verifica y crea usuario.
+      const users = await handleUsers(user);
+       
+      socket.broadcast.emit('join',users)
+   });
 });
-
-
 server.name = 'API';
 
 server.use(express.json());
@@ -48,7 +43,7 @@ server.use((req, res, next) => {
   });
 
   
-  server.use('/', routes);
+ 
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
