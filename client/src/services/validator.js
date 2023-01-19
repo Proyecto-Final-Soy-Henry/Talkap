@@ -1,3 +1,4 @@
+
 export  function userValidator (user){
 
     fetch('http://localhost:3001',{
@@ -11,3 +12,4 @@ export  function userValidator (user){
 
 
 }
+
