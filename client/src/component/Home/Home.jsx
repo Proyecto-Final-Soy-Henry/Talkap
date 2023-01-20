@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userValidator } from "../../services/validator.js";
 import UserList from "../UserList/UserList";
+import Profile from "../Profile/Profile";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ export default function Home() {
       {user ? (
         <>
           {" "}
+          <Profile/>
           <h1>Bienvenido {user.name}</h1>
           <LogoutButton />
           <UserList/>
