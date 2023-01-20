@@ -7,11 +7,10 @@ export default function UserList(){
 
    
      const {list} =  useSelector(state=>state.users)
-    return(<div className='user-list'>
-        <h1>Lista de Usuarios TALKAP</h1>
-        {list?.map((user,index)=>{
-            console.log(user)
-            return <UserCard name={user.name} picture={user.picture}/>
+    return(<div  className='user-list'>
+        <h1>Usuarios</h1>
+        {list?.map((user)=>{
+            return <UserCard key={user.name} name={user.name} picture={user.picture}/>
         })}
     </div>)
 }

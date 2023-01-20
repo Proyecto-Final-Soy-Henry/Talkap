@@ -2,13 +2,18 @@
 background-color: transparent;
 margin: 5px;
 font-size: 10px;
-height: 300px;
-width: 300px;
-color: rgb(250, 250, 250);
+height: 150px;
+width: 150px;
+color: rgb(12, 12, 12);
 display:block;
 
 }
-.user-card:hover{
+.user-card .img{
+    width: 70px;
+   height: 70px;   
+    border-radius: 50px;
+}
+.user-card .img:hover{
     transform: scale(0.95);   
     transition:all ease 0.7s
 }
