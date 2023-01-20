@@ -4,6 +4,7 @@ const cors =  require('cors');
 const {Server} =  require ('socket.io');
 const http =  require('http');
 const  handleUsers =  require('./routes/handlers/handleUsers.js');
+const handleChat = require('./routes/handlers/handleChat.js');
 const server =  express();
 const httpServer = http.createServer(server)
 const io =  new Server(httpServer,{
@@ -19,7 +20,8 @@ io.on("connection", (socket) => {
   socket.on('disconnect', () =>
      console.log(`Disconnected: ${socket.id}`));
 
-     
+     // RUTAS
+       //JOIN
      socket.on('join', async (user) => {
       //recibo el usuario 
       console.log(`Socket id: ${socket.id} Usuario: ${user.name}`);
@@ -27,7 +29,17 @@ io.on("connection", (socket) => {
       const users = await handleUsers(user);
        
       socket.broadcast.emit('join',users)
+     
    });
+
+
+    //CHAT
+    socket.on('chat',async (msj)=>{
+      
+      const messages= await handleChat(msj);
+      socket.broadcast.emit('chat',messages);
+
+    });
 });
 server.name = 'API';
 
