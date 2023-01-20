@@ -20,6 +20,16 @@ export const setUserList = (dispatch,action) => {
     return dispatch(action(value))
   });
 }
-export const sendMessage = (room, message) => {
-  if (socket) socket.emit('chat', { message, room });
+
+//Root CHAT listen
+export const listenChat =(dispatch,action)=>{
+  if (!socket) return(true);
+  socket.on('chat',value=>{
+    console.log('Websocket event received!');
+  return dispatch(action(value))
+  })
+}
+
+export const sendMessage = (root, message) => {
+  if (socket) socket.emit(root,message);
 }

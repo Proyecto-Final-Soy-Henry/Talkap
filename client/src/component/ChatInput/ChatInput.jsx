@@ -13,6 +13,7 @@ export default function ChatInput({ buttonHandler }) {
     <div className={style.chat}>
       <form onSubmit={handlerSubmit}>
         <input
+          placeholder="Escribe un mensaje..."
           type="text"
           onChange={(e) => {
             setMessage(e.target.value);
