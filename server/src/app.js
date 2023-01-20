@@ -37,7 +37,9 @@ io.on("connection", (socket) => {
     socket.on('chat',async (msj)=>{
       
       const messages= await handleChat(msj);
-      socket.broadcast.emit('chat',messages);
+      //tengo que devolver sólo últimos 10 mensajes
+      const value = messages.length>10?messages.slice(messages.length-10):messages;
+      socket.broadcast.emit('chat',value);
 
     });
 });
