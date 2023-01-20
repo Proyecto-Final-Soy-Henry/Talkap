@@ -7,16 +7,18 @@
 	margin:8px 0;
 	display:inline-block;
     cursor: pointer;
+	outline: none;
 }
 
 
 .InputOff{
     width:180px;
 	padding:3px 10px;
-	border:1px solid #ff0000;
+	border:2px solid #ff0000;
 	border-radius:3px;
 	background-color:#f6f6f6;
 	margin:8px 0;
 	display:inline-block;
     cursor: pointer;
+	outline: none;
 }

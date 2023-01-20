@@ -15,7 +15,8 @@
     background-color: transparent;     
 }
 .divMenssage{
-    margin-right: 60%;
+    width: auto;
+    margin-right: 70%;
     margin-bottom: 15px;
     background-color: rgb(173, 168, 207);
     border-radius: 0px 10px 10px 15px;
@@ -30,7 +31,9 @@
     margin-right: 20px;
 }
 .divMenssageMe{
-    margin-left: 60%;
+
+    
+    margin-left: 70%;
     text-align:right;
     margin-bottom: 15px;
     background-color: rgb(182, 57, 254);
