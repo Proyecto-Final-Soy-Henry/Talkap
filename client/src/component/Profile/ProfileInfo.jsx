@@ -45,25 +45,25 @@ function ProfileInfo() {
 
           <Divider/>
 
-          <Text fontSize="sm" color="twitter.600" fontWeight="bold" mb="-10" w="full">Tu Nombre</Text>
+          <Text fontSize="sm" color="#9F7AEA" fontWeight="bold" mb="-10" w="full">Tu Nombre</Text>
           <Flex alignItems="center">
             <Text as='abbr' fontSize='2xl' mr="6" fontWeight="bold">{currentUser.name} </Text>
             <FaPencilAlt/>
           </Flex>
 
 
-          <Text fontSize="sm" color="twitter.600" fontWeight="bold" mb="-10" w="full">Tu Contraseña</Text>
+          <Text fontSize="sm" color="#9F7AEA" fontWeight="bold" mb="-10" w="full">Tu Contraseña</Text>
           <InputGroup size='md' maxW="72">
             <Input variant='filled' placeholder='*********' disabled bg="gray-500"/>
             <InputRightElement children={<FaPencilAlt />} />
           </InputGroup>
           
 
-          <Text fontSize="sm" color="twitter.600" fontWeight="bold" mb="-10" w="full">Tu email</Text>
+          <Text fontSize="sm" color="#9F7AEA" fontWeight="bold" mb="-10" w="full">Tu email</Text>
           <Text  as='abbr' fontSize='2xl' fontWeight="semibold">{currentUser.email} </Text>
           
           
-          <Text fontSize="sm" color="twitter.600" fontWeight="bold" mb="-10" w="full">Tu Bio</Text>
+          <Text fontSize="sm" color="#9F7AEA" fontWeight="bold" mb="-10" w="full">Tu Bio</Text>
           <Flex alignItems="center">
             <Text as='i' mr="4" textAlign="center" maxW="72" fontSize='md' fontWeight="medium" > Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             </Text>
