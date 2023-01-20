@@ -1,4 +1,13 @@
 .chat-render{
+    text-align:left;
     height:80%;
     overflow: hidden;
+}
+.chat-render p{
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+    background-color: transparent;
+    
+    
 }
