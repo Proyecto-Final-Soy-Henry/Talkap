@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors =  require('cors');
 const {Server} =  require ('socket.io');
 const http =  require('http');
+const routes = require('./routes/index.js');
 const  handleUsers =  require('./routes/handlers/handleUsers.js');
 const handleChat = require('./routes/handlers/handleChat.js');
 const handleExit = require('./routes/handlers/handleExit.js');
@@ -73,7 +74,7 @@ server.use((req, res, next) => {
   });
 
   
- 
+  server.use("/", routes)
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

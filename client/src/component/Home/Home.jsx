@@ -7,6 +7,7 @@ import {setUserList as actionUser} from '../../store/slices/users/index.js'
 import {setChatList as actionChat} from '../../store/slices/chats/index.js'
 import {useDispatch } from "react-redux"
 import Nav from '../Nav/Nav.jsx';
+import Profile from "../Profile/Profile.jsx";
 import Chat from '../Chat/Chat.jsx';
 // import { userValidator } from "../../services/validator.js";
 import UserList from "../UserList/UserList";
@@ -34,8 +35,11 @@ export default function Home() {
     <div className={style.home}>
       {user ? (
         <> 
+        <Profile/>
          <Nav/>
+         
          <Chat/>
+        
          <UserList/>
         </>
       ) : null}
