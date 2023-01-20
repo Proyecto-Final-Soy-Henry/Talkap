@@ -1,7 +1,8 @@
 import './UserCard.css'
-export default function UserCard({name,picture}){
+export default function UserCard({name,picture,connected}){
     return (<div key={name} className="user-card">
         <img className='img' src={picture} alt={name}/>
-        <p>{name}</p>
+        <p>{connected?'✅ ':'⛔ '}{name}</p>
+        
     </div>);
 }

@@ -5,6 +5,8 @@ const {Server} =  require ('socket.io');
 const http =  require('http');
 const  handleUsers =  require('./routes/handlers/handleUsers.js');
 const handleChat = require('./routes/handlers/handleChat.js');
+const handleExit = require('./routes/handlers/handleExit.js');
+const userListHandler = require('./routes/handlers/userListHandler.js');
 const server =  express();
 const httpServer = http.createServer(server)
 const io =  new Server(httpServer,{
@@ -31,6 +33,14 @@ io.on("connection", (socket) => {
       socket.broadcast.emit('join',users)
      
    });
+    //EXIT
+    socket.on('exit',async (user)=>{
+       const create = await handleExit(user);
+    
+       const users = await userListHandler();
+       socket.broadcast.emit('join',users)
+      
+    });
 
 
     //CHAT

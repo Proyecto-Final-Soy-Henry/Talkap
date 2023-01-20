@@ -10,7 +10,8 @@ export default function UserList(){
     return(<div  className='user-list'>
         
         {list?.map((user)=>{
-            return <UserCard key={user.name} name={user.name} picture={user.picture}/>
+            return <UserCard key={user.name} name={user.name} picture={user.picture} connected={user.connected}/>
+
         })}
     </div>)
 }
