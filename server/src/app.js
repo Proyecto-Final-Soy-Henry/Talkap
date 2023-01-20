@@ -1,10 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
-const routes =  require('./routes/index.js');
 const cors =  require('cors');
 const {Server} =  require ('socket.io');
 const http =  require('http');
-
+const  handleUsers =  require('./routes/handlers/handleUsers.js');
+const handleChat = require('./routes/handlers/handleChat.js');
+const handleExit = require('./routes/handlers/handleExit.js');
+const userListHandler = require('./routes/handlers/userListHandler.js');
 const server =  express();
 const httpServer = http.createServer(server)
 const io =  new Server(httpServer,{
@@ -14,26 +16,49 @@ const io =  new Server(httpServer,{
 });
 
 //Pongo a escuchar io
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-// escuchando el mensaje enviado desdel el cliente
- socket.on('message',(value)=>{
-  //RENVIO EL MENSAJE a todos los clientes
-  socket.broadcast.emit('message',{
-  
-    message:value,
-    user:socket.id,
-  });
- });
+io.on("connection", (socket) => {
+  console.log(`Connected: ${socket.id}`);
 
-socket.emit('hola',mensaje)
+  socket.on('disconnect', () =>
+     console.log(`Disconnected: ${socket.id}`));
 
+     // RUTAS
+       //JOIN
+     socket.on('join', async (user) => {
+      //recibo el usuario 
+      console.log(`Socket id: ${socket.id} Usuario: ${user.name}`);
+      //funcion que verifica y crea usuario.
+      const users = await handleUsers(user);
+       
+      //solo renderiza 10 usuarios////////////////////
+      /*  const value = users.length>10?users.slice(users.length-10):users;
+      socket.broadcast.emit('join',value)  */
+      ///////////////////////////////////////////////
+
+      socket.broadcast.emit('join',users)
+     
+   });
+    //EXIT
+    socket.on('exit',async (user)=>{
+       const create = await handleExit(user);
+    
+       const users = await userListHandler();
+       
+       socket.broadcast.emit('join',users)
+      
+    });
+
+
+    //CHAT
+    socket.on('chat',async (msj)=>{
+      
+      const messages= await handleChat(msj);
+      //tengo que devolver sólo últimos 10 mensajes
+      const value = messages.length>9?messages.slice(messages.length-9):messages;
+      socket.broadcast.emit('chat',value);
+
+    });
 });
-
-
 server.name = 'API';
 
 server.use(express.json());
@@ -48,7 +73,7 @@ server.use((req, res, next) => {
   });
 
   
-  server.use('/', routes);
+ 
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

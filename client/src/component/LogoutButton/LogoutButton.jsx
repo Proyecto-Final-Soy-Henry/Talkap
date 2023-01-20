@@ -1,9 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { sendMessage } from "../../services/sockets";
 const LogoutButton = () => {
-  const { logout } = useAuth0();
+  const {user, logout } = useAuth0();
+  const handler = ()=>{
+    sendMessage('exit',user)
+    logout();
+  }
 
   return (
-    <button onClick={() => logout({ returnTo: window.location.origin })}>
+    <button onClick={handler}>
       Log Out
     </button>
   );

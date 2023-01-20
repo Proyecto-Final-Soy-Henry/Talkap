@@ -1,26 +1,18 @@
-import style from "./Chat.module.css";
-import { useState } from "react";
+import './Chat.css';
+import ChatRender from '../ChatRender/ChatRender.jsx';
+import ChatInput from '../ChatInput/ChatInput.jsx';
+import {sendMessage} from  '../../services/sockets.js';
+import { useSelector } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
+export default function Chat(){
+ const {list} = useSelector(state=>state.chat);
+ const { user } = useAuth0();
+ const buttonHandler = (msj)=>{
+    sendMessage('chat',{user:user.name,message:msj})
+   }
+   return (<div className='chat'>
 
-export default function Chat({ buttonHandler }) {
-  const [message, setMessage] = useState("");
-  const handlerSubmit = (e) => {
-    e.preventDefault();
-    buttonHandler(message);
-    setMessage("");
-  };
-
-  return (
-    <div className={style.chat}>
-      <form onSubmit={handlerSubmit}>
-        <input
-          type="text"
-          onChange={(e) => {
-            setMessage(e.target.value);
-          }}
-          value={message}
-        />
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-  );
+          <ChatRender menssages={list}/>
+          <ChatInput buttonHandler={buttonHandler}/>
+    </div>);
 }
