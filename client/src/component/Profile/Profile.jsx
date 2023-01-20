@@ -20,8 +20,8 @@ function Profile() {
 
   return (
 
-    <Flex justify="flex-end" pr="3" cursor="pointer">      
-        <FaRegUserCircle onClick={onOpen} fontSize="50px"/>
+    <Flex justify="flex-end" pr="3">      
+        <FaRegUserCircle onClick={onOpen} cursor="pointer" fontSize="50px"/>
      
       <Drawer placement={placement} onClose={onClose} isOpen={isOpen} size="sm">
         <DrawerOverlay />

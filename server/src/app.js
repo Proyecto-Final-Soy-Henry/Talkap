@@ -5,6 +5,7 @@ const {Server} =  require ('socket.io');
 const http =  require('http');
 const  handleUsers =  require('./routes/handlers/handleUsers.js');
 const server =  express();
+const routes = require('./routes/index.js')
 const httpServer = http.createServer(server)
 const io =  new Server(httpServer,{
   cors:{
@@ -31,6 +32,7 @@ io.on("connection", (socket) => {
 });
 server.name = 'API';
 
+
 server.use(express.json());
 server.use(morgan('dev'));
 server.use(cors());
@@ -43,7 +45,7 @@ server.use((req, res, next) => {
   });
 
   
- 
+server.use("/", routes)
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
