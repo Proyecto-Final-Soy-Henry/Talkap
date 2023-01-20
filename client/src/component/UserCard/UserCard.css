@@ -1,0 +1,14 @@
+.user-card{
+background-color: transparent;
+margin: 5px;
+font-size: 10px;
+height: 300px;
+width: 300px;
+color: rgb(250, 250, 250);
+display:block;
+
+}
+.user-card:hover{
+    transform: scale(0.95);   
+    transition:all ease 0.7s
+}
