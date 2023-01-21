@@ -1,6 +1,6 @@
 const {User} = require('../../db.js');
 
-module.exports =async function handleUsers (value){
+module.exports = async function handleUsers (value){
         //recupero el body
 const {email,name,picture} = value;
 let name1 = name;
