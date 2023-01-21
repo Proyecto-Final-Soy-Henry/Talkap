@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import PopUp from "../Alerts/PopUp/PopUp";
 import style from "./LogoutButton.module.css";
+import { sendMessage } from "../../services/sockets";
 
 const LogoutButton = () => {
-  const { logout } = useAuth0();
+  const { logout, user } = useAuth0();
 
   const [state, setState] = useState(false);
 
@@ -19,7 +20,8 @@ const LogoutButton = () => {
         {state ? (
           <PopUp
             titulo="¿Seguro queres cerrar sesion?"
-            confirm={() => logout({ returnTo: window.location.origin })}
+            confirm={() => {sendMessage('exit',user) 
+                            logout({ returnTo: window.location.origin })}}
             close={() => setState(false)}
           />
         ) : (

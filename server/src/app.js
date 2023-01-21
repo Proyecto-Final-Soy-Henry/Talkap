@@ -52,13 +52,18 @@ io.on("connection", (socket) => {
 
     //CHAT
     socket.on('chat',async (msj)=>{
+      console.log(msj+" aca")
+      if(msj){const messages= await handleChat(msj);
+        //tengo que devolver sólo últimos 10 mensajes
+        const value = messages.length>9?messages.slice(messages.length-9):messages;
+        socket.broadcast.emit('chat',value);
+      }else socket.broadcast.emit('chat',value);
       
-      const messages= await handleChat(msj);
-      //tengo que devolver sólo últimos 10 mensajes
-      const value = messages.length>9?messages.slice(messages.length-9):messages;
-      socket.broadcast.emit('chat',value);
+      
 
     });
+
+    
 });
 server.name = 'API';
 

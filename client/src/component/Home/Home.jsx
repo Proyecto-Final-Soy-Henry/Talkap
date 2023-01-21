@@ -5,19 +5,23 @@ import { useEffect } from "react";
 import {listenChat, setUserList} from '../../services/sockets.js'
 import {setUserList as actionUser} from '../../store/slices/users/index.js'
 import {setChatList as actionChat} from '../../store/slices/chats/index.js'
-import {useDispatch } from "react-redux"
+import {useDispatch, useSelector } from "react-redux"
+import EnterGlobal from "../EnterGlobal/EnterGlobal.jsx"
 import Nav from '../Nav/Nav.jsx';
 import Profile from "../Profile/Profile.jsx";
 import Chat from '../Chat/Chat.jsx';
 // import { userValidator } from "../../services/validator.js";
 import UserList from "../UserList/UserList";
 import {initiateSocket} from '../../services/sockets.js'
+import { useState } from "react";
+import {sendMessage} from  '../../services/sockets.js';
 
 export default function Home() {
  
   const dispatch =  useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
+  const {list} = useSelector(state=>state.chat);
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
@@ -29,18 +33,22 @@ export default function Home() {
     }
   }, [isAuthenticated, navigate, user,dispatch]);
 
-
-
+//  const handleChatGlobal = () =>{
+//   setEnter(true)
+//  }
+  
   return (
     <div className={style.home}>
       {user ? (
         <> 
-        <Profile/>
+        
          <Nav/>
-         
+         <button onClick={()=>sendMessage("chat",{user:user.name})}>Enter</button>
          <Chat/>
         
-         <UserList/>
+         <UserList/>  
+
+         <Profile/>
         </>
       ) : null}
     </div>
