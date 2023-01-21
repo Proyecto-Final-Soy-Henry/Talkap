@@ -1,6 +1,6 @@
 .nav{
    width: 10%;
-   background-color: rgb(71, 22, 76);
+   background-color: transparent;
    box-shadow: 5px 5px 40px; 
 }
 .nav button{
