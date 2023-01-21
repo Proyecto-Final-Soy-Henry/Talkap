@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
 
        //JOIN
      socket.on('join', async (user) => {
-      
+   
       //VERIFICO Y DEVUELVO USUARIOS
       const users = await handleUsers(user);
       const data = await handleMyData(user);
@@ -37,6 +37,7 @@ io.on("connection", (socket) => {
       socket.broadcast.emit('join',users)
      
    });
+
 
     // ESCUCHO LA RUTA EXIT
     socket.on('exit',async (user)=>{
@@ -47,13 +48,13 @@ io.on("connection", (socket) => {
     });
 
 
+
     //ESCUCHO LA RUTA CHAT
     socket.on('chat',async (msj)=>{
       
       const messages= await handleChat(msj);
-      //tengo que devolver sólo últimos 10 mensajes
-      const value = messages.length>10?messages.slice(messages.length-10):messages;
-      socket.broadcast.emit('chat',value);
+   
+      socket.broadcast.emit('chat',messages);
 
     });
 

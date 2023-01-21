@@ -11,9 +11,14 @@ module.exports = (sequelize)=>{
             type:DataTypes.STRING,
 
         },
+      
         message:{
             type:DataTypes.STRING,
             allowNull:true,
+        },
+        receiver:{
+            type:DataTypes.STRING,
+
         }
 
 

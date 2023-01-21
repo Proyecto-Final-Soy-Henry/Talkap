@@ -24,9 +24,12 @@ export const getUserList = (dispatch,action) => {
 
 //ESCUCHO RUTA CHAT Y SETEO MI ESTADO
 export const getChat =(dispatch,action)=>{
+
   if (!socket) return(true);
-  socket.on('chat',value=>{
-  return dispatch(action(value))
+  socket.on("chat",value=>{
+  const filter =  value.filter(e=>e.receiver==="CHAT GRUPAL");  
+  
+  return dispatch(action(filter))
   })
 }
 

@@ -18,7 +18,6 @@ export default function  ChatRender({menssages}){
               
           return <div key={index}>
                   <p>{name1} : {msj.message}</p>
-                  <p>para:{msj.receives}</p>
                   <br/>
           </div>
     

@@ -2,3 +2,10 @@
    width: 70%;
    
 }
+
+.chat img{
+   width: 70px;
+   height: 70px;   
+    border-radius: 50px;
+    box-shadow: 5px 5px 20px; 
+}
