@@ -4,19 +4,23 @@ export const userSlice = createSlice({
     initialState:{
         list:[],
         my:{},
+        selected:{email:'Grupo'},
     },
     reducers:{
         //actions
-        setUserList: (state,action)=>{
-            
+        setUserList: (state,action)=>{         
             state.list = action.payload;
         },
         setMyData: (state,action)=>{
             state.my = action.payload;
         },
+        setSelected: (state,action)=>{
+            state.selected = action.payload;
+        },
+        
     }
 });
 
-export const {setUserList,setMyData} = userSlice.actions;
+export const {setUserList,setMyData,setSelected} = userSlice.actions;
 export default userSlice.reducer;
 
