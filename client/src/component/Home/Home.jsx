@@ -1,4 +1,4 @@
-import style from "./Home.module.css";
+import "./Home.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -17,7 +17,7 @@ import { useState } from "react";
 import {sendMessage} from  '../../services/sockets.js';
 
 export default function Home() {
- 
+  // const {Enter, setEnter} = useState("button")
   const dispatch =  useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
@@ -28,22 +28,28 @@ export default function Home() {
     } else {
       // userValidator(user);
       initiateSocket(user);
+      // handleChatGlobal()
       setUserList(dispatch,actionUser)
       listenChat(dispatch,actionChat);
     }
   }, [isAuthenticated, navigate, user,dispatch]);
 
-//  const handleChatGlobal = () =>{
-//   setEnter(true)
-//  }
+  // const handleChatGlobal = () =>{
+  //   setEnter("button")
+  // }
+  // const handleChatOff = () =>{
+  //   setEnter("off")
+  // }
   
   return (
-    <div className={style.home}>
+    <div className="home">
       {user ? (
         <> 
         
          <Nav/>
-         <button onClick={()=>sendMessage("chat",{user:user.name})}>Enter</button>
+         <button className="button" onClick={()=>{
+          // handleChatOff()
+          sendMessage("chat",{user:user.name})}}>Enter</button>
          <Chat/>
         
          <UserList/>  
