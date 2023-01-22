@@ -16,18 +16,18 @@ import {
 function Profile() {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [placement, setPlacement] = React.useState('right')
+  const [placement] = React.useState('rigth')
 
   return (
 
-    <Flex justify="flex-end" pr="3">      
+    <Flex justify="flex-end" pr="1" >      
         <FaRegUserCircle onClick={onOpen} cursor="pointer" fontSize="50px"/>
      
-      <Drawer placement={placement} onClose={onClose} isOpen={isOpen} size="sm">
+      <Drawer placement={placement} onClose={onClose} isOpen={isOpen} size="sm" >
         <DrawerOverlay />
         <DrawerContent>
-        <DrawerCloseButton />
-        <DrawerHeader borderBottomWidth='1px'>Perfil</DrawerHeader>
+        <DrawerCloseButton  maxW='100' />
+       
         <DrawerBody>
            <ProfileInfo/>
         </DrawerBody>

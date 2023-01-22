@@ -1,15 +1,12 @@
 const {User} = require('../../db.js');
 
-module.exports =async function handleUsers (value){
+module.exports = async function handleUsers (value){
         //recupero el body
 const {email,name,picture} = value;
 let name1 = name;
 //traigo el usuario si está creado
-const user =  await User.findAll({
-where:{
-    email,
-}
-});
+const user =  await User. findByPk(email);
+;
 
 if(name.includes("@")){
     let newName =[]
@@ -22,19 +19,22 @@ if(name.includes("@")){
 
 
 
-if(user.length===0){
+if(!user){
     
     const userCreate = await User.create({
         name:name1,
         email,
         picture,
+        connected:true
     }).catch((error)=>{console.log('')})
   
-    console.log('usuario creado')
+    console.log('Usuario :'+name+' - creado y conectado')
     
     
 }else{
-    console.log('usuario ya estaba creado');
+    
+   await User.update({connected:true},{where:{email}});
+    console.log('usuario :'+name+' - conectado');
     
     
 }

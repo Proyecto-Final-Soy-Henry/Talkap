@@ -19,6 +19,10 @@ email:{
 picture:{
     type:DataTypes.STRING,
     
+},
+connected:{
+    type:DataTypes.BOOLEAN,
+    defaultValue:false,
 }
 
 //comentario
