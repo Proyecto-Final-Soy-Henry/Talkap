@@ -51,13 +51,13 @@ export default function Landing(){
              
          
            </div>
-              <img className={style.image1} src={image1} alt="" />
-          <span className={style.spanabout}>
+              {/* <img className={style.image1} src={image1} alt="" /> */}
+          {/* <span className={style.spanabout}>
           Conocer a amigos nuevos no siempre es fácil. Bien sea por falta de tiempo,
           por miedo a sociabilizar de manera directa… pero gracias a las nuevas tecnologías,
           hacer amigos es más fácil.
           Para ayudarte a encontrar amigos, te invito a conocer la mejor app del momento.
-          </span>
+          </span> */}
        
          </div >
            
