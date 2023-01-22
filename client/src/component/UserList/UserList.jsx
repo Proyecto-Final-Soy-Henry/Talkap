@@ -11,6 +11,7 @@ export default function UserList(){
      const {list} =  useSelector(state=>state.users)
      const handle = (user)=>{
         dispatch(setSelected(user))
+        
      }
      const grupo ={
         name:"CHAT GRUPAL",

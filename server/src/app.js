@@ -8,6 +8,7 @@ const handleUsers = require('./routes/handlers/handleUsers');
 const handleExit = require('./routes/handlers/handleExit');
 const userListHandler =  require('./routes/handlers/userListHandler');
 const handleChat = require('./routes/handlers/handleChat');
+const getMessage = require('./routes/handlers/getMessage');
 const server =  express();
 const httpServer = http.createServer(server)
 const io =  new Server(httpServer,{
@@ -32,8 +33,10 @@ io.on("connection", (socket) => {
       //VERIFICO Y DEVUELVO USUARIOS
       const users = await handleUsers(user);
       const data = await handleMyData(user);
+      const message= await getMessage();
        //RESPUESTAS              
-        socket.emit('myData',data);     
+        socket.emit('myData',data);   
+        socket.emit('chat',message);  
       socket.broadcast.emit('join',users)
      
    });
@@ -63,7 +66,7 @@ io.on("connection", (socket) => {
 
     });
 
-    //ESCUCHO LA RUTA MY DATA
+    
 });
 
 

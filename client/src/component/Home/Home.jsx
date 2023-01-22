@@ -35,7 +35,7 @@ export default function Home() {
       getUserList(dispatch,actionUserList)
       getChat(dispatch,actionChat);
       getMyData(dispatch,actionMyData);
-      getMenssages(user.email);
+      getMenssages(user);
     }
   }, [isAuthenticated, navigate, user,dispatch]);
 
