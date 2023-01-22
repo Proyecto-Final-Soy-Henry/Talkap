@@ -13,8 +13,6 @@ import {setMyData as actionMyData} from '../../store/slices/users/index.js'
 import Nav from '../Nav/Nav.jsx';
 import Chat from '../Chat/Chat.jsx';
 import UserList from "../UserList/UserList";
-import Profile from "../Profile/Profile";
-
 
 //IMPORT SERVICE
 import {initiateSocket,getChat,getUserList,getMyData, getMenssages} from '../../services/sockets.js'

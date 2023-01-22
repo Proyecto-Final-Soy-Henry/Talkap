@@ -11,7 +11,7 @@ export default function ChatInput({ buttonHandler }) {
 
   return (
     <div className={style.chat}>
-      <form onSubmit={handlerSubmit}>
+      <form className={style.formContainer} onSubmit={handlerSubmit}>
         <input
           placeholder="Escribe un mensaje..."
           type="text"

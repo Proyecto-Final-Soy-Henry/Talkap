@@ -31,7 +31,7 @@ export default function UserList(){
         <Profile/>
         <p className='p'>Perfil</p>
         <UserCard user={grupo} handle={handle}/>
-        <form> 
+        <form className="form"> 
                 <input onChange={handleInput} value={input} type="search" placeholder="Search..." aria-label="Search"/> 
         </form> 
        

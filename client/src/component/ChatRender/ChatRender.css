@@ -1,46 +1,44 @@
-.chat-render{
-   
-    text-align:left;
-    height:80%;
-    overflow: hidden;
-    color: rgb(255, 255, 255);
-    padding-top: 30px;
-    
+.chat-render {
+  text-align: left;
+  height: 90%;
+  overflow-x: hidden;
+  color: rgb(255, 255, 255);
+  padding-top: 30px;
+  background: #a8c0ff;
+  background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
+  background: linear-gradient(to right, #3f2b96, #a8c0ff);
+}
+.chat-render label {
+  color: rgb(159, 5, 255);
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 5px;
+  background-color: transparent;
+}
 
+.divMenssage {
+  width: auto;
+  margin-right: 70%;
+  margin-bottom: 10px;
+  background-color: rgb(149, 133, 252);
+  border-radius: 0px 10px 10px 15px;
+  margin-left: 2%;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
 }
-.chat-render label{
-    font-size: 90%;
-    color:rgb(159, 5, 255);
-    margin-left: 5%;
-    margin-right: 5%;
-    padding-top:5px;
-    background-color: transparent;     
+.divMenssage p {
+  margin-left: 20px;
+  color: #fff;
 }
-
-.divMenssage{
-    width: auto;
-    margin-right: 70%;
-    margin-bottom: 15px;
-    background-color: rgb(173, 168, 207);
-    border-radius: 0px 10px 10px 15px;
-    margin-left: 2%;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
+.divMenssageMe p {
+  margin-right: 10px;
 }
-.divMenssage p{
-    margin-left: 20px;
-    
-}
-.divMenssageMe p{
-    margin-right: 20px;
-}
-.divMenssageMe{
-
-    
-    margin-left: 70%;
-    text-align:right;
-    margin-bottom: 15px;
-    background-color: rgb(182, 57, 254);
-    border-radius: 10px 0px 15px 10px;
-    margin-right: 2%;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
+.divMenssageMe {
+  margin-left: 70%;
+  padding: 10px;
+  text-align: right;
+  margin-bottom: 10px;
+  background-color: rgb(182, 57, 254);
+  border-radius: 10px 0px 15px 10px;
+  margin-right: 2%;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
 }

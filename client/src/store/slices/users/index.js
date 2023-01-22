@@ -13,7 +13,6 @@ const userSlice = createSlice({
         //actions
         setUserList: (state,action)=>{         
             state.list = action.payload;
-    }
         },
         setMyData: (state,action)=>{
             state.my = action.payload;
@@ -22,6 +21,7 @@ const userSlice = createSlice({
             state.selected = action.payload;
         },
         
+    }
 });
 
 export const {setUserList,setMyData,setSelected} = userSlice.actions;

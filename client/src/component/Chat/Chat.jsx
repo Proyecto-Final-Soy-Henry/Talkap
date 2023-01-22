@@ -9,8 +9,8 @@ export default function Chat(){
  const {list } = useSelector(state=>state.chat);
  const {my,selected} = useSelector(state=>state.users);
 // //tengo que devolver sólo últimos 6 mensajes
- const messages = list;
- const value = messages.length>6?messages.slice(messages.length-6):messages;
+//  const messages = list;
+//  const value = messages.length>6?messages.slice(messages.length-6):messages;
  
 
 
@@ -26,7 +26,7 @@ export default function Chat(){
             <h3>Seleciona una sala de Chat</h3>
           </>)}  
           {selected&&<ChatCard picture={selected.picture} email={selected.email}/>}
-          {selected&&<ChatRender menssages={value}/>}
+          {selected&&<ChatRender menssages={list}/>}
           {selected&& <ChatInput buttonHandler={buttonHandler}/>}
           
          
