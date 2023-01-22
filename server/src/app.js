@@ -47,13 +47,18 @@ io.on("connection", (socket) => {
       
     });
 
+   
 
 
     //ESCUCHO LA RUTA CHAT
     socket.on('chat',async (msj)=>{
       
       const messages= await handleChat(msj);
-   
+      const {user} = msj;
+    
+    
+      
+      socket.broadcast.emit(user,messages)
       socket.broadcast.emit('chat',messages);
 
     });

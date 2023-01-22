@@ -15,7 +15,7 @@ export const disconnectSocket = () => {
 
 //ESCUCHO RUTA JOIN Y SETEO MI ESTADO
 export const getUserList = (dispatch,action) => {
-   
+
   if (!socket) return(true);
   socket.on('join', value => {
     return dispatch(action(value))
@@ -27,15 +27,19 @@ export const getChat =(dispatch,action)=>{
 
   if (!socket) return(true);
   socket.on("chat",value=>{
-  const filter =  value.filter(e=>e.receiver==="CHAT GRUPAL");  
-  
-  return dispatch(action(filter))
+  return dispatch(action(value))
   })
 }
 
 export const getMyData = (dispatch,action)=>{
   if (!socket) return(true);
   socket.on('myData',value=>{
+    return dispatch(action(value))
+  })
+}
+export const getMenssages = (id,dispatch,action)=>{
+  if (!socket) return(true);
+  socket.on(id,value=>{
     return dispatch(action(value))
   })
 }

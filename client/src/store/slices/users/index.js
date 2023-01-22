@@ -4,7 +4,7 @@ export const userSlice = createSlice({
     initialState:{
         list:[],
         my:{},
-        selected:{},
+        selected:null,
     },
     reducers:{
         //actions

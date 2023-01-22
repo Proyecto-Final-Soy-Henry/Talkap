@@ -13,7 +13,7 @@ import Nav from '../Nav/Nav.jsx';
 import Chat from '../Chat/Chat.jsx';
 import UserList from "../UserList/UserList";
 //IMPORT SERVICE
-import {initiateSocket,getChat,getUserList,getMyData} from '../../services/sockets.js'
+import {initiateSocket,getChat,getUserList,getMyData, getMenssages} from '../../services/sockets.js'
 
 
 //COMPONETE HOME
@@ -35,7 +35,7 @@ export default function Home() {
       getUserList(dispatch,actionUserList)
       getChat(dispatch,actionChat);
       getMyData(dispatch,actionMyData);
-
+      getMenssages(user.email);
     }
   }, [isAuthenticated, navigate, user,dispatch]);
 

@@ -16,8 +16,8 @@ export default function Chat(){
     sendMessage('chat',{user:my.email,message,receiver:selected.email})
    }
    return (<div className='chat'>
-          <h1>{selected.name}</h1>
-          <img alt={selected.name} src={selected.picture} className='img-sala'/> 
+          {selected?<><h1>{selected.name}</h1>
+          <img alt={selected.name} src={selected.picture} className='img-sala'/></>:<h1>Seleciona un usuario</h1>} 
           <ChatRender menssages={value}/>
           <ChatInput buttonHandler={buttonHandler}/>
     </div>);
