@@ -1,6 +1,6 @@
 .user-card{
 background-color: transparent;
-margin: 5px;
+
 font-size: 10px;
 height: 150px;
 width: 150px;
@@ -8,9 +8,13 @@ color: rgb(12, 12, 12);
 display:block;
 
 }
+.user-card p{
+        
+}
 .user-card .img{
     width: 70px;
    height: 70px;   
+   
     border-radius: 50px;
     box-shadow: 5px 5px 20px; 
 }

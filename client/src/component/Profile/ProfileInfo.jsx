@@ -30,7 +30,7 @@ import {
     
     return (
   
-      <Flex justifyContent="center" minH="90vh" alignItems="center">
+      <Flex justifyContent="center" >
   
         {currentUser && currentUser.picture ?
         
@@ -40,7 +40,7 @@ import {
               boxSize='300px'
               objectFit='cover'
               src={currentUser.picture}
-              alt='Dan Abramov'
+              alt={currentUser.name}
             />
   
             <Divider/>
