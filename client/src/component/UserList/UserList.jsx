@@ -13,11 +13,11 @@ export default function UserList(){
 
     }
     return(
-        <div>
+        <div className='user-list'>
             <form> 
                 <input onChange={handleInput} value={input} type="search" placeholder="Search..." aria-label="Search"/> 
             </form> 
-                     <div className='user-list'>
+                     <div >
                         <div>
                             {input?list.filter(user => {
                                
