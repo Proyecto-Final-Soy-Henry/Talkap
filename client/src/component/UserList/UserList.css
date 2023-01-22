@@ -1,6 +1,13 @@
 .user-list{ 
+    display: flex;
+    align-items: center;
+    
+    flex-direction: column;
     text-align: center; 
     width: 20%;
     background-color: rgb(152, 112, 237);
     box-shadow: 5px 5px 40px; 
+}
+.user-list .p {
+    height: 50px;
 }

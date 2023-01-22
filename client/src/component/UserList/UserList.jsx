@@ -3,6 +3,7 @@ import {useSelector } from "react-redux"
 import UserCard from '../UserCard/UserCard'
 import {setSelected} from '../../store/slices/users/index'
 import { useDispatch } from 'react-redux'
+import Profile from '../Profile/Profile.jsx'
 export default function UserList(){
     
     const dispatch =  useDispatch();
@@ -21,8 +22,8 @@ export default function UserList(){
 
     }
     return(<div  className='user-list'>
-
-        
+        <Profile/>
+      <p className='p'>Perfil</p>
         <UserCard user={grupo} handle={handle}/>
         
         {list?.map((user)=>{

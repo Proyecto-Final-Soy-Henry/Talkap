@@ -1,11 +1,12 @@
 .user-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 background-color: transparent;
 margin: 5px;
 font-size: 10px;
-height: 150px;
-width: 150px;
 color: rgb(12, 12, 12);
-display:block;
+
 
 }
 .user-card .img{

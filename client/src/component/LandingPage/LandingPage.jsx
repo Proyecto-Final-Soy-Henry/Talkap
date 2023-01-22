@@ -1,5 +1,5 @@
 import style from './Landing.module.css'
-import image1 from'../../assets/image3.jpg'
+// import image1 from'../../assets/image3.jpg'
 import logo from '../../assets/Logo.png'
 import menu from '../../assets/menu2.jpg'
 import { useAuth0 } from "@auth0/auth0-react";

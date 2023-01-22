@@ -1,10 +1,14 @@
 .chat {
+    
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
    
    background-color:transparent;
+   position: absolute;
+    bottom: 0;
+    left: 40%;
 
 }
 .chat input[type='text']{

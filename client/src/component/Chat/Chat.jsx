@@ -1,4 +1,4 @@
-import './Chat.css';
+import style from  './Chat.module.css';
 import ChatRender from '../ChatRender/ChatRender.jsx';
 import ChatInput from '../ChatInput/ChatInput.jsx';
 import {sendMessage} from  '../../services/sockets.js';
@@ -19,7 +19,7 @@ export default function Chat(){
     else{errorMessageNull();}
     
    }
-   return (<div className='chat'>
+   return (<div className={style.chat}>
           {!selected&&(<>
             <h1>Bienvenido</h1>
             
