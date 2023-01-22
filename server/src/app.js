@@ -3,7 +3,12 @@ const morgan = require('morgan');
 const cors =  require('cors');
 const {Server} =  require ('socket.io');
 const http =  require('http');
-const  handleUsers =  require('./routes/handlers/handleUsers.js');
+const handleMyData = require('./routes/handlers/handleMyData');
+const handleUsers = require('./routes/handlers/handleUsers');
+const handleExit = require('./routes/handlers/handleExit');
+const userListHandler =  require('./routes/handlers/userListHandler');
+const handleChat = require('./routes/handlers/handleChat');
+const getMessage = require('./routes/handlers/getMessage');
 const server =  express();
 const httpServer = http.createServer(server)
 const io =  new Server(httpServer,{
@@ -19,18 +24,54 @@ io.on("connection", (socket) => {
   socket.on('disconnect', () =>
      console.log(`Disconnected: ${socket.id}`));
 
-     
-     socket.on('join', async (user) => {
-      //recibo el usuario 
-      console.log(`Socket id: ${socket.id} Usuario: ${user.name}`);
-      //funcion que verifica y crea usuario.
-      const users = await handleUsers(user);
-       
-      socket.broadcast.emit('join',users)
-   });
-});
-server.name = 'API';
+     // RUTAS
 
+
+       //JOIN
+     socket.on('join', async (user) => {
+   
+      //VERIFICO Y DEVUELVO USUARIOS
+      const users = await handleUsers(user);
+      const data = await handleMyData(user);
+      const message= await getMessage();
+       //RESPUESTAS              
+        socket.emit('myData',data);   
+        socket.emit('chat',message);  
+      socket.broadcast.emit('join',users)
+     
+   });
+
+
+    // ESCUCHO LA RUTA EXIT
+    socket.on('exit',async (user)=>{
+       const create = await handleExit(user);
+       const users = await userListHandler();
+       socket.broadcast.emit('join',users)
+      
+    });
+
+   
+
+
+    //ESCUCHO LA RUTA CHAT
+    socket.on('chat',async (msj)=>{
+      
+      const messages= await handleChat(msj);
+      const {user} = msj;
+    
+    
+      
+      socket.broadcast.emit(user,messages)
+      socket.broadcast.emit('chat',messages);
+
+    });
+
+    
+});
+
+
+
+server.name = 'API';
 server.use(express.json());
 server.use(morgan('dev'));
 server.use(cors());
@@ -41,9 +82,6 @@ server.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
   });
-
-  
- 
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
