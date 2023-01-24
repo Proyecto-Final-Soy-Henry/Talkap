@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import UserListJoaquin from "../UserListJoaquin/UserListJoaquin";
+import UserListJoaquin from "../UserList/UserListJoaquin";
 
 const RightHome = () => {
   const colors = useColorModeValue(
