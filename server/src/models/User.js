@@ -23,6 +23,9 @@ picture:{
 connected:{
     type:DataTypes.BOOLEAN,
     defaultValue:false,
+},
+bio:{
+    type:DataTypes.STRING,
 }
 
 //comentario

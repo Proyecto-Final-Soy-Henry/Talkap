@@ -9,13 +9,15 @@ import {useDispatch } from "react-redux"
 import {setUserList as actionUserList} from '../../store/slices/users/index.js'
 import {setChatList as actionChat} from '../../store/slices/chats/index.js'
 import {setMyData as actionMyData} from '../../store/slices/users/index.js'
+
 //IMPORT COMPONET
 import Nav from '../Nav/Nav.jsx';
 import Chat from '../Chat/Chat.jsx';
 import UserList from "../UserList/UserList";
 
+
 //IMPORT SERVICE
-import {initiateSocket,getChat,getUserList,getMyData, getMenssages} from '../../services/sockets.js'
+import {initiateSocket,getChat,getUserList,getMyData, getMenssages, sendInfo, sendPicInfo, sendBio} from '../../services/sockets.js'
 
 
 //COMPONETE HOME
@@ -38,6 +40,9 @@ export default function Home() {
       getChat(dispatch,actionChat);
       getMyData(dispatch,actionMyData);
       getMenssages(user);
+      sendInfo(dispatch,actionMyData)
+      sendPicInfo(dispatch,actionMyData)
+      sendBio(dispatch,actionMyData)
     }
   }, [isAuthenticated, navigate, user,dispatch]);
 

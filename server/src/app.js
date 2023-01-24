@@ -10,7 +10,11 @@ const userListHandler =  require('./routes/handlers/userListHandler');
 const handleChat = require('./routes/handlers/handleChat');
 const getMessage = require('./routes/handlers/getMessage');
 const server =  express();
-const routes = require('./routes/index.js')
+const routes = require('./routes/index.js');
+const updateInfo = require('./routes/handlers/updateInfo');
+const updatePic = require('./routes/handlers/updatePic');
+const updateBio = require('./routes/handlers/updateBio');
+const getUsers = require('./routes/handlers/getUsers');
 const httpServer = http.createServer(server)
 const io =  new Server(httpServer,{
   cors:{
@@ -35,6 +39,8 @@ io.on("connection", (socket) => {
       const users = await handleUsers(user);
       const data = await handleMyData(user);
       const message= await getMessage();
+
+
        //RESPUESTAS              
         socket.emit('myData',data);   
         socket.emit('chat',message);  
@@ -42,6 +48,30 @@ io.on("connection", (socket) => {
      
    });
 
+  //ACTUALIZAR INFO
+   socket.on("updateInfo", async({email, nombre}) => {
+
+    const info = await updateInfo(email, nombre)
+    socket.emit('updateInfo', info)
+    const allUsers = await getUsers()
+    socket.broadcast.emit('join', allUsers)
+   })
+
+   socket.on("updatePic", async({email, pic}) => {
+
+    const info = await updatePic(email, pic)
+    socket.emit('updatePic', info)
+    const allUsers = await getUsers()
+    socket.broadcast.emit('join', allUsers)
+   })
+
+   socket.on("updateBio", async({email, bio}) => {
+
+    const info = await updateBio(email, bio)
+    socket.emit('updateBio', info)
+
+   })
+   
 
     // ESCUCHO LA RUTA EXIT
     socket.on('exit',async (user)=>{
