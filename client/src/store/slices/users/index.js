@@ -19,6 +19,9 @@ export const userSlice = createSlice({
     setSelected: (state, action) => {
       state.selected = action.payload;
     },
+    setSearch: (state, action) => {
+      state.listCopy = action.payload;
+    },
 
     filterUsers: (state, action) => {
       if (action.payload === "all") {
@@ -38,6 +41,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUserList, setMyData, setSelected, filterUsers } =
+export const { setUserList, setMyData, setSelected, setSearch, filterUsers } =
   userSlice.actions;
 export default userSlice.reducer;
