@@ -17,7 +17,7 @@ module.exports = async function handleUser (req,res){
             name,
             email,
             picture,
-        }).catch((error)=>{console.log('')})
+        }).catch((error)=>{console.log(error)})
         console.log('usuario creado')
         res.status(200).send(userCreado);
     }else{

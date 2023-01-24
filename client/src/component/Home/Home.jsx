@@ -17,7 +17,15 @@ import UserList from "../UserList/UserList";
 
 
 //IMPORT SERVICE
-import {initiateSocket,getChat,getUserList,getMyData, getMenssages, sendInfo, sendPicInfo, sendBio} from '../../services/sockets.js'
+import {
+  initiateSocket,
+  getChat,
+  getUserList,
+  getMyData, 
+  getMenssages, 
+  sendInfo, 
+  sendPicInfo, 
+  sendBio} from '../../services/sockets.js'
 
 
 //COMPONETE HOME
@@ -55,8 +63,10 @@ export default function Home() {
          <Nav/>
          <Chat/>
          <UserList/>
+        {/* <UserList /> */}
+
+        <RightHome />
         
-         
         </>
       ) : null}
     </div>
