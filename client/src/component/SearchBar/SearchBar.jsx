@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // Los parámetros siempre se tienen que pasar como SEARCH, FILTER Y HANDLE
 // <SearchBar search={list} filter={"name"} handle={handleee} />
@@ -13,10 +14,10 @@ export default function SearchBar(props) {
     if (allFilter.length > 0) {
       props.handle(allFilter);
     }
-    //  else {
-    //   console.log(allFilter);
-    //   props.handle([10]);
-    // }
+     else {
+     
+      props.handle(["Not Find"]);
+    }
   }, [input]);
 
   function handleChange(elem) {
@@ -47,8 +48,8 @@ export default function SearchBar(props) {
           aria-label="Search"
         />
       </form>
-      {input ? handleChange(props) : console.log("algo")}{" "}
-      {!allFilter && input ? <p>No se encuentra</p> : <p></p>}
+      {input ? handleChange(props) :  props.handle("")}
+    
     </div>
   );
 }
