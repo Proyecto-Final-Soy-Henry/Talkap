@@ -1,57 +1,86 @@
-import './UserList.css'
-import {useSelector } from "react-redux"
-import UserCard from '../UserCard/UserCard'
-import {setSelected} from '../../store/slices/users/index'
-import { useDispatch } from 'react-redux'
-import Profile from '../Profile/Profile.jsx'
-import { useState } from 'react'
-export default function UserList(){
-    const [input, setInput] = useState('') 
-    const dispatch =  useDispatch();
+import style from "./UserList.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
 
-   
-     const {list} =  useSelector(state=>state.users)
-     const handle = (user)=>{
-        dispatch(setSelected(user))
-        
-     }
-     const grupo ={
-        name:"CHAT GRUPAL",
-        email:"CHAT GRUPAL",
-        picture:"https://png.pngtree.com/png-vector/20191130/ourlarge/pngtree-group-chat-icon-png-image_2054401.jpg",
-        connected:true,
+  setSelected,
+  filterUsers,
+  setListSearch
+} from "../../store/slices/users/index";
+import UserCard from "../UserCard/UserCard";
+import {  Select } from "@chakra-ui/react";
+import { useEffect,useState } from "react";
 
-    }
-    function handleInput(e){
-        e.preventDefault()
-        setInput(e.target.value)
-    }
-    return(<div  className='user-list'>
-       
-        <Profile/>
-        <p className='p'>Perfil</p>
-        <UserCard user={grupo} handle={handle}/>
-        <form> 
-                <input onChange={handleInput} value={input} type="search" placeholder="Search..." aria-label="Search"/> 
-        </form> 
-       
-        {input?list.filter(user => {
-                               
-                               let searchUser = input.toUpperCase()
-                               
-                               return searchUser && user.name.toUpperCase().startsWith(searchUser) 
-                           })
-                           .map(user=>(
-                               
-                               <div key={user.id} id={user.name}>
-                                   <UserCard user={user} handle={handle}/>
-                               </div>
-   
-                           ))
-            :list?.map((user)=>{
-            return <UserCard user={user} handle={handle}/>
+const UserList = () => {
+  const [input,setInput] = useState();
 
-            })
-        }
-    </div>)
+  const { listCopy, listSearch,list } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
+  const handle = (user) => {
+    dispatch(setSelected(user));
+    
+  };
+
+  const handleInputChange = (event) => {
+    dispatch(filterUsers(event.target.value));
+  };
+
+  const handleSearch = (user) => {
+    dispatch(setListSearch(user));
+  };
+  function handleInput(e){
+    e.preventDefault()
+    setInput(e.target.value)
 }
+
+  useEffect(()=>{
+    dispatch(filterUsers('all'))
+  },[list,dispatch]);
+
+  return (
+    <div className={style.userList}>
+
+      <Select
+        onChange={(e) => {
+          handleInputChange(e);
+        }}
+      >
+        <option value="all">Todos</option>
+        <option value="connected">Conectados</option>
+        <option value="disconnected">Desconectados</option>
+      </Select>
+
+
+      <form> 
+                <input onChange={handleInput} value={input} type="search" placeholder="Search..." aria-label="Search"/> 
+            </form> 
+                     <div >
+                        <div>
+                            {input?listCopy.filter(user => {
+                               
+                            let searchUser = input.toUpperCase()
+                            
+                            return searchUser && user.name.toUpperCase().startsWith(searchUser) 
+                        })
+                        .map(user=>(
+                            
+                            <div key={user.id} id={user.name}>
+                                <UserCard key={user.name} name={user.name} picture={user.picture} connected={user.connected}/>
+                            </div>
+
+                        ))
+                             :listCopy&&listCopy.map((user)=>{
+            
+                                return <UserCard key={user.name} name={user.name} picture={user.picture} connected={user.connected}/>
+
+                             })
+                            }
+                        </div>
+                     </div>
+                     
+
+    </div>
+  );
+};
+
+export default UserList;

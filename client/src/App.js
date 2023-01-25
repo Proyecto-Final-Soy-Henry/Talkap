@@ -1,32 +1,22 @@
-const express = require('express');
-const morgan = require('morgan');
-const cors =  require('cors');
-const http =  require('http');
-const initialSocket= require('./socket.js');
-const server =  express();
-const httpServer = http.createServer(server)
-//INICIALIZO SOCKET
-initialSocket(httpServer);
 
-server.name = 'API';
-server.use(express.json());
-server.use(morgan('dev'));
-server.use(cors());
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-  });
+import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Login from './component/Login/Login.jsx';
+import Home from './component/Home/Home';
+import LandingPage from './component/LandingPage/LandingPage.jsx'
 
-// Error catching endware.
-server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-  const status = err.status || 500;
-  const message = err.message || err;
-  console.error(err);
-  res.status(status).send(message);
-});
+function App() {
+  return (
+    <div className="App">
+      <Routes>
+  <Route path='/' element={<LandingPage/>}/>
+  <Route path="/Login" element={<Login/>}/>
+  <Route path='/home' element={<Home/>}/>
 
-module.exports = httpServer;
+ </Routes>
+     
+    </div>
+  );
+}
 
+export default App;
