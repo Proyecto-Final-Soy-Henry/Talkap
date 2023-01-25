@@ -25,9 +25,7 @@ const UserList = () => {
     dispatch(filterUsers(event.target.value));
   };
 
-  const handleSearch = (user) => {
-    dispatch(setListSearch(user));
-  };
+ 
   function handleInput(e){
     e.preventDefault()
     setInput(e.target.value)
@@ -65,13 +63,13 @@ const UserList = () => {
                         .map(user=>(
                             
                             <div key={user.id} id={user.name}>
-                                <UserCard user={user} handle={()=>{console.log('click')}}/>
+                                <UserCard user={user} handle={handle}/>
                             </div>
 
                         ))
                              :listCopy&&listCopy.map((user)=>{
             
-                                return  <UserCard user={user} handle={()=>{console.log('click')}}/>
+                                return  <UserCard user={user} handle={handle}/>
 
                              })
                             }
