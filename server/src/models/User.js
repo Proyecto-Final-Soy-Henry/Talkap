@@ -31,11 +31,9 @@ connected:{
     type:DataTypes.BOOLEAN,
     defaultValue:false,
 },
-<<<<<<< HEAD
 bio:{
     type:DataTypes.STRING,
-}
-=======
+},
 type:{
     type:DataTypes.STRING,
 },
@@ -54,7 +52,6 @@ Favourite:{
 },
 
 
->>>>>>> 4baacc1d89f4af63cf01300ba6498e058bc49e6a
 
 
 

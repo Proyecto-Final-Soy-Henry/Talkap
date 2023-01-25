@@ -9,8 +9,8 @@ const path = require("path");
 const basename = path.basename(__filename);
 const modelDefiners = [];
 const sequelize = new Sequelize(
-  // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-  DB_DEPLOY,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  // DB_DEPLOY,
 
   {
     logging: false, // set to console.log to see the raw SQL queries

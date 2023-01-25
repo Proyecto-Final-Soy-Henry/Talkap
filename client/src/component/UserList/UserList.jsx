@@ -6,9 +6,10 @@ import {
   filterUsers,
   setListSearch
 } from "../../store/slices/users/index";
-import UserCard from "../UserCard/UserCard";
-import {  Select } from "@chakra-ui/react";
+// import UserCard from "../UserCard/UserCard";
+import {  Box, Select } from "@chakra-ui/react";
 import { useEffect,useState } from "react";
+import StylingUserList from "./StylingUserList";
 
 const UserList = () => {
   const [input,setInput] = useState();
@@ -52,31 +53,35 @@ const UserList = () => {
 
 
       <form> 
-                <input onChange={handleInput} value={input} type="search" placeholder="Search..." aria-label="Search"/> 
-            </form> 
-                     <div >
-                        <div>
-                            {input?listCopy.filter(user => {
-                               
-                            let searchUser = input.toUpperCase()
-                            
-                            return searchUser && user.name.toUpperCase().startsWith(searchUser) 
-                        })
-                        .map(user=>(
-                            
-                            <div key={user.id} id={user.name}>
-                                <UserCard user={user} handle={()=>{console.log('click')}}/>
-                            </div>
+        <input onChange={handleInput} value={input} type="search" placeholder="Search..." aria-label="Search"/> 
+      </form> 
+        <div >
+          <div>
+              {input?listCopy.filter(user => {
+                  
+              let searchUser = input.toUpperCase()
+              
+              return searchUser && user.name.toUpperCase().startsWith(searchUser) 
+          })
+          .map(user=>(
+              
+              <div key={user.id} id={user.name}>
+              <StylingUserList user={user} handle={()=>{console.log('click')}}/>
+              </div>
 
-                        ))
-                             :listCopy&&listCopy.map((user)=>{
-            
-                                return  <UserCard user={user} handle={()=>{console.log('click')}}/>
+          ))
+                :listCopy&&listCopy.map((user)=>{
+                
+                return (
+                  <Box key={user.email}>
+                    <StylingUserList user={user} handle={()=>{console.log('click')}}/>
+                  </Box>
+                )
 
-                             })
-                            }
-                        </div>
-                     </div>
+                })
+              }
+          </div>
+        </div>
                      
 
     </div>

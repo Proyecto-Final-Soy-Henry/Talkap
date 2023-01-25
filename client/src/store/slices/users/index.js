@@ -7,7 +7,6 @@ export const userSlice = createSlice({
     listSearch: [],
     my: {},
     selected: null,
-    
   },
   reducers: {
     //actions
@@ -19,6 +18,7 @@ export const userSlice = createSlice({
       state.my = action.payload;
     },
     setSelected: (state, action) => {
+      console.log(action.payload)
       state.selected = action.payload;
     },
     setSearch: (state, action) => {
@@ -45,16 +45,6 @@ export const userSlice = createSlice({
   },
 });
 
-<<<<<<< HEAD
-export const { setUserList, 
-  setMyData, 
-  setSelected, 
-  setSearch, 
-  filterUsers,
-  setListSearch 
-} =
-=======
 export const { setUserList, setMyData, setSelected, setSearch, filterUsers,setListSearch } =
->>>>>>> 4baacc1d89f4af63cf01300ba6498e058bc49e6a
   userSlice.actions;
 export default userSlice.reducer;
