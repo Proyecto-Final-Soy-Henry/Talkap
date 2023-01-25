@@ -3,7 +3,7 @@ import Axios from 'axios'
 import {FaPencilAlt} from 'react-icons/fa'
 import { updatePic } from '../../services/sockets'
 import { useAuth0 } from "@auth0/auth0-react";
-import { Box, Flex, useToast, Tooltip, Button, Text } from '@chakra-ui/react';
+import { Box, Flex, useToast, Tooltip,  Text } from '@chakra-ui/react';
 import {FaArrowAltCircleUp} from 'react-icons/fa'
 
 function ProfileImg() {

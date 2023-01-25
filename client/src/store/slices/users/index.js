@@ -45,6 +45,7 @@ export const userSlice = createSlice({
   },
 });
 
+<<<<<<< HEAD
 export const { setUserList, 
   setMyData, 
   setSelected, 
@@ -52,5 +53,8 @@ export const { setUserList,
   filterUsers,
   setListSearch 
 } =
+=======
+export const { setUserList, setMyData, setSelected, setSearch, filterUsers,setListSearch } =
+>>>>>>> 4baacc1d89f4af63cf01300ba6498e058bc49e6a
   userSlice.actions;
 export default userSlice.reducer;

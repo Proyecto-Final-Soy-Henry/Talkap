@@ -1,40 +1,44 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+
+
+
+import { useEffect, useState,useRef } from "react";
 
 // Los parámetros siempre se tienen que pasar como SEARCH, FILTER Y HANDLE
 // <SearchBar search={list} filter={"name"} handle={handleee} />
 
 export default function SearchBar(props) {
+ let  allFilter = useRef([]);
   const [input, setInput] = useState("");
 
-  let allFilter = [];
 
-  useEffect(() => {
-    if (allFilter.length > 0) {
-      props.handle(allFilter);
-    }
-     else {
-     
-      props.handle(["Not Find"]);
-    }
-  }, [input]);
-
-  function handleChange(elem) {
-    if (input) {
-      allFilter = elem.search.filter((element) => {
+  useEffect(()=>{
+    function handleChange(elem) {
+   
+      allFilter =  elem.search.filter((element) => {
         let searchUser = input.toUpperCase();
         let filter = elem.filter;
-        return (
-          searchUser && element[filter].toUpperCase().startsWith(searchUser)
-        );
+        return element[filter].toUpperCase().startsWith(searchUser)
+        
       });
-    }
+      
   }
+    handleChange(props);
+  
+  
+  },[input,allFilter])
+
+
+ 
+
+
+
+
 
   function handleInput(e) {
+
     e.preventDefault();
     setInput(e.target.value);
+    props.handle(allFilter)
   }
 
   return (
@@ -48,7 +52,7 @@ export default function SearchBar(props) {
           aria-label="Search"
         />
       </form>
-      {input ? handleChange(props) :  props.handle("")}
+      {/* {input ? handleChange(props) :  props.handle("")} */}
     
     </div>
   );

@@ -19,7 +19,11 @@ module.exports = (sequelize)=>{
         receiver:{
             type:DataTypes.STRING,
 
-        }
+        },
+        type:{
+            type:DataTypes.STRING,
+        },
+        
 
 
     });
