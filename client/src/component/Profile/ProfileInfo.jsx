@@ -4,54 +4,112 @@ import {
     Image, 
     Spinner, 
     Text, 
-    } from '@chakra-ui/react'
+    useEditableControls,
+    ButtonGroup,
+    IconButton,
+    Editable,
+    EditablePreview,
+    EditableInput,
+    Input,
+    Button, 
+    Tooltip
 
+} from '@chakra-ui/react'
+
+  import { useState } from 'react'
   import { useSelector } from 'react-redux'
   import {FaPencilAlt} from 'react-icons/fa'
-  
+  import { updateInfo } from '../../services/sockets'
+  import { useAuth0 } from "@auth0/auth0-react";
+  import ProfileImg from './ProfileImg'
+  import ProfileBioInfo from './ProfileBioInfo'
+  import {GiCheckMark} from 'react-icons/gi'
+  import {AiOutlineClose} from 'react-icons/ai'
+
   function ProfileInfo() {
+
+    const { user } = useAuth0();
+    const [nombre, setNombre] = useState(user.nickname)
+    const currentUser = useSelector(state => state.users.my)
+
+    function EditableControls() {
+
+      const {
+        isEditing,
+        getSubmitButtonProps,
+        getCancelButtonProps,
+        getEditButtonProps,
+      } = useEditableControls()
   
-   
-      const currentUser = useSelector(state => state.users.my)
-  
-  
-    
+
+      const send = () => {
+        if(nombre){
+          updateInfo(user.email, nombre)
+        }
+      }
+        
+      return isEditing ? (
+
+        <ButtonGroup justifyContent='center' size='sm'>
+
+          <IconButton icon={<Button onClick={() =>{send()}}> <GiCheckMark color='#BC00DD'/> </Button>} {...getSubmitButtonProps()} />
+          <IconButton icon={<AiOutlineClose color='#BC00DD'/>} {...getCancelButtonProps()} />
+
+        </ButtonGroup>
+      ) : (
+        <Flex justifyContent="center">
+          <IconButton size='sm' icon={<FaPencilAlt color='#BC00DD'/>} {...getEditButtonProps()}/>
+        </Flex>
+      )
+    }
+
     return (
   
       <Flex justifyContent="center" minH="90vh" alignItems="center">
   
         {currentUser && currentUser.picture ?
         
-          <Flex direction="column" alignSelf={'flex-start'} alignItems="center" gap="10">
+          <Flex direction="column" alignSelf={'flex-start'} alignItems="center" gap="10" key={currentUser.email}>
             <Image
               borderRadius='full'
+              marginTop="10"
+              marginBottom="-5"
               boxSize='200px'
               objectFit='cover'
               src={currentUser.picture}
-              alt='Dan Abramov'
+              alt={currentUser.name}
             />
+
+            <ProfileImg/>
   
-            <Divider/>
-  
-            <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-10" w="full">Tu Nombre</Text>
-            <Flex alignItems="center">
-              <Text as='abbr' fontSize='2xl' mr="6" fontWeight="bold">{currentUser.name} </Text>
-              <FaPencilAlt/>
-            </Flex>
-  
-  
-         
-            
+            <Divider mb="-6"/>
+
+            <Tooltip bg='gray.500' label='Será visible para tus contactos' placement='top-start'>
+              <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-20" w="full">Tu Nombre</Text>
+            </Tooltip>
+
+            <Flex alignItems="center"/>
+            <Editable
+              textAlign='center'
+              defaultValue={currentUser.name}
+              fontSize='2xl'
+              width="230px"
+              isPreviewFocusable={true}
+            >
+              <EditablePreview as='abbr' fontSize='2xl' fontWeight="bold"/>
+                <Input maxLength="12" minLength="3" as={EditableInput} fontSize='2xl' fontWeight="bold" onChange={(e) => setNombre(e.target.value)}/>
+                <EditableControls />
+            </Editable>
+    
   
             <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-10" w="full">Tu email</Text>
-            <Text  as='abbr' fontSize='2xl' fontWeight="semibold">{currentUser.email} </Text>
-            
-            
+            <Text  as='abbr' fontSize='2xl' fontWeight="semibold">{currentUser.email}</Text>
+
+            <Tooltip bg='gray.500' label='¿Qué estás pensando?' placement='top-start'>
             <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-10" w="full">Tu Bio</Text>
+            </Tooltip>
             <Flex alignItems="center">
-              <Text as='i' mr="4" textAlign="center" maxW="200" fontSize='md' fontWeight="medium" > Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              </Text>
-              <FaPencilAlt/>
+               <ProfileBioInfo/>
             </Flex>
       
             <Divider/>
@@ -64,7 +122,7 @@ import {
             thickness='4px'
             speed='0.65s'
             emptyColor='gray.200'
-            color='blue.500'
+            color='#BC00DD'
             size='xl'
           />
         }

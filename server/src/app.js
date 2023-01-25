@@ -1,75 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors =  require('cors');
-const {Server} =  require ('socket.io');
 const http =  require('http');
-const handleMyData = require('./routes/handlers/handleMyData');
-const handleUsers = require('./routes/handlers/handleUsers');
-const handleExit = require('./routes/handlers/handleExit');
-const userListHandler =  require('./routes/handlers/userListHandler');
-const handleChat = require('./routes/handlers/handleChat');
-const getMessage = require('./routes/handlers/getMessage');
+const initialSocket= require('./socket.js');
 const server =  express();
 const httpServer = http.createServer(server)
-const io =  new Server(httpServer,{
-  cors:{
-    origin:"*"
-  }
-});
-
-//Pongo a escuchar io
-io.on("connection", (socket) => {
-  console.log(`Connected: ${socket.id}`);
-
-  socket.on('disconnect', () =>
-     console.log(`Disconnected: ${socket.id}`));
-
-     // RUTAS
-
-
-       //JOIN
-     socket.on('join', async (user) => {
-   
-      //VERIFICO Y DEVUELVO USUARIOS
-      const users = await handleUsers(user);
-      const data = await handleMyData(user);
-      const message= await getMessage();
-       //RESPUESTAS              
-        socket.emit('myData',data);   
-        socket.emit('chat',message);  
-      socket.broadcast.emit('join',users)
-     
-   });
-
-
-    // ESCUCHO LA RUTA EXIT
-    socket.on('exit',async (user)=>{
-       const create = await handleExit(user);
-       const users = await userListHandler();
-       socket.broadcast.emit('join',users)
-      
-    });
-
-   
-
-
-    //ESCUCHO LA RUTA CHAT
-    socket.on('chat',async (msj)=>{
-      
-      const messages= await handleChat(msj);
-      const {user} = msj;
-    
-    
-      
-      socket.broadcast.emit(user,messages)
-      socket.broadcast.emit('chat',messages);
-
-    });
-
-    
-});
-
-
+//INICIALIZO SOCKET
+initialSocket(httpServer);
 
 server.name = 'API';
 server.use(express.json());

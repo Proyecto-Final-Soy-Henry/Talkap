@@ -5,11 +5,18 @@ sequelize.define('user',{
 // id:{
 //     type:DataTypes.UUID,
 //     defaultValue: DataTypes.UUIDV4,
-    
+ 
 // },
+nick:{
+    type:DataTypes.STRING,
+},
 name:{
     type:DataTypes.STRING,
     allowNull:false,
+},
+apellido:{
+    type:DataTypes.STRING,
+
 },
 email:{
     type:DataTypes.STRING,
@@ -23,10 +30,26 @@ picture:{
 connected:{
     type:DataTypes.BOOLEAN,
     defaultValue:false,
-}
+},
+type:{
+    type:DataTypes.STRING,
+},
+users:{
+    type:DataTypes.JSON,
+},
+admin:{
+    type:DataTypes.JSON
+},
+groupName :{
+    type:DataTypes.STRING,
+},
 
-//comentario
-//comentario dos
+Favourite:{
+    type:DataTypes.JSON,
+},
+
+
+
 
 
 });
