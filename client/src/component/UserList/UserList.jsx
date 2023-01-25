@@ -65,13 +65,13 @@ const UserList = () => {
                         .map(user=>(
                             
                             <div key={user.id} id={user.name}>
-                                <UserCard key={user.name} name={user.name} picture={user.picture} connected={user.connected}/>
+                                <UserCard user={user} handle={()=>{console.log('click')}}/>
                             </div>
 
                         ))
                              :listCopy&&listCopy.map((user)=>{
             
-                                return <UserCard key={user.name} name={user.name} picture={user.picture} connected={user.connected}/>
+                                return  <UserCard user={user} handle={()=>{console.log('click')}}/>
 
                              })
                             }
