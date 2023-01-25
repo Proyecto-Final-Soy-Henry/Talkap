@@ -77,6 +77,7 @@ import {
             <Image
               borderRadius='full'
               marginTop="10"
+              marginBottom="-5"
               boxSize='200px'
               objectFit='cover'
               src={currentUser.picture}
@@ -85,10 +86,10 @@ import {
 
             <ProfileImg/>
   
-            <Divider/>
+            <Divider mb="-6"/>
 
-            <Tooltip bg='gray.500' label='Este nombre sera visible para tus contactos'placement='top-start'>
-              <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-16" w="full">Tu Nombre</Text>
+            <Tooltip bg='gray.500' label='Será visible para tus contactos' placement='top-start'>
+              <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-20" w="full">Tu Nombre</Text>
             </Tooltip>
 
             <Flex alignItems="center"/>
@@ -107,8 +108,10 @@ import {
   
             <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-10" w="full">Tu email</Text>
             <Text  as='abbr' fontSize='2xl' fontWeight="semibold">{currentUser.email}</Text>
-            
+
+            <Tooltip bg='gray.500' label='¿Qué estás pensando?' placement='top-start'>
             <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-10" w="full">Tu Bio</Text>
+            </Tooltip>
             <Flex alignItems="center">
                <ProfileBioInfo/>
             </Flex>

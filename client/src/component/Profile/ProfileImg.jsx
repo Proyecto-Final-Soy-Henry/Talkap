@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 import Axios from 'axios'
-// import {Image} from 'cloudinary-react'
 import {FaPencilAlt} from 'react-icons/fa'
 import { updatePic } from '../../services/sockets'
 import { useAuth0 } from "@auth0/auth0-react";
-import { Box, Flex, useToast, Tooltip, Button } from '@chakra-ui/react';
-import {HiDocumentAdd} from 'react-icons/hi'
+import { Box, Flex, useToast, Tooltip, Button, Text } from '@chakra-ui/react';
+import {FaArrowAltCircleUp} from 'react-icons/fa'
 
 function ProfileImg() {
 
@@ -21,7 +20,6 @@ function ProfileImg() {
         const formData = new FormData()
         formData.append("file", imageSelected)
         formData.append("upload_preset", "jtytvyi1")
-  
   
         Axios.post("https://api.cloudinary.com/v1_1/diljrsea2/image/upload", formData)
         .then(Response => updatePic(user.email, Response.data.url))
@@ -50,49 +48,40 @@ function ProfileImg() {
         </label>
         </Tooltip>
 
-        
         {imageSelected ? 
-        
         <Box>
+            <button onClick={() => {
 
-        <button onClick={() => {
+                uploadImage()
 
-          uploadImage()
+                toast({
+                position: 'top-right',
+                duration: 6000,
+                isClosable:true,
+                render: () => (
+                  <Box color='white' p={3} bg='green.400' fontWeight="bold">
+                    <Text>¡Cambiando foto! esto puede tardar varios segundos</Text>
+                  </Box>
+                )
+                })
+              }}>
 
-          toast({
-          position: 'top-right',
-          duration: 5000,
-          isClosable: true,
-          render: () => (
-            <Box color='white' p={3} bg='green.500'>
-              Cambio en proceso, puede tardar unos segundos
-            </Box>
-          ),
-        })
-
-        }}>
-
-         <Tooltip bg='gray.500' label='Subir foto' placement='top'>
-         <label>
-          <HiDocumentAdd fontSize="25px" color="#BC00DD" cursor="pointer"/>
-          </label>
-         </Tooltip>
-        
-        </button>
+              <Tooltip bg='gray.500' label='Subir foto' placement='top'>
+                <label>
+                  <FaArrowAltCircleUp fontSize="25px" color="#BC00DD" cursor="pointer"/>
+                </label>
+              </Tooltip>
+            
+            </button>
         </Box>
-
 
         :
         <Tooltip bg='gray.500' placement='top' label='Se habilita cuando seleccionas una foto'>
         <label>
-          <HiDocumentAdd color="gray" aria-invalid fontSize="25px"/>
+          <FaArrowAltCircleUp color="gray" aria-invalid fontSize="25px"/>
         </label>
         </Tooltip>
         }
-      
-        
-
-      
     </Flex>
   )
 }

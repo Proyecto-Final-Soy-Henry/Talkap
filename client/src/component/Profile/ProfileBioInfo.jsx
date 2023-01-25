@@ -65,6 +65,7 @@ function ProfileBioInfo() {
         textAlign='center'
         defaultValue={currentUser.bio}
         fontSize='2xl'
+        width="250px"
         isPreviewFocusable={true}
         placeholder="Pon una descripcion para los demas"
         >

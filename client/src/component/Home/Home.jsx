@@ -14,7 +14,7 @@ import {setMyData as actionMyData} from '../../store/slices/users/index.js'
 import Nav from '../Nav/Nav.jsx';
 import Chat from '../Chat/Chat.jsx';
 import UserList from "../UserList/UserList";
-
+import RightHome from "../RightHome/RightHome";
 
 //IMPORT SERVICE
 import {

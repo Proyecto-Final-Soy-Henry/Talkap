@@ -1,3 +1,4 @@
+import Profile from "../Profile/Profile";
 import "./UserCard.css";
 export default function UserCard({ user, handle }) {
   return (
