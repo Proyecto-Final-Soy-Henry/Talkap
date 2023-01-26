@@ -1,10 +1,13 @@
-.App{
-
+/* .App {
   width: 100%;
   height: 100vh;
-  
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  }
+} si descomentan esto se rompe todo */
+
+/*
+SI LE DAN ESTILOS AL APP TENGAN EN CUENTA QUE TODOS LOS ELEMENTOS QUE RENDERIZA LA APP VAN A TOMAR LOS ESTILOS QUE ESTÁN ACÁ...
+¡¡¡ES REQUETE PRLIGROSO CHABON!!!
+*/

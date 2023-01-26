@@ -1,0 +1,42 @@
+.aboutUsContainer {
+  min-height: 100vh;
+  background: #1e3c72;
+  background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);
+  background: linear-gradient(to right, #2a5298, #1e3c72);
+  color: rgb(205, 205, 216);
+}
+
+.cardsContainer {
+  /* display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px; */
+  display: grid;
+  grid-template-columns: repeat(minmax(3, 10), minmax(50px, 150px));
+  grid-auto-flow: dense;
+  gap: 10px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+/* .card h3 {
+  
+} */
+
+.card img {
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgb(205, 205, 216);
+  border-radius: 50%;
+  object-fit: cover;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
