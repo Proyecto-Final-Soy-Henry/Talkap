@@ -24,11 +24,37 @@ export default function  ChatRender({menssages}){
               if(my.email === msj.user || name1 === my.email ){
             
                 return (<div key={index} className="divMenssageMe"> 
-                  <p>{msj.message}</p>
+                  {msj.message.includes('https://res.cloudinary.com/daekdf1sh/image/private')?
+                      <img src={msj.message} alt="" />: 
+                   msj.message.includes('https://res.cloudinary.com/daekdf1sh/video/private/')?
+                   <video controls>
+                     <source src={msj.message} type="video/mp4"/>
+                     <source src={msj.message} type="video/webm"/>
+                     <source src={msj.message} type="video/ogg"/>
+                     invalid format 
+                   </video>:
+                      <p> {msj.message} </p> 
+                  }
                   <br/>
                 </div>)}
+
               return <div key={index} className="divMenssage">
-              <p>{name1} : {msj.message}</p>
+                {msj.message.includes('https://res.cloudinary.com/daekdf1sh/image/private')?<div> <p>{name1}</p>
+                <img src={msj.message} alt="" /></div>
+                      
+                      : 
+                   msj.message.includes('https://res.cloudinary.com/daekdf1sh/video/private/')? <div>
+                    <p>{name1}</p>
+                   <video controls>
+                     <source src={msj.message} type="video/mp4"/>
+                     <source src={msj.message} type="video/webm"/>
+                     <source src={msj.message} type="video/ogg"/>
+                     invalid format 
+                   </video>
+                   </div>:
+                      <p>{name1} : {msj.message}</p>
+                  }
+              
               <br/>
               </div>
   

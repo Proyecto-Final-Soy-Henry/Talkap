@@ -1,5 +1,14 @@
 //MODELOS DB
 const {User,Message} = require('./db');
+
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({//configuramos cloudinary
+    cloud_name: "daekdf1sh",
+    api_key: "838392469389272",
+    api_secret: "hInStLPoBP5LBqsfw58NSlb8Y-Y"
+  });///a futuro seria guardar esto en el archivo .env
+
 async function initGroup (){
     const userCreate = await User.create({
         name:'CHAT GRUPAL',
@@ -96,15 +105,36 @@ async function getUsers(){
     
     return user;}
 
- async function setMessage(msj){
-        const {user,message,receiver} = msj;
-        
+ async function setMessage(msj){   
+    //  const {user,message,receiver} = msj;
+     const {user,receiver} = msj;
         console.log(msj.id)
         // console.log(Message.findOne(({
         //     where: {id: msj.id}
         // })))
         // if(Message.filter((e) =>  e.id == id)){}
-        const result = await Message.create({user,message,receiver});
+
+        const VideoUpload=msj.video?await cloudinary.uploader.upload(msj.video,{
+            resource_type: "video",//importante aclara el tipo de archivo
+            folder:"videoschats",
+            public_id: "private_image",
+            type: "private",
+        }):null
+        const ImageUpload=msj.image?await cloudinary.uploader.upload(msj.image,{
+            resource_type: "image",
+            folder:"imageschats",
+            public_id: "private_image",
+            type: "private"
+        }):null
+
+        const video =VideoUpload?VideoUpload.secure_url:null
+        const image =ImageUpload?ImageUpload.secure_url:null///si recibo ImageUpload es xq la imagen se guardo en cloudinary y nos quedamos con la url que devuelve
+        const message=image?image:
+                  video?video:
+                  msj.message///si image/video no guardó nada es xq no recibimos imagenes/video asi que devolvemos el mensaje
+
+
+        const result = await Message.create({user,message,receiver,image,video});
         return result;
     }
 

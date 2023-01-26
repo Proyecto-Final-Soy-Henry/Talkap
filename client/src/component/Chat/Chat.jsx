@@ -22,10 +22,10 @@ export default function Chat(){
 
 
 
- const buttonHandler = (message)=>{
-
-    if(message){sendMessage('chat',{user:my.email,message,receiver:addressee.email})}
-  
+ const buttonHandler = (message,image,video)=>{
+   
+    if(message || image || video){sendMessage('chat',{user:my.email,message,receiver:addressee.email,image,video})}
+     ///agregue image, video ya que al no completar el input con palabras decia que estaba vacio
     else{errorMessageNull();}
     
    }

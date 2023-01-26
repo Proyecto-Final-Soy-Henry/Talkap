@@ -1,5 +1,5 @@
 .chat-render{
-   
+  
     text-align:left;
     height:65%;
     overflow: hidden;
@@ -16,6 +16,7 @@
 }
 .divMenssage{
     width: auto;
+   
     margin-right: 70%;
     margin-bottom: 15px;
     background-color: rgb(173, 168, 207);
