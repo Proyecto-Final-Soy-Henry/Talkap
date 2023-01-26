@@ -1,4 +1,6 @@
 import "./SalaCard.css"
+// import { DeleteIcon } from '@chakra-ui/icons'
+
 export default function SalaCard (){
 
     return(
@@ -13,7 +15,8 @@ export default function SalaCard (){
             <span class="span">2</span>
           </div>
           <p class="p">Hola como esstas</p>
+          {/* <DeleteIcon></DeleteIcon> */}
         <div>
-      </div></div></div>
+      </div></div></div>    
     );
 }
