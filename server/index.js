@@ -6,6 +6,8 @@ const {PORT} = process.env;
 
 
 
+
+
 conn.sync({ force: true }).then(() => {
   //Inicializo el Group
   initGroup();

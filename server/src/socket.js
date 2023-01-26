@@ -110,6 +110,7 @@ io.on("connection", (socket) => {
       socket.emit('updateInfo', info)
       const allUsers = await getUsers()
       socket.broadcast.emit('join', allUsers)
+      socket.broadcast.emit('users', allUsers)
      })
   
      socket.on("updatePic", async({email, pic}) => {
@@ -118,12 +119,16 @@ io.on("connection", (socket) => {
       socket.emit('updatePic', info)
       const allUsers = await getUsers()
       socket.broadcast.emit('join', allUsers)
+      socket.broadcast.emit('users', allUsers)
      })
   
      socket.on("updateBio", async({email, bio}) => {
   
       const info = await updateBio(email, bio)
       socket.emit('updateBio', info)
+      const allUsers = await getUsers()
+      socket.broadcast.emit('join', allUsers)
+      socket.broadcast.emit('users', allUsers)
   
      })
   

@@ -4,6 +4,11 @@ const cors =  require('cors');
 const http =  require('http');
 const initialSocket= require('./socket.js');
 const server =  express();
+const routes = require('./routes/index.js');
+const updateInfo = require('./routes/handlers/updateInfo');
+const updatePic = require('./routes/handlers/updatePic');
+const updateBio = require('./routes/handlers/updateBio');
+const getUsers = require('./routes/handlers/getUsers');
 const httpServer = http.createServer(server)
 //INICIALIZO SOCKET
 initialSocket(httpServer);

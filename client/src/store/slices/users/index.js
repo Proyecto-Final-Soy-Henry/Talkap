@@ -43,6 +43,7 @@ export const userSlice = createSlice({
       }
     },
     setAddressee:(state,action)=>{
+      console.log(action.payload)
       state.addressee = action.payload;
     },
 

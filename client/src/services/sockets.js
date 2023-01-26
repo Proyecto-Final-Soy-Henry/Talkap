@@ -1,4 +1,4 @@
-import io from 'socket.io-client';
+import io from "socket.io-client";
 
 let socket;
 //INICIA SOCKET CONECTADO CON RUTA JOIN Y MANDANDO EL USUARIO
@@ -36,7 +36,7 @@ export const listenUsers = (dispatch,action) => {
   socket.on('users', value => {
     return dispatch(action(value))
   });
-}
+};
 
 
 //MANDAR MENSAJE A UNA RUTA DEL SERVER
