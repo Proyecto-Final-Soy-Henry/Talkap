@@ -4,12 +4,12 @@ import { Route, Routes } from "react-router-dom";
 
 import Home from './component/Home/Home';
 
-import Landing from './component/LandingPage/LandingPage'
+import LandingPageRework from './component/LandingPageRework/LandingPageRework.jsx'
 function App() {
   return (
     <div className="App">
       <Routes>
-  <Route path='/' element={<Landing/>}/>
+      <Route path='/' element={<LandingPageRework/>}/>
 
   <Route path='/home' element={<Home/>}/>
 
