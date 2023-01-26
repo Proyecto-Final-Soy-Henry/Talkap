@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import UserCard from '../UserCard/UserCard'
 import { Menu, 
     MenuButton, 
@@ -9,10 +9,11 @@ import { Menu,
     DrawerContent, 
     DrawerBody,
     useDisclosure,
-    Flex
+    Flex,
+    DrawerCloseButton
 } from "@chakra-ui/react";
 import ContactProfile from '../ContactInfo/ContactProfile.jsx'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {FaUserAlt} from 'react-icons/fa'
 import {TbSend} from 'react-icons/tb'
 import {IoMdPersonAdd} from 'react-icons/io'
@@ -20,9 +21,11 @@ import { setSelected,setAddressee } from '../../store/slices/users';
 
 function StylingUserList({user, handle}) {
 
+
     const dispatch = useDispatch()
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [placement] = React.useState("rigth");
+
 
   return (
     <Flex key={user.email} justify="center">
@@ -38,6 +41,7 @@ function StylingUserList({user, handle}) {
         <Drawer placement={placement} onClose={onClose} isOpen={isOpen} size="sm">
         <DrawerOverlay />
         <DrawerContent>
+        <DrawerCloseButton maxW="100" />
           <DrawerBody>
             <ContactProfile/>
           </DrawerBody>

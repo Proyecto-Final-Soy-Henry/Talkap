@@ -72,6 +72,8 @@ import {
           <Flex direction="column" alignSelf={'flex-start'} alignItems="center" gap="10" key={currentUser.email}>
             <Image
               borderRadius='full'
+              border="1px"
+              borderColor="#BC00DD"
               marginTop="10"
               marginBottom="-5"
               boxSize='200px'

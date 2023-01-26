@@ -19,7 +19,6 @@ export const userSlice = createSlice({
       state.my = action.payload;
     },
     setSelected: (state, action) => {
-      console.log(action.payload)
       state.selected = action.payload;
     },
     setSearch: (state, action) => {
@@ -44,6 +43,7 @@ export const userSlice = createSlice({
       }
     },
     setAddressee:(state,action)=>{
+      console.log(action.payload)
       state.addressee = action.payload;
     },
 

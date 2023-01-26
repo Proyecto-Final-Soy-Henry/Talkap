@@ -22,8 +22,6 @@ function Profile() {
   return (
     <Flex justify="flex-end" pr="1" ml="3" mt="1">
        <Avatar size='md' name={user.name} src={user.picture} onClick={onOpen} cursor="pointer" />
-     
-
 
       <Drawer placement={placement} onClose={onClose} isOpen={isOpen} size="sm">
         <DrawerOverlay />
