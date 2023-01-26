@@ -3,7 +3,7 @@ import UserCard from '../UserCard/UserCard'
 import { Menu, 
     MenuButton, 
     MenuItem, 
-    MenuList,Box, 
+    MenuList, 
     Drawer, 
     DrawerOverlay, 
     DrawerContent, 
@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux';
 import {FaUserAlt} from 'react-icons/fa'
 import {TbSend} from 'react-icons/tb'
 import {IoMdPersonAdd} from 'react-icons/io'
-import { setSelected } from '../../store/slices/users';
+import { setSelected,setAddressee } from '../../store/slices/users';
 
 function StylingUserList({user, handle}) {
 
@@ -26,12 +26,11 @@ function StylingUserList({user, handle}) {
 
   return (
     <Flex key={user.email} justify="center">
-
-        <Menu isLazy >
+        <Menu isLazy display="flex" justify="center">
         <MenuButton onClick={() => {dispatch(setSelected(user))}}><UserCard user={user} handle={handle}/></MenuButton> 
         <MenuList>
             <MenuItem onClick={onOpen}  icon={<FaUserAlt />} _hover={{ bg: '#D986FF'}}>Ver Perfil</MenuItem>
-            <MenuItem icon={<TbSend />} _hover={{ bg: '#D986FF'}}>Enviar Mensaje</MenuItem>
+            <MenuItem onClick={()=>{dispatch(setAddressee(user))}} icon={<TbSend />} _hover={{ bg: '#D986FF'}}>Enviar Mensaje</MenuItem>
             <MenuItem icon={<IoMdPersonAdd />} _hover={{ bg: '#D986FF'}}>Añadir a Amigos</MenuItem>
         </MenuList>
         </Menu>
