@@ -1,17 +1,15 @@
 import { useSelector } from 'react-redux';
 import './ChatRender.css'
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function  ChatRender({menssages}){
-    
-    const { my } = useSelector((state) => state.users);
-   
+    const {user} = useAuth0();
     return (<div className="chat-render">
         {menssages?.map((msj,index)=>{
-        if(!msj.message){return ()=>{}
+        if(!msj.message){return
         }else{
-             if(my.email=== msj.user)
+             if(user.name == msj.user)
             console.log(msj.email)
             let name1=msj.user;
              if(msj.user.includes("@")){
@@ -20,17 +18,16 @@ export default function  ChatRender({menssages}){
                   newName.push(msj.user[i])   
               }   
               name1 = newName.join("")}
-              // console.log(my.email,name1,msj.user)
-              if(my.email === msj.user || name1 === my.email ){
-            
+
+              if(user.name == msj.user || name1 == user.name ){
                 return (<div key={index} className="divMenssageMe"> 
                   <p>{msj.message}</p>
                   <br/>
                 </div>)}
-              return <div key={index} className="divMenssage">
-              <p>{name1} : {msj.message}</p>
-              <br/>
-              </div>
+                return <div key={index} className="divMenssage">
+                <p>{name1} : {msj.message}</p>
+                <br/>
+                </div>
   
           }
 

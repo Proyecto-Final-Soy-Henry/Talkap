@@ -27,7 +27,6 @@ function Profile() {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton maxW="100" />
-
           <DrawerBody>
             <ProfileInfo />
           </DrawerBody>
