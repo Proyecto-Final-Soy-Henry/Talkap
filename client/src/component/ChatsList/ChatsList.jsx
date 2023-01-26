@@ -50,16 +50,22 @@ export default function ChatsList(){
     return(<div  className='user-list'>
       
         {listUser?.map((user,index)=>{
+    
             
             const message = messages.filter(msj=>{
+               
+                // msj.user !== my.email ? noti = true : noti = false
                 
-                return msj.receiver===user.email
+                return msj.receiver===user.email || msj.user === user.email
+                 
              });
-             
+            
             
              let lastMessage =[]
-            
+            //  console.log(noti)
              lastMessage.push(message[message.length -1])
+
+             
              
             return <SalaCard key={index} user={user} handle={handle} message={lastMessage}/>
 

@@ -35,10 +35,12 @@
   
   
   .textBox {
+   
     width: calc(100% - 90px);
     margin-left: 10px;
     color: white;
     margin-bottom: 2vh;
+    
     font-family: 'Poppins' sans-serif;
   }
   
@@ -50,14 +52,16 @@
   }
   
   .span {
+    display: flex;
     font-size: 11px;
-    color: aquamarine;
+    color: rgb(255, 255, 255);
+    margin-left: 5px;
   }
   
   .h1 {
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
-    margin-bottom: ;
+    text-shadow: 0px 1px 5px rgb(182, 57, 254);
   }
   
   .p {
@@ -76,5 +80,6 @@
 
   .span2 {
     font-size: 12px;
-    color: aquamarine;
+    color: #de1212;
+   
   }

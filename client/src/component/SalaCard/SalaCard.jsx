@@ -1,33 +1,48 @@
 import "./SalaCard.css"
-import { DeleteIcon } from '@chakra-ui/icons'
+import { DeleteIcon ,EmailIcon} from '@chakra-ui/icons'
+import { useState } from "react"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+
 
 export default function SalaCard (props){
-  let lastMessage = "NaN"
+ const [notif,setNotif] = useState(false)
+ const {my} =  useSelector(state=>state.users)
+ 
+  let lastMessage = ""
+
  if(props.message[0] !== undefined){
   lastMessage = props.message[0].message
+  console.log(props.message[0])
  }
+useEffect(()=>{
+  if(props.message[0].user !== my.email){
+    setNotif(true)
+  }
+  
+},[lastMessage])
 
-// if(lastMessage.length >25){
-//  let arr = lastMessage.split("")
-//  console.log(arr)
-// }
 
     return(
 
-        <div class="card" onClick={()=>{props.handle(props.user)}}>
+        <div class="card" onClick={()=>{
+        props.handle(props.user);
+       return setNotif(false)
+        }}>
         <div class="img">
             <img src={props.user.picture}></img>
         </div>
         <div class="textBox">
           <div class="textContent">
             <p class="h1">{props.user.name}</p>
-            <span class="span"></span>
+            
           </div>
-          {lastMessage.length > 20 ?<span class="span2" >Nuevos Mensajes...</span>:<span class="span">{lastMessage}</span>
+          {lastMessage.length > 25 ?<span class="span2" >Nuevos Mensajes...</span>:<span class="span">{lastMessage}</span>
           }
           
           <div className="remove">
-          <DeleteIcon  display="flex" _hover={{color: "#e5383b"}} ></DeleteIcon>
+            {notif&&<EmailIcon  display="flex"  color= "#70e000" _hover={{color: "#007200"}}></EmailIcon>}
+          
           </div>
          
         <div>
