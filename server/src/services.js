@@ -55,9 +55,12 @@ const messagesUser =  await Message.findAll({
         user:user.email,
     }
 });
+//Filtro los que no son para el grupo.
+
+const filter = messagesUser.filter(msj=>msj.receiver!=='group@talkap')
 
 //pusheo el resultado
-arrayMsj = arrayMsj.concat(messagesUser);
+arrayMsj = arrayMsj.concat(filter);
 //obtengo los mensajes recibidos por el usuario
 
  const messagesReceiver =  await Message.findAll({
@@ -148,4 +151,5 @@ module.exports={
     setMessage,
     initGroup,
     handleExit,
+    getMessagesGroup,
 }

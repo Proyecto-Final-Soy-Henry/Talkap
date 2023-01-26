@@ -6,12 +6,12 @@ import './ChatRender.css'
 export default function  ChatRender({menssages}){
     
     const { my } = useSelector((state) => state.users);
-    const {list} = useSelector((state) =>state.chat)
+   
     return (<div className="chat-render">
         {menssages?.map((msj,index)=>{
-        if(!msj.message){return
+        if(!msj.message){return ()=>{}
         }else{
-             if(my.email== msj.user)
+             if(my.email=== msj.user)
             console.log(msj.email)
             let name1=msj.user;
              if(msj.user.includes("@")){
@@ -21,7 +21,7 @@ export default function  ChatRender({menssages}){
               }   
               name1 = newName.join("")}
               // console.log(my.email,name1,msj.user)
-              if(my.email == msj.user || name1 == my.email ){
+              if(my.email === msj.user || name1 === my.email ){
             
                 return (<div key={index} className="divMenssageMe"> 
                   <p>{msj.message}</p>

@@ -1,31 +1,22 @@
 import style from "./UserList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-
-  setSelected,
   filterUsers,
-  setListSearch
 } from "../../store/slices/users/index";
-import UserCard from "../UserCard/UserCard";
-import {  Select } from "@chakra-ui/react";
 import { useEffect,useState } from "react";
-
+import StylingUserList from "./StylingUserList";
+import {  Box, Select } from "@chakra-ui/react";
 const UserList = () => {
   const [input,setInput] = useState();
 
-  const { listCopy, listSearch,list } = useSelector((state) => state.users);
+  const { listCopy,list } = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
-  const handle = (user) => {
-    dispatch(setSelected(user));
-    
-  };
 
   const handleInputChange = (event) => {
     dispatch(filterUsers(event.target.value));
   };
 
- 
   function handleInput(e){
     e.preventDefault()
     setInput(e.target.value)
@@ -43,7 +34,7 @@ const UserList = () => {
           handleInputChange(e);
         }}
       >
-        <option value="all">Todos</option>
+        <option  value="all">Todos</option>
         <option value="connected">Conectados</option>
         <option value="disconnected">Desconectados</option>
       </Select>
@@ -63,13 +54,17 @@ const UserList = () => {
                         .map(user=>(
                             
                             <div key={user.id} id={user.name}>
-                                <UserCard user={user} handle={handle}/>
+                                 <StylingUserList user={user} handle={()=>{console.log('click')}}/>
                             </div>
 
                         ))
                              :listCopy&&listCopy.map((user)=>{
             
-                                return  <UserCard user={user} handle={handle}/>
+                                return  (
+                                  <Box key={user.email}>
+                                   <StylingUserList user={user} handle={()=>{console.log('click')}}/>
+                                  </Box>
+                                )
 
                              })
                             }

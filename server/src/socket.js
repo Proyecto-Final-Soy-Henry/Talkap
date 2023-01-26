@@ -9,6 +9,7 @@ const {
   updateBio,
   updatePic,
   updateInfo,
+  getMessagesGroup,
 } =  require('./services.js');
 
 let io ;
@@ -46,13 +47,15 @@ io.on("connection", (socket) => {
                 // obtengo los datos del usuarios conectado.
                 const myData = await getMyData(user);
                 // obtengo todos los mensajes enviados y recibidos del usuario
-              const messages =  await getMessages(user);   
-           
+              const message =  await getMessages(user);   
+           //obtengo todos los mensajes del grupo.
+           const messageGroup = await getMessagesGroup();
+            const concat = message.concat(messageGroup);
 
 
-        socket.emit(user.email,{myData,messages});
+        socket.emit(user.email,{myData,message:concat});
         socket.broadcast.emit('users',users);
-        
+       
      });
   
   
@@ -79,9 +82,10 @@ io.on("connection", (socket) => {
              
             if(receiver!='group@talkap'){
               
-            socket.emit(user,{ msj:dataValues})
-            socket.broadcast.emit(receiver,{ msj:dataValues});
-          }
+              socket.emit(user,{ msj:dataValues})
+             socket.broadcast.emit(receiver,{ msj:dataValues});
+            // io.to(receiver).emit({ msj:dataValues});
+            }
              else{
           
               socket.broadcast.emit('group',dataValues);

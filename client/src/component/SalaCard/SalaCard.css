@@ -1,8 +1,8 @@
 .card {
     width: 100%;
-    max-width: 290px;
+    
     height: 70px;
-    background: #353535;
+    background: #535353;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -17,13 +17,16 @@
     cursor: pointer;
     
   }
-  
+  img{
+    border-radius: 10px;
+  }
   .img {
     width: 50px;
     height: 50px;
     margin-left: 10px;
     border-radius: 10px;
-    background: linear-gradient(#d7cfcf, #9198e5);
+    box-shadow: 0px 0px 10px 2px rgb(182, 57, 254);
+    ;
   }
   .imag-picture{
     width: 50px;
@@ -35,25 +38,43 @@
     width: calc(100% - 90px);
     margin-left: 10px;
     color: white;
+    margin-bottom: 2vh;
     font-family: 'Poppins' sans-serif;
   }
   
   .textContent {
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
+    margin-bottom: 1;
   }
   
   .span {
-    font-size: 10px;
+    font-size: 11px;
+    color: aquamarine;
   }
   
   .h1 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
+    margin-bottom: ;
   }
   
   .p {
     font-size: 12px;
     font-weight: lighter;
+    display: flex;
+    margin-left: 2vw;
+  }
+
+  .remove{
+    width: 10px;
+    height: 10px;
+    position: relative;
+    left: 95%;
+  }
+
+  .span2 {
+    font-size: 12px;
+    color: aquamarine;
   }

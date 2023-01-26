@@ -33,9 +33,7 @@ export default function Home() {
   const dispatch =  useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
-
-  //CREO  FUNCION
-
+   
   
 //EFECTO
   useEffect(() => {
@@ -48,21 +46,21 @@ export default function Home() {
           
       // INICIALIZO MI STORE
       initiateSocket(user);
-
-      //MANEJADOR DE SALA ID
-      const  handleActions= ({myData,messages,msj})=>{
+//MANEJADOR DE SALA ID
+const  handleActions= ({myData,message,msj})=>{
  
-        if(myData&&Object.entries(myData).length!==0){
-          dispatch(actionMyData(myData)) 
-        }
-         if(messages&&messages.length){
-          dispatch(actionChat(messages))
-        }
-        if(msj&&Object.entries(msj).length!==0){
-            dispatch(actionSetMessage(msj))
-        }
-      
-      }
+  if(myData&&Object.entries(myData).length!==0){
+    dispatch(actionMyData(myData)) 
+  }
+   if(message&&message.length){
+    dispatch(actionChat(message))
+  }
+  if(msj&&Object.entries(msj).length!==0){
+        dispatch(actionSetMessage(msj))      
+  }
+
+}
+   
       //esucho y seteo mi estado user {list}
       listenUsers(dispatch,actionUserList)
       listenId(user.email,handleActions);

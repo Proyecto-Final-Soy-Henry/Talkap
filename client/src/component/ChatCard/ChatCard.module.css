@@ -4,12 +4,10 @@
     justify-content: center;
     flex-direction: column;
     background-color: transparent;
-    margin: 5px;
     font-size: 10px;
-    height: 150px;
+    height: 15%;
     width: 100%;
     color: rgb(12, 12, 12);
-    
     
     }
     .chatcard img{
