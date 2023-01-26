@@ -13,7 +13,7 @@ export default function SalaCard (props){
   let text = "textBox"
   let point = "punto"
   let lastMessage = ""
-
+  let name1 = props.user.name
  if(props.message[0] !== undefined){
   lastMessage = props.message[0].message
  
@@ -30,6 +30,12 @@ if(props.user.connected){
  text = "textBoxA"
  point = "puntoA"
 }
+if(props.user.name.includes("@")){
+  let newName =[]
+  for(let i = 0; props.user.name[i] !== "@"; i++){
+      newName.push(props.user.name[i])   
+  }   
+  name1 = newName.join("")}
 
     return(
 
@@ -42,7 +48,7 @@ if(props.user.connected){
         </div>
         <div class={text}>
           <div class="textContent">
-            <p class="h1">{props.user.name}</p>
+            <p class="h1">{name1}</p>
             <span className={point}>•</span>
           </div>
           {lastMessage.length > 25 ?<span class="span2" >Nuevos Mensajes...</span>:<span class="span">{lastMessage}</span>

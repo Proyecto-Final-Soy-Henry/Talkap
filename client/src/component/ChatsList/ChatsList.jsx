@@ -23,7 +23,7 @@ export default function ChatsList(){
 
       messages.forEach(msj => {
         
-    //    
+       console.log(msj)
         //consulto si ya tengo ese usuario en mi lista
        if(!listUser.some(user=>user.email===msj.user)&&msj.user!==my.email&&msj.receiver!=='group@talkap'){
          // si no lo tengo lo busco en el array de users, y lo pusheo
