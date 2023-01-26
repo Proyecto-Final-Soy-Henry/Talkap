@@ -26,7 +26,8 @@ function StylingUserList({user, handle}) {
 
   return (
     <Flex key={user.email} justify="center">
-        <Menu isLazy display="flex" justify="center">
+
+        <Menu isLazy >
         <MenuButton onClick={() => {dispatch(setSelected(user))}}><UserCard user={user} handle={handle}/></MenuButton> 
         <MenuList>
             <MenuItem onClick={onOpen}  icon={<FaUserAlt />} _hover={{ bg: '#D986FF'}}>Ver Perfil</MenuItem>
