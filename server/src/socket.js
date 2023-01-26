@@ -69,7 +69,7 @@ io.on("connection", (socket) => {
   
       //ESCUCHO LA RUTA CHAT
       socket.on('chat',async (msj)=>{
-        const {user,receiver,type} = msj;
+        const {user,receiver,type,id} = msj;
         if(receiver!=user){
         //GUARDO EL MENSAJE EN LA DB
         const messages= await setMessage (msj);
@@ -79,8 +79,9 @@ io.on("connection", (socket) => {
              
             if(receiver!='group@talkap'){
               
-              socket.emit(user,{ msj:dataValues})
-             socket.broadcast.emit(receiver,{ msj:dataValues});}
+            socket.emit(user,{ msj:dataValues})
+            socket.broadcast.emit(receiver,{ msj:dataValues});
+          }
              else{
           
               socket.broadcast.emit('group',dataValues);

@@ -95,6 +95,12 @@ async function getUsers(){
 
  async function setMessage(msj){
         const {user,message,receiver} = msj;
+        
+        console.log(msj.id)
+        // console.log(Message.findOne(({
+        //     where: {id: msj.id}
+        // })))
+        // if(Message.filter((e) =>  e.id == id)){}
         const result = await Message.create({user,message,receiver});
         return result;
     }
