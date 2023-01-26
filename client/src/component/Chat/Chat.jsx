@@ -9,15 +9,15 @@ import {errorMessageNull} from '../../services/sweetalert.js'
 import {sendMessage} from  '../../services/sockets.js';
 
 export default function Chat(){
- const {list } = useSelector(state=>state.chat);
+ const {messages } = useSelector(state=>state.chat);
  const {my,addressee} = useSelector(state=>state.users);
  
 //tengo que devolver sólo últimos 6 mensajes
 
-   const messages = list.filter(msj=>{
+   const message = messages.filter(msj=>{
     return (msj.user===addressee?.email&&msj.receiver===my.email)||msj.receiver===addressee?.email
     });
-    const value = list.length>6?messages.slice(messages.length-6):messages;
+    const value = messages.length>6?message.slice(message.length-6):message;
  
 
 

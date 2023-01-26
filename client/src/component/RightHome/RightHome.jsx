@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import UserList from '../UserList/UserList.jsx'
+import ChatsList from "../ChatsList/ChatsList.jsx";
 
 const RightHome = () => {
   const colors = useColorModeValue(
@@ -26,7 +27,7 @@ const RightHome = () => {
       </TabList>
       <TabPanels>
       <TabPanel>{<UserList />}</TabPanel>
-        <TabPanel></TabPanel>
+        <TabPanel>{<ChatsList/>}</TabPanel>
         
       </TabPanels>
     </Tabs>
