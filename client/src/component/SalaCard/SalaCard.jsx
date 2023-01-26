@@ -7,13 +7,16 @@ import { useSelector } from "react-redux"
 
 export default function SalaCard (props){
  const [notif,setNotif] = useState(false)
+
  const {my} =  useSelector(state=>state.users)
- 
+  let img = "img"
+  let text = "textBox"
+  let point = "punto"
   let lastMessage = ""
 
  if(props.message[0] !== undefined){
   lastMessage = props.message[0].message
-  console.log(props.message[0])
+ 
  }
 useEffect(()=>{
   if(props.message[0].user !== my.email){
@@ -22,6 +25,11 @@ useEffect(()=>{
   
 },[lastMessage])
 
+if(props.user.connected){
+ img = "imgA"
+ text = "textBoxA"
+ point = "puntoA"
+}
 
     return(
 
@@ -29,13 +37,13 @@ useEffect(()=>{
         props.handle(props.user);
        return setNotif(false)
         }}>
-        <div class="img">
+        <div class={img}>
             <img src={props.user.picture}></img>
         </div>
-        <div class="textBox">
+        <div class={text}>
           <div class="textContent">
             <p class="h1">{props.user.name}</p>
-            
+            <span className={point}>•</span>
           </div>
           {lastMessage.length > 25 ?<span class="span2" >Nuevos Mensajes...</span>:<span class="span">{lastMessage}</span>
           }
