@@ -7,7 +7,7 @@ export const userSlice = createSlice({
     listSearch: [],
     my: {},
     selected: null,
-    
+    addressee:null,
   },
   reducers: {
     //actions
@@ -42,9 +42,20 @@ export const userSlice = createSlice({
         state.listCopy = DISCONNECTED;
       }
     },
+    setAddressee:(state,action)=>{
+      state.addressee = action.payload;
+    },
+
   },
 });
 
-export const { setUserList, setMyData, setSelected, setSearch, filterUsers,setListSearch } =
-  userSlice.actions;
+export const {
+   setUserList,
+   setMyData,
+    setSelected,
+    setSearch,
+     filterUsers,
+     setListSearch,
+     setAddressee ,
+    } = userSlice.actions;
 export default userSlice.reducer;

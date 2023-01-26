@@ -20,12 +20,14 @@ const RightHome = () => {
   return (
     <Tabs w="30%" onChange={(index) => setTabIndex(index)} bg={bg}>
       <TabList>
+      <Tab>Usuarios</Tab>
         <Tab>Salas</Tab>
-        <Tab>Usuarios</Tab>
+        
       </TabList>
       <TabPanels>
+      <TabPanel>{<UserList />}</TabPanel>
         <TabPanel></TabPanel>
-        <TabPanel>{<UserList />}</TabPanel>
+        
       </TabPanels>
     </Tabs>
   );
