@@ -12,13 +12,8 @@ import {setMyData as actionMyData} from '../../store/slices/users/index.js'
 import {setMessage as actionSetMessage} from '../../store/slices/chats/index.js'
 //IMPORT COMPONET
 import Nav from '../Nav/Nav.jsx';
-import Profile from "../Profile/Profile.jsx";
 import Chat from '../Chat/Chat.jsx';
 import RightHome from "../RightHome/RightHome";
-// import { userValidator } from "../../services/validator.js";
-import UserList from "../UserList/UserList";
-import { useState } from "react";
-import {sendMessage} from  '../../services/sockets.js';
 
 //IMPORT SERVICE
 import {
@@ -34,11 +29,13 @@ import {
 
 //COMPONETE HOME
 export default function Home() {
-  // const {Enter, setEnter} = useState("button")
+
   const dispatch =  useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
-  const {list} = useSelector(state=>state.chat);
+   
+  
+//EFECTO
   useEffect(() => {
     if (!isAuthenticated) {
       //SI NO ESTOY AUTENTICADO
@@ -87,9 +84,6 @@ const  handleActions= ({myData,message,msj})=>{
         {/* <NavTop/> */}
         <div className={style.chat}> 
          <Nav/>
-         <button className="button" onClick={()=>{
-          // handleChatOff()
-          sendMessage("chat",{user:user.name})}}>Enter</button>
          <Chat/>
          <RightHome/>
         </div>
@@ -97,4 +91,4 @@ const  handleActions= ({myData,message,msj})=>{
       ) : null}
     </div>
   );
-} 
+}

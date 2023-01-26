@@ -4,7 +4,9 @@
 }
 .container{
         height: 100%;
+        width: 100%;
         background: linear-gradient(#39BBDC, #FF3192);
+        
 }
 .nav{
     background-color: rgb(255, 255, 255);
@@ -64,8 +66,7 @@ background-color: #39BBDC;
 .image1{
 display: inline-block;
 
-width: 450px;
-height: 450px;
+border-radius: 25px;
 }
 .spanabout{
     width: 50%;
@@ -77,14 +78,21 @@ height: 450px;
 }
 
 .Footercontainer{
+  
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;
     background-color: rgb(31, 29, 29);
 
     width: 100%;
     color: white;
     bottom: 0px;
+    
 }
 .footers{
-    display: inline-block;
+   
+   
     width: 50%;
     height: 50%;
 
@@ -159,4 +167,3 @@ height: 450px;
   }
 
  
-   
