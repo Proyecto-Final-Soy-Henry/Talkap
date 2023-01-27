@@ -1,6 +1,6 @@
 import './ChatsList.css'
 import {useSelector } from "react-redux"
-import UserCard from '../UserCard/UserCard'
+
 import {setAddressee} from '../../store/slices/users/index.js'
 import { useDispatch } from 'react-redux'
 import SalaCard from '../SalaCard/SalaCard'
@@ -14,7 +14,7 @@ export default function ChatsList(){
      }
     
      const {messages} =  useSelector(state=>state.chat)
-     const {list,my,addressee} =  useSelector(state=>state.users)
+     const {list,my} =  useSelector(state=>state.users)
  // obtengo la lista de  los usuarios que me mandaron mensajes
      let listUser = [];
      

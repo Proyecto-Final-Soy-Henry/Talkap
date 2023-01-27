@@ -1,5 +1,5 @@
 import "./SalaCard.css"
-import { DeleteIcon ,EmailIcon} from '@chakra-ui/icons'
+import { EmailIcon} from '@chakra-ui/icons'
 import { useState } from "react"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
@@ -23,7 +23,7 @@ useEffect(()=>{
     setNotif(true)
   }
   
-},[lastMessage])
+},[lastMessage,my.email,props.message])
 
 if(props.user.connected){
  img = "imgA"
@@ -44,7 +44,7 @@ if(props.user.name.includes("@")){
        return setNotif(false)
         }}>
         <div class={img}>
-            <img src={props.user.picture}></img>
+            <img alt={name1} src={props.user.picture}></img>
         </div>
         <div class={text}>
           <div class="textContent">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import UserCard from '../UserCard/UserCard'
 import { Menu, 
     MenuButton, 
@@ -13,7 +13,7 @@ import { Menu,
     DrawerCloseButton
 } from "@chakra-ui/react";
 import ContactProfile from '../ContactInfo/ContactProfile.jsx'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {FaUserAlt} from 'react-icons/fa'
 import {TbSend} from 'react-icons/tb'
 import {IoMdPersonAdd} from 'react-icons/io'
