@@ -10,11 +10,12 @@
     
     }
     .chatcard img{
+        margin-top: 0.5vw;
         position: fixed;
         margin-left: 2%;
         width: 8vh;   
         border-radius: 100%;
-        box-shadow: 5px 5px 20px; 
+       
     }
 
     .chatcard p{

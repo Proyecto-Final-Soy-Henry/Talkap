@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 75%;
   height: 100%;
-  background: linear-gradient(to right,#1D2671, #C33764);
+  background: linear-gradient(to right,#C33764,#1D2671);
 }
 
 .chat img {
