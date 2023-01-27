@@ -1,13 +1,12 @@
-.chat{
-
-   display: flex;
-   flex-direction: column;    
-   width: 100%;
-   height: 100%;
-  
+.chat {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(#39bbdc, #ff3192);
 }
 
-.chat img{
-   max-width: 80%;
-   max-height: 80%;   
+.chat img {
+  max-width: 80%;
+  max-height: 80%;
 }
