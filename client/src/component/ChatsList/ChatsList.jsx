@@ -55,8 +55,10 @@ export default function ChatsList(){
             const message = messages.filter(msj=>{
                
                 // msj.user !== my.email ? noti = true : noti = false
-               console.log(user.email, msj.user,msj.receiver)
-                return msj.receiver===user.email || msj.user === user.email
+                console.log(msj)
+                console.log(user.email)
+               
+                return msj.receiver===user.email || (msj.user === user.email && msj.receiver !== "group@talkap")
                  
              });
             // 

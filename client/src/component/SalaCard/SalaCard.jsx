@@ -46,20 +46,20 @@ if(props.user.name.includes("@")){
   // console.log(props.message[0])
     return(
 
-        <div class="card" onClick={()=>{
+        <div className="card" onClick={()=>{
         props.handle(props.user);
        return setNotif(false)
         }}>
-        <div class={img}>
+        <div className={img}>
             <img alt={name1} src={props.user.picture}></img>
         </div>
-        <div class={text}>
-          <div class="textContent">
-            <p class="h1">{name1}</p>
+        <div className={text}>
+          <div className="textContent">
+            <p className="h1">{name1}</p>
             <span className={point}>•</span>
           </div>
           {
-          lastMessage.length > 25 ?<span class="span2" >Nuevos Mensajes...</span>:<span class="span">{lastMessage}</span>
+          lastMessage.length > 25 ?<span className="span2" >Nuevos Mensajes...</span>:<span className="span">{lastMessage}</span>
           }
           
           <div className="remove">

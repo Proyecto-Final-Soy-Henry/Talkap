@@ -81,9 +81,10 @@ export default function ChatRender({ menssages }) {
                   </video>
                 </div>
               ) : (
-                <p>
-                  {name1} : {msj.message}
-                </p>
+                <div>
+                  <p className="name">{name1} : </p>
+                  <p>{msj.message}</p>
+                </div>
               )}
 
               <br />
