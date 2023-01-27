@@ -55,7 +55,7 @@ function ProfileImg() {
                 uploadImage()
 
                 toast({
-                position: 'top-right',
+                position: 'top-left',
                 duration: 6000,
                 isClosable:true,
                 render: () => (
