@@ -44,7 +44,7 @@ export default function Chat() {
       {addressee && (
         <ChatCard picture={addressee.picture} email={addressee.email} />
       )}
-      {addressee && <ChatRender menssages={value} />}
+      {addressee && <ChatRender menssages={message} />}
       {addressee && <ChatInput buttonHandler={buttonHandler} />}
     </div>
   );
