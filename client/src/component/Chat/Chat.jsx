@@ -20,8 +20,7 @@ export default function Chat() {
       msj.receiver === addressee?.email
     );
   });
-  const value =
-    messages.length > 6 ? message.slice(message.length - 6) : message;
+  
 
   const buttonHandler = (message, image, video) => {
     if (message || image || video) {
@@ -44,7 +43,7 @@ export default function Chat() {
       {addressee && (
         <ChatCard picture={addressee.picture} email={addressee.email} />
       )}
-      {addressee && <ChatRender menssages={value} />}
+      {addressee && <ChatRender menssages={message} />}
       {addressee && <ChatInput buttonHandler={buttonHandler} />}
     </div>
   );

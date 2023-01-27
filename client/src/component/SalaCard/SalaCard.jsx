@@ -40,6 +40,10 @@ if(props.user.name.includes("@")){
   }   
   name1 = newName.join("")}
 
+
+  if(props.message[0])
+  
+  // console.log(props.message[0])
     return(
 
         <div class="card" onClick={()=>{
@@ -54,11 +58,12 @@ if(props.user.name.includes("@")){
             <p class="h1">{name1}</p>
             <span className={point}>•</span>
           </div>
-          {lastMessage.length > 25 ?<span class="span2" >Nuevos Mensajes...</span>:<span class="span">{lastMessage}</span>
+          {
+          lastMessage.length > 25 ?<span class="span2" >Nuevos Mensajes...</span>:<span class="span">{lastMessage}</span>
           }
           
           <div className="remove">
-            {notif&&<EmailIcon  display="flex"  color= "#70e000" _hover={{color: "#007200"}}></EmailIcon>}
+            {notif&& <EmailIcon  display="flex"  color= "#70e000" _hover={{color: "#007200"}}></EmailIcon>}
           
           </div>
          

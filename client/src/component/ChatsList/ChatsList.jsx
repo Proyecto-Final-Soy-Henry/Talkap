@@ -55,17 +55,17 @@ export default function ChatsList(){
             const message = messages.filter(msj=>{
                
                 // msj.user !== my.email ? noti = true : noti = false
-                
+               console.log(user.email, msj.user,msj.receiver)
                 return msj.receiver===user.email || msj.user === user.email
                  
              });
-            
+            // 
             
              let lastMessage =[]
             //  console.log(noti)
              lastMessage.push(message[message.length -1])
 
-             
+           
              
             return <SalaCard key={index} user={user} handle={handle} message={lastMessage}/>
 
