@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import UserList from '../UserList/UserList.jsx'
+import UserList from "../UserList/UserList.jsx";
 import ChatsList from "../ChatsList/ChatsList.jsx";
 
 const RightHome = () => {
@@ -19,17 +19,14 @@ const RightHome = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const bg = colors[tabIndex];
   return (
-    <Tabs  w="30%" onChange={(index) => setTabIndex(index)} bg={bg}>
+    <Tabs w="30%" onChange={(index) => setTabIndex(index)} bg={bg}>
       <TabList>
-      <Tab>Usuarios</Tab>
-      <Tab>Chats</Tab>
-        
+        <Tab>Usuarios</Tab>
+        <Tab>Chats</Tab>
       </TabList>
       <TabPanels>
-
         <TabPanel>{<UserList />}</TabPanel>
-        <TabPanel>{<ChatsList/>}</TabPanel>
-        
+        <TabPanel>{<ChatsList />}</TabPanel>
       </TabPanels>
     </Tabs>
   );

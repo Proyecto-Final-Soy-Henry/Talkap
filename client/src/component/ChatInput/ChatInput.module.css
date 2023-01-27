@@ -1,42 +1,35 @@
 .chat {
-    
   display: flex;
   align-items: center;
   justify-content: center;
- 
- background-color:transparent;
- 
- 
-
-
 }
-.chat input[type='text']{
-  width:180px;
-padding:3px 10px;
-border:1px solid #838282;
-border-radius:3px;
-background-color:#f6f6f6;
-margin:8px 0;
-display:inline-block;
+.chat input[type="text"] {
+  width: 180px;
+  padding: 3px 10px;
+  border: 1px solid #838282;
+  border-radius: 3px;
+  background-color: #f6f6f6;
+  margin: 8px 0;
+  display: inline-block;
   cursor: pointer;
 }
-.chat button{
-  width:100%;
-padding:8px 16px;
-margin-top:32px;
-border:1px solid #000;
-border-radius:5px;
-display:block;
-color:#fff;
-background-color:#000;
+.chat button {
+  width: 100%;
+  padding: 8px 16px;
+  margin-top: 32px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: block;
+  color: #fff;
+  background-color: #000;
 }
-.chat button:hover{
-  transition:all ease 0.5s;
+.chat button:hover {
+  transition: all ease 0.5s;
   transform: scale(0.95);
 }
 .chat button:active {
-  transform: scale(0.90);
+  transform: scale(0.9);
   /* cuando se hace click, se achica el tamaño*/
   /* Scaling button to 0.98 to its original size */
-transform: scale(0.95);
+  transform: scale(0.95);
 }
