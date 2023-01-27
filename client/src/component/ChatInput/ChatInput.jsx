@@ -45,6 +45,7 @@ export default function ChatInput({ buttonHandler }) {
 
   return (
     <div className={style.chat}>
+      
       <form onSubmit={handlerSubmit}>
         <input
           placeholder="Escribe un mensaje..."
@@ -63,6 +64,7 @@ export default function ChatInput({ buttonHandler }) {
             reset(e);
           }}
         />
+        
         <button type="submit">Enviar</button>
       </form>
     </div>
