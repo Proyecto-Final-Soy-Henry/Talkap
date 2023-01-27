@@ -1,12 +1,8 @@
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
-const {initGroup} = require('./src/services.js');
+const { initGroup } = require("./src/services.js");
 require("dotenv").config();
-const {PORT} = process.env;
-
-
-
-
+const PORT = process.env.PORT || 3001;
 
 conn.sync({ force: true }).then(() => {
   //Inicializo el Group
@@ -14,4 +10,4 @@ conn.sync({ force: true }).then(() => {
   server.listen(PORT, () => {
     console.log("listening at PORT " + PORT);
   });
-}); 
+});
