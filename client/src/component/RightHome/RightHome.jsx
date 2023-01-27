@@ -19,7 +19,7 @@ const RightHome = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const bg = colors[tabIndex];
   return (
-    <Tabs w="30%" onChange={(index) => setTabIndex(index)} bg={bg}>
+    <Tabs  w="30%" onChange={(index) => setTabIndex(index)} bg={bg}>
       <TabList>
       <Tab>Usuarios</Tab>
       <Tab>Chats</Tab>

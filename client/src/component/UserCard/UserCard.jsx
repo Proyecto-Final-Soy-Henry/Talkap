@@ -6,7 +6,7 @@ export default function UserCard({user,handle}){
 
     let name1 = user.name
     let conne = "disconnec"
-    let email = user.email == my.email
+    let email = user.email === my.email
     if(user.name.includes("@")){
         let newName =[]
         for(let i = 0; user.name[i] !== "@"; i++){
