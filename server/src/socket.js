@@ -16,7 +16,7 @@ let io ;
 
 //Inicializo el SOCKET con el httpServer pasado por parámetro
 module.exports = function initialSocket(httpServer){
- io =  new Server(httpServer,{
+ io =  new Server(httpServer,{  
         cors:{
           origin:"*"
         }
@@ -28,10 +28,10 @@ module.exports = function initialSocket(httpServer){
   
 //Pongo a escuchar io
 io.on("connection", (socket) => {
-    // console.log(`Connected: ${socket.id}`);
+    console.log(`Connected: ${socket.id}`);
   
     socket.on('disconnect', () =>
-      //  console.log(`Disconnected: ${socket.id}`));
+       console.log(`Disconnected: ${socket.id}`));
   
        // RUTAS
   

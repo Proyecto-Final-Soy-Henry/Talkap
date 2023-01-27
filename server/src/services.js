@@ -34,13 +34,13 @@ async function initGroup (){
             type:'user'
         }).catch((error)=>{console.log('')})
       
-        // console.log('Usuario :'+name+' - creado y conectado')
+        console.log('Usuario :'+name+' - creado y conectado')
         
         
     }else{
     //SI YA ESTABA CREADO ACTUALIZO SU PROPIEDAD CONNECTED
         await User.update({connected:true},{where:{email}});
-        //  console.log('usuario :'+name+' - conectado');
+         console.log('usuario :'+name+' - conectado');
          
          
      }
