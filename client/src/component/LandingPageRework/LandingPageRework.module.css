@@ -21,7 +21,7 @@
     left: 20px;
 }
 
-.nav a {
+.nav .links {
     color: white;
     text-decoration: none;
     display: inline-block;
@@ -81,7 +81,7 @@
     animation: moverTitulo 1s ease-in;
 }
 
-.texto a {
+.texto .links {
     display: inline-block;
     color: white;
     font-weight: 300;

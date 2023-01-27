@@ -1,13 +1,12 @@
-.home{
-    display:flex;
-    flex-direction: column;
-   background-color: rgb(205, 188, 220);
-    width: 100%;
-    height: 100%;
+.home {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(183, 161, 201);
+  width: 100%;
+  height: 100%;
 }
-.chat{
-    width: 100%;
-    height: 100%;
-    display: flex;
-
+.chat {
+  width: 100%;
+  height: 100%;
+  display: flex;
 }

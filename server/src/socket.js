@@ -16,7 +16,7 @@ let io ;
 
 //Inicializo el SOCKET con el httpServer pasado por parámetro
 module.exports = function initialSocket(httpServer){
- io =  new Server(httpServer,{
+ io =  new Server(httpServer,{  
         cors:{
           origin:"*"
         }

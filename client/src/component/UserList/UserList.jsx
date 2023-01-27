@@ -5,7 +5,9 @@ import {
 } from "../../store/slices/users/index";
 import { useEffect,useState } from "react";
 import StylingUserList from "./StylingUserList";
-import {  Box, Select } from "@chakra-ui/react";
+import {  Box, Flex, Input, InputGroup, InputRightElement, Select } from "@chakra-ui/react";
+import {IoSearch} from 'react-icons/io5'
+
 const UserList = () => {
   const [input,setInput] = useState();
 
@@ -33,15 +35,27 @@ const UserList = () => {
         onChange={(e) => {
           handleInputChange(e);
         }}
+        focusBorderColor="#1D2671"
+        borderColor="gray.300"
       >
-        <option  value="all">Todos</option>
+
+        <option value="all">Todos</option>
         <option value="connected">Conectados</option>
         <option value="disconnected">Desconectados</option>
       </Select>
 
 
       <form> 
-                <input onChange={handleInput} value={input} type="search" placeholder="Search..." aria-label="Search"/> 
+
+            <Flex justify="center" mt="10px" mb="3">
+              <InputGroup w="70%">
+              <Input placeholder='Buscar...' onChange={handleInput} value={input} type="search" h="35px"  borderColor="gray.300" focusBorderColor="#1D2671" />
+              <InputRightElement children={<IoSearch color='#BC00DD'/>} pb="1"/>
+            </InputGroup>
+            </Flex>
+            
+        
+
             </form> 
                      <div >
                         <div>

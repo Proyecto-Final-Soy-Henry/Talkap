@@ -59,7 +59,7 @@ function ProfileBioInfo() {
         fontSize='2xl'
         width="250px"
         isPreviewFocusable={true}
-        placeholder="Pon una descripcion para los demas"
+        placeholder="Pon una descripcion para que los demas te conozcan"
         >
         <EditablePreview as='i' mr="4" textAlign="center" maxW="200" fontSize='md' fontWeight="medium" />
         <Input as={EditableInput} fontSize='md' maxLength={"123"} fontWeight="medium" onChange={(e) => setBio(e.target.value)}/>

@@ -56,7 +56,7 @@ function ProfileImg() {
 
                 toast({
                 position: 'top-left',
-                duration: 6000,
+                duration: 5000,
                 isClosable:true,
                 render: () => (
                   <Box color='white' p={3} bg='green.400' fontWeight="bold">

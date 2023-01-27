@@ -1,22 +1,31 @@
-import style from "./Nav.module.css";
+import { Box, Flex } from "@chakra-ui/react";
 import LogoutButton from "../LogoutButton/LogoutButton.jsx";
 import Profile from '../Profile/Profile.jsx'
-import { Box, Flex } from "@chakra-ui/layout";
 export default function Nav (){
 
     return(
-        
-        <Flex justifyContent="top" minW="110px" bg="white" direction="column" gap="3" alignItems="center">
-
-                <Box mr="3" pt="2">
-                    <Profile/>  
-                </Box>
-                
-                <Box>
-                    <LogoutButton/>
-                </Box>
-        
-        </Flex>
     
-    );
+   <Flex 
+   justifyContent="space-between" 
+   minW="110px" 
+   bg="white" 
+   direction="column" 
+   gap="3" 
+   alignItems="center"
+  
+   >
+
+        <Flex justify="flex-start" mt="3" mr="3 ">
+            <Profile/>  
+        </Flex>
+        
+        <Flex>
+            <LogoutButton />
+        </Flex>
+ 
+    
+
+    </Flex>
+       
+  );
 }

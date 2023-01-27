@@ -26,9 +26,9 @@ export default function Landing() {
             <header className={style.header}>
                 <nav className={style.nav}>
                     <div className={style.enlaces} id="enlaces">
-                        <a onClick={() => loginWithRedirect()}>Login</a>
-                        <a onClick={() => loginWithRedirect({ screen_hint: 'signup' })}>Registrarse</a>
-                        <a>FAQ</a>
+                        <p className={style.links} onClick={() => loginWithRedirect()}>Login</p>
+                        <p className={style.links} onClick={() => loginWithRedirect({ screen_hint: 'signup' })}>Registrarse</p>
+                        <p className={style.links}>FAQ</p>
                     </div>
                 </nav>
 
@@ -36,7 +36,7 @@ export default function Landing() {
                     <div className={style.texto}>
                         <h1>Talkap</h1>
                         <h2>¿Porqué elegir Talkap?</h2>
-                        <a href='#'>Sobre Nosotros</a>
+                        <p className={style.links}>Sobre Nosotros</p>
                     </div>
                     <img src={FotoLanding} alt="" className={style.img} />
                 </div>
