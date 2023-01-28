@@ -1,10 +1,15 @@
 .aboutUsContainer {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
   min-height: 100vh;
   background: #bc00dd;
-  background: -webkit-linear-gradient(to right, #1d2671, #c33764);
+  background: -webkit-linear-gradient(to right, #bc00dd, #c33764);
   background: linear-gradient(to right, #bc00dd, #c33764);
   color: rgb(205, 205, 216);
   overflow: hidden;
+  user-select: none;
 }
 .aboutUsContainer h3 {
   font-family: cursive;
@@ -24,57 +29,24 @@
   padding: 10px 30px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  justify-content: space-around;
+  gap: 20px;
+  place-items: center;
 }
-.card {
+
+.dualCard {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  padding: 20px;
-  background-color: #1d25716e;
-  border: 1px solid rgb(205, 205, 216);
-  max-width: 350px;
-  max-height: 400px;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-
-.card h3 {
-  font-size: 20px;
-}
-
-.card img {
-  width: 250px;
-  height: 250px;
-  border: 1px solid rgb(205, 205, 216);
-  background-color: black;
-  border-radius: 50%;
-  object-fit: cover;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-}
-
-.nameAndLinksContainer {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
-.linksContainer {
-  display: flex;
-  font-size: 30px;
-  gap: 10px;
-}
-.faceboock {
-  color: #3b5998;
+.dualCard p {
+  text-align: center;
+  width: 143px;
+  font-size: 14px;
+  position: absolute;
+  transform: rotate(90deg);
+  margin-left: 218px;
+  background-color: #1add00;
+  color: #000;
 }
 
 @media screen and (max-width: 790px) {
