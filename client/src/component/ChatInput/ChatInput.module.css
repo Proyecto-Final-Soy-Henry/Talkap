@@ -7,30 +7,33 @@
 }
 .chat input[type="text"] {
   text-align: center;
-  width: 100%;
+  width: 80%;
   color: white;
   padding: 3px 10px;
   border: 3px solid #d62a60;
-  border-radius: 4px;
+  border-radius: 10px;
   background-color: rgba(255, 0, 0, 0);
   margin: 8px 0;
   cursor: pointer;
   
 }
+
 .chat input::-webkit-input-placeholder {
   font-weight: 100;
   color: white;
+
   font-weight: 500;
   text-shadow: #ee2766  0px 1.5px 1.5px;
 }
 .chat input[type="file"] {
- 
+  text-decoration: none;
   display: flex;
   padding: 3px 10px;
   border-radius: 3px;
   margin: 8px 0;
   cursor: pointer;
 }
+
 .chat button {
   width: 100%;
   padding: 8px 16px;

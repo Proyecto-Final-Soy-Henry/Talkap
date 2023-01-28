@@ -67,3 +67,16 @@
   margin-bottom: 15px;
   border-radius: 10px 0px 15px 10px ; 
 }
+
+.chat-render::-webkit-scrollbar {
+ width: 10px;
+  
+}
+
+
+.chat-render::-webkit-scrollbar-thumb {
+  background: #000000b2;
+  border-radius: 10px;
+  
+}
+
