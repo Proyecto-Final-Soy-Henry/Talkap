@@ -54,7 +54,15 @@ export default function CardDeveloper({
           </a>
         </div>
       </div>
-      <img className={style.logoHenry} src={HenryLogo} alt="HenryLogo" />
+      <motion.img
+        drag
+        whileDrag={{ scale: 2 }}
+        // dragConstraints={{ left: 2, right: 2, bottom: 2, top: 2 }}
+        dragConstraints={{ left: 0, right: 0, bottom: 0, top: 0 }}
+        className={style.logoHenry}
+        src={HenryLogo}
+        alt="HenryLogo"
+      />
     </motion.div>
   );
 }

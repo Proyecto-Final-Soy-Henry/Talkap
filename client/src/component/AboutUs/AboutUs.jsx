@@ -20,7 +20,7 @@ const DEVELOPERS = [
   { name: "Renzo", img: Renzo, facebook: "", gitHub: "", linkedin: "" },
   { name: "Nacho", img: Nacho, facebook: "", gitHub: "", linkedin: "" },
   { name: "Guido", img: Guido, facebook: "", gitHub: "", linkedin: "" },
-  { name: "Ale", img: coso1, facebook: "", instagram: "", linkedin: "" },
+  { name: "Ale", img: coso1, facebook: "", gitHub: "", linkedin: "" },
   { name: "Vannesa", img: Vanessa, facebook: "", gitHub: "", linkedin: "" },
   { name: "Joa", img: coso6, facebook: "", gitHub: "", linkedin: "" },
 ];

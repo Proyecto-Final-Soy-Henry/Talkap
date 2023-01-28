@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #19193abb;
+  background-color: #020220bb;
   border-top: 1px solid #fff;
   border-right: 1px solid #fff;
   border-bottom: 1px solid #1877f2;
@@ -45,6 +45,7 @@
   margin-left: 180px !important;
   margin-bottom: 240px !important;
   box-shadow: none !important;
+  cursor: grab;
 }
 .nameAndLinksContainer {
   display: flex;
@@ -65,5 +66,5 @@
   color: #0e76a8;
 }
 .gitHub {
-  color: #171515;
+  color: #ffffff;
 }
