@@ -75,7 +75,7 @@ export default function ChatRender({ menssages }) {
                       <div className="divMens"> <img src={msj.message} alt="" /><span className="span">enviado por {name1}</span></div>
                     ) : video ?
                     <div className="divMens">
-                      <span className="span">{name1.toUpperCase()} :</span>
+                      <span className="span">{name1} :</span>
                       <video controls>
                         <source src={msj.message} type="video/mp4" />
                         <source src={msj.message} type="video/webm" />
@@ -85,7 +85,7 @@ export default function ChatRender({ menssages }) {
                     </div>
                     :
                     <div className="divMenssage">
-                      <span className="span">{name1.toUpperCase()} :</span>
+                      <span className="span">{name1} :</span>
                       <p> {msj.message}</p>
                     </div>
                  }

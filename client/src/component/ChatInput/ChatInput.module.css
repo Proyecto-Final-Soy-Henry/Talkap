@@ -10,10 +10,9 @@
   width: 80%;
   color: white;
   padding: 3px 10px;
-  border: 3px solid #d62a60;
+  border: 3px solid #ff4f5a;
   border-radius: 10px;
   background-color: rgba(255, 0, 0, 0);
-  margin: 8px 0;
   cursor: pointer;
   
 }
@@ -26,18 +25,19 @@
   text-shadow: #ee2766  0px 1.5px 1.5px;
 }
 .chat input[type="file"] {
-  text-decoration: none;
-  display: flex;
+ 
+  display: block;
   padding: 3px 10px;
   border-radius: 3px;
-  margin: 8px 0;
+  width: 100%;
+  height: px;
   cursor: pointer;
 }
 
 .chat button {
   width: 100%;
   padding: 8px 16px;
-  margin-top: 32px;
+  margin-top: 5px;
   border: 1px solid #000;
   border-radius: 5px;
   display: block;

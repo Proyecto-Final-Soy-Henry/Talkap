@@ -55,7 +55,7 @@ export default function ChatInput({ buttonHandler }) {
           }}
           value={message}
         />
-        <button type="submit">Enviar</button>
+        
         <input
           type="file"
           id="file"
@@ -65,6 +65,7 @@ export default function ChatInput({ buttonHandler }) {
             reset(e);
           }}
         />
+        <button type="submit">Enviar</button>
         
 
         

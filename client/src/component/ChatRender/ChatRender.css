@@ -13,7 +13,7 @@
   background-color: transparent;
 }
 .divMenssage {
-  padding: 10px;
+  padding: 5px;
   margin-top: 0px;
   margin-right: 70%;
   margin-bottom: 15px;
@@ -23,7 +23,7 @@
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
 }
 .divMenssage p {
-  font-size: 80%;
+  font-size: 100%;
   margin-left: 20px;
 }
 .divMenssage .span {
