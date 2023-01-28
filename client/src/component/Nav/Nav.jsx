@@ -6,23 +6,27 @@ export default function Nav (){
     return(
     
    <Flex 
-   justifyContent="top" 
+   justifyContent="space-between" 
    minW="110px" 
    bg="white" 
    direction="column" 
    gap="3" 
    alignItems="center"
+  
    >
 
-        <Box mr="3" pt="2">
+        <Flex justify="flex-start" mt="3" mr="3 ">
             <Profile/>  
-        </Box>
+        </Flex>
         
-        <Box>
-            <LogoutButton/>
-        </Box>
+        <Flex>
+            <LogoutButton />
+        </Flex>
+ 
+    
 
     </Flex>
        
   );
 }
+

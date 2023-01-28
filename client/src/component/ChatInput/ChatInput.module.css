@@ -30,7 +30,7 @@
   padding: 3px 10px;
   border-radius: 3px;
   width: 100%;
-  height: px;
+  color:#ee2766 ;
   cursor: pointer;
 }
 
@@ -42,7 +42,7 @@
   border-radius: 5px;
   display: block;
   color: #fff;
-  background-color: #000;
+  background-color: rgb(29, 28, 28);
 }
 .chat button:hover {
   transition: all ease 0.5s;

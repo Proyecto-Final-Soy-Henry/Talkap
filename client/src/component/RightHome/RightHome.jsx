@@ -13,20 +13,24 @@ import ChatsList from "../ChatsList/ChatsList.jsx";
 
 const RightHome = () => {
   const colors = useColorModeValue(
-    ["red.50", "teal.50", "blue.50"],
-    ["red.900", "teal.900", "blue.900"]
+    ["white", "white", "white"],
+
   );
+
   const [tabIndex, setTabIndex] = useState(0);
   const bg = colors[tabIndex];
+
   return (
-    <Tabs w="30%" onChange={(index) => setTabIndex(index)} bg={bg}>
+    <Tabs isFitted w="25%" onChange={(index) => setTabIndex(index)} bg={bg}>
       <TabList>
-        <Tab>Usuarios</Tab>
-        <Tab>Chats</Tab>
+        <Tab color="#1D2671" _focus={{color:"#BC00DD"}} fontWeight="semibold">Usuarios</Tab>
+        <Tab color="#1D2671" _focus={{color:"#BC00DD"}} fontWeight="semibold">Chats</Tab>
+        <Tab color="#1D2671" _focus={{color:"#BC00DD"}} fontWeight="semibold">Amigos</Tab>
       </TabList>
       <TabPanels>
         <TabPanel>{<UserList />}</TabPanel>
         <TabPanel>{<ChatsList />}</TabPanel>
+        <TabPanel>{}</TabPanel>
       </TabPanels>
     </Tabs>
   );
