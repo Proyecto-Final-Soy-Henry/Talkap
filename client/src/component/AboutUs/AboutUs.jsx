@@ -8,7 +8,7 @@ import Nacho from "../../assets/nosotros/Nacho.jfif";
 import Joaquin from "../../assets/nosotros/Joaquin.jfif";
 import Vanessa from "../../assets/nosotros/Vane.jfif";
 import CardDeveloper from "./CardDeveloper";
-
+import { Link } from 'react-router-dom';
 const DEVELOPERS = [
   {
     name: "Joaquin",
@@ -29,6 +29,7 @@ const AboutUs = () => {
     <div className={style.aboutUsContainer}>
       <div className={style.info}>
         <h3>¿Quienes somos?</h3>
+        <Link to="/"><p>Volver</p></Link>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde cumque
           recusandae aliquam? Modi tempore officiis pariatur ipsum quos esse
