@@ -25,9 +25,9 @@ const LogoutButton = () => {
     w="24" 
     h="32px" 
     rightIcon={<BsBoxArrowInRight/>} 
-    colorScheme="red" 
+    colorScheme="white" 
     variant='solid'>
-
+    
     Log Out
 
   </Button>

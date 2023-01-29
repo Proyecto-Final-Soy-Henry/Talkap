@@ -8,7 +8,7 @@ export default function Nav (){
    <Flex 
    justifyContent="space-between" 
    minW="110px" 
-   bg="white" 
+   bg="#ff4f5a" 
    direction="column" 
    gap="3" 
    alignItems="center"
