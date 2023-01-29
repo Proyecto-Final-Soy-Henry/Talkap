@@ -64,7 +64,7 @@ export default function Home() {
       sendPicInfo(dispatch, actionMyData);
       sendBio(dispatch, actionMyData);
     }
-  }, [isAuthenticated, navigate, user, dispatch]);
+  }, [ navigate, user, dispatch]);
 
   //RETURN COMPONENTE HOME
   return (
