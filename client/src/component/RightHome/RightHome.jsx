@@ -28,6 +28,7 @@ const RightHome = () => {
     >
       <TabList>
         <Tab
+      
           color="#1D2671"
           _focus={{ color: "#BC00DD" }}
           fontWeight="semibold"
@@ -53,7 +54,7 @@ const RightHome = () => {
         <TabPanel paddingBottom="50px" overflowX="hidden" h="100vh">
           {<UserList />}
         </TabPanel>
-        <TabPanel>{<ChatsList />}</TabPanel>
+        <TabPanel >{<ChatsList />}</TabPanel>
       </TabPanels>
     </Tabs>
   );
