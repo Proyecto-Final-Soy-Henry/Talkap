@@ -45,7 +45,7 @@ const UserList = () => {
         />
       </form>
       <div>
-        <div>
+        <div className={style.list}>
           {input
             ? list
                 .filter((user) => {

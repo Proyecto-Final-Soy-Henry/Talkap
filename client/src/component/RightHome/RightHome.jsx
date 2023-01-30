@@ -18,7 +18,14 @@ const RightHome = () => {
   const bg = colors[tabIndex];
 
   return (
-    <Tabs isFitted w="25%" onChange={(index) => setTabIndex(index)} bg={bg}>
+    <Tabs
+      isFitted
+      w="25%"
+      h="100vh"
+      // overflow="hidden"
+      onChange={(index) => setTabIndex(index)}
+      bg={bg}
+    >
       <TabList>
         <Tab
           color="#1D2671"
@@ -43,7 +50,7 @@ const RightHome = () => {
         </Tab>
       </TabList>
       <TabPanels>
-        <TabPanel overflowX="hidden" overflowY="scroll">
+        <TabPanel paddingBottom="50px" overflowX="hidden" h="100vh">
           {<UserList />}
         </TabPanel>
         <TabPanel>{<ChatsList />}</TabPanel>
