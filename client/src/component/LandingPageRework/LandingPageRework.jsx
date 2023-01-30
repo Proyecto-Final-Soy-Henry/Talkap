@@ -1,5 +1,5 @@
 import style from './LandingPageRework.module.css'
-
+import { Link } from 'react-router-dom';
 import logo from '../../assets/Logo.png'
 import FotoLanding from "../../assets/ImagenLanding.png"
 
@@ -36,7 +36,7 @@ export default function Landing() {
                     <div className={style.texto}>
                         <h1>Talkap</h1>
                         <h2>¿Porqué elegir Talkap?</h2>
-                        <p className={style.links}>Sobre Nosotros</p>
+                        <Link to="/aboutUs"> <p className={style.links}>Sobre Nosotros</p></Link>
                     </div>
                     <img src={FotoLanding} alt="" className={style.img} />
                 </div>

@@ -7,12 +7,13 @@ export const userSlice = createSlice({
     listSearch: [],
     my: {},
     selected: null,
-    addressee:null,
+    addressee: null,
   },
   reducers: {
     //actions
     setUserList: (state, action) => {
       state.list = action.payload;
+      console.log("este es el dispatch de setUserList");
       // state.listCopy = action.payload;
     },
     setMyData: (state, action) => {
@@ -24,7 +25,7 @@ export const userSlice = createSlice({
     setSearch: (state, action) => {
       state.listCopy = action.payload;
     },
-    setListSearch:(state, action) => {
+    setListSearch: (state, action) => {
       state.listSearch = action.payload;
     },
     filterUsers: (state, action) => {
@@ -42,21 +43,20 @@ export const userSlice = createSlice({
         state.listCopy = DISCONNECTED;
       }
     },
-    setAddressee:(state,action)=>{
-      console.log(action.payload)
+    setAddressee: (state, action) => {
+      console.log(action.payload);
       state.addressee = action.payload;
     },
-
   },
 });
 
 export const {
-   setUserList,
-   setMyData,
-    setSelected,
-    setSearch,
-     filterUsers,
-     setListSearch,
-     setAddressee ,
-    } = userSlice.actions;
+  setUserList,
+  setMyData,
+  setSelected,
+  setSearch,
+  filterUsers,
+  setListSearch,
+  setAddressee,
+} = userSlice.actions;
 export default userSlice.reducer;

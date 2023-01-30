@@ -1,4 +1,4 @@
-.body { 
+.body {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -19,6 +19,12 @@
     position: fixed;
     top: 20px;
     left: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .nav {
+        width: 100%;
+    }
 }
 
 .nav .links {
@@ -49,6 +55,12 @@
     background-position: center;
 }
 
+@media screen and (max-width: 700px) {
+    .header {
+        padding: 90px;
+    }
+}
+
 .container {
     width: 95%;
     max-width: 1200px;
@@ -56,6 +68,12 @@
     align-items: center;
     justify-content: space-around;
     margin: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        display: inline-block;
+    }
 }
 
 .img {
@@ -66,20 +84,74 @@
     animation: moverImagen 1s ease-in;
 }
 
+@media screen and (max-width: 700px) {
+    .img {
+        height: 300px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .img {
+        height: 250px;
+        margin-top: 60px;
+    }
+}
+
 .texto {
     width: 50%;
     color: white;
 }
+
+@media screen and (max-width: 700px) {
+    .texto {
+        /* posicionar el texto en medio */
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .texto {
+        /* para que ocupe todo el espacio de la pantalla, de izq a derecha */
+        width: 100%;
+    }
+}
+
 
 .texto h1 {
     font-size: 80px;
     animation: moverTitulo 1s ease-in;
 }
 
+@media screen and (max-width: 700px) {
+    .texto h1 {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .texto h1 {
+        font-size: 31px;
+    }
+}
+
 .texto h2 {
     font-size: 30px;
     animation: moverTitulo 1s ease-in;
 }
+
+@media screen and (max-width: 700px) {
+    .texto h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .texto h2 {
+        font-size: 17px;
+    }
+}
+
 
 .texto .links {
     display: inline-block;
@@ -93,6 +165,19 @@
     text-align: center;
     padding: 10px 0;
     animation: moverEnlace 2s ease-in;
+}
+
+@media screen and (max-width: 700px) {
+    .texto .links {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .texto .links {
+        font-size: 12px;
+        padding: 5px 0;
+    }
 }
 
 
@@ -137,6 +222,7 @@
         opacity: 0;
         transform: translateX(100px);
     }
+
     100% {
         opacity: 1;
         transform: translate(0);
@@ -148,6 +234,7 @@
         opacity: 0;
         transform: translateY(-100px);
     }
+
     100% {
         opacity: 1;
         transform: translate(0);

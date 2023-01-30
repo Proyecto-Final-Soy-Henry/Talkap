@@ -51,7 +51,7 @@ if(props.user.name.includes("@")){
        return setNotif(false)
         }}>
         <div className={img}>
-            <img alt={name1} src={props.user.picture}></img>
+            <img alt="IMG" src={props.user.picture}></img>
         </div>
         <div className={text}>
           <div className="textContent">

@@ -5,7 +5,8 @@ import React, { useRef, useEffect } from "react"; //No borrar
 
 export default function ChatRender({ menssages }) {
   const containerRef = useRef(null);
-
+  let img = false;
+  let video = false;
   const handleUpdate = () => {
     if (containerRef.current) {
       containerRef.current.scrollTo(0, containerRef.current.scrollHeight);
@@ -21,6 +22,24 @@ export default function ChatRender({ menssages }) {
   return (
     <div ref={containerRef} className="chat-render">
       {menssages?.map((msj, index) => {
+        console.log(msj);
+        if (
+          msj.message.includes(
+            "https://res.cloudinary.com/daekdf1sh/image/private"
+          )
+        ) {
+          img = true;
+        } else if (
+          msj.message.includes(
+            "https://res.cloudinary.com/daekdf1sh/video/private"
+          )
+        ) {
+          video = true;
+        } else {
+          img = false;
+          video = false;
+        }
+
         if (!msj.message) {
           return () => {};
         } else {
@@ -36,43 +55,41 @@ export default function ChatRender({ menssages }) {
           // console.log(my.email,name1,msj.user)
           if (my.email === msj.user || name1 === my.email) {
             return (
-              <div key={index} className="divMenssageMe">
-                {msj.message.includes(
-                  "https://res.cloudinary.com/daekdf1sh/image/private"
-                ) ? (
-                  <img src={msj.message} alt="" />
-                ) : msj.message.includes(
-                    "https://res.cloudinary.com/daekdf1sh/video/private/"
-                  ) ? (
-                  <video controls>
-                    <source src={msj.message} type="video/mp4" />
-                    <source src={msj.message} type="video/webm" />
-                    <source src={msj.message} type="video/ogg" />
-                    invalid format
-                  </video>
+              <div>
+                {img ? (
+                  <div className="divMensMe">
+                    {" "}
+                    <img src={msj.message} alt="" />
+                  </div>
+                ) : video ? (
+                  <div className="divMensMe">
+                    <video controls>
+                      <source src={msj.message} type="video/mp4" />
+                      <source src={msj.message} type="video/webm" />
+                      <source src={msj.message} type="video/ogg" />
+                      invalid format
+                    </video>
+                  </div>
                 ) : (
-                  <p> {msj.message} </p>
+                  <div className="divMenssageMe">
+                    <p> {msj.message} </p>
+                  </div>
                 )}
-                <br />
               </div>
             );
           }
 
           return (
-            <div key={index} className="divMenssage">
-              {msj.message.includes(
-                "https://res.cloudinary.com/daekdf1sh/image/private"
-              ) ? (
-                <div>
+            <div key={index}>
+              {img ? (
+                <div className="divMens">
                   {" "}
-                  <p>{name1}</p>
                   <img src={msj.message} alt="" />
+                  <span className="span">enviado por {name1}</span>
                 </div>
-              ) : msj.message.includes(
-                  "https://res.cloudinary.com/daekdf1sh/video/private/"
-                ) ? (
-                <div>
-                  <p>{name1}</p>
+              ) : video ? (
+                <div className="divMens">
+                  <span className="span">{name1} :</span>
                   <video controls>
                     <source src={msj.message} type="video/mp4" />
                     <source src={msj.message} type="video/webm" />
@@ -81,9 +98,9 @@ export default function ChatRender({ menssages }) {
                   </video>
                 </div>
               ) : (
-                <div>
-                  <p className="name">{name1} : </p>
-                  <p>{msj.message}</p>
+                <div className="divMenssage">
+                  <span className="span">{name1} :</span>
+                  <p> {msj.message}</p>
                 </div>
               )}
 

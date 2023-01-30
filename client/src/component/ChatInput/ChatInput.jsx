@@ -45,6 +45,7 @@ export default function ChatInput({ buttonHandler }) {
 
   return (
     <div className={style.chat}>
+      
       <form onSubmit={handlerSubmit}>
         <input
           placeholder="Escribe un mensaje..."
@@ -54,6 +55,7 @@ export default function ChatInput({ buttonHandler }) {
           }}
           value={message}
         />
+        
         <input
           type="file"
           id="file"
@@ -64,6 +66,10 @@ export default function ChatInput({ buttonHandler }) {
           }}
         />
         <button type="submit">Enviar</button>
+        
+
+        
+        
       </form>
     </div>
   );

@@ -40,7 +40,7 @@ export default function Home() {
       navigate("/");
     } else {
       //SI ESTOY AUTENTICADO
-
+      console.log("entra en el else");
       // INICIALIZO MI STORE
       initiateSocket(user);
       //MANEJADOR DE SALA ID
@@ -49,6 +49,7 @@ export default function Home() {
           dispatch(actionMyData(myData));
         }
         if (message && message.length) {
+          console.log("cualquier cosa ", message);
           dispatch(actionChat(message));
         }
         if (msj && Object.entries(msj).length !== 0) {

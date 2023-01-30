@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L"
+
   },
   "author": "",
   "license": "ISC",

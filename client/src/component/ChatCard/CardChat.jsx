@@ -10,7 +10,9 @@ export default function ChatCard({picture,email}){
     name1 = newName.join("")
     //////////////////////////////////////////////////////////////////////
     return(<div className={style.chatcard}>
+        
         <img alt={email} src={picture}/>
-        <p>{name1}</p>
+        <p>{name1.toUpperCase()}</p>
+        
     </div>)
 }
