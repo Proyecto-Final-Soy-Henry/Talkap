@@ -48,7 +48,7 @@ const UserList = () => {
       <div>
         <div className={style.list}>
           {input
-            ? list
+            ? listCopy
                 .filter((user) => {
                   let searchUser = input.toUpperCase();
 
