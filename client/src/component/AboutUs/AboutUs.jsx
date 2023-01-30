@@ -8,7 +8,7 @@ import Nacho from "../../assets/nosotros/Nacho.jfif";
 import Joaquin from "../../assets/nosotros/Joaquin.jfif";
 import Vanessa from "../../assets/nosotros/Vane.jfif";
 import CardDeveloper from "./CardDeveloper";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 const DEVELOPERS = [
   {
     name: "Joaquin",
@@ -29,17 +29,13 @@ const AboutUs = () => {
     <div className={style.aboutUsContainer}>
       <div className={style.info}>
         <h3>¿Quienes somos?</h3>
-        <Link to="/"><p>Volver</p></Link>
+        <Link to="/">
+          <p>Volver</p>
+        </Link>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde cumque
-          recusandae aliquam? Modi tempore officiis pariatur ipsum quos esse
-          voluptate reiciendis reprehenderit doloremque excepturi repellat
-          deserunt accusantium sed vero nostrum animi in, eos distinctio
-          dignissimos eligendi itaque quo odio quidem? Ex sint ducimus harum et
-          nobis praesentium omnis consequuntur dolorum ullam ipsam. Unde eius
-          accusantium ratione quidem aut, soluta modi illum, dolor inventore
-          deserunt ex asperiores distinctio quam explicabo minus reprehenderit
-          placeat?
+          Somos un equipo de amigos y compañeros del bootcamp "Soy Henry"
+          apasionados por la tecnología y la comunicación, unidos para ofrecer
+          una experiencia de chat innovadora y divertida a nuestros usuarios.
         </p>
       </div>
 

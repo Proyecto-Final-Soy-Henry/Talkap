@@ -12,10 +12,7 @@ import UserList from "../UserList/UserList.jsx";
 import ChatsList from "../ChatsList/ChatsList.jsx";
 
 const RightHome = () => {
-  const colors = useColorModeValue(
-    ["white", "white", "white"],
-
-  );
+  const colors = useColorModeValue(["white", "white", "white"]);
 
   const [tabIndex, setTabIndex] = useState(0);
   const bg = colors[tabIndex];
@@ -23,14 +20,33 @@ const RightHome = () => {
   return (
     <Tabs isFitted w="25%" onChange={(index) => setTabIndex(index)} bg={bg}>
       <TabList>
-        <Tab color="#1D2671" _focus={{color:"#BC00DD"}} fontWeight="semibold">Usuarios</Tab>
-        <Tab color="#1D2671" _focus={{color:"#BC00DD"}} fontWeight="semibold">Chats</Tab>
-        <Tab color="#1D2671" _focus={{color:"#BC00DD"}} fontWeight="semibold">Amigos</Tab>
+        <Tab
+          color="#1D2671"
+          _focus={{ color: "#BC00DD" }}
+          fontWeight="semibold"
+        >
+          Usuarios
+        </Tab>
+        <Tab
+          color="#1D2671"
+          _focus={{ color: "#BC00DD" }}
+          fontWeight="semibold"
+        >
+          Chats
+        </Tab>
+        <Tab
+          color="#1D2671"
+          _focus={{ color: "#BC00DD" }}
+          fontWeight="semibold"
+        >
+          Amigos
+        </Tab>
       </TabList>
       <TabPanels>
-        <TabPanel>{<UserList />}</TabPanel>
+        <TabPanel overflowX="hidden" overflowY="scroll">
+          {<UserList />}
+        </TabPanel>
         <TabPanel>{<ChatsList />}</TabPanel>
-        <TabPanel>{}</TabPanel>
       </TabPanels>
     </Tabs>
   );
