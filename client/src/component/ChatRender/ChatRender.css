@@ -1,0 +1,82 @@
+.chat-render {
+  text-align: left;
+  height: 70%;
+  overflow: scroll;
+  overflow-x: hidden;
+  color: rgb(255, 255, 255);
+  padding-top: 30px;
+}
+.chat-render p {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 5px;
+  background-color: transparent;
+}
+.divMenssage {
+  padding: 5px;
+  margin-top: 0px;
+  margin-right: 70%;
+  margin-bottom: 15px;
+  background-color:#385a64;
+  border-radius: 0px 10px 10px 15px;
+  margin-left: 2%;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
+}
+.divMenssage p {
+  font-size: 100%;
+  margin-left: 20px;
+}
+.divMenssage .span {
+  margin-left: 20px;
+  font-size: 80%;
+}
+
+.divMenssageMe p {
+  padding: 5%;
+  margin-right: 20px;
+}
+.divMenssageMe {
+  overflow: auto;
+  margin-left: 70%;
+  text-align: right;
+  margin-bottom: 15px;
+  background-color: #ff4f5a;
+  border-radius: 10px 0px 15px 10px;
+  margin-right: 2%;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
+}
+.name{
+  color:rgb(255, 255, 255)
+}
+.divMens{
+  margin-right: 60%;
+  margin-bottom: 15px;
+  border-radius: 0px 10px 10px 15px;
+  margin-left: 5%;
+
+}
+.divMens .span{
+ font-size: 60%;
+ margin-left: 0px;
+}
+
+.divMensMe{
+  
+  margin-left: 70%;
+  text-align: right;
+  margin-bottom: 15px;
+  border-radius: 10px 0px 15px 10px ; 
+}
+
+.chat-render::-webkit-scrollbar {
+ width: 10px;
+  
+}
+
+
+.chat-render::-webkit-scrollbar-thumb {
+  background: #000000b2;
+  border-radius: 10px;
+  
+}
+
