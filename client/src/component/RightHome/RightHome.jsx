@@ -18,9 +18,10 @@ const RightHome = () => {
   const bg = colors[tabIndex];
 
   return (
-    <Tabs isFitted w="25%" onChange={(index) => setTabIndex(index)} bg={bg}>
-      <TabList>
+    <Tabs overflow='scroll' isFitted w="25%" onChange={(index) => setTabIndex(index)} bg={bg}>
+      <TabList >
         <Tab
+      
           color="#1D2671"
           _focus={{ color: "#BC00DD" }}
           fontWeight="semibold"
@@ -42,11 +43,12 @@ const RightHome = () => {
           Amigos
         </Tab>
       </TabList>
-      <TabPanels>
-        <TabPanel overflowX="hidden" overflowY="scroll">
+      <TabPanels  >
+        <TabPanel >
+          
           {<UserList />}
         </TabPanel>
-        <TabPanel>{<ChatsList />}</TabPanel>
+        <TabPanel >{<ChatsList />}</TabPanel>
       </TabPanels>
     </Tabs>
   );
