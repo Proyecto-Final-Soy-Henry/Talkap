@@ -55,8 +55,8 @@ function ProfileImg() {
                 uploadImage()
 
                 toast({
-                position: 'top-right',
-                duration: 6000,
+                position: 'top-left',
+                duration: 5000,
                 isClosable:true,
                 render: () => (
                   <Box color='white' p={3} bg='green.400' fontWeight="bold">

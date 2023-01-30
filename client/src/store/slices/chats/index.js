@@ -2,15 +2,21 @@ import {createSlice} from '@reduxjs/toolkit'
 export const chatSlice = createSlice({
     name:'chat',
     initialState:{
-        list:[]
+        messages:[]
     },
     reducers:{
         //actions
         setChatList: (state,action)=>{
-            state.list = action.payload;
+            state.messages = action.payload;
         },
         setMessage:(state,action)=>{
-            state.list = [...state.list,action.payload];
+            //guardo en una variable un booleano si está o no repetido
+            const repeat = state.messages.some(msj=>msj.id===action.payload.id)
+            //en caso de que no pusheo el msj
+            if(!repeat){ state.messages = [...state.messages,action.payload]}
+               
+            
+           
         },
     }
 });

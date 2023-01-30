@@ -10,6 +10,7 @@ import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+   
     <BrowserRouter>
     <Auth0Provider 
     domain='dev-xx2o6ipk71ckekao.us.auth0.com'
@@ -24,6 +25,7 @@ root.render(
         </ChakraProvider>
       </Auth0Provider>
     </BrowserRouter>
+
    
   </React.StrictMode>
 );

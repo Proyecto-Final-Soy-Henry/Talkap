@@ -31,6 +31,9 @@ connected:{
     type:DataTypes.BOOLEAN,
     defaultValue:false,
 },
+bio:{
+    type:DataTypes.STRING,
+},
 type:{
     type:DataTypes.STRING,
 },
@@ -50,6 +53,9 @@ Favourite:{
 
 
 
+//comentario
+//comentario dos
+//comentario tres
 
 
 });
