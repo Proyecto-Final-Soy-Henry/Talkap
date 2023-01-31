@@ -12,7 +12,12 @@ import {
     EditableInput,
     Input,
     Button, 
-    Tooltip
+    Tooltip,
+    MenuButton,
+    Menu,
+    MenuList,
+    MenuItemOption,
+    MenuOptionGroup
 
 } from '@chakra-ui/react'
 
@@ -25,12 +30,15 @@ import {
   import ProfileBioInfo from './ProfileBioInfo'
   import {GiCheckMark} from 'react-icons/gi'
   import {AiOutlineClose} from 'react-icons/ai'
+  import {IoMdArrowDropdown} from 'react-icons/io'
 
   function ProfileInfo() {
 
+    
     const { user } = useAuth0();
     const [nombre, setNombre] = useState(user.nickname)
     const currentUser = useSelector(state => state.users.my)
+
 
     function EditableControls() {
 
@@ -103,8 +111,33 @@ import {
                 <EditableControls />
             </Editable>
     
-  
-            <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-10" w="full">Tu email</Text>
+    
+          {/* Estado conectado/desconectado */}
+
+            <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-20" w="full">Tu Estado</Text><br/>
+
+            <Flex  w="110px" mt="-15px">
+
+              <Menu closeOnSelect={false}>
+            
+                <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> Estado </MenuButton>
+
+                <MenuList minWidth='240px'>
+
+                  <MenuOptionGroup defaultValue={"con"} type='radio'>
+                    <MenuItemOption value='con' onClick={() => console.log()}> 🟢 En linea</MenuItemOption>
+                    <MenuItemOption value='des'> ⚪ Desconectado</MenuItemOption>
+                  </MenuOptionGroup>
+
+                </MenuList>
+              </Menu>
+
+            </Flex>
+
+
+
+
+            <Text fontSize="sm" color="#BC00DD" fontWeight="bold" mb="-10" w="full">Tu Email</Text>
             <Text  as='abbr' fontSize='2xl' fontWeight="semibold">{currentUser.email}</Text>
 
             <Tooltip bg='gray.500' label='¿Qué estás pensando?' placement='top-start'>
