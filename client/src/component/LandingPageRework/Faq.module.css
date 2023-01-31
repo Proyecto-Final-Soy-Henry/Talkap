@@ -1,0 +1,40 @@
+.body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #C33764;
+    background: -webkit-linear-gradient(to right, #1D2671, #C33764);
+    background: linear-gradient(to right, #1D2671, #C33764);
+    background-attachment: fixed;
+    height: 100vh;
+    padding: 50px;
+    width: 100%;
+    display:block;
+    overflow:auto;
+    background-size: cover;
+    background-position: center;
+    color:white;
+}
+
+
+.img {
+    display: block;
+    height: 370px;
+    object-fit: cover;
+    width: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .img {
+        height: 250px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .img {
+        height: 150px;
+        margin-top: 60px;
+    }
+}

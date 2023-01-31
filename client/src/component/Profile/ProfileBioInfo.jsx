@@ -5,9 +5,10 @@ import {
     IconButton,
     Editable,
     EditablePreview,
-    EditableInput,
-    Input,
     Button,
+    Textarea,
+    EditableTextarea,
+    Tooltip,
 
 } from '@chakra-ui/react'
 
@@ -16,7 +17,7 @@ import {
   import {FaPencilAlt} from 'react-icons/fa'
   import { updateBio } from '../../services/sockets'
   import { useAuth0 } from "@auth0/auth0-react";
-  import {GiCheckMark} from 'react-icons/gi'
+  import {FaCheck} from 'react-icons/fa'
   import {AiOutlineClose} from 'react-icons/ai'
   
 function ProfileBioInfo() {
@@ -41,13 +42,31 @@ function ProfileBioInfo() {
           }
     
         return isEditing ? (
-        <ButtonGroup justifyContent='center' size='sm'> 
-            <IconButton icon={<Button onClick={() =>{send()}}> <GiCheckMark color='#BC00DD'/> </Button>} {...getSubmitButtonProps()} />
-            <IconButton icon={<AiOutlineClose color='#BC00DD' />} {...getCancelButtonProps()} />
+        <ButtonGroup justifyContent='center' size='sm' gap="10px"> 
+
+            <Tooltip bg='gray.500' label='Confirmar' placement='bottom'>
+              <IconButton
+              icon={<Button  
+              variant='outline'
+              colorScheme='green'
+              fontSize='xs' onClick={() =>{send()}}> <FaCheck/> </Button>} {...getSubmitButtonProps()} 
+              />
+            </Tooltip>
+
+            <Tooltip bg='gray.500' label='Cancelar' placement='bottom'>
+              <IconButton
+              variant='outline'
+              colorScheme='red'
+              fontSize='xs'
+              icon={<AiOutlineClose/>} {...getCancelButtonProps()}
+              />
+            </Tooltip>
+
         </ButtonGroup>
+
         ) : (
         <Flex justifyContent='center'>
-            <IconButton size='sm' icon={<FaPencilAlt color="#BC00DD"/>} {...getEditButtonProps()} />
+            <IconButton size='sm' icon={<FaPencilAlt color="#FF4e5b"/>} {...getEditButtonProps()} />
         </Flex>
         )
     }
@@ -62,7 +81,7 @@ function ProfileBioInfo() {
         placeholder="Pon una descripcion para que los demas te conozcan"
         >
         <EditablePreview as='i' mr="4" textAlign="center" maxW="200" fontSize='md' fontWeight="medium" />
-        <Input as={EditableInput} fontSize='md' maxLength={"123"} fontWeight="medium" onChange={(e) => setBio(e.target.value)}/>
+        <Textarea as={EditableTextarea} fontSize='md' maxLength={"123"} fontWeight="medium" wrap='true' onChange={(e) => setBio(e.target.value)}/>
         <EditableControls />
          
       </Editable>

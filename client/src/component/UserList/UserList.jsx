@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterUsers } from "../../store/slices/users/index";
 import { useEffect, useState } from "react";
 import StylingUserList from "./StylingUserList";
-import { Box, Select } from "@chakra-ui/react";
+import { Box, Input, InputGroup, Flex, InputRightElement, Select } from "@chakra-ui/react";
+import {FaSearch} from 'react-icons/fa'
 const UserList = () => {
   const [input, setInput] = useState();
 
@@ -29,7 +30,7 @@ const UserList = () => {
         onChange={(e) => {
           handleInputChange(e);
         }}
-        focusBorderColor="#1D2671"
+        focusBorderColor="black"
         borderColor="gray.300"
       >
         <option value="all">Todos</option>
@@ -37,14 +38,21 @@ const UserList = () => {
         <option value="disconnected">Desconectados</option>
       </Select>
 
-      <form>
-        <input
+      <form >
+
+        <Flex justify="center">
+        <InputGroup>
+        <Input 
+          placeholder='Buscar...' 
           onChange={handleInput}
           value={input}
           type="search"
-          placeholder="Search..."
-          aria-label="Search"
+          focusBorderColor="black"
         />
+
+        <InputRightElement children={<FaSearch color="#FF4e5b"/>} />
+      </InputGroup>
+      </Flex>
       </form>
       <div>
         <div>
