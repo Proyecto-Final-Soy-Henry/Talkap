@@ -8,7 +8,7 @@ export const userSlice = createSlice({
     my: {},
     selected: null,
     addressee: null,
-    friends:[]
+    
   },
   reducers: {
     //actions
@@ -20,12 +20,12 @@ export const userSlice = createSlice({
     setMyData: (state, action) => {
       state.my = action.payload;
     },
-    setFriend:(state, action) => {
-      if(state.friends.find((e)=>{
-       return e.email == action.payload.email
-      })){return}
-      else state.friends = [...state.friends ,action.payload];
-    },
+    // setFriend:(state, action) => {
+    //   if(state.friends.find((e)=>{
+    //    return e.email == action.payload.email
+    //   })){return}
+    //   else state.friends = [...state.friends ,action.payload];
+    // },
     setSelected: (state, action) => {
       state.selected = action.payload;
     },

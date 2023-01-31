@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 //IMPORTO LAS ACCIONES Y LES CAMBIO EL NOMBRE
-import { setUserList as actionUserList } from "../../store/slices/users/index.js";
+import { setFriend, setUserList as actionUserList } from "../../store/slices/users/index.js";
 import { setChatList as actionChat } from "../../store/slices/chats/index.js";
 import { setMyData as actionMyData } from "../../store/slices/users/index.js";
 import { setMessage as actionSetMessage } from "../../store/slices/chats/index.js";
@@ -24,6 +24,7 @@ import {
   sendBio,
   sendInfo,
   sendPicInfo,
+  
 } from "../../services/sockets.js";
 
 //COMPONETE HOME
@@ -64,6 +65,7 @@ export default function Home() {
       sendInfo(dispatch, actionMyData);
       sendPicInfo(dispatch, actionMyData);
       sendBio(dispatch, actionMyData);
+     
     }
   }, [isAuthenticated, navigate, user, dispatch]);
 

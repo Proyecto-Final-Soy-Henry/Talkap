@@ -166,6 +166,24 @@ async function updateBio(email, bio) {
 
   return (user = await User.findByPk(email));
 }
+async function updateFriends(user,my){
+  
+  const dataUser = await User.findByPk(my.email)
+  console.log(dataUser)
+  let amigos = []
+  let friends = JSON.parse(dataUser.dataValues.friends)
+  if(friends){
+  
+    if(!friends.some((e)=>e.email == user.email)){
+      friends.push(user)
+      await User.update({friends:JSON.stringify(friends)},{where: {email : my.email}})
+      return (user = await User.findByPk(my.email));
+    }
+  }else{
+      amigos.push(user)
+      await User.update({friends:JSON.stringify(amigos)},{where: {email : my.email}})}
+      return (user = await User.findByPk(my.email));
+}
 module.exports = {
   updateBio,
   updatePic,
@@ -178,4 +196,5 @@ module.exports = {
   initGroup,
   handleExit,
   getMessagesGroup,
+  updateFriends
 };

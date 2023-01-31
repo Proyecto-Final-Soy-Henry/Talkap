@@ -5,9 +5,12 @@ import StylingUserList from "../UserList/StylingUserList.jsx";
 import { Box } from "@chakra-ui/react";
 const FriendsList = () => {
   const [input, setInput] = useState();
-
-  const {friends} = useSelector((state) => state.users);
-
+  let friendsTotal =[]
+  const {my} = useSelector((state) => state.users);
+  if(my.friends){
+    friendsTotal = JSON.parse(my.friends)
+  }
+  
 
   function handleInput(e) {
     e.preventDefault();
@@ -28,7 +31,7 @@ const FriendsList = () => {
       <div>
         <div>
           {input
-            ? friends
+            ? friendsTotal
                 .filter((user) => {
                   let searchUser = input.toUpperCase();
 
@@ -46,8 +49,8 @@ const FriendsList = () => {
                     />
                   </div>
                 ))
-            : friends? 
-              friends.map((user) => {
+            : friendsTotal? 
+            friendsTotal.map((user) => {
                 return (
                   <Box key={user.email}>
                     <StylingUserList

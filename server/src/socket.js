@@ -10,6 +10,7 @@ const {
   updatePic,
   updateInfo,
   getMessagesGroup,
+  updateFriends,
 } = require("./services.js");
 
 let io;
@@ -103,6 +104,14 @@ module.exports = function initialSocket(httpServer) {
       socket.broadcast.emit("join", allUsers);
       socket.broadcast.emit("users", allUsers);
     });
+
+    socket.on("friends",async({user,my})=>{
+
+        
+        const info = await updateFriends(user,my)
+        // console.log(info)
+        socket.emit(my.email, { myData : info });
+    })
   });
 
   //retorno la conexion configurada//

@@ -3,8 +3,8 @@ import io from "socket.io-client";
 let socket;
 //INICIA SOCKET CONECTADO CON RUTA JOIN Y MANDANDO EL USUARIO
 export const initiateSocket = (user) => {
-  // socket = io('http://localhost:3001');
-  socket = io("https://serverdeploy-production.up.railway.app/");
+  socket = io('http://localhost:3001');
+  // socket = io("https://serverdeploy-production.up.railway.app/");
   console.log(`Connecting socket...`);
   if (socket && user) {
     socket.emit("join", user);
@@ -85,3 +85,10 @@ export const sendBio = (dispatch, action) => {
     return dispatch(action(value));
   });
 };
+
+// export const friends = (dispatch, action) => {
+//   if (!socket) return true;
+//   socket.on("friends", (value) => {
+//     return dispatch(action(value));
+//   });
+// };
