@@ -1,8 +1,4 @@
 .aboutUsContainer {
-  /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
   min-height: 100vh;
   background: #1d2671;
   background: linear-gradient(90deg, #1d2671, #c33764);
