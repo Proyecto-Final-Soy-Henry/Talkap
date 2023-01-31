@@ -17,12 +17,13 @@ import { useDispatch } from 'react-redux';
 import {FaUserAlt} from 'react-icons/fa'
 import {TbSend} from 'react-icons/tb'
 import {IoMdPersonAdd} from 'react-icons/io'
-import { setSelected,setAddressee } from '../../store/slices/users';
+import { setSelected,setAddressee,setFriend} from '../../store/slices/users';
 
 function StylingUserList({user, handle}) {
 
 
     const dispatch = useDispatch()
+
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [placement] = React.useState("rigth");
 
@@ -34,7 +35,7 @@ function StylingUserList({user, handle}) {
         <MenuList>
             <MenuItem onClick={onOpen}  icon={<FaUserAlt />} _hover={{ bg: '#D986FF'}}>Ver Perfil</MenuItem>
             <MenuItem onClick={()=>{dispatch(setAddressee(user))}} icon={<TbSend />} _hover={{ bg: '#D986FF'}}>Enviar Mensaje</MenuItem>
-            <MenuItem icon={<IoMdPersonAdd />} _hover={{ bg: '#D986FF'}}>Añadir a Amigos</MenuItem>
+            <MenuItem onClick={()=>{dispatch(setFriend(user))}} icon={<IoMdPersonAdd />} _hover={{ bg: '#D986FF'}}>Añadir a Amigos</MenuItem>
         </MenuList>
         </Menu>
 
