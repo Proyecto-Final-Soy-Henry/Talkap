@@ -23,21 +23,21 @@ const RightHome = () => {
       <TabList>
         <Tab
           color="#1D2671"
-          _focus={{ color: "#BC00DD" }}
+          _focus={{ color: "#fe4e5b" }}
           fontWeight="semibold"
         >
           Usuarios
         </Tab>
         <Tab
           color="#1D2671"
-          _focus={{ color: "#BC00DD" }}
+          _focus={{ color: "#fe4e5b" }}
           fontWeight="semibold"
         >
           Chats
         </Tab>
         <Tab
           color="#1D2671"
-          _focus={{ color: "#BC00DD" }}
+          _focus={{ color: "#fe4e5b" }}
           fontWeight="semibold"
         >
           Amigos

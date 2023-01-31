@@ -28,7 +28,7 @@ export default function Landing() {
                     <div className={style.enlaces} id="enlaces">
                         <p className={style.links} onClick={() => loginWithRedirect()}>Login</p>
                         <p className={style.links} onClick={() => loginWithRedirect({ screen_hint: 'signup' })}>Registrarse</p>
-                        <p className={style.links}>FAQ</p>
+                        <Link to="/faq"><p className={style.links}>FAQ</p></Link>
                     </div>
                 </nav>
 

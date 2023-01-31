@@ -1,5 +1,7 @@
 import style from "./ChatInput.module.css";
 import { useState } from "react";
+import { IoIosSend } from "react-icons/io";
+import { ImFilePicture } from "react-icons/im";
 
 export default function ChatInput({ buttonHandler }) {
   const [message, setMessage] = useState("");
@@ -44,10 +46,25 @@ export default function ChatInput({ buttonHandler }) {
   };
 
   return (
-    <div className={style.chat}>
-      
-      <form onSubmit={handlerSubmit}>
+    <div className={style.container}>
+      <form className={style.form} onSubmit={handlerSubmit}>
+        <div className={style.fileContainer}>
+          <label className={style.labelFile} htmlFor="file">
+            {<ImFilePicture />}
+          </label>
+          <input
+            className={style.fileInput}
+            type="file"
+            id="file"
+            onChange={(e) => {
+              e.preventDefault(e);
+              handleImage(e);
+              reset(e);
+            }}
+          />
+        </div>
         <input
+          className={style.inputMessage}
           placeholder="Escribe un mensaje..."
           type="text"
           onChange={(e) => {
@@ -55,21 +72,10 @@ export default function ChatInput({ buttonHandler }) {
           }}
           value={message}
         />
-        
-        <input
-          type="file"
-          id="file"
-          onChange={(e) => {
-            e.preventDefault(e);
-            handleImage(e);
-            reset(e);
-          }}
-        />
-        <button type="submit">Enviar</button>
-        
 
-        
-        
+        <button className={style.buttonSubmit} type="submit">
+          {<IoIosSend />}
+        </button>
       </form>
     </div>
   );
