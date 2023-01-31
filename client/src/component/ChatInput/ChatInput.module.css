@@ -1,56 +1,47 @@
-.chat {
+.container {
   display: flex;
-  /* box-shadow: 0px 0px 2px 0.3px white; */
-  box-shadow: top 0px 0px 2px 0.3px white;;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  background-color: #151b1d8a;
+  height: 73px;
 }
-.chat input[type="text"] {
-  text-align: center;
-  width: 80%;
-  color: white;
-  padding: 3px 10px;
-  border: 3px solid #ff4f5a;
-  border-radius: 10px;
-  background-color: rgba(255, 0, 0, 0);
-  cursor: pointer;
-  
-}
-
-.chat input::-webkit-input-placeholder {
-  font-weight: 100;
-  color: white;
-
-  font-weight: 500;
-  text-shadow: #ee2766  0px 1.5px 1.5px;
-}
-.chat input[type="file"] {
- 
-  display: block;
-  padding: 3px 10px;
-  border-radius: 3px;
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  color:#ee2766 ;
+}
+
+.labelFile {
+  color: aliceblue;
+  font-size: 30px;
   cursor: pointer;
 }
+.fileInput {
+  display: none;
+}
 
-.chat button {
-  width: 100%;
-  padding: 8px 16px;
-  margin-top: 5px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  display: block;
+.inputMessage {
+  padding: 0 7px;
+  width: 50%;
+  height: 40px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  outline: none;
+  margin-left: 10px;
   color: #fff;
-  background-color: rgb(29, 28, 28);
+  background-color: rgba(78, 78, 105, 0.678);
 }
-.chat button:hover {
-  transition: all ease 0.5s;
-  transform: scale(0.95);
+
+.buttonSubmit {
+  padding: 5px;
+  color: #fff;
+  background-color: rgba(78, 78, 105, 0.445);
+  font-size: 30px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
 }
-.chat button:active {
-  transform: scale(0.9);
-  /* cuando se hace click, se achica el tamaño*/
-  /* Scaling button to 0.98 to its original size */
-  transform: scale(0.95);
+
+.buttonSubmit:hover {
+  background-color: rgb(33, 96, 128);
 }
