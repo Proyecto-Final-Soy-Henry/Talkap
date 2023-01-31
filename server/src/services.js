@@ -184,6 +184,24 @@ async function updateFriends(user,my){
       await User.update({friends:JSON.stringify(amigos)},{where: {email : my.email}})}
       return (user = await User.findByPk(my.email));
 }
+
+
+async function deleteFriend(user,my){
+  const dataUser = await User.findByPk(my.email)
+  let friends = JSON.parse(dataUser.dataValues.friends)
+
+  let filterFriend = friends.filter((e)=>{
+    return e.email !== user.email
+  })
+
+  await User.update({friends:JSON.stringify(filterFriend)},{where: {email : my.email}})
+
+  return (user = await User.findByPk(my.email));
+
+  
+}
+
+
 module.exports = {
   updateBio,
   updatePic,
@@ -196,5 +214,6 @@ module.exports = {
   initGroup,
   handleExit,
   getMessagesGroup,
-  updateFriends
+  updateFriends,
+  deleteFriend
 };

@@ -11,6 +11,7 @@ const {
   updateInfo,
   getMessagesGroup,
   updateFriends,
+  deleteFriend
 } = require("./services.js");
 
 let io;
@@ -107,11 +108,16 @@ module.exports = function initialSocket(httpServer) {
 
     socket.on("friends",async({user,my})=>{
 
-        
         const info = await updateFriends(user,my)
         // console.log(info)
         socket.emit(my.email, { myData : info });
     })
+
+    socket.on("deleteFriends",async({user,my})=>{
+
+      const info = await deleteFriend(user,my)
+      socket.emit(my.email, { myData : info });
+  })
   });
 
   //retorno la conexion configurada//

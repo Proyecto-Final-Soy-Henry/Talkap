@@ -86,9 +86,4 @@ export const sendBio = (dispatch, action) => {
   });
 };
 
-// export const friends = (dispatch, action) => {
-//   if (!socket) return true;
-//   socket.on("friends", (value) => {
-//     return dispatch(action(value));
-//   });
-// };
+

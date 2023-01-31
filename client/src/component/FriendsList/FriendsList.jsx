@@ -3,6 +3,7 @@ import {useSelector } from "react-redux";
 import {useState } from "react";
 import StylingUserList from "../UserList/StylingUserList.jsx";
 import { Box } from "@chakra-ui/react";
+import StylingFriendsList from "./StylingFriendsList.jsx";
 const FriendsList = () => {
   const [input, setInput] = useState();
   let friendsTotal =[]
@@ -41,7 +42,7 @@ const FriendsList = () => {
                 })
                 .map((user) => (
                   <div key={user.id} id={user.name}>
-                    <StylingUserList
+                    <StylingFriendsList
                       user={user}
                       handle={() => {
                         console.log("click");
@@ -53,7 +54,7 @@ const FriendsList = () => {
             friendsTotal.map((user) => {
                 return (
                   <Box key={user.email}>
-                    <StylingUserList
+                    <StylingFriendsList
                       user={user}
                       handle={() => {
                         console.log("click");
