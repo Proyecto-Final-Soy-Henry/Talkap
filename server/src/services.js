@@ -227,6 +227,27 @@ async function getSocket (socket){
 }
 
 
+//// cambiar estado
+
+async function upStatus(email, status) {
+
+ 
+  
+  if(status == "con"){
+   
+    await User.update({ connected:true }, { where: { email } });
+  }else if(status == "des"){
+    
+    await User.update({ connected:false }, { where: { email } });
+  }
+   user = await User.findByPk(email)
+ 
+
+  return (user);
+}
+
+
+
 module.exports = {
   updateBio,
   updatePic,
@@ -242,4 +263,5 @@ module.exports = {
   updateFriends,
   deleteFriend,
   getSocket,
+  upStatus
 };
