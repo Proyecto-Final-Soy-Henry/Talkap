@@ -47,7 +47,7 @@ function ProfileInfo() {
         sendMessage("exit", user);
         logout({
           returnTo: "https://client-deploy-wild-design.vercel.app/",
-          client_id: "LSk86bV3bJidSE2BX0QpuEGrFszKJhlc",
+          client_id: "WawCbbdYBrnbIDvqnhUIyulgHhicovQJ",
         });
       }
     });
