@@ -19,8 +19,6 @@ export default function ChatInput({ buttonHandler }) {
   const handleImage = (e) => {
     const file = e.target.files[0]; ///accedemos a la imagen/video que vamos a subir
 
-    console.log(file);
-
     file.type.includes("video") || file.type.includes("image") ///si recibimos videos o imagenes haremos la subida en el input file
       ? setFile(file)
       : alert("Archivo no valido"); ///si no lanzo una alerta de que el archivo no es valido(probado que funciona con un archivo zip,rar)
