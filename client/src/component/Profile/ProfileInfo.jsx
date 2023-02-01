@@ -12,7 +12,12 @@ import {
     EditableInput,
     Input,
     Button, 
-    Tooltip
+    Tooltip,
+    MenuButton,
+    Menu,
+    MenuList,
+    MenuItemOption,
+    MenuOptionGroup
 
 } from '@chakra-ui/react'
 
@@ -26,6 +31,7 @@ import {
   import {FaPencilAlt, FaCheck} from 'react-icons/fa'
   import {AiOutlineClose} from 'react-icons/ai'
   import { BsBoxArrowInRight } from "react-icons/bs";
+  import {IoMdArrowDropdown} from 'react-icons/io'
 
   function ProfileInfo() {
 
@@ -126,6 +132,28 @@ import {
             </Editable>
     
   
+          {/* Estado conectado/desconectado */}
+
+          <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-20" w="full">Tu Estado</Text><br/>
+
+          <Flex  w="110px" mt="-15px">
+
+            <Menu closeOnSelect={false}>
+
+              <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> Estado </MenuButton>
+
+              <MenuList minWidth='240px'>
+
+                <MenuOptionGroup defaultValue={"con"} type='radio'>
+                  <MenuItemOption value='con' onClick={() => console.log()}> 🟢 En linea</MenuItemOption>
+                  <MenuItemOption value='des'> ⚪ Desconectado</MenuItemOption>
+                </MenuOptionGroup>
+
+              </MenuList>
+            </Menu>
+
+          </Flex>
+
             <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-10" w="full">Tu email</Text>
             <Text  as='abbr' fontSize='2xl' fontWeight="normal" color="gray.500">{currentUser.email}</Text>
 
