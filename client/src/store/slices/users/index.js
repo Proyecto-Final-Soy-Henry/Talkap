@@ -8,6 +8,7 @@ export const userSlice = createSlice({
     my: {},
     selected: null,
     addressee: null,
+    
   },
   reducers: {
     //actions
@@ -19,6 +20,12 @@ export const userSlice = createSlice({
     setMyData: (state, action) => {
       state.my = action.payload;
     },
+    // setFriend:(state, action) => {
+    //   if(state.friends.find((e)=>{
+    //    return e.email == action.payload.email
+    //   })){return}
+    //   else state.friends = [...state.friends ,action.payload];
+    // },
     setSelected: (state, action) => {
       state.selected = action.payload;
     },
@@ -44,9 +51,10 @@ export const userSlice = createSlice({
       }
     },
     setAddressee: (state, action) => {
-      console.log(action.payload);
+      
       state.addressee = action.payload;
     },
+   
   },
 });
 
@@ -58,5 +66,6 @@ export const {
   filterUsers,
   setListSearch,
   setAddressee,
+  setFriend
 } = userSlice.actions;
 export default userSlice.reducer;

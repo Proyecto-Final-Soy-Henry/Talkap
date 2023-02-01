@@ -22,7 +22,7 @@ export default function ChatRender({ menssages }) {
   return (
     <div ref={containerRef} className="chat-render">
       {menssages?.map((msj, index) => {
-        console.log(msj);
+        
         if (
           msj.message.includes(
             "https://res.cloudinary.com/daekdf1sh/image/private"
@@ -43,7 +43,7 @@ export default function ChatRender({ menssages }) {
         if (!msj.message) {
           return () => {};
         } else {
-          if (my.email === msj.user) console.log(msj.email);
+       
           let name1 = msj.user;
           if (msj.user.includes("@")) {
             let newName = [];

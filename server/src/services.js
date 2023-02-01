@@ -24,18 +24,35 @@ async function initGroup() {
 }
 
 async function validatorUser(user) {
+
+
   //desestructuro props
   const { email, name, picture } = user;
   //valida si existe en mi DB
   const value = await User.findByPk(email);
   if (!value) {
+ 
+    
+      //Users admins
+  const admins = ["gttnguido@gmail.com",
+  "vaadm1n2@gmail.com",
+   "joakig6@gmail.com",
+   "ignaciorossatti9@gmail.com",
+   "brenneke_ruger@hotmail.com",
+   "renzodoratto1@hotmail.com",
+   "alejandrogcandia@gmail.com"
+   ];
+   let typeUser = "user"
+   if(admins.some(e=>e===user.email)){
+    typeUser= "admin";
+   }
     //SI NO SE CREO EL USUARIO EN MI DB
     const userCreate = await User.create({
       name,
       email,
       picture,
       connected: true,
-      type: "user",
+      type: typeUser,
     }).catch((error) => {
       console.log("");
     });
@@ -166,6 +183,42 @@ async function updateBio(email, bio) {
 
   return (user = await User.findByPk(email));
 }
+async function updateFriends(user,my){
+  
+  const dataUser = await User.findByPk(my.email)
+  console.log(dataUser)
+  let amigos = []
+  let friends = JSON.parse(dataUser.dataValues.friends)
+  if(friends){
+  
+    if(!friends.some((e)=>e.email == user.email)){
+      friends.push(user)
+      await User.update({friends:JSON.stringify(friends)},{where: {email : my.email}})
+      return (user = await User.findByPk(my.email));
+    }
+  }else{
+      amigos.push(user)
+      await User.update({friends:JSON.stringify(amigos)},{where: {email : my.email}})}
+      return (user = await User.findByPk(my.email));
+}
+
+
+async function deleteFriend(user,my){
+  const dataUser = await User.findByPk(my.email)
+  let friends = JSON.parse(dataUser.dataValues.friends)
+
+  let filterFriend = friends.filter((e)=>{
+    return e.email !== user.email
+  })
+
+  await User.update({friends:JSON.stringify(filterFriend)},{where: {email : my.email}})
+
+  return (user = await User.findByPk(my.email));
+
+  
+}
+
+
 module.exports = {
   updateBio,
   updatePic,
@@ -178,4 +231,6 @@ module.exports = {
   initGroup,
   handleExit,
   getMessagesGroup,
+  updateFriends,
+  deleteFriend
 };

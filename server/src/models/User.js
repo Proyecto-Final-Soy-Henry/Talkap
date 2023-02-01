@@ -44,8 +44,18 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
 
-    Favourite: {
-      type: DataTypes.JSON,
-    },
-  });
+Favourite:{
+    type:DataTypes.JSON,
+},
+friends:{
+    type:DataTypes.JSON,
+}
+
+
+//comentario
+//comentario dos
+//comentario tres
+
+
+});
 };

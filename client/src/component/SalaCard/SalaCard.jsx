@@ -10,6 +10,9 @@ export default function SalaCard (props){
 
 
  const {my} =  useSelector(state=>state.users)
+ const {addressee} = useSelector(state=>state.users)
+
+
   let img = "img"
   let text = "textBox"
   let point = "punto"
@@ -21,12 +24,19 @@ export default function SalaCard (props){
  
  }
 useEffect(()=>{
-  if( props.message[0].user !== my.email){
-    setNotif(true)
-   
-  }
-  
-},[lastMessage,my.email])
+ 
+    if( props.message[0].user !== my.email && addressee.email !== props.message[0].user){
+          
+      if(addressee.email === "group@talkap" && props.message[0].receiver === "group@talkap"){  setNotif(false)
+      }else setNotif(true)
+
+    }else{ 
+     if(props.message[0].receiver === "group@talkap" && props.message[0].user === addressee.email){
+      setNotif(true)
+     }else setNotif(false)
+     }
+     
+},[lastMessage,my.email,addressee.email,props.message])
 
 if(props.user.connected){
  img = "imgA"
@@ -41,9 +51,8 @@ if(props.user.name.includes("@")){
   name1 = newName.join("")}
 
 
-  if(props.message[0])
-  
-  // console.log(props.message[0])
+
+
     return(
 
         <div className="card" onClick={()=>{
@@ -63,8 +72,7 @@ if(props.user.name.includes("@")){
           }
           
           <div className="remove">
-            {notif&& <EmailIcon  display="flex"  color= "#70e000" _hover={{color: "#007200"}}></EmailIcon>}
-          
+            {notif && <EmailIcon  display="flex"  color= "#70e000" _hover={{color: "#007200"}}></EmailIcon>}
           </div>
          
         <div>
