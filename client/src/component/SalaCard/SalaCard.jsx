@@ -58,13 +58,14 @@ if(props.user.name.includes("@")){
 
     return(
 
-        <div className="card" onClick={()=>{
+      <div className="card" onClick={()=>{
         props.handle(props.user);
        return setNotif(false)
         }}>
         <div className={img}>
             <img alt="IMG" src={props.user.picture}></img>
         </div>
+
         <div className={text}>
           <div className="textContent">
             <p className="h1">{name1}</p>
@@ -77,8 +78,8 @@ if(props.user.name.includes("@")){
           <div className="remove">
             {notif && <EmailIcon  display="flex"  color= "#70e000" _hover={{color: "#007200"}}></EmailIcon>}
           </div>
-         
-        <div>
-      </div></div></div>    
+        </div>
+
+       </div>    
     );
 }

@@ -45,7 +45,7 @@ export default function ChatsList() {
   });
 
   return (
-    <div className="user-list">
+    <div className="user-list" style={{width:"100%"}}>
       {listUser?.map((user, index) => {
         const message = messages.filter((msj) => {
           // msj.user !== my.email ? noti = true : noti = false
