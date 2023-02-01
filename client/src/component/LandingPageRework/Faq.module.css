@@ -3,9 +3,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #C33764;
-    background: -webkit-linear-gradient(to right, #1D2671, #C33764);
-    background: linear-gradient(to right, #1D2671, #C33764);
+    background: #fe4e5b;
+    background: -webkit-linear-gradient(to right, #1D2671, #fe4e5b);
+    background: linear-gradient(to right, #1D2671, #fe4e5b);
     background-attachment: fixed;
     height: 100vh;
     padding: 50px;

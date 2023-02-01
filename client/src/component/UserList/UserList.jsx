@@ -40,24 +40,24 @@ const UserList = () => {
 
       <form >
 
-        <Flex justify="center">
-        <InputGroup>
-        <Input 
-          placeholder='Buscar...' 
-          onChange={handleInput}
-          value={input}
-          type="search"
-          focusBorderColor="black"
-        />
+<Flex justify="center">
+<InputGroup>
+<Input 
+  placeholder='Buscar...' 
+  onChange={handleInput}
+  value={input}
+  type="search"
+  focusBorderColor="black"
+/>
 
-        <InputRightElement children={<FaSearch color="#FF4e5b"/>} />
-      </InputGroup>
-      </Flex>
-      </form>
+<InputRightElement children={<FaSearch color="#FF4e5b"/>} />
+</InputGroup>
+</Flex>
+</form>
       <div>
         <div>
           {input
-            ? list
+            ? listCopy
                 .filter((user) => {
                   let searchUser = input.toUpperCase();
 

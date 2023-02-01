@@ -2,11 +2,11 @@ import style from "./Home.module.css";
 //IMPORT HOOKS
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useDispatch } from "react-redux";
 
 //IMPORTO LAS ACCIONES Y LES CAMBIO EL NOMBRE
-import { setUserList as actionUserList } from "../../store/slices/users/index.js";
+import {  setUserList as actionUserList } from "../../store/slices/users/index.js";
 import { setChatList as actionChat } from "../../store/slices/chats/index.js";
 import { setMyData as actionMyData } from "../../store/slices/users/index.js";
 import { setMessage as actionSetMessage } from "../../store/slices/chats/index.js";
@@ -14,6 +14,7 @@ import { setMessage as actionSetMessage } from "../../store/slices/chats/index.j
 import Nav from "../Nav/Nav.jsx";
 import Chat from "../Chat/Chat.jsx";
 import RightHome from "../RightHome/RightHome";
+import Dashboard from "../Dashboard/Dashboard";
 
 //IMPORT SERVICE
 import {
@@ -24,10 +25,12 @@ import {
   sendBio,
   sendInfo,
   sendPicInfo,
+  
 } from "../../services/sockets.js";
 
 //COMPONETE HOME
 export default function Home() {
+  const [modal,setModal] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
@@ -64,19 +67,21 @@ export default function Home() {
       sendInfo(dispatch, actionMyData);
       sendPicInfo(dispatch, actionMyData);
       sendBio(dispatch, actionMyData);
+     
     }
   }, [isAuthenticated, navigate, user, dispatch]);
 
   //RETURN COMPONENTE HOME
   return (
     <div className={style.home}>
-      {user ? (
+      {!modal&&user ? (
         <div className={style.chat}>
-          <Nav />
+          <Nav handle={setModal} />
           <Chat />
           <RightHome />
         </div>
       ) : null}
+      {modal&&<Dashboard handle={setModal}/>}
     </div>
   );
 }

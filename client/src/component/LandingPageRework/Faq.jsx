@@ -23,7 +23,7 @@ function Faq() {
 
     <Box maxH="100px" mt="-20px">
         <Link to="/">
-            <Button leftIcon={<AiOutlineArrowLeft />} colorScheme='pink' variant='solid' w="75px">
+            <Button leftIcon={<AiOutlineArrowLeft />} bg="#fe4e5b" _hover={{bg:"#e1495e"}} variant='solid' w="75px">
                 Volver
             </Button>
         </Link>

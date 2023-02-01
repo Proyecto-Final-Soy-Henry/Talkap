@@ -1,70 +1,132 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #020220bb;
-    border-top: 1px solid #fff;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #1877f2;
-    border-left: 1px solid #1877f2;
-    width: max-content;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    box-shadow: -3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #020220bb;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #1877f2;
+  border-left: 1px solid #1877f2;
+  width: max-content;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  box-shadow: -3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.card:hover {
+  box-shadow: -3px 3px 5px 0px rgba(255, 255, 255, 0.75);
+}
+
+.card h3 {
+  font-size: 30px;
+  background: linear-gradient(90deg, #4c5ad6, #4c297a);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  font-weight: 1000;
+  animation: text 5s linear infinite;
+  -webkit-animation: text 5s linear infinite;
+  letter-spacing: 2px;
+}
+
+@keyframes text {
+  0% {
+    filter: hue-rotate(0deg);
+    -webkit-filter: hue-rotate(0deg);
   }
-  
-  .card h3 {
-    font-size: 20px;
+  100% {
+    filter: hue-rotate(360deg);
+    -webkit-filter: hue-rotate(360deg);
   }
-  
-  .card img {
-    width: 200px;
-    height: 200px;
-    background-color: transparent;
-    border-radius: 50%;
-    object-fit: cover;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    box-shadow: -3px 3px 5px 0px rgba(255, 255, 255, 0.75);
-    filter: brightness(0.5);
-    -webkit-filter: saturate(1.5);
-  }
-  
-  .logoHenry {
-    position: absolute !important;
-    width: 40px !important;
-    height: 40px !important;
-    margin-left: 180px !important;
-    margin-bottom: 240px !important;
-    box-shadow: none !important;
-    cursor: grab;
-  }
-  .nameAndLinksContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .linksContainer {
-    display: flex;
-    font-size: 30px;
-    gap: 10px;
-  }
-  
-  .facebook {
-    color: #1877f2;
-  }
-  .linkedin {
-    color: #0e76a8;
-  }
-  .gitHub {
-    color: #ffffff;
-  }
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  border-radius: 50%;
+  object-fit: cover;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  box-shadow: -3px 3px 5px 0px rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+.logoHenry {
+  position: absolute !important;
+  width: 40px !important;
+  height: 40px !important;
+  margin-left: 180px !important;
+  margin-bottom: 280px !important;
+  box-shadow: none !important;
+  cursor: grab !important;
+}
+
+.name {
+  margin: 10px;
+}
+.nameAndLinksContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.linksContainer {
+  display: flex;
+  font-size: 30px;
+  gap: 20px;
+}
+
+.facebook {
+  color: #1877f2;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.facebook:hover {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}
+.linkedin {
+  color: #0e76a8;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.linkedin:hover {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}
+.gitHub {
+  color: #ffffff;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.gitHub:hover {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}

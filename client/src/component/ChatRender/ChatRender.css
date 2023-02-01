@@ -1,6 +1,6 @@
 .chat-render {
   text-align: left;
-  height: 70%;
+  height: 80%;
   overflow: scroll;
   overflow-x: hidden;
   color: rgb(255, 255, 255);
@@ -17,7 +17,7 @@
   margin-top: 0px;
   margin-right: 70%;
   margin-bottom: 15px;
-  background-color:#385a64;
+  background-color: #385a64;
   border-radius: 0px 10px 10px 15px;
   margin-left: 2%;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
@@ -45,38 +45,33 @@
   margin-right: 2%;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.495);
 }
-.name{
-  color:rgb(255, 255, 255)
+.name {
+  color: rgb(255, 255, 255);
 }
-.divMens{
+.divMens {
   margin-right: 60%;
   margin-bottom: 15px;
   border-radius: 0px 10px 10px 15px;
   margin-left: 5%;
-
 }
-.divMens .span{
- font-size: 60%;
- margin-left: 0px;
+.divMens .span {
+  font-size: 60%;
+  margin-left: 0px;
 }
 
-.divMensMe{
-  
+.divMensMe {
   margin-left: 70%;
   text-align: right;
   margin-bottom: 15px;
-  border-radius: 10px 0px 15px 10px ; 
+  border-radius: 10px 0px 15px 10px;
 }
 
 .chat-render::-webkit-scrollbar {
- width: 10px;
-  
+  width: 10px;
 }
-
 
 .chat-render::-webkit-scrollbar-thumb {
   background: #000000b2;
   border-radius: 10px;
-  
 }
 

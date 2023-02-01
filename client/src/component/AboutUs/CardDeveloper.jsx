@@ -14,8 +14,8 @@ export default function CardDeveloper({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ scale: 0.5 }}
+      animate={{ scale: 1 }}
       transition={{
         default: {
           duration: 0.3,
@@ -31,7 +31,7 @@ export default function CardDeveloper({
       className={style.card}
     >
       <motion.img
-        whileHover={{ scale: 1, rotate: 360 }}
+        // whileHover={{ scale: 1, rotate: 360 }}
         whileTap={{
           scale: 0.8,
           rotate: -360,
@@ -41,7 +41,7 @@ export default function CardDeveloper({
         alt={alt}
       />
       <div className={style.nameAndLinksContainer}>
-        <h3>{name}</h3>
+        <h3 className={style.name}>{name}</h3>
         <div className={style.linksContainer}>
           <a className={style.facebook} href="#">
             {<BsFacebook />}

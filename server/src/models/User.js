@@ -50,7 +50,9 @@ groupName :{
 Favourite:{
     type:DataTypes.JSON,
 },
-
+friends:{
+    type:DataTypes.JSON,
+}
 
 
 //comentario
