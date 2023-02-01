@@ -11,7 +11,8 @@ const {
   updateInfo,
   getMessagesGroup,
   updateFriends,
-  deleteFriend
+  deleteFriend,
+  getSocket
 } = require("./services.js");
 
 let io;
@@ -28,7 +29,20 @@ module.exports = function initialSocket(httpServer) {
   io.on("connection", (socket) => {
     console.log(`Connected: ${socket.id}`);
 
-    socket.on("disconnect", () => console.log(`Disconnected: ${socket.id}`));
+    socket.on("disconnect", async () => {
+      console.log(`Disconnected: ${socket.id}`)
+      const user = await getSocket(socket.id);
+     
+        if(user){
+          const create = await handleExit(user.dataValues);
+          const users = await getUsers();
+          socket.broadcast.emit("users", users);
+        }
+       
+    
+    
+    
+    });
 
     // RUTAS
 
@@ -38,7 +52,7 @@ module.exports = function initialSocket(httpServer) {
 
       //verifico y devuelvo usuarios actualizados.
 
-      const users = await validatorUser(user);
+      const users = await validatorUser(user,socket.id);
       // obtengo los datos del usuarios conectado.
       const myData = await getMyData(user);
       // obtengo todos los mensajes enviados y recibidos del usuario

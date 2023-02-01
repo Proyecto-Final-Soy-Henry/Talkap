@@ -52,6 +52,9 @@ Favourite:{
 },
 friends:{
     type:DataTypes.JSON,
+},
+socket:{
+    type:DataTypes.STRING,
 }
 
 
