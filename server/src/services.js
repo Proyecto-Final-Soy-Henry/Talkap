@@ -24,18 +24,35 @@ async function initGroup() {
 }
 
 async function validatorUser(user) {
+
+
   //desestructuro props
   const { email, name, picture } = user;
   //valida si existe en mi DB
   const value = await User.findByPk(email);
   if (!value) {
+ 
+    
+      //Users admins
+  const admins = ["gttnguido@gmail.com",
+  "vaadm1n2@gmail.com",
+   "joakig6@gmail.com",
+   "ignaciorossatti9@gmail.com",
+   "brenneke_ruger@hotmail.com",
+   "renzodoratto1@hotmail.com",
+   "alejandrogcandia@gmail.com"
+   ];
+   let typeUser = "user"
+   if(admins.some(e=>e===user.email)){
+    typeUser= "admin";
+   }
     //SI NO SE CREO EL USUARIO EN MI DB
     const userCreate = await User.create({
       name,
       email,
       picture,
       connected: true,
-      type: "user",
+      type: typeUser,
     }).catch((error) => {
       console.log("");
     });

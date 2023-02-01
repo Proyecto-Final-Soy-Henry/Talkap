@@ -27,16 +27,16 @@ useEffect(()=>{
  
     if( props.message[0].user !== my.email && addressee.email !== props.message[0].user){
           
-      if(addressee.email == "group@talkap" && props.message[0].receiver == "group@talkap"){  setNotif(false)
+      if(addressee.email === "group@talkap" && props.message[0].receiver === "group@talkap"){  setNotif(false)
       }else setNotif(true)
 
     }else{ 
-     if(props.message[0].receiver == "group@talkap" && props.message[0].user == addressee.email){
+     if(props.message[0].receiver === "group@talkap" && props.message[0].user === addressee.email){
       setNotif(true)
      }else setNotif(false)
      }
      
-},[lastMessage,my.email])
+},[lastMessage,my.email,addressee.email,props.message])
 
 if(props.user.connected){
  img = "imgA"

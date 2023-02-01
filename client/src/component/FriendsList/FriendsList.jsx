@@ -1,7 +1,6 @@
 import style from "./FriendsList.module.css";
 import {useSelector } from "react-redux";
 import {useState } from "react";
-import StylingUserList from "../UserList/StylingUserList.jsx";
 import { Box } from "@chakra-ui/react";
 import StylingFriendsList from "./StylingFriendsList.jsx";
 const FriendsList = () => {

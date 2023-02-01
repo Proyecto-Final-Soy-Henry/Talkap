@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {FaUserAlt} from 'react-icons/fa'
 import {TbSend} from 'react-icons/tb'
 import {IoMdPersonAdd} from 'react-icons/io'
-import { setSelected,setAddressee,setFriend} from '../../store/slices/users';
+import { setSelected,setAddressee} from '../../store/slices/users';
 import { sendMessage } from '../../services/sockets';
 
 function StylingUserList({user, handle}) {
