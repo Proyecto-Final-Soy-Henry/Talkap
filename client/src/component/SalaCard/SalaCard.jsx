@@ -25,6 +25,7 @@ export default function SalaCard (props){
  }
 useEffect(()=>{
  
+  if(addressee){
     if( props.message[0].user !== my.email && addressee.email !== props.message[0].user){
           
       if(addressee.email === "group@talkap" && props.message[0].receiver === "group@talkap"){  setNotif(false)
@@ -35,8 +36,10 @@ useEffect(()=>{
       setNotif(true)
      }else setNotif(false)
      }
-     
-},[lastMessage,my.email,addressee.email,props.message])
+  }else if(props.message[0].user !== my.email){
+    setNotif(true)
+  }else setNotif(false)
+},[lastMessage,my.email,props.message,addressee])
 
 if(props.user.connected){
  img = "imgA"

@@ -29,7 +29,7 @@ ChartJS.register(
 
 const options = {
   fill: true,
-  responsive: false,
+  responsive: true,
   scales: {
     y: {
       min: 0,
@@ -49,7 +49,6 @@ export default function Dashboard({handle}){
     return e.createdAt.slice(5,7)
   })
   //obtengo un array con la cantidad de conectados por mes
-  
   
   console.log(scores)
     const data =  {
