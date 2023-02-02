@@ -76,6 +76,10 @@ async function getMyData({ email }) {
     },
   }));
 }
+// DEVUELVE TODOS LOS MENSAJES
+async function getAllMessages(){
+  return await Message.findAll();
+}
 async function getMessages(user) {
   let arrayMsj = [];
   //obtengo los mensajes enviados por el usuario
@@ -263,5 +267,6 @@ module.exports = {
   updateFriends,
   deleteFriend,
   getSocket,
-  upStatus
+  upStatus,
+  getAllMessages,
 };

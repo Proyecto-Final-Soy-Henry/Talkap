@@ -13,7 +13,8 @@ const {
   updateFriends,
   deleteFriend,
   getSocket,
-  upStatus
+  upStatus,
+  getAllMessages,
 } = require("./services.js");
 
 let io;
@@ -61,8 +62,12 @@ module.exports = function initialSocket(httpServer) {
       //obtengo todos los mensajes del grupo.
       const messageGroup = await getMessagesGroup();
       const concat = message.concat(messageGroup);
-
-      await getUsers();
+      // solo si es un admin mando todos los mensajes para el dashboard
+     if(myData.dataValues.type==='admin'){
+      const msjs = await getAllMessages();
+      socket.emit('mensajes',msjs);
+     }
+      
       socket.broadcast.emit("users", users);
       socket.emit("users", users);
       socket.emit(user.email, { myData, message: concat });
@@ -93,6 +98,9 @@ module.exports = function initialSocket(httpServer) {
           socket.broadcast.emit("group", dataValues);
         }
       }
+            //evía los mensajes para los admins
+            const msjs = await getAllMessages();
+            socket.broadcast.emit('mensajes',msjs);
     });
 
     // RUTAS DE UPDATE INFO
