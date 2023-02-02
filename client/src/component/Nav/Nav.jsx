@@ -1,4 +1,4 @@
-import { Flex, Divider, Button} from "@chakra-ui/react";
+import { Flex, Button, Text} from "@chakra-ui/react";
 import { MdBuild} from "react-icons/md"
 import { useSelector } from "react-redux";
 import ChatsList from "../ChatsList/ChatsList.jsx";
@@ -34,7 +34,7 @@ export default function Nav({handle}) {
       gap="3" 
     >
 
-      <Flex direction={{base:"column", lg:"row"}} p="3px" justify="space-between" alignItems="center"> 
+      <Flex direction={{base:"column", lg:"row"}} p="3px" mb="20px" justify="space-between" alignItems="center"> 
         <Profile />
         {my.type==='admin'&&<Flex>
         <Button 
@@ -52,16 +52,19 @@ export default function Nav({handle}) {
           </Button>
        </Flex>}
       </Flex>
-
-    <Divider mt="-7px" mb="6px" />
-      
     
+
+    <Flex justify="center">
+      <Text as="b" color="white" > Chats Activos </Text>
+    </Flex>
+
+
       <Flex mx="2">
         <ChatsList />
       </Flex>
        
 
-      <Flex justifyContent={"center"}>
+      <Flex justifyContent={"center"} bg="red">
       <Button
             onClick={handler}
             bg="#FF4e5b"
