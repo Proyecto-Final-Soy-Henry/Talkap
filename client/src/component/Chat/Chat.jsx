@@ -41,7 +41,7 @@ export default function Chat() {
     <div className={style.chat}>
       {!addressee && <>{/* <LogoGiratorio/> */}</>}
       {addressee && (
-        <ChatCard picture={addressee.picture} email={addressee.email} />
+        <ChatCard picture={addressee.picture} email={addressee.email} name={addressee.name} />
       )}
       {addressee && <ChatRender menssages={message} />}
       {addressee && <ChatInput buttonHandler={buttonHandler} />}

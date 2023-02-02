@@ -29,7 +29,7 @@ function ContactInfo() {
             <Image
               borderRadius='full'
               border="1px"
-              borderColor="#BC00DD"
+              borderColor="#ff4f5a"
               marginTop="1"
               marginBottom="-5"
               boxSize='200px'

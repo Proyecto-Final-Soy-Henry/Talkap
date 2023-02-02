@@ -8,7 +8,7 @@ import { setAddressee } from '../../store/slices/users'
 import { useDispatch } from 'react-redux'
 import { sendMessage } from '../../services/sockets'
 import { useEffect } from 'react'
-import {MdPersonRemove} from 'react-icons/md'
+import {CgCheckO} from 'react-icons/cg'
 
 function ContactActions({user,my}) {
 
@@ -22,7 +22,7 @@ function ContactActions({user,my}) {
                 setbanned(true)
             }else setbanned(false)
         }
-    },[banned])
+    },[banned,my.banned])
     
     useEffect(()=>{
       if(my.friends){
@@ -52,11 +52,11 @@ function ContactActions({user,my}) {
         
 
         {banned ?<Button onClick={()=>{sendMessage("unBanned",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
-            <ImBlocked/><Text>Desbloquear</Text>
+            <CgCheckO color='green'/><Text>Desbloquear</Text>
         </Button>:
         
         <Button onClick={()=>{sendMessage("banned",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
-            <ImBlocked/><Text>Bloquear</Text>
+            <ImBlocked color='red'/><Text>Bloquear</Text>
         </Button>}
         
         
