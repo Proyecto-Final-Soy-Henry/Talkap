@@ -16,7 +16,6 @@ const {
   upStatus,
   getAllMessages,
 } = require("./services.js");
-
 let io;
 
 //Inicializo el SOCKET con el httpServer pasado por parámetro
@@ -151,10 +150,19 @@ module.exports = function initialSocket(httpServer) {
       socket.emit(user.email, { myData : info });
    })
 
+   socket.on("banned",async({user,my})=>{
+    
 
+    const info = await setBanned(my,user)
+    
+    socket.emit(my.email, { myData : info });
+  })
 
+    socket.on("unBanned",async({user,my})=>{
 
-
+      const info = await unBanned(my,user)
+      socket.emit(my.email, { myData : info });
+    })
 
   });
 
