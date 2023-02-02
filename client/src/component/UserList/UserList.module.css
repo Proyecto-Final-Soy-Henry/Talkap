@@ -6,11 +6,11 @@
   /* overflow: scroll;
   overflow-x: hidden; */
 }
-.user-list::-webkit-scrollbar {
+/* .user-list::-webkit-scrollbar {
   width: 10px;
 }
 
 .user-list::-webkit-scrollbar-thumb {
   background: #ff4f5ba2;
   border-radius: 10px;
-}
+} */

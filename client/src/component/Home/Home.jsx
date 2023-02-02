@@ -10,6 +10,7 @@ import {  setUserList as actionUserList } from "../../store/slices/users/index.j
 import { setChatList as actionChat } from "../../store/slices/chats/index.js";
 import { setMyData as actionMyData } from "../../store/slices/users/index.js";
 import { setMessage as actionSetMessage } from "../../store/slices/chats/index.js";
+import {setAllMessages as actionSetAllMessages} from '../../store/slices/chats/index.js'
 //IMPORT COMPONET
 import Nav from "../Nav/Nav.jsx";
 import Chat from "../Chat/Chat.jsx";
@@ -25,7 +26,7 @@ import {
   sendBio,
   sendInfo,
   sendPicInfo,
-  
+  listenChats,
 } from "../../services/sockets.js";
 
 //COMPONETE HOME
@@ -67,7 +68,7 @@ export default function Home() {
       sendInfo(dispatch, actionMyData);
       sendPicInfo(dispatch, actionMyData);
       sendBio(dispatch, actionMyData);
-     
+      listenChats(dispatch,actionSetAllMessages);
     }
   }, [isAuthenticated, navigate, user, dispatch]);
 

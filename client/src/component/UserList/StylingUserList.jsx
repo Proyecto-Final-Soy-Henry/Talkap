@@ -17,16 +17,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import {FaUserAlt} from 'react-icons/fa'
 import {TbSend} from 'react-icons/tb'
 import {IoMdPersonAdd} from 'react-icons/io'
+import {MdPersonRemove} from 'react-icons/md'
 import { setSelected,setAddressee} from '../../store/slices/users';
 import { sendMessage } from '../../services/sockets';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function StylingUserList({user, handle}) {
     const {my} = useSelector(state=>state.users)
+    const [friend,setFriend] = useState(false)
+
+    useEffect(()=>{
+      if(my.friends){
+        console.log("hola")
+        let f = JSON.parse(my.friends)
+        if(f.some((e)=>{return e.email === user.email})){
+          setFriend(true)
+        }else setFriend(false)
+      }
+    },[friend,my.friends])
 
     const dispatch = useDispatch()
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [placement] = React.useState("rigth");
+
+
 
 
   return (
@@ -36,7 +52,10 @@ function StylingUserList({user, handle}) {
         <MenuList>
             <MenuItem onClick={onOpen}  icon={<FaUserAlt />} _hover={{ bg: '#fe4e5b',color:"white"}}>Ver Perfil</MenuItem>
             <MenuItem onClick={()=>{dispatch(setAddressee(user))}} icon={<TbSend />} _hover={{ bg: '#fe4e5b',color:"white"}}>Enviar Mensaje</MenuItem>
-            <MenuItem onClick={()=>{sendMessage("friends",{user,my})}} icon={<IoMdPersonAdd />} _hover={{ bg: '#fe4e5b',color:"white"}}>Añadir a Amigos</MenuItem>
+
+            {friend?<MenuItem onClick={()=>{sendMessage("deleteFriends",{user,my})}} icon={<MdPersonRemove color='red'/>} _hover={{ bg: '#fe4e5b',color:"white"}}>Eliminar de Amigos</MenuItem>:
+            <MenuItem onClick={()=>{sendMessage("friends",{user,my})}} icon={<IoMdPersonAdd color="green" />} _hover={{ bg: '#fe4e5b',color:"white"}}>Añadir a Amigos</MenuItem>}
+            
         </MenuList>
         </Menu>
 
