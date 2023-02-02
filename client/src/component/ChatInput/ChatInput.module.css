@@ -1,9 +1,14 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #151b1d00;
   height: 73px;
+  margin: 10px;
+}
+.nameFile {
+  color: aqua;
 }
 .form {
   display: flex;
@@ -17,6 +22,7 @@
   font-size: 30px;
   cursor: pointer;
 }
+
 .fileInput {
   display: none;
 }

@@ -10,7 +10,7 @@ import {
 
 import UserList from "../UserList/UserList.jsx";
 import ChatsList from "../ChatsList/ChatsList.jsx";
-import FriendsList from "../FriendsList/FriendsList.jsx"
+import FriendsList from "../FriendsList/FriendsList.jsx";
 
 const RightHome = () => {
   const colors = useColorModeValue(["white", "white", "white"]);
@@ -29,7 +29,6 @@ const RightHome = () => {
     >
       <TabList>
         <Tab
-      
           color="#1D2671"
           _focus={{ color: "#fe4e5b" }}
           fontWeight="semibold"
@@ -56,7 +55,7 @@ const RightHome = () => {
           {<UserList />}
         </TabPanel>
         <TabPanel>{<ChatsList />}</TabPanel>
-        <TabPanel>{<FriendsList/>}</TabPanel>
+        <TabPanel>{<FriendsList />}</TabPanel>
       </TabPanels>
     </Tabs>
   );
