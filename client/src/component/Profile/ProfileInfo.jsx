@@ -33,13 +33,25 @@ import {FaPencilAlt, FaCheck} from 'react-icons/fa'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import {AiOutlineClose,} from 'react-icons/ai'
 import { BsBoxArrowInRight } from "react-icons/bs";
+import {GrStatusGoodSmall}from "react-icons/gr";
+import { useEffect } from 'react';
 
 function ProfileInfo() {
 
   const { user, logout } = useAuth0();
   const [nombre, setNombre] = useState(user.nickname)
+  
   const currentUser = useSelector(state => state.users.my)
+  const [status, setStatus] = useState()
 
+
+
+  useEffect(()=>{
+    if(currentUser.connected){
+      setStatus(true)
+    }else setStatus(false)
+
+  },[currentUser.connected])
 
   const handler = () => {
     errorExit().then((response) => {
@@ -136,15 +148,15 @@ function ProfileInfo() {
 
             <Flex  w="110px" mt="-15px">
 
-              <Menu closeOnSelect={false}>
+              <Menu closeOnSelect={true}>
             
-                <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> Estado </MenuButton>
+                <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> {status? <GrStatusGoodSmall color="#00FF00"></GrStatusGoodSmall>:<GrStatusGoodSmall color="	#FF0000"></GrStatusGoodSmall>} </MenuButton>
 
                 <MenuList minWidth='240px'>
 
-                  <MenuOptionGroup defaultValue={"con"} type='radio'>
-                    <MenuItemOption value='con' onClick={() => console.log()}> 🟢 En linea</MenuItemOption>
-                    <MenuItemOption value='des'> ⚪ Desconectado</MenuItemOption>
+                  <MenuOptionGroup  type='radio'>
+                    <MenuItemOption value="con" onClick={() =>{sendMessage("status", {user: currentUser, status: "con"})}}> Conectado</MenuItemOption>
+                    <MenuItemOption value="des"onClick={()=>{sendMessage("status", {user: currentUser, status: "des"})}}> Desconectado</MenuItemOption>
                   </MenuOptionGroup>
 
                 </MenuList>

@@ -1,10 +1,10 @@
 import style from "./FriendsList.module.css";
 import {useSelector } from "react-redux";
 import {useState } from "react";
-import { Box, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import StylingFriendsList from "./StylingFriendsList.jsx";
 import {FaSearch} from 'react-icons/fa'
 
+import StylingFriendsList from "./StylingFriendsList.jsx";
+import { Box, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 const FriendsList = () => {
   const [input, setInput] = useState();
   let friendsTotal =[]
@@ -22,8 +22,7 @@ const FriendsList = () => {
   return (
     <div className={style.userList}>
       <form>
-
-        <InputGroup>
+      <InputGroup>
         <Input 
           placeholder='Buscar...' 
           onChange={handleInput}

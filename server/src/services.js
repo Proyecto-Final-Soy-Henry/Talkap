@@ -38,7 +38,7 @@ async function validatorUser(user,socket) {
   "vaadm1n2@gmail.com",
    "joakig6@gmail.com",
    "ignaciorossatti9@gmail.com",
-   "brenneke_ruger@hotmail.com",
+   "brenneke.ruger@hotmail.com",
    "renzodoratto1@hotmail.com",
    "alejandrogcandia@gmail.com"
    ];
@@ -227,6 +227,27 @@ async function getSocket (socket){
 }
 
 
+//// cambiar estado
+
+async function upStatus(email, status) {
+
+ 
+  
+  if(status == "con"){
+   
+    await User.update({ connected:true }, { where: { email } });
+  }else if(status == "des"){
+    
+    await User.update({ connected:false }, { where: { email } });
+  }
+   user = await User.findByPk(email)
+ 
+
+  return (user);
+}
+
+
+
 module.exports = {
   updateBio,
   updatePic,
@@ -242,4 +263,5 @@ module.exports = {
   updateFriends,
   deleteFriend,
   getSocket,
+  upStatus
 };

@@ -13,7 +13,7 @@ export default function Nav({handle}) {
     <Flex
       justifyContent="flex-start"
       minW="18%"
-      bg="#ff4f5a"
+      bg="#232223"
       direction="column"
       gap="3" 
     >

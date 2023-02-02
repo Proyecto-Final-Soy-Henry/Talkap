@@ -11,7 +11,7 @@ import UserList from "../UserList/UserList.jsx";
 import FriendsList from "../FriendsList/FriendsList.jsx"
 
 const RightHome = () => {
-  const colors = useColorModeValue(["white", "white"]);
+  const colors = useColorModeValue(["#2322239c", "#2322239c"]);
 
   const [tabIndex, setTabIndex] = useState(0);
   const bg = colors[tabIndex];
