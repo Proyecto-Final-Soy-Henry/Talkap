@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Flex, Text } from '@chakra-ui/react'
-import {IoPersonAddSharp} from 'react-icons/io5'
+import {IoPersonAddSharp,IoPersonRemoveSharp} from 'react-icons/io5'
 import {ImBlocked} from 'react-icons/im'
 import {AiFillStar} from 'react-icons/ai'
 import {FiSend} from 'react-icons/fi'
@@ -8,10 +8,12 @@ import { setAddressee } from '../../store/slices/users'
 import { useDispatch } from 'react-redux'
 import { sendMessage } from '../../services/sockets'
 import { useEffect } from 'react'
+import {MdPersonRemove} from 'react-icons/md'
 
 function ContactActions({user,my}) {
 
     const [banned, setbanned] = useState(false);
+    const [friend,setFriend] = useState(false)
     let bans = JSON.parse(my.banned)
     
     useEffect(()=>{
@@ -22,6 +24,16 @@ function ContactActions({user,my}) {
         }
     },[banned])
     
+    useEffect(()=>{
+      if(my.friends){
+        console.log("hola")
+        let f = JSON.parse(my.friends)
+        if(f.some((e)=>{return e.email === user.email})){
+          setFriend(true)
+        }else setFriend(false)
+      }
+    },[friend,my.friends])
+    
 
     const dispatch = useDispatch()
   return (
@@ -31,9 +43,13 @@ function ContactActions({user,my}) {
             <FiSend/> <Text >Enviar mensaje</Text>   
         </Button>
 
-        <Button onClick={()=>{sendMessage("friends",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
-            <IoPersonAddSharp/> <Text>Añadir a tus amigos</Text>
+        {friend?<Button onClick={()=>{sendMessage("deleteFriends",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
+            <IoPersonRemoveSharp color="red"/> <Text>Eliminar de amigos</Text>
         </Button>
+        :<Button onClick={()=>{sendMessage("friends",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
+             <IoPersonAddSharp color="green"/> <Text>Añadir a tus amigos</Text>
+            </Button>}
+        
 
         {banned ?<Button onClick={()=>{sendMessage("unBanned",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
             <ImBlocked/><Text>Desbloquear</Text>
