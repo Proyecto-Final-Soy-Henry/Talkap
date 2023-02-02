@@ -38,7 +38,7 @@ async function validatorUser(user,socket) {
   "vaadm1n2@gmail.com",
    "joakig6@gmail.com",
    "ignaciorossatti9@gmail.com",
-   "brenneke_ruger@hotmail.com",
+   "brenneke.ruger@hotmail.com",
    "renzodoratto1@hotmail.com",
    "alejandrogcandia@gmail.com"
    ];
