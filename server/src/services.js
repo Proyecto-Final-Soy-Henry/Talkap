@@ -250,7 +250,7 @@ async function upStatus(email, status) {
 
 ///// baneados
 
-async function setBanned (my,user){
+async function setBanned(my,user){
   let bans =[]
   
   if(my.banned){
@@ -307,4 +307,6 @@ module.exports = {
   getSocket,
   upStatus,
   getAllMessages,
+  setBanned,
+  unBanned
 };

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 import { errorMessageNull } from "../../services/sweetalert.js";
 import { sendMessage } from "../../services/sockets.js";
+import InitialHome from "./InitialHome";
 
 export default function Chat() {
   const { messages } = useSelector((state) => state.chat);
@@ -39,7 +40,7 @@ export default function Chat() {
   };
   return (
     <div className={style.chat}>
-      {!addressee && <>{/* <LogoGiratorio/> */}</>}
+      {!addressee && <><InitialHome/></>}
       {addressee && (
         <ChatCard picture={addressee.picture} email={addressee.email} name={addressee.name} />
       )}
