@@ -31,21 +31,22 @@
   padding: 0 7px;
   width: 50%;
   height: 40px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
   outline: none;
   margin-left: 10px;
   color: #fff;
-  background-color: rgba(78, 78, 105, 0.678);
+  background-color: #385a64a2;
 }
 
 .buttonSubmit {
+  
   padding: 5px;
   color: #fff;
   background-color: rgba(78, 78, 105, 0.445);
   font-size: 30px;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
+  border-radius: 15px;
+  margin-left: 5px;
+ 
 }
 
 .buttonSubmit:hover {
