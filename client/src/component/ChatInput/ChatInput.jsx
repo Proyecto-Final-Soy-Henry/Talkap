@@ -53,7 +53,7 @@ export default function ChatInput({ buttonHandler }) {
     setTimeout(() => {
       setName("");
       setSpinner(false);
-    }, 2500);
+    }, 1800);
   };
 
   return (

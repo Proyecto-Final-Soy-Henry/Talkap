@@ -73,17 +73,11 @@ export default function ChatRender({ menssages }) {
                       <img onClick={handleSrcImg} src={msj.message} alt="" />
                     </div>
                     {prev ? (
-                      <motion.img
+                      <img
                         onClick={handlePrev}
                         className={prev && "imgMe"}
                         src={link}
                         alt=""
-                        initial={{ scale: 0.5 }}
-                        animate={{ scale: 1.2 }}
-                        transition={{
-                          duration: 0.3,
-                          ease: [0.5, 0.5, 0.7, 1.01],
-                        }}
                       />
                     ) : (
                       <span></span>
