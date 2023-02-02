@@ -13,7 +13,9 @@ const {
   updateFriends,
   deleteFriend,
   getSocket,
-  upStatus
+  upStatus,
+  setBanned,
+  unBanned
 } = require("./services.js");
 
 let io;
@@ -143,10 +145,19 @@ module.exports = function initialSocket(httpServer) {
       socket.emit(user.email, { myData : info });
    })
 
+   socket.on("banned",async({user,my})=>{
+    
 
+    const info = await setBanned(my,user)
+    
+    socket.emit(my.email, { myData : info });
+  })
 
+    socket.on("unBanned",async({user,my})=>{
 
-
+      const info = await unBanned(my,user)
+      socket.emit(my.email, { myData : info });
+    })
 
   });
 

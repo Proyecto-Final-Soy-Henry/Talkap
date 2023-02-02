@@ -241,9 +241,47 @@ async function upStatus(email, status) {
     await User.update({ connected:false }, { where: { email } });
   }
    user = await User.findByPk(email)
+  return (user);
+}
+
+///// baneados
+
+async function setBanned (my,user){
+  let bans =[]
+  
+  if(my.banned){
+    console.log("hola")
+    bans = JSON.parse(my.banned)}
+  
+  bans.push(user.email)
+  
+  
+    await User.update({banned :JSON.stringify(bans)},{ where: { email : my.email } });
+
+    users = await User.findByPk(my.email);
+   
+
+  return users
+}
+
+
+async function unBanned(my,user){
+  let bans =[]
+
  
 
-  return (user);
+  if(my.banned){
+    bans = JSON.parse(my.banned)}
+  
+  let bannedF = bans.filter((e)=>{
+    return e !== user.email
+  })
+
+   await User.update({banned :JSON.stringify(bannedF)},{ where: { email : my.email } });
+
+   users = await User.findByPk(my.email);
+ 
+  return users;
 }
 
 
@@ -263,5 +301,7 @@ module.exports = {
   updateFriends,
   deleteFriend,
   getSocket,
-  upStatus
+  upStatus,
+  setBanned,
+  unBanned
 };
