@@ -9,8 +9,8 @@
     color: rgb(255, 255, 255);
     position: relative;
     background-color: #000000;
-    background: -webkit-linear-gradient(to bottom, #000000,  #e74c3c);
-    background: linear-gradient(to bottom, #000000,  #e74d3c80);
+    background: -webkit-linear-gradient(to bottom, #000000,  #ff4f5a);
+    background: linear-gradient(to bottom, #000000,  #ff4f5b);
 }
 
 .data {
