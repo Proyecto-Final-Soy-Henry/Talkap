@@ -34,25 +34,27 @@ const UserList = () => {
         onChange={(e) => {
           handleInputChange(e);
         }}
-        borderColor="gray.300"
+        color="white"
+        focusBorderColor="#FF4e5b"
       >
-        <option value="all">Todos</option>
-        <option value="connected">Conectados</option>
-        <option value="disconnected">Desconectados</option>
+        <option _hover={{bg:"green"}} style={{ backgroundColor:"#222222", }} value="all">Todos</option>
+        <option style={{ backgroundColor:"#222222" }} value="connected">Conectados</option>
+        <option style={{ backgroundColor:"#222222" }} value="disconnected">Desconectados</option>
       </Select>
 
       <form >
 
-<Flex justify="center">
-<InputGroup>
-<Input 
-  placeholder='Buscar...' 
-  onChange={handleInput}
-  value={input}
-  type="search"
-  borderColor="gray.300"
-  mb="20px"
-/>
+      <Flex justify="center">
+      <InputGroup>
+      <Input 
+        placeholder='Buscar...' 
+        onChange={handleInput}
+        value={input}
+        type="search"
+        mb="20px"
+        focusBorderColor="#FF4e5b"
+        style={{caretColor:"white"}}
+      />
 
 <InputRightElement children={<FaSearch color="#FF4e5b"/>} />
 </InputGroup>

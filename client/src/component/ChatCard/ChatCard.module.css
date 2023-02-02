@@ -2,14 +2,12 @@
     /* display: inline; */
     display: flex;
     font-size: 10px;
-    height: 10vh;
+    height: 8.8vh;
     width: 100%;
     color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 7px 0.5px white;
+    /* box-shadow: 0px 0px 7px 0.5px white; */
+    border-bottom: 1px solid white;
 }
-    
-/* .container {
-} */
 
 .container {
     margin-top: 2vh;
@@ -18,17 +16,17 @@
     }
 
 .container img {
-        position: fixed;
+    position: fixed;
     margin-left: 25%;
     width: 6vh;
-        border-radius: 100%;
+    border-radius: 100%;
     }
 
 .chatcard p {
     margin-top: 5px;
     position: fixed;
     margin-left: 30%;
-        font-size: 3vh;
+    font-size: 3vh;
     }
     
 .home {

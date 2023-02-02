@@ -115,7 +115,7 @@ function ProfileInfo() {
             borderRadius='full'
             border="1px"
             borderColor="#FF4e5b"
-            marginTop="10"
+            marginTop="2px"
             marginBottom="-5"
             boxSize='200px'
             objectFit='cover'
@@ -150,13 +150,13 @@ function ProfileInfo() {
 
               <Menu closeOnSelect={true}>
             
-                <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> {status? <GrStatusGoodSmall color="#00FF00"></GrStatusGoodSmall>:<GrStatusGoodSmall color="	#FF0000"></GrStatusGoodSmall>} </MenuButton>
+                <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> {status? <GrStatusGoodSmall color="#00FF00"/>:<GrStatusGoodSmall color="	#FF0000"/>} </MenuButton>
 
                 <MenuList minWidth='240px'>
 
                   <MenuOptionGroup  type='radio'>
-                    <MenuItemOption value="con" onClick={() =>{sendMessage("status", {user: currentUser, status: "con"})}}> Conectado</MenuItemOption>
-                    <MenuItemOption value="des"onClick={()=>{sendMessage("status", {user: currentUser, status: "des"})}}> Desconectado</MenuItemOption>
+                    <MenuItemOption value="con" onClick={() =>{sendMessage("status", {user: currentUser, status: "con"})}}> <Flex gap="2"  alignItems={"center"}> <GrStatusGoodSmall color="#00FF00"/> Conectado </Flex>  </MenuItemOption>
+                    <MenuItemOption value="des"onClick={()=>{sendMessage("status", {user: currentUser, status: "des"})}}> <Flex gap="2" alignItems={"center"}> <GrStatusGoodSmall color="	#FF0000"/> Desconectado</Flex></MenuItemOption>
                   </MenuOptionGroup>
 
                 </MenuList>
