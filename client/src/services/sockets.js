@@ -85,5 +85,14 @@ export const sendBio = (dispatch, action) => {
     return dispatch(action(value));
   });
 };
+// INFO PARA DASHBOARD
+
+export const listenChats = (dispatch,action)=>{
+  if (!socket) return true;
+  socket.on("mensajes", (value) => {
+   return dispatch(action(value))
+  });
+
+}
 
 
