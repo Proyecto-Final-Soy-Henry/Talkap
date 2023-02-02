@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import "./ChatRender.css";
+import { motion } from "framer-motion";
 
-import React, { useRef, useEffect } from "react"; //No borrar
+import React, { useRef, useEffect, useState } from "react"; //No borrar
 
 export default function ChatRender({ menssages }) {
   const containerRef = useRef(null);
@@ -19,10 +20,21 @@ export default function ChatRender({ menssages }) {
     handleUpdate();
   }, [menssages]);
 
+  const [prev, setPrev] = useState(false);
+  const [link, setLink] = useState("");
+
+  const handleSrcImg = (event) => {
+    const src = event.target.getAttribute("src");
+    setPrev(true);
+    setLink(src);
+  };
+  const handlePrev = () => {
+    setPrev(false);
+  };
+
   return (
     <div ref={containerRef} className="chat-render">
       {menssages?.map((msj, index) => {
-        
         if (
           msj.message.includes(
             "https://res.cloudinary.com/daekdf1sh/image/private"
@@ -43,7 +55,6 @@ export default function ChatRender({ menssages }) {
         if (!msj.message) {
           return () => {};
         } else {
-       
           let name1 = msj.user;
           if (msj.user.includes("@")) {
             let newName = [];
@@ -57,10 +68,21 @@ export default function ChatRender({ menssages }) {
             return (
               <div>
                 {img ? (
-                  <div className="divMensMe">
-                    {" "}
-                    <img src={msj.message} alt="" />
-                  </div>
+                  <>
+                    <div className="divMensMe">
+                      <img onClick={handleSrcImg} src={msj.message} alt="" />
+                    </div>
+                    {prev ? (
+                      <img
+                        onClick={handlePrev}
+                        className={prev && "imgMe"}
+                        src={link}
+                        alt=""
+                      />
+                    ) : (
+                      <span></span>
+                    )}
+                  </>
                 ) : video ? (
                   <div className="divMensMe">
                     <video controls>
@@ -83,8 +105,23 @@ export default function ChatRender({ menssages }) {
             <div key={index}>
               {img ? (
                 <div className="divMens">
-                  {" "}
-                  <img src={msj.message} alt="" />
+                  <img onClick={handleSrcImg} src={msj.message} alt="" />
+                  {prev ? (
+                    <img
+                      onClick={handlePrev}
+                      className={prev && "imgOther"}
+                      src={link}
+                      alt=""
+                      // initial={{ scale: 0.5 }}
+                      // animate={{ scale: 1.2 }}
+                      // transition={{
+                      //   duration: 0.3,
+                      //   ease: [0.5, 0.5, 0.7, 1.01],
+                      // }}
+                    />
+                  ) : (
+                    <span></span>
+                  )}
                   <span className="span">enviado por {name1}</span>
                 </div>
               ) : video ? (

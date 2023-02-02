@@ -13,9 +13,10 @@ root.render(
    
     <BrowserRouter>
     <Auth0Provider 
-    domain='dev-e0fe2tb8jr3oe4yq.us.auth0.com'
-    clientId='WawCbbdYBrnbIDvqnhUIyulgHhicovQJ'
-    redirectUri={window.location.origin}
+   domain='dev-e0fe2tb8jr3oe4yq.us.auth0.com'
+   clientId='WawCbbdYBrnbIDvqnhUIyulgHhicovQJ'
+   redirectUri={window.location.origin}
+   cacheLocation= 'localstorage'
     >
       <ChakraProvider theme={theme}>
           <ColorModeScript />

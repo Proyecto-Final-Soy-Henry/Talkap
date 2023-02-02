@@ -2,6 +2,7 @@ import style from "./ChatInput.module.css";
 import { useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { ImFilePicture } from "react-icons/im";
+import { Spinner } from "@chakra-ui/react";
 
 export default function ChatInput({ buttonHandler }) {
   const [message, setMessage] = useState("");
@@ -18,7 +19,6 @@ export default function ChatInput({ buttonHandler }) {
 
   const handleImage = (e) => {
     const file = e.target.files[0]; ///accedemos a la imagen/video que vamos a subir
-
     file.type.includes("video") || file.type.includes("image") ///si recibimos videos o imagenes haremos la subida en el input file
       ? setFile(file)
       : alert("Archivo no valido"); ///si no lanzo una alerta de que el archivo no es valido(probado que funciona con un archivo zip,rar)
@@ -45,8 +45,20 @@ export default function ChatInput({ buttonHandler }) {
     setImage(null);
   };
 
+  const [name, setName] = useState("");
+  const [spinner, setSpinner] = useState(false);
+
+  const handleLoad = async () => {
+    setSpinner(true);
+    setTimeout(() => {
+      setName("");
+      setSpinner(false);
+    }, 1800);
+  };
+
   return (
     <div className={style.container}>
+      <span className={style.nameFile}>{name}</span>
       <form className={style.form} onSubmit={handlerSubmit}>
         <div className={style.fileContainer}>
           <label className={style.labelFile} htmlFor="file">
@@ -60,9 +72,11 @@ export default function ChatInput({ buttonHandler }) {
               e.preventDefault(e);
               handleImage(e);
               reset(e);
+              setName(e.target.files[0].name);
             }}
           />
         </div>
+
         <input
           className={style.inputMessage}
           placeholder="Escribe un mensaje..."
@@ -72,10 +86,27 @@ export default function ChatInput({ buttonHandler }) {
           }}
           value={message}
         />
-
-        <button className={style.buttonSubmit} type="submit">
+        <button
+          onSubmit={handleLoad}
+          onClick={handleLoad}
+          className={style.buttonSubmit}
+          type="submit"
+        >
           {<IoIosSend />}
         </button>
+
+        {name && spinner ? (
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="lg"
+            marginLeft="10px"
+          />
+        ) : (
+          <span></span>
+        )}
       </form>
     </div>
   );
