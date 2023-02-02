@@ -23,7 +23,7 @@ async function initGroup() {
   });
 }
 
-async function validatorUser(user) {
+async function validatorUser(user,socket) {
 
 
   //desestructuro props
@@ -53,6 +53,7 @@ async function validatorUser(user) {
       picture,
       connected: true,
       type: typeUser,
+      socket,
     }).catch((error) => {
       console.log("");
     });
@@ -60,7 +61,7 @@ async function validatorUser(user) {
     console.log("Usuario :" + name + " - creado y conectado");
   } else {
     //SI YA ESTABA CREADO ACTUALIZO SU PROPIEDAD CONNECTED
-    await User.update({ connected: true }, { where: { email } });
+    await User.update({ connected: true ,socket}, { where: { email } });
     console.log("usuario :" + name + " - conectado");
   }
 
@@ -217,6 +218,13 @@ async function deleteFriend(user,my){
 
   
 }
+////   traer usuario con socket id
+
+async function getSocket (socket){
+  const user = await User.findOne({ where: { socket } });
+
+  return user;
+}
 
 
 module.exports = {
@@ -232,5 +240,6 @@ module.exports = {
   handleExit,
   getMessagesGroup,
   updateFriends,
-  deleteFriend
+  deleteFriend,
+  getSocket,
 };
