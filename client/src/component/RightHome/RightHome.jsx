@@ -7,43 +7,28 @@ import {
   TabPanels,
   useColorModeValue,
 } from "@chakra-ui/react";
-
 import UserList from "../UserList/UserList.jsx";
-import ChatsList from "../ChatsList/ChatsList.jsx";
-import FriendsList from "../FriendsList/FriendsList.jsx";
+import FriendsList from "../FriendsList/FriendsList.jsx"
 
 const RightHome = () => {
-  const colors = useColorModeValue(["white", "white", "white"]);
+  const colors = useColorModeValue(["#2322239c", "#2322239c"]);
 
   const [tabIndex, setTabIndex] = useState(0);
   const bg = colors[tabIndex];
 
   return (
-    <Tabs
-      isFitted
-      w="25%"
-      h="100vh"
-      // overflow="hidden"
-      onChange={(index) => setTabIndex(index)}
-      bg={bg}
-    >
+    <Tabs isFitted w="10%" onChange={(index) => setTabIndex(index)} bg={bg} color="black">
       <TabList>
         <Tab
-          color="#1D2671"
+          color="black"
           _focus={{ color: "#fe4e5b" }}
           fontWeight="semibold"
         >
           Usuarios
         </Tab>
+
         <Tab
-          color="#1D2671"
-          _focus={{ color: "#fe4e5b" }}
-          fontWeight="semibold"
-        >
-          Chats
-        </Tab>
-        <Tab
-          color="#1D2671"
+          color="black"
           _focus={{ color: "#fe4e5b" }}
           fontWeight="semibold"
         >
@@ -54,8 +39,7 @@ const RightHome = () => {
         <TabPanel paddingBottom="50px" overflowX="hidden" h="100vh">
           {<UserList />}
         </TabPanel>
-        <TabPanel>{<ChatsList />}</TabPanel>
-        <TabPanel>{<FriendsList />}</TabPanel>
+        <TabPanel>{<FriendsList/>}</TabPanel>
       </TabPanels>
     </Tabs>
   );

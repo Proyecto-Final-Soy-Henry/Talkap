@@ -1,10 +1,11 @@
 import style from "./UserList.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { filterUsers } from "../../store/slices/users/index";
+import { filterUsers, setAddressee } from "../../store/slices/users/index";
 import { useEffect, useState } from "react";
 import StylingUserList from "./StylingUserList";
 import { Box, Input, InputGroup, Flex, InputRightElement, Select } from "@chakra-ui/react";
 import {FaSearch} from 'react-icons/fa'
+import UserCard from "../UserCard/UserCard";
 const UserList = () => {
   const [input, setInput] = useState();
 
@@ -19,6 +20,9 @@ const UserList = () => {
     e.preventDefault();
     setInput(e.target.value);
   }
+  const handle = (user) => {
+    dispatch(setAddressee(user));
+  };
 
   useEffect(() => {
     dispatch(filterUsers("all"));
@@ -63,29 +67,37 @@ const UserList = () => {
                     searchUser && user.name.toUpperCase().startsWith(searchUser)
                   );
                 })
-                .map((user) => (
-                  <div key={user.id} id={user.name}>
+                .map((user) => 
+                 
+                 { if(user.email !== "group@talkap" ){
+                   return( <div key={user.id} id={user.name}>
                     <StylingUserList
                       user={user}
                       handle={() => {
                         console.log("click");
                       }}
                     />
-                  </div>
-                ))
+                   </div>)
+               }else{
+               return <UserCard user={user} handle={handle}/>
+               } }
+                )
             : listCopy &&
-              listCopy.map((user) => {
-                return (
-                  <Box key={user.email}>
-                    <StylingUserList
-                      user={user}
-                      handle={() => {
-                        console.log("click");
-                      }}
-                    />
-                  </Box>
-                );
-              })}
+              listCopy.map((user) => 
+                 
+              { if(user.email !== "group@talkap" ){
+                return( <div key={user.id} id={user.name}>
+                 <StylingUserList
+                   user={user}
+                   handle={() => {
+                     console.log("click");
+                   }}
+                 />
+                </div>)
+            }else{
+            return <UserCard user={user} handle={handle}/>
+            } }
+             )}
         </div>
       </div>
     </div>

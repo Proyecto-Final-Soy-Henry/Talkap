@@ -52,6 +52,9 @@ friends:{
 },
 socket:{
     type:DataTypes.STRING,
+},
+banned:{
+    type:DataTypes.JSON, 
 }
 
 

@@ -38,7 +38,7 @@ async function validatorUser(user,socket) {
   "vaadm1n2@gmail.com",
    "joakig6@gmail.com",
    "ignaciorossatti9@gmail.com",
-   "brenneke_ruger@hotmail.com",
+   "brenneke.ruger@hotmail.com",
    "renzodoratto1@hotmail.com",
    "alejandrogcandia@gmail.com"
    ];
@@ -227,6 +227,65 @@ async function getSocket (socket){
 }
 
 
+//// cambiar estado
+
+async function upStatus(email, status) {
+
+ 
+  
+  if(status == "con"){
+   
+    await User.update({ connected:true }, { where: { email } });
+  }else if(status == "des"){
+    
+    await User.update({ connected:false }, { where: { email } });
+  }
+   user = await User.findByPk(email)
+  return (user);
+}
+
+///// baneados
+
+async function setBanned (my,user){
+  let bans =[]
+  
+  if(my.banned){
+    console.log("hola")
+    bans = JSON.parse(my.banned)}
+  
+  bans.push(user.email)
+  
+  
+    await User.update({banned :JSON.stringify(bans)},{ where: { email : my.email } });
+
+    users = await User.findByPk(my.email);
+   
+
+  return users
+}
+
+
+async function unBanned(my,user){
+  let bans =[]
+
+ 
+
+  if(my.banned){
+    bans = JSON.parse(my.banned)}
+  
+  let bannedF = bans.filter((e)=>{
+    return e !== user.email
+  })
+
+   await User.update({banned :JSON.stringify(bannedF)},{ where: { email : my.email } });
+
+   users = await User.findByPk(my.email);
+ 
+  return users;
+}
+
+
+
 module.exports = {
   updateBio,
   updatePic,
@@ -242,4 +301,7 @@ module.exports = {
   updateFriends,
   deleteFriend,
   getSocket,
+  upStatus,
+  setBanned,
+  unBanned
 };

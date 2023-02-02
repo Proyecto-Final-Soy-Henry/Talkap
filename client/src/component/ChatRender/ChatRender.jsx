@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import "./ChatRender.css";
 import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import React, { useRef, useEffect, useState } from "react"; //No borrar
 
@@ -83,6 +84,21 @@ export default function ChatRender({ menssages }) {
                       <span></span>
                     )}
                   </>
+                  <>
+                    <div className="divMensMe">
+                      <img onClick={handleSrcImg} src={msj.message} alt="" />
+                    </div>
+                    {prev ? (
+                      <img
+                        onClick={handlePrev}
+                        className={prev && "imgMe"}
+                        src={link}
+                        alt=""
+                      />
+                    ) : (
+                      <span></span>
+                    )}
+                  </>
                 ) : video ? (
                   <div className="divMensMe">
                     <video controls>
@@ -112,12 +128,12 @@ export default function ChatRender({ menssages }) {
                       className={prev && "imgOther"}
                       src={link}
                       alt=""
-                      initial={{ scale: 0.5 }}
-                      animate={{ scale: 1.2 }}
-                      transition={{
-                        duration: 0.3,
-                        ease: [0.5, 0.5, 0.7, 1.01],
-                      }}
+                      // initial={{ scale: 0.5 }}
+                      // animate={{ scale: 1.2 }}
+                      // transition={{
+                      //   duration: 0.3,
+                      //   ease: [0.5, 0.5, 0.7, 1.01],
+                      // }}
                     />
                   ) : (
                     <span></span>

@@ -1,25 +1,38 @@
-.chatcard{
-    display: inline;
-   
-    background-color: transparent;
+.chatcard {
+    /* display: inline; */
+    display: flex;
     font-size: 10px;
     height: 10vh;
     width: 100%;
     color: rgb(255, 255, 255);
     box-shadow: 0px 0px 7px 0.5px white;
+}
     
-    }
-    .chatcard img{
-        margin-top: 0.5vw;
-        position: fixed;
-        margin-left: 2%;
-        width: 8vh;   
-        border-radius: 100%;
-       
+/* .container {
+} */
+
+.container {
+    margin-top: 2vh;
+    text-align: center;
+    justify-content: center;
     }
 
-    .chatcard p{
-       margin-top: 2vh;
-        font-size: 3vh;
-        
+.container img {
+        position: fixed;
+    margin-left: 25%;
+    width: 6vh;
+        border-radius: 100%;
     }
+
+.chatcard p {
+    margin-top: 5px;
+    position: fixed;
+    margin-left: 30%;
+        font-size: 3vh;
+    }
+    
+.home {
+    position: fixed;
+    margin-left: 3%;
+    cursor: pointer;
+}

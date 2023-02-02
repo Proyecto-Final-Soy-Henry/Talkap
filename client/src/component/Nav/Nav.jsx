@@ -1,31 +1,48 @@
-import { Flex ,Button } from "@chakra-ui/react";
+import { Flex, Divider, Button} from "@chakra-ui/react";
 import { MdBuild} from "react-icons/md"
 import { useSelector } from "react-redux";
+import ChatsList from "../ChatsList/ChatsList.jsx";
 import LogoutButton from "../LogoutButton/LogoutButton.jsx";
 import Profile from "../Profile/Profile.jsx";
+
+
 export default function Nav({handle}) {
 
   const {my} =  useSelector(state=>state.users)
   return (
     <Flex
-      justifyContent="space-between"
-      minW="110px"
-      bg="#ff4f5a"
+      justifyContent="flex-start"
+      minW="18%"
+      bg="#232223"
       direction="column"
-      gap="3"
-      alignItems="center"
+      gap="3" 
     >
-      <Flex justify="flex-start" mt="3" mr="3 ">
+
+      <Flex direction={{base:"column", lg:"row"}} p="3px" justify="space-between" alignItems="center"> 
         <Profile />
-      </Flex>
-       {my.type==='admin'&&<Flex>
-        <Button leftIcon={<MdBuild />} colorScheme='whiteAlpha' variant='outline' size='sm' onClick={()=>{handle(true)}}>
+        {my.type==='admin'&&<Flex>
+        <Button 
+        leftIcon={<MdBuild />} 
+        colorScheme='gray' 
+        color="white"
+        _hover={{color:"black", bg:"white"}}
+        variant='outline' 
+        size='sm'
+        mt="20px"
+        onClick={()=>{handle(true)}}>
           Admin
           </Button>
        </Flex>}
-      <Flex>
-        <LogoutButton />
       </Flex>
+
+    <Divider mt="-7px" mb="6px"/>
+      
+
+
+      <Flex mx="2">
+        <ChatsList />
+      </Flex>
+       
     </Flex>
   );
 }

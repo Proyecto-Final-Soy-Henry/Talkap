@@ -12,7 +12,10 @@ const {
   getMessagesGroup,
   updateFriends,
   deleteFriend,
-  getSocket
+  getSocket,
+  upStatus,
+  setBanned,
+  unBanned
 } = require("./services.js");
 
 let io;
@@ -131,7 +134,31 @@ module.exports = function initialSocket(httpServer) {
 
       const info = await deleteFriend(user,my)
       socket.emit(my.email, { myData : info });
+   })
+
+   socket.on("status",async({user,status})=>{
+    
+      const info = await upStatus(user.email,status)
+      const allUsers = await getUsers();
+      
+      socket.broadcast.emit("users", allUsers);
+      socket.emit(user.email, { myData : info });
+   })
+
+   socket.on("banned",async({user,my})=>{
+    
+
+    const info = await setBanned(my,user)
+    
+    socket.emit(my.email, { myData : info });
   })
+
+    socket.on("unBanned",async({user,my})=>{
+
+      const info = await unBanned(my,user)
+      socket.emit(my.email, { myData : info });
+    })
+
   });
 
   //retorno la conexion configurada//
