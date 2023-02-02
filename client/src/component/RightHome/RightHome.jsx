@@ -17,7 +17,7 @@ const RightHome = () => {
   const bg = colors[tabIndex];
 
   return (
-    <Tabs isFitted w="23%" onChange={(index) => setTabIndex(index)} bg={bg} color="black">
+    <Tabs isFitted w="10%" onChange={(index) => setTabIndex(index)} bg={bg} color="black">
       <TabList>
         <Tab
           color="black"
