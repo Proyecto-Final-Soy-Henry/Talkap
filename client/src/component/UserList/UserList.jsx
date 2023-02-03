@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterUsers, setAddressee } from "../../store/slices/users/index";
 import { useEffect, useState } from "react";
 import StylingUserList from "./StylingUserList";
-import { Box, Input, InputGroup, Flex, InputRightElement, Select } from "@chakra-ui/react";
+import { Box, Input, InputGroup, Flex, InputRightElement, Select, Text } from "@chakra-ui/react";
 import {FaSearch} from 'react-icons/fa'
 import UserCard from "../UserCard/UserCard";
 const UserList = () => {
@@ -29,28 +29,33 @@ const UserList = () => {
   }, [list, dispatch]);
 
   return (
-    <div className={style.userList}>
+    <div className={style.userList}> 
       <Select
         onChange={(e) => {
           handleInputChange(e);
         }}
+        color="white"
+        focusBorderColor="#FF4e5b"
       >
-        <option value="all">Todos</option>
-        <option value="connected">Conectados</option>
-        <option value="disconnected">Desconectados</option>
+        <option _hover={{bg:"green"}} style={{ backgroundColor:"#222222", }} value="all">Todos</option>
+        <option style={{ backgroundColor:"#222222" }} value="connected">Conectados</option>
+        <option style={{ backgroundColor:"#222222" }} value="disconnected">Desconectados</option>
       </Select>
 
       <form >
 
-<Flex justify="center">
-<InputGroup>
-<Input 
-  placeholder='Buscar...' 
-  onChange={handleInput}
-  value={input}
-  type="search"
-  focusBorderColor="black"
-/>
+      <Flex justify="center">
+      <InputGroup>
+      <Input 
+      color="white"
+        placeholder='Buscar...' 
+        onChange={handleInput}
+        value={input}
+        type="search"
+        mb="20px"
+        focusBorderColor="#FF4e5b"
+        style={{caretColor:"white"}}
+      />
 
 <InputRightElement children={<FaSearch color="#FF4e5b"/>} />
 </InputGroup>

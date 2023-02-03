@@ -28,6 +28,8 @@ const FriendsList = () => {
           onChange={handleInput}
           value={input}
           type="search"
+          focusBorderColor="#FF4e5b"
+          style={{caretColor:"white"}}
         />
 
         <InputRightElement children={<FaSearch color="#FF4e5b"/>} />

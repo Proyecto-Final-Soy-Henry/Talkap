@@ -8,16 +8,16 @@
     overflow-x: hidden;
     color: rgb(255, 255, 255);
     position: relative;
-    background-color: #000000;
+    /* background-color: #000000;
     background: -webkit-linear-gradient(to bottom, #000000,  #ff4f5a);
-    background: linear-gradient(to bottom, #000000,  #ff4f5b);
+    background: linear-gradient(to bottom, #000000,  #ff4f5b); */
 }
 
 .data {
-    background-color: white;
+  background: linear-gradient(90deg,#ff4f5b75, #1d257179) ;
     width: 120vh;
     height: 75vh;
-    background-image: url("../../assets/FondoInitial.jpg");
+    /* background-image: url("../../assets/FondoInitial.jpg"); */
     border-radius: 20px;
 }
 
@@ -35,14 +35,14 @@
 }
 
 .talkap {
-    color: black;
+    color: rgb(253, 253, 253);
     font-size: 50px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 550;
 }
 
 .infoTalkap {
-    color: black;
+    color: rgb(0, 0, 0);
     margin-top: 2%;
     font-family: cursive;
 }
@@ -62,7 +62,7 @@
 }
 
 .title {
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 40px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 550;
@@ -75,8 +75,9 @@
 }
 
 .donationButton {
-    color: black;
-    border: 1px solid black;
+    color: white;
+    background-color: #ff4f5a;
+    
     width: 150px;
     text-align: center;
     text-decoration: none;
@@ -85,11 +86,14 @@
     margin-top: 30px;
     border-radius: 5px;
     font-family: cursive;
+    transition: 0.3s;
 }
 
 .donationButton:hover {
+    transform: scale(1.05);
+    
     color: white;
-    background-color: #ff4f5a;
+    background-color: #fa3341;
 }
 
 .img2 {
