@@ -8,6 +8,7 @@ export default function ChatRender({ menssages }) {
   const containerRef = useRef(null);
   let img = false;
   let video = false;
+  let audio=false;
   const handleUpdate = () => {
     if (containerRef.current) {
       containerRef.current.scrollTo(0, containerRef.current.scrollHeight);
@@ -35,6 +36,7 @@ export default function ChatRender({ menssages }) {
   return (
     <div ref={containerRef} className="chat-render">
       {menssages?.map((msj, index) => {
+
         if (
           msj.message.includes(
             "https://res.cloudinary.com/daekdf1sh/image/private"
@@ -44,12 +46,19 @@ export default function ChatRender({ menssages }) {
         } else if (
           msj.message.includes(
             "https://res.cloudinary.com/daekdf1sh/video/private"
-          )
+          )&& !msj.message.includes('audioschatapp')
         ) {
           video = true;
-        } else {
+        } else if(
+          msj.message.includes(
+            "audioschatapp75281abc.mp3"
+            )
+        ) {
+          audio=true
+        }else{
           img = false;
           video = false;
+          audio=false
         }
 
         if (!msj.message) {
@@ -89,10 +98,19 @@ export default function ChatRender({ menssages }) {
                       <source src={msj.message} type="video/mp4" />
                       <source src={msj.message} type="video/webm" />
                       <source src={msj.message} type="video/ogg" />
+                      <source src={msj.message} type="video/mpeg" />
+
                       invalid format
                     </video>
                   </div>
-                ) : (
+                ) :  audio ?(
+                  <div className="divMensMe">
+          
+                    <audio controls>
+                    <source src={msj.message} type="audio/mpeg" />
+                    </audio>
+                  </div>
+                ):(
                   <div className="divMenssageMe">
                     <p> {msj.message} </p>
                   </div>
@@ -131,10 +149,18 @@ export default function ChatRender({ menssages }) {
                     <source src={msj.message} type="video/mp4" />
                     <source src={msj.message} type="video/webm" />
                     <source src={msj.message} type="video/ogg" />
+                    <source src={msj.message} type="video/mpeg" />
                     invalid format
                   </video>
                 </div>
-              ) : (
+              ) : audio ?(
+                   <div className="divMens">
+                    <span className="span">{name1} :</span>
+                     <audio controls>
+                     <source src={msj.message} type="audio/mpeg" />
+                     </audio>
+                   </div>
+              ): (
                 <div className="divMenssage">
                   <span className="span">{name1} :</span>
                   <p> {msj.message}</p>

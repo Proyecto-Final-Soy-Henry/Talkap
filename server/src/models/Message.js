@@ -17,11 +17,15 @@ module.exports = (sequelize) => {
     receiver: {
       type: DataTypes.STRING,
     },
-    Image: {
+    image: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    Video: {
+    video: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    audio: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
