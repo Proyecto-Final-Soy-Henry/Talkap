@@ -23,14 +23,15 @@ export default function Chat() {
   });
   
 
-  const buttonHandler = (message, image, video) => {
-    if (message || image || video) {
+  const buttonHandler = (message, image, video , audio) => {
+    if (message || image || video ||audio) {
       sendMessage("chat", {
         user: my.email,
         message,
         receiver: addressee.email,
         image,
         video,
+        audio
       });
     }
     ///agregue image, video ya que al no completar el input con palabras decia que estaba vacio

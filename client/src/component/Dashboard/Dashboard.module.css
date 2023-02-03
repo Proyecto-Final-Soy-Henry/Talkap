@@ -17,14 +17,14 @@ color: #030303;
 
 .totaluser{
     width: 300px;
-    background-color: brown;
+    background-color: rgb(75, 192, 192);
     color: white;
     border-radius: 10px;
 }
 
 .totalchats{
     width: 300px;
-    background-color: blueviolet;
+    background-color: rgb(71, 180, 71);
     color: white;
     border-radius: 10px;
 }
@@ -65,5 +65,12 @@ color: #030303;
     width: 700px;
     height: 700px;
 }
+.pie{
+    margin: 10px;
+    width: 300px;
+    height: 300px;  
+}
+
+
 
 

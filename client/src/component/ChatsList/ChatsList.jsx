@@ -58,7 +58,7 @@ export default function ChatsList() {
         //
 
         let lastMessage = [];
-        //  console.log(noti)
+        
         lastMessage.push(message[message.length - 1]);
 
         return (
