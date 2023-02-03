@@ -16,11 +16,13 @@ export default function InitialHome() {
                 <div className={style.divDonacion}>
                     <div className={style.donacionLeft}>
                     <h2 className={style.title}>DONACIÓN</h2>
+                    <a href="https://donate.stripe.com/test_fZe5ngfl58xxaWc3cc">
                     <button className={style.donationButton}>Hacé tu donación</button>
+                    </a>
                     </div>
                     <img src={donationImage} alt="" className={style.img2} />
                 </div>
             </div>
         </div>
-    )
+     )
 }
