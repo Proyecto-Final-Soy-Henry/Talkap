@@ -96,3 +96,13 @@
     height: 200px;
     margin-left: 27%
 }
+
+
+.container::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    background: #ff4f5b00;
+    border-radius: 10px;
+  }
