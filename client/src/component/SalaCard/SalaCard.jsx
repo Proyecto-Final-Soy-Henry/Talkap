@@ -39,6 +39,8 @@ useEffect(()=>{
   }else if(props.message[0].user !== my.email){
     setNotif(true)
   }else setNotif(false)
+
+  
 },[lastMessage,my.email,props.message,addressee])
 
 if(props.user.connected){

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import style from './Dashboard.module.css'
+import {getScoresMessages,getScoresUsers} from './Service.js'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +11,10 @@ import {
   Tooltip,
   Legend,
   Filler,
+  PieController,
+  ArcElement,
 } from "chart.js";
-import {  Bar } from "react-chartjs-2";
+import {  Bar , Pie } from "react-chartjs-2";
 
 
 ChartJS.register(
@@ -19,6 +22,8 @@ ChartJS.register(
   LinearScale,
   PointElement,
   BarElement,
+  PieController,
+ ArcElement,
   Title,
   Tooltip,
   Legend,
@@ -43,81 +48,117 @@ const options = {
   },
 };
 export default function Dashboard({handle}){
-  const scores2 = [1, 3, 2, 2, 4, 4, 6, 3];
+  // const scores2 = [1, 3, 2, 2, 4, 4, 6, 3];
   const labels = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   const {my,list} = useSelector(state=>state.users)
   const {allMessages} = useSelector(state=>state.chat)
+
+
+  ////////////////////USUARIOS//////////////////////////
   //obtengo un array donde por cada usuario se coloca el mes en que se creo la cuenta
   let scores = list.map(e=>{
     return e.createdAt.slice(5,7)
   })
   //obtengo un array con la cantidad de conectados por mes
-  const getScores = (scores)=>{
-     let array = [0,0,0,0,0,0,0,0,0,0,0,0];
-    scores.forEach((element) => {
+  const users = getScoresUsers(scores);
+  
      
-      switch (element) {
-        case '01':  array[0]=array[0]+1;
-          break;
-        case '02':  array[1]=array[1]+1;
-          break;  
-        case '03':  array[2]=array[2]+1;
-          break;
-        case '04':  array[3]=array[3]+1;
-          break;
-        case '05':  array[4]=array[4]+1;
-          break;
-        case '06':  array[5]=array[5]+1;
-          break;
-        case '07':  array[6]=array[6]+1;
-          break;
-        case '08':  array[7]=array[7]+1;
-          break;
-        case '09':  array[8]=array[8]+1;
-          break;
-        case '10':  array[9]=array[9]+1;
-          break;
-        case '11':  array[10]=array[10]+1;
-          break;
-        case '12':  array[11]=array[11]+1; 
-          break;      
-        default:
-          break;
-      }
-  
-    });
-   
-    return array;
-  }
+  //obtener los usuarios del  array users
+    const totalUser = (users)=>{
+      let suma = 0;
+      users.forEach(e=>{
+        suma = suma + e;
+      })
+      return suma;
+    } 
+    /////////////////////////////////////////////////////////////////////
+    ////////////////////////MENSAJES/////////////////////////////////////
 
-  const value = getScores(scores);
-  
-  console.log(scores)
+  let scores2 = allMessages.map(e=>{
+    return e.createdAt.slice(5,7)
+  }); 
+
+
+ const messages =  getScoresMessages(scores2);
+
+ const totalMessages = (messages)=>{
+  let suma = 0;
+      messages.forEach(e=>{
+        suma = suma + e;
+      })
+      return suma;
+ }
+
+///////////// config DATA Bar /////////////
     const data =  {
-          datasets: [
-            {
-              label: "Usuarios Registrados por mes",
-              data: value,
-              tension: 0.3,
-              borderColor: "rgb(75, 192, 192)",
-              backgroundColor: "rgba(75, 192, 192, 0.644)",
-            },
-            {
-              label: "Datos de Prueba",
-              tension: 0.3,
-              data: scores2,
-              borderColor: "green",
-              backgroundColor: "rgba(0, 255, 0, 0.3)",
-              pointRadius: 6,
-            },
-          ],
-          labels,
-        };
-     
-  
-     
-    
+      datasets: [
+        {
+          label: "Usuarios Registrados",
+          data:  users,
+          tension: 0.3,
+          borderColor: "rgb(75, 192, 192)",
+          backgroundColor: "rgb(75, 192, 192)",
+        },
+        {
+          label: "Mensajes Enviados",
+          tension: 0.3,
+          data: messages,
+          borderColor: "green",
+          backgroundColor: "rgb(71, 180, 71)",
+          pointRadius: 6,
+        },
+      ],
+      labels,
+    };
 
+
+    ///////////config array pay ////////////////
+    const arrayPai = ()=>{
+      let conectados = 0;
+      
+      list.forEach(e=>{
+        if(e.connected){
+          conectados = conectados+1;
+        }
+      })
+
+      let desconectados = totalUser(users) - conectados;
+      return [desconectados,conectados]
+
+    }
+    ///////////config DATA Pay /////////////////
+
+    const options2={
+      title:{
+        display:true,
+        text:'Usuarios',
+        fontSize:20
+      },
+      legend:{
+        display:true,
+        position:'right'
+      }
+    }
+ 
+    const data2 = {
+      labels: ['Desconectados '+arrayPai()[0],'Conectados '+arrayPai()[1]],
+      datasets: [
+        {
+          label: 'Usuarios',
+          backgroundColor: [
+            'rgb(255, 48, 48)',
+            '#C9DE00',
+      
+          ],
+          hoverBackgroundColor: [
+          '#501800',
+          '#4B5000',
+     
+          ],
+          data: arrayPai()
+        }
+      ]
+    }
 
     return(<div className={style.dashboard} >
        <button className={style.buttonExit} onClick={()=>{handle(false)}}>SALIR</button>
@@ -125,12 +166,15 @@ export default function Dashboard({handle}){
         
        
         <div className={style.totaluser}>
-          <h3>Total Usuarios Registrados : {list.length}</h3>
+          <h3>Total Usuarios Registrados : {totalUser(users)}</h3>
         </div>
-        <div className={style.totalchats}>Total Mensajes Enviados : {allMessages.length} </div>
+        <div className={style.totalchats}>Total Mensajes Enviados : {totalMessages(messages)} </div>
 
         <div className={style.line}>
         <Bar  data={data} options={options} />
+        </div>
+        <div className={style.pie}>
+        <Pie data={data2} options={options2}/>
         </div>
        
 

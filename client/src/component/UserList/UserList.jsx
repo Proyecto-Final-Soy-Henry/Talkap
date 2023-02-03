@@ -47,6 +47,7 @@ const UserList = () => {
       <Flex justify="center">
       <InputGroup>
       <Input 
+      color="white"
         placeholder='Buscar...' 
         onChange={handleInput}
         value={input}

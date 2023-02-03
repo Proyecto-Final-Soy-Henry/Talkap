@@ -4,6 +4,9 @@ import Home from "./component/Home/Home";
 import AboutUs from "./component/AboutUs/AboutUs";
 import LandingPageRework from "./component/LandingPageRework/LandingPageRework.jsx";
 import Faq from "./component/LandingPageRework/Faq";
+import axios from 'axios'
+axios.defaults.baseURL ='http://localhost:3001/';//// cambiar a ruta del back end
+
 function App() {
   return (
     <div className="App">

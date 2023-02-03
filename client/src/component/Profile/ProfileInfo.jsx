@@ -144,15 +144,15 @@ function ProfileInfo() {
               <EditableControls />
           </Editable>
   
-          <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-20" w="full">Tu Estado</Text><br/>
+          <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-50" w="full">Tu Estado</Text><br/>
 
-            <Flex  w="110px" mt="-15px">
+            <Flex  w="110px" mt="-50px">
 
               <Menu closeOnSelect={true}>
             
                 <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> {status? <GrStatusGoodSmall color="#00FF00"/>:<GrStatusGoodSmall color="	#FF0000"/>} </MenuButton>
 
-                <MenuList minWidth='240px'>
+                <MenuList minWidth='240px' >
 
                   <MenuOptionGroup  type='radio'>
                     <MenuItemOption value="con" onClick={() =>{sendMessage("status", {user: currentUser, status: "con"})}}> <Flex gap="2"  alignItems={"center"}> <GrStatusGoodSmall color="#00FF00"/> Conectado </Flex>  </MenuItemOption>

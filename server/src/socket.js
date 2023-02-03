@@ -15,6 +15,8 @@ const {
   getSocket,
   upStatus,
   getAllMessages,
+  setBanned,
+  unBanned
 } = require("./services.js");
 let io;
 

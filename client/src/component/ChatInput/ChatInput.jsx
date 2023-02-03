@@ -3,18 +3,38 @@ import { useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { ImFilePicture } from "react-icons/im";
 import { Spinner } from "@chakra-ui/react";
+import {AudioRecorder,useAudioRecorder} from  'react-audio-voice-recorder'/// npm i react-audio-voice-recorder 
+import axios from 'axios' 
 
 export default function ChatInput({ buttonHandler }) {
   const [message, setMessage] = useState("");
-
+  const recorderControls = useAudioRecorder();
   const [image, setImage] = useState(null); //nuevo
   const [video, setVideo] = useState(null); //nuevo
+  const [audio, setAudio] = useState(null); //nuevo
+
+  const transformaraudio = async(blob)=>{
+    const formData = new FormData();
+    formData.append('file', blob);
+    console.log(formData);
+    const data= await axios.post('/audioconverter',formData,{
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })        
+    console.log(data)
+    reset()
+    setAudio(data.data)
+    
+}
 
   const reset = (e) => {
     if (image) setVideo(null);
     if (video) setImage(null);
+    if (audio) setAudio(null)
     else setImage(null);
     setVideo(null);
+    setAudio(null)
   }; //para que no se envien varias cosas juntas(que puede ser una funcion util de la app mas adelante)
 
   const handleImage = (e) => {
@@ -39,10 +59,11 @@ export default function ChatInput({ buttonHandler }) {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    buttonHandler(message, image, video);
+    buttonHandler(message, image, video,audio);
     setMessage("");
     setVideo(null); //seteamos en null al enviar el video e imagen
     setImage(null);
+    setAudio(null)
   };
 
   const [name, setName] = useState("");
@@ -86,6 +107,18 @@ export default function ChatInput({ buttonHandler }) {
           }}
           value={message}
         />
+
+          <AudioRecorder 
+          onRecordingComplete={(blob)=>transformaraudio(blob)}
+          recorderControls={recorderControls}
+          />
+         {audio&& 
+           <div>
+            <span style={{color:"white"}}>Audio listo para enviar</span>
+            <button  type="button" onClick ={()=>setAudio(null)}>X</button>
+          </div>
+          }
+
         <button
           onSubmit={handleLoad}
           onClick={handleLoad}
