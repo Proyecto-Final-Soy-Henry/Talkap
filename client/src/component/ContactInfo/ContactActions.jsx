@@ -55,7 +55,8 @@ function ContactActions({user,my}) {
             <CgCheckO color='green'/><Text>Desbloquear</Text>
         </Button>:
         
-        <Button onClick={()=>{sendMessage("banned",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
+        <Button onClick={()=>{sendMessage("banned",{user,my}) 
+        dispatch(setAddressee(null))}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
             <ImBlocked color='red'/><Text>Bloquear</Text>
         </Button>}
         

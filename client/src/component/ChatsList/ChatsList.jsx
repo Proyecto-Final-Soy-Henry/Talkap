@@ -44,9 +44,27 @@ export default function ChatsList() {
     }
   });
 
+    let bans = []
+
+    if(my.banned){
+     bans = JSON.parse(my.banned)
+    }
+
+
+    const banFilter = listUser.filter((e)=>{
+
+      if(bans){return !bans.some((el)=>{
+        return el === e.email
+      })}else return true
+      
+      
+    })
+
   return (
+
+
     <div className="user-list" style={{width:"100%"}}>
-      {listUser?.map((user, index) => {
+      {banFilter?.map((user, index) => {
         const message = messages.filter((msj) => {
           // msj.user !== my.email ? noti = true : noti = false
 
