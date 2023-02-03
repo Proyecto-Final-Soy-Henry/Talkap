@@ -46,7 +46,7 @@ function StylingUserList({user, handle}) {
 
 
   return (
-    <Flex  key={user.email} justify="center">
+    <Flex key={user.email} justify="center">
         <Menu isLazy display="flex" justify="center">
         <MenuButton onClick={() => {dispatch(setSelected(user))}}><UserCard user={user} handle={handle}/></MenuButton> 
         <MenuList>

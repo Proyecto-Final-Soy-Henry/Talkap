@@ -30,8 +30,8 @@
   -webkit-background-clip: text;
   -moz-background-clip: text;
   font-weight: 1000;
-  animation: text 3s linear infinite;
-  -webkit-animation: text 3s linear infinite;
+  animation: text 5s linear infinite;
+  -webkit-animation: text 5s linear infinite;
   letter-spacing: 2px;
 }
 
