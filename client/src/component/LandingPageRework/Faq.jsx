@@ -15,15 +15,27 @@ import {
 import faq from "../../assets/faq.png"
 import {AiOutlineArrowLeft} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { Badge } from '@chakra-ui/react'
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Faq() {
+
+    const { loginWithRedirect } = useAuth0();
   return (
 
     <Flex display="column" className={style.body}>
 
     <Box maxH="100px" mt="-20px">
         <Link to="/">
-            <Button leftIcon={<AiOutlineArrowLeft />} bg="#fe4e5b" _hover={{bg:"#e1495e"}} variant='solid' w="75px">
+            <Button 
+            leftIcon={<AiOutlineArrowLeft />} 
+            bg="#fe4e5b" 
+            _hover={{bg:"#e1495e"}} 
+            variant='solid' 
+            w="75px"
+            position="fixed"
+            top="5"
+            >
                 Volver
             </Button>
         </Link>
@@ -44,9 +56,9 @@ function Faq() {
         <Accordion allowMultiple w="70%">
 
 {/* ------------------------------------------------------------------------------------------ */}
-        <Text p="10px" color="#FF66F8">General</Text> 
+        <Text as="b" fontSize={"lg"} color="#fe4e5b">General</Text> 
 
-            <AccordionItem bgColor="blackAlpha.300">
+            <AccordionItem bgColor="blackAlpha.500" mt="15px">
                 
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
@@ -56,12 +68,14 @@ function Faq() {
                 </AccordionButton>
                 
                 <AccordionPanel pb={5}>
-                Talkap es una aplicación de mensajería enfocada en la facilidad, es rápida, simple y gratuita, Puedes usarla en cualquier dispositivo. Con Talkap puedes crear tus propio grupo de solo amigos o compañeros, además de enviar mensajes, fotos, videos y archivos de cualquier tipo (doc, zip, mp3, etc.).
+                
+                   
+                Talkap es una aplicación de mensajería enfocada en la  <Badge colorScheme='telegram'> facilidad </Badge>, es <Badge  colorScheme='red'> rápida </Badge> , <Badge  colorScheme='purple'> simple </Badge> y <Badge  colorScheme='green'> gratuita </Badge>, Puedes usarla en cualquier dispositivo. Con Talkap puedes crear tus propio grupo de solo amigos y/o compañeros, además de enviar mensajes, fotos, videos y archivos de cualquier tipo (doc, zip, mp3, etc.).
                 </AccordionPanel>
 
             </AccordionItem>
 
-            <AccordionItem bgColor="blackAlpha.300">
+            <AccordionItem bgColor="blackAlpha.500">
 
                 
                 <AccordionButton>
@@ -72,25 +86,33 @@ function Faq() {
                 </AccordionButton>
                
                 <AccordionPanel pb={5}>
-                Talkap fue creado por desarrolladores full stack con el objetivo de ser el proyecto grupal del bootcamp Soy Henry, además de eso, fue pensado para innovar y facilitar la vida de las personas dando una comunicación fácil, rapida y segura.
+                Talkap fue creado por estudiantes de desarrollo full stack con el objetivo de ser el proyecto grupal del bootcamp <Badge colorScheme='yellow'> Soy Henry </Badge>, además de eso, fue pensado para <Badge colorScheme='facebook'>innovar</Badge> y <Badge colorScheme='green'>facilitar</Badge> la vida de las personas dando una comunicación fácil, rapida y segura. puedes ver más sobre nosotros <Link to="/aboutUs">
+                        <Button 
+                        bg="red"
+                        h="20px"
+                        w="5px"
+                        ml="6px"
+                        p="3px"
+                        _hover={{bg:"#fe4e5b"}}> Aquí </Button>
+                    </Link>
                 </AccordionPanel>
 
             </AccordionItem>
 
-            <AccordionItem bgColor="blackAlpha.300">
+            <AccordionItem bgColor="blackAlpha.500">
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
-                        ¿En qué se diferencia de WhatsApp?
+                        ¿En qué se diferencia de otras aplicaciones?
                     </Box>
                     <AccordionIcon />
                 </AccordionButton>
                 <AccordionPanel pb={5}>
-                    A diferencia de WhatsApp, Talkap te da la facilidad de conectarte sin necesidad de guardar un número de teléfono, es tan simple como registrarte y ya puedes interactuar con las demás personas, personalizar tus datos, crear tus grupos y compartir archivos.
+                    Una gran <Badge colorScheme='purple'> ventaja </Badge> de Talkap, es que te da la facilidad de conectarte sin necesidad de guardar un número de teléfono, es tan simple como registrarte y ya puedes interactuar con las demás personas, personalizar tus datos, crear tus grupos y compartir archivos.
                 </AccordionPanel>
 
             </AccordionItem>
 
-            <AccordionItem bgColor="blackAlpha.300">
+            <AccordionItem bgColor="blackAlpha.500"  mb="15px">
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
                         ¿Cómo puedo crear una cuenta en Talkap?
@@ -98,18 +120,28 @@ function Faq() {
                     <AccordionIcon />
                 </AccordionButton>
                 <AccordionPanel pb={5}>
-                    Para crearte una cuenta en Talkap solo debes ingresar al botón "Registrarse" que aparece en la pantalla principal. allí podrás crear una cuenta con una direccion de email nueva o vincular tu cuenta de google. 
+                    Para crearte una cuenta en Talkap puedes hacer click 
+                    <Button
+                        bg="red"
+                        h="20px"
+                        w="5px"
+                        ml="6px"
+                        p="3px"
+                        _hover={{bg:"#fe4e5b"}}
+                        onClick={() => loginWithRedirect({ screen_hint: 'signup' })}> 
+                    Aquí 
+                     </Button> o ingresar al botón "Registrarse" que aparece en la pantalla principal. podrás crear una cuenta con una direccion de email nueva o vincular tu cuenta de google. 
                 </AccordionPanel>
 
             </AccordionItem>
 
 {/* ------------------------------------------------------------------------------------------ */}
 
-            <Text p="10px" color="#FF66F8">Sobre mi cuenta</Text>
+        <Text as="b" fontSize={"lg"} color="#fe4e5b" >Sobre mi cuenta</Text> 
 
-            <AccordionItem bgColor="blackAlpha.300">
+            <AccordionItem bgColor="blackAlpha.500" mt="15px">
 
-                
+        
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
                     ¿Cómo agrego a alguien a mis amigos?
@@ -123,7 +155,7 @@ function Faq() {
 
             </AccordionItem>
 
-            <AccordionItem bgColor="blackAlpha.300">
+            <AccordionItem bgColor="blackAlpha.500">
 
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
@@ -133,12 +165,12 @@ function Faq() {
                 </AccordionButton>
 
                 <AccordionPanel pb={5}>
-                    Puedes enviarle mensaje a cualquier persona que escriba por el grupo general o por los grupos en los que estés, ¡así de fácil es hacer amigos con Talkap!.
+                    Puedes enviarle mensaje a cualquier persona que escriba por el grupo general o por los grupos en los que estés, ¡así de fácil es hacer amigos con Talkap!
                 </AccordionPanel>
 
             </AccordionItem>
 
-            <AccordionItem bgColor="blackAlpha.300">
+            <AccordionItem bgColor="blackAlpha.500">
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
                         ¿Quién puede enviarme mensajes?
@@ -152,7 +184,7 @@ function Faq() {
                 </AccordionItem>
 
 
-                <AccordionItem bgColor="blackAlpha.300">
+                <AccordionItem bgColor="blackAlpha.500">
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
                         ¿Cómo puedo bloquear a alguien?
@@ -165,7 +197,7 @@ function Faq() {
                 </AccordionPanel>
                 </AccordionItem>
 
-                <AccordionItem bgColor="blackAlpha.300">
+                {/* <AccordionItem bgColor="blackAlpha.500">
                     <AccordionButton>
                         <Box as="span" flex='1' textAlign='left'>
                         ¿Puedo eliminar mi cuenta de Talkap?
@@ -178,57 +210,8 @@ function Faq() {
                     Esta acción no puede deshacerse.
                     </AccordionPanel>
 
-                </AccordionItem>
+                </AccordionItem> */}
 
-
-{/* ------------------------------------------------------------------------------------------ */}
-
-            <Text p="10px" color="#FF66F8">Cuenta Premium</Text> 
-
-            <AccordionItem bgColor="blackAlpha.300">
-                
-                <AccordionButton>
-                    <Box as="span" flex='1' textAlign='left'>
-                    ¿Por qué tener cuenta premium?
-                    </Box>
-                    <AccordionIcon />
-                </AccordionButton>
-                
-                <AccordionPanel pb={5}>
-                    El tener Premium te permite personalizar aun más tu cuenta, puedes cambiar el fondo de los chats, quitar la publicidad, enviar videos de cualquier peso, y no sé que más tendrá el premium :)
-                </AccordionPanel>
-
-            </AccordionItem>
-
-            <AccordionItem bgColor="blackAlpha.300">
-
-                <AccordionButton>
-                    <Box as="span" flex='1' textAlign='left'>
-                    ¿Cómo obtener cuenta premium?
-                    </Box>
-                    <AccordionIcon />
-                </AccordionButton>
-                
-                <AccordionPanel pb={5}>
-                    En el menú izquierdo encontraras un botón llamado "Premium", cuando ingreses alli solo tienes que seguir los pasos para llenar la información pedida, ¡Así de facil es ser Premium!
-                </AccordionPanel>
-
-            </AccordionItem>
-            <AccordionItem bgColor="blackAlpha.300">
-
-               
-                <AccordionButton>
-                    <Box as="span" flex='1' textAlign='left'>
-                        ¿Cuál es el valor de la cuenta premium?
-                    </Box>
-                    <AccordionIcon />
-                </AccordionButton>
-                
-                <AccordionPanel pb={5}>
-                    El valor de comprar el modo Premium está en $1.00, ¡Economico y divertido!
-                </AccordionPanel>
-
-            </AccordionItem>
         </Accordion>
         </Flex>
         </Box>

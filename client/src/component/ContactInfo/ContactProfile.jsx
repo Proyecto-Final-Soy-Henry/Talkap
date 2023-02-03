@@ -38,7 +38,7 @@ function ContactInfo() {
               alt={user.name}
             />
             <Flex  mt="-2">
-             {user.connected ? <Box display={"flex"} gap="1" > <GrStatusGoodSmall color="#00FF00"/>Conectado </Box> : <Box display={"flex"} gap="1"><GrStatusGoodSmall color="#FF0000"></GrStatusGoodSmall>Desconectado </Box>}
+             {user.connected ? <Box display={"flex"} gap="1" alignItems="center"> <GrStatusGoodSmall color="#00FF00"/>Conectado </Box> : <Box display={"flex"} alignItems="center" gap="1"><GrStatusGoodSmall color="#FF0000"></GrStatusGoodSmall>Desconectado </Box>}
             </Flex>
 
             <Divider mb="-6"/>
