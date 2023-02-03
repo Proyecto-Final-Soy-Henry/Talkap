@@ -17,7 +17,7 @@ export default function ChatInput({ buttonHandler }) {
     const formData = new FormData();
     formData.append('file', blob);
     console.log(formData);
-    const data= await axios.post('http://localhost:3001/audioconverter',formData,{
+    const data= await axios.post('/audioconverter',formData,{
         headers: {
             'Content-Type': 'multipart/form-data'
         }
