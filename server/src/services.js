@@ -136,6 +136,16 @@ async function setMessage(msj) {
   //     where: {id: msj.id}
   // })))
   // if(Message.filter((e) =>  e.id == id)){}
+   
+  const AudioUpload = msj.audio
+
+      ? await cloudinary.uploader.upload(msj.audio, {
+        resource_type: "auto", //importante aclara el tipo de archivo
+        folder: "audiochats",
+        public_id: "private_audio/audioschatapp75281abc",
+        type: "private",
+      })
+    : null;
 
   const VideoUpload = msj.video
     ? await cloudinary.uploader.upload(msj.video, {
@@ -153,10 +163,10 @@ async function setMessage(msj) {
         type: "private",
       })
     : null;
-
+  const audio = AudioUpload ? AudioUpload.secure_url : null;
   const video = VideoUpload ? VideoUpload.secure_url : null;
   const image = ImageUpload ? ImageUpload.secure_url : null; ///si recibo ImageUpload es xq la imagen se guardo en cloudinary y nos quedamos con la url que devuelve
-  const message = image ? image : video ? video : msj.message; ///si image/video no guardó nada es xq no recibimos imagenes/video asi que devolvemos el mensaje
+  const message = image ? image : video ? video : audio? audio: msj.message; ///si image/video no guardó nada es xq no recibimos imagenes/video asi que devolvemos el mensaje
 
   const result = await Message.create({
     user,
@@ -164,9 +174,11 @@ async function setMessage(msj) {
     receiver,
     image,
     video,
+    audio
   });
   return result;
 }
+
 
 async function handleExit({ email }) {
   await User.update({ connected: false }, { where: { email } });
