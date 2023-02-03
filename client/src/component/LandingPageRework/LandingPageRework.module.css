@@ -98,18 +98,17 @@
 .texto {
     width: 50%;
     color: white;
+    animation: moverTitulo 1s ease-in;
 }
 
 
 .texto h1 {
     font-size: 80px;
-    animation: moverTitulo 1s ease-in;
 }
 
 
 .texto h2 {
     font-size: 30px;
-    animation: moverTitulo 1s ease-in;
 }
 
 
@@ -155,8 +154,8 @@
     overflow: hidden;
     font-size: 30px;
     letter-spacing: 2px;
-    animation: moverImagen 2s ease-in;
     border-radius: 5px;
+    animation: moverImagen 1s ease-in;
 }
 
 .divRegistrarse {
@@ -176,6 +175,7 @@
     letter-spacing: 3px;
     border: 1px solid white;
     border-radius: 5px;
+    animation: moverTitulo 1s ease-in;
 }
 
 .sobreNosotros:hover {
