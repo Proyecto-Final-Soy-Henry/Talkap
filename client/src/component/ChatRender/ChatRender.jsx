@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
 import "./ChatRender.css";
-import { motion } from "framer-motion";
-import { motion } from "framer-motion";
 
 import React, { useRef, useEffect, useState } from "react"; //No borrar
 
@@ -83,8 +81,6 @@ export default function ChatRender({ menssages }) {
                     ) : (
                       <span></span>
                     )}
-                  </>
-                  <>
                     <div className="divMensMe">
                       <img onClick={handleSrcImg} src={msj.message} alt="" />
                     </div>
