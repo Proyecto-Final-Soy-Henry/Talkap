@@ -1,9 +1,31 @@
 .userList {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-    /* overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  /* overflow: scroll;
     overflow-x: hidden; */
+}
+
+.users {
+  margin-top: 10%;
+  height: 80vh;
+  padding: 2%;
+  /* overflow-y: scroll; */
+  overflow: auto;
+}
+
+.users::-webkit-scrollbar {
+  width: 10px;
+}
+
+.users::-webkit-scrollbar-thumb {
+  background: #ff4f5ba2;
+  border-radius: 10px;
+}
+
+@media screen and (max-height: 615px) {
+  .users {
+    height: 70vh;
   }
-  
+}

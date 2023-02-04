@@ -3,14 +3,50 @@
   flex-direction: column;
   width: 100%;
   gap: 10px;
+
+  /* overflow-y: scroll; */
   /* overflow: scroll;
   overflow-x: hidden; */
 }
+
 /* .user-list::-webkit-scrollbar {
   width: 10px;
 }
-
 .user-list::-webkit-scrollbar-thumb {
   background: #ff4f5ba2;
   border-radius: 10px;
 } */
+
+.users {
+  height: 80vh;
+  padding: 2%;
+  /* overflow-y: scroll; */
+  overflow: auto;
+}
+
+.users::-webkit-scrollbar {
+  width: 10px;
+}
+
+.users::-webkit-scrollbar-thumb {
+  background: #ff4f5ba2;
+  border-radius: 10px;
+}
+
+@media screen and (max-height: 805px) {
+  .users {
+    height: 75vh;
+  }
+}
+
+@media screen and (max-height: 670px) {
+  .users {
+    height: 65vh;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .users {
+    height: 60vh;
+  }
+}
