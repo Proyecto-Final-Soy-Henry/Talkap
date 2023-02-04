@@ -29,7 +29,7 @@ export default function UserCard({ user, handle }) {
     return e === user.email
   })
       
-      console.log(banned)
+     
  
 
 

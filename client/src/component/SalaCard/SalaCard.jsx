@@ -7,6 +7,7 @@ import { useSelector } from "react-redux"
 
 export default function SalaCard (props){
  const [notif,setNotif] = useState(false)
+ const [newN,setNewN] = useState({message:null,see:false,email:null})
 
 
  const {my} =  useSelector(state=>state.users)
@@ -24,11 +25,16 @@ export default function SalaCard (props){
  
  }
 useEffect(()=>{
- 
+
+
+ console.log(props.message[0])
+
+  if(lastMessage==newN.message && props.message[0].user == newN.email&&props.message[0].id ===newN.msgId){setNotif(false)}else{
   if(addressee){
     if( props.message[0].user !== my.email && addressee.email !== props.message[0].user){
           
       if(addressee.email === "group@talkap" && props.message[0].receiver === "group@talkap"){  setNotif(false)
+
       }else setNotif(true)
 
     }else{ 
@@ -39,7 +45,7 @@ useEffect(()=>{
   }else if(props.message[0].user !== my.email){
     setNotif(true)
   }else setNotif(false)
-
+}
   
 },[lastMessage,my.email,props.message,addressee])
 
@@ -61,8 +67,10 @@ if(props.user.name.includes("@")){
     return(
 
         <div className="card" onClick={()=>{
-        props.handle(props.user);
-       return setNotif(false)
+          setNotif(false)
+          setNewN({message:lastMessage,see:true,email:props.message[0].user,msgId:props.message[0].id})
+         
+       return  props.handle(props.user);
         }}>
         <div className={img}>
             <img alt="IMG" src={props.user.picture}></img>

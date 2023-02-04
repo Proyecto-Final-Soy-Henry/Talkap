@@ -79,12 +79,14 @@ export default function ChatsList() {
         
         lastMessage.push(message[message.length - 1]);
 
+
         return (
           <SalaCard
             key={index}
             user={user}
             handle={handle}
             message={lastMessage}
+            
           />
         );
       })}
