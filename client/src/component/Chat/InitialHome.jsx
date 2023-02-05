@@ -22,7 +22,7 @@ export default function InitialHome() {
                         <h2 className={style.title}>DONACIÓN</h2>
                         <h3 className={style.donationText}>Tu donación hará posible que más gente encuentre la forma de comunicarse entre sí</h3>
                         <a href="https://donate.stripe.com/test_fZe5ngfl58xxaWc3cc">
-                            <button className={style.donationButton}>Hacé tu donación</button>
+                            <button className={style.donationButton}>Hacé tu donacióna</button>
                         </a>
                     </div>
                     <div className={style.divImg2}>
