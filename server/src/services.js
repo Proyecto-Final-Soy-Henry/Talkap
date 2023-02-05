@@ -19,7 +19,7 @@ async function initGroup() {
     connected: true,
     type: "group",
   }).catch((error) => {
-    console.log("");
+   
   });
 }
 
@@ -129,11 +129,6 @@ async function getUsers() {
 async function setMessage(msj) {
   //  const {user,message,receiver} = msj;
   const { user, receiver } = msj;
-  console.log(msj.id);
-  // console.log(Message.findOne(({
-  //     where: {id: msj.id}
-  // })))
-  // if(Message.filter((e) =>  e.id == id)){}
 
   const AudioUpload = msj.audio
     ? await cloudinary.uploader.upload(msj.audio, {
@@ -198,7 +193,6 @@ async function updateBio(email, bio) {
 }
 async function updateFriends(user, my) {
   const dataUser = await User.findByPk(my.email);
-  console.log(dataUser);
   let amigos = [];
   let friends = JSON.parse(dataUser.dataValues.friends);
   if (friends) {
@@ -261,7 +255,6 @@ async function setBanned(my, user) {
   let bans = [];
 
   if (my.banned) {
-    console.log("hola");
     bans = JSON.parse(my.banned);
   }
 

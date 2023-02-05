@@ -4,8 +4,6 @@ import ChatInput from "../ChatInput/ChatInput.jsx";
 import ChatCard from "../ChatCard/CardChat";
 // import LogoGiratorio from '../LogoGiratorio/LogoGiratorio.jsx'
 import { useSelector } from "react-redux";
-
-import { errorMessageNull } from "../../services/sweetalert.js";
 import { sendMessage } from "../../services/sockets.js";
 import InitialHome from "./InitialHome";
 
@@ -35,9 +33,7 @@ export default function Chat() {
       });
     }
     ///agregue image, video ya que al no completar el input con palabras decia que estaba vacio
-    else {
-      errorMessageNull();
-    }
+
   };
   return (
     <div className={style.chat}>

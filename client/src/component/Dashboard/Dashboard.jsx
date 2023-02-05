@@ -15,6 +15,8 @@ import {
   ArcElement,
 } from "chart.js";
 import {  Bar , Pie } from "react-chartjs-2";
+import { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 
 ChartJS.register(
@@ -160,9 +162,20 @@ export default function Dashboard({handle}){
       ]
     }
 
+    // config modal
+    const [modal,setModal] = useState(false);
+
+    useEffect(()=>{
+      console.log('modal')
+    },[modal])
+
     return(<div className={style.dashboard} >
-       <button className={style.buttonExit} onClick={()=>{handle(false)}}>SALIR</button>
-        <div className={style.bienvenida}>Bienvenido/a {my.name}</div>
+      {!modal&&<>
+        <button className={style.buttonExit} onClick={()=>{handle(false)}}>SALIR</button>
+        {/* <div className={style.bienvenida}>
+          Bienvenido/a {my.name}
+          </div> */}
+         <div className={style.buttonBan}> <button onClick={()=>{setModal(true)}}>Banear Usuarios</button></div>
         
        
         <div className={style.totaluser}>
@@ -176,7 +189,8 @@ export default function Dashboard({handle}){
         <div className={style.pie}>
         <Pie data={data2} options={options2}/>
         </div>
-       
+       </>}
+       {modal&&<Modal setModal={setModal}/>}
 
 
 

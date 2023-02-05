@@ -16,13 +16,12 @@ export default function ChatInput({ buttonHandler }) {
   const transformaraudio = async(blob)=>{
     const formData = new FormData();
     formData.append('file', blob);
-    console.log(formData);
     const data= await axios.post('/audioconverter',formData,{
         headers: {
             'Content-Type': 'multipart/form-data'
         }
     })        
-    console.log(data)
+   
     reset()
     setAudio(data.data)
     
