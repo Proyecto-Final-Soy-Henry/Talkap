@@ -86,9 +86,10 @@ export default function ChatInput({ buttonHandler }) {
   };
 
   useEffect(()=>{
-    if(messages[messages.length-1].user !== my.email ){
-      setSpan(0);
-    }
+    if(messages.length){
+      if(messages[messages.length-1].user !== my.email ){
+        setSpan(0);
+      }}
   },[messages])
 
   const spans = async () =>{

@@ -9,9 +9,20 @@ import {
   Box,
 
 }from '@chakra-ui/react'
+import { 
+  Button, 
+  MenuItemOption,
+  MenuOptionGroup,
+  MenuList,
+  Menu,
+  MenuButton,
+ 
+
+} from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import ContactActions from "./ContactActions";
 import {GrStatusGoodSmall}from "react-icons/gr";
+import { sendMessage } from "../../services/sockets";
 
 function ContactInfo() {
 
@@ -59,6 +70,8 @@ function ContactInfo() {
               <ContactActions user={user} my={my}/>
 
               <Divider mb="-6"/>
+              {}
+                     
 
           </Flex>
           
