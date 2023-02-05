@@ -19,27 +19,33 @@ export default function Chat() {
       msj.receiver === addressee?.email
     );
   });
-  
 
-  const buttonHandler = (message, image, video , audio) => {
-    if (message || image || video ||audio) {
+  const buttonHandler = (message, image, video, audio) => {
+    if (message.trim() || image || video || audio) {
       sendMessage("chat", {
         user: my.email,
         message,
         receiver: addressee.email,
         image,
         video,
-        audio
+        audio,
       });
     }
     ///agregue image, video ya que al no completar el input con palabras decia que estaba vacio
-
   };
   return (
     <div className={style.chat}>
-      {!addressee && <><InitialHome/></>}
+      {!addressee && (
+        <>
+          <InitialHome />
+        </>
+      )}
       {addressee && (
-        <ChatCard picture={addressee.picture} email={addressee.email} name={addressee.name} />
+        <ChatCard
+          picture={addressee.picture}
+          email={addressee.email}
+          name={addressee.name}
+        />
       )}
       {addressee && <ChatRender menssages={message} />}
       {addressee && <ChatInput buttonHandler={buttonHandler} />}
