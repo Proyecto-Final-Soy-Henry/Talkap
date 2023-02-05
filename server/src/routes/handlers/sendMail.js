@@ -16,21 +16,27 @@ module.exports = async function sendMail(mail, typeMail) {
     subject: "Bienvenidos a Talkap",
     html: `<div
     style="
-      display: flex;
       background: linear-gradient(to right, #1d2671, #ff4e5b);
       height: 100vh;
       justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      // width: 500px;
-      // height: 500px;
+      width: 500px;
+      height: 500px;
       border-radius: 30px;
       padding: 20px;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     "
   >
-    <img style="width: 150px" src="https://i.postimg.cc/ydb9ddkX/Logo.png" />
-    <h1 style="font-size: 30px; color: rgb(155, 155, 252); text-align: center">
+    <img
+      style="
+        position: relative;
+        margin-left: 150px;
+        width: 200px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+      "
+      src="https://i.postimg.cc/ydb9ddkX/Logo.png"
+    />
+    <h1 style="font-size: 30px; color: rgb(214, 214, 241); text-align: center">
       ¡Bien venido a Talkap!
     </h1>
     <p
@@ -53,21 +59,20 @@ module.exports = async function sendMail(mail, typeMail) {
     subject: "Donacion exitosa",
     html: `<div
     style="
-      display: flex;
       background: linear-gradient(to right, #1d2671, #ff4e5b);
       height: 100vh;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
       width: 500px;
       height: 500px;
       border-radius: 30px;
       padding: 20px;
-      font-family: cursive;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     "
   >
-    <img style="width: 150px" src="https://i.postimg.cc/ydb9ddkX/Logo.png" />
-    <h1 style="font-size: 30px; color: rgb(250, 250, 250); text-align: center">
+    <img
+      style="position: relative; margin-left: 150px; width: 200px"
+      src="https://i.postimg.cc/ydb9ddkX/Logo.png"
+    />
+    <h1 style="font-size: 30px; color: rgb(165, 213, 233); text-align: center">
       Muchas gracias por tu donación :)
     </h1>
     <p
