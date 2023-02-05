@@ -50,7 +50,15 @@ groupName :{
 Favourite:{
     type:DataTypes.JSON,
 },
-
+friends:{
+    type:DataTypes.JSON,
+},
+socket:{
+    type:DataTypes.STRING,
+},
+banned:{
+    type:DataTypes.JSON, 
+}
 
 
 //comentario

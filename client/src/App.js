@@ -4,6 +4,10 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./component/Home/Home";
 import AboutUs from "./component/AboutUs/AboutUs";
 import LandingPageRework from "./component/LandingPageRework/LandingPageRework.jsx";
+import Faq from "./component/LandingPageRework/Faq";
+import axios from 'axios'
+axios.defaults.baseURL ='http://localhost:3001/';//// cambiar a ruta del back end
+
 function App() {
   return (
     <div className="App">
@@ -11,6 +15,7 @@ function App() {
         <Route path="/" element={<LandingPageRework />} />
         <Route path="/home" element={<Home />} />
         <Route path="/aboutUs" element={<AboutUs />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
     </div>
   );

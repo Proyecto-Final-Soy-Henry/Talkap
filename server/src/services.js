@@ -23,19 +23,34 @@ async function initGroup() {
   });
 }
 
-async function validatorUser(user) {
+async function validatorUser(user, socket) {
   //desestructuro props
   const { email, name, picture } = user;
   //valida si existe en mi DB
   const value = await User.findByPk(email);
   if (!value) {
+    //Users admins
+    const admins = [
+      "gttnguido@gmail.com",
+      "vaadm1n2@gmail.com",
+      "joakig6@gmail.com",
+      "ignaciorossatti9@gmail.com",
+      "brenneke.ruger@gmail.com",
+      "renzodoratto1@hotmail.com",
+      "alejandrogcandia@gmail.com",
+    ];
+    let typeUser = "user";
+    if (admins.some((e) => e === user.email)) {
+      typeUser = "admin";
+    }
     //SI NO SE CREO EL USUARIO EN MI DB
     const userCreate = await User.create({
       name,
       email,
       picture,
       connected: true,
-      type: "user",
+      type: typeUser,
+      socket,
     }).catch((error) => {
       console.log("");
     });
@@ -43,7 +58,7 @@ async function validatorUser(user) {
     console.log("Usuario :" + name + " - creado y conectado");
   } else {
     //SI YA ESTABA CREADO ACTUALIZO SU PROPIEDAD CONNECTED
-    await User.update({ connected: true }, { where: { email } });
+    await User.update({ connected: true, socket }, { where: { email } });
     console.log("usuario :" + name + " - conectado");
   }
 
@@ -57,6 +72,10 @@ async function getMyData({ email }) {
       email,
     },
   }));
+}
+// DEVUELVE TODOS LOS MENSAJES
+async function getAllMessages() {
+  return await Message.findAll();
 }
 async function getMessages(user) {
   let arrayMsj = [];
@@ -115,6 +134,15 @@ async function setMessage(msj) {
   // })))
   // if(Message.filter((e) =>  e.id == id)){}
 
+  const AudioUpload = msj.audio
+    ? await cloudinary.uploader.upload(msj.audio, {
+        resource_type: "auto", //importante aclara el tipo de archivo
+        folder: "audiochats",
+        public_id: "private_audio/audioschatapp75281abc",
+        type: "private",
+      })
+    : null;
+
   const VideoUpload = msj.video
     ? await cloudinary.uploader.upload(msj.video, {
         resource_type: "video", //importante aclara el tipo de archivo
@@ -131,10 +159,10 @@ async function setMessage(msj) {
         type: "private",
       })
     : null;
-
+  const audio = AudioUpload ? AudioUpload.secure_url : null;
   const video = VideoUpload ? VideoUpload.secure_url : null;
   const image = ImageUpload ? ImageUpload.secure_url : null; ///si recibo ImageUpload es xq la imagen se guardo en cloudinary y nos quedamos con la url que devuelve
-  const message = image ? image : video ? video : msj.message; ///si image/video no guardó nada es xq no recibimos imagenes/video asi que devolvemos el mensaje
+  const message = image ? image : video ? video : audio ? audio : msj.message; ///si image/video no guardó nada es xq no recibimos imagenes/video asi que devolvemos el mensaje
 
   const result = await Message.create({
     user,
@@ -142,6 +170,7 @@ async function setMessage(msj) {
     receiver,
     image,
     video,
+    audio,
   });
   return result;
 }
@@ -166,6 +195,108 @@ async function updateBio(email, bio) {
 
   return (user = await User.findByPk(email));
 }
+async function updateFriends(user, my) {
+  const dataUser = await User.findByPk(my.email);
+  console.log(dataUser);
+  let amigos = [];
+  let friends = JSON.parse(dataUser.dataValues.friends);
+  if (friends) {
+    if (!friends.some((e) => e.email == user.email)) {
+      friends.push(user);
+      await User.update(
+        { friends: JSON.stringify(friends) },
+        { where: { email: my.email } }
+      );
+      return (user = await User.findByPk(my.email));
+    }
+  } else {
+    amigos.push(user);
+    await User.update(
+      { friends: JSON.stringify(amigos) },
+      { where: { email: my.email } }
+    );
+  }
+  return (user = await User.findByPk(my.email));
+}
+
+async function deleteFriend(user, my) {
+  const dataUser = await User.findByPk(my.email);
+  let friends = JSON.parse(dataUser.dataValues.friends);
+
+  let filterFriend = friends.filter((e) => {
+    return e.email !== user.email;
+  });
+
+  await User.update(
+    { friends: JSON.stringify(filterFriend) },
+    { where: { email: my.email } }
+  );
+
+  return (user = await User.findByPk(my.email));
+}
+////   traer usuario con socket id
+
+async function getSocket(socket) {
+  const user = await User.findOne({ where: { socket } });
+
+  return user;
+}
+
+//// cambiar estado
+
+async function upStatus(email, status) {
+  if (status == "con") {
+    await User.update({ connected: true }, { where: { email } });
+  } else if (status == "des") {
+    await User.update({ connected: false }, { where: { email } });
+  }
+  user = await User.findByPk(email);
+  return user;
+}
+
+///// baneados
+
+async function setBanned(my, user) {
+  let bans = [];
+
+  if (my.banned) {
+    console.log("hola");
+    bans = JSON.parse(my.banned);
+  }
+
+  bans.push(user.email);
+
+  await User.update(
+    { banned: JSON.stringify(bans) },
+    { where: { email: my.email } }
+  );
+
+  users = await User.findByPk(my.email);
+
+  return users;
+}
+
+async function unBanned(my, user) {
+  let bans = [];
+
+  if (my.banned) {
+    bans = JSON.parse(my.banned);
+  }
+
+  let bannedF = bans.filter((e) => {
+    return e !== user.email;
+  });
+
+  await User.update(
+    { banned: JSON.stringify(bannedF) },
+    { where: { email: my.email } }
+  );
+
+  users = await User.findByPk(my.email);
+
+  return users;
+}
+
 module.exports = {
   updateBio,
   updatePic,
@@ -178,4 +309,11 @@ module.exports = {
   initGroup,
   handleExit,
   getMessagesGroup,
+  updateFriends,
+  deleteFriend,
+  getSocket,
+  upStatus,
+  getAllMessages,
+  setBanned,
+  unBanned,
 };

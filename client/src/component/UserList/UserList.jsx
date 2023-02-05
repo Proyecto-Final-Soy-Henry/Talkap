@@ -1,10 +1,19 @@
 import style from "./UserList.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { filterUsers } from "../../store/slices/users/index";
+import { filterUsers, setAddressee } from "../../store/slices/users/index";
 import { useEffect, useState } from "react";
 import StylingUserList from "./StylingUserList";
-import { Box, Select } from "@chakra-ui/react";
-import styled from "@emotion/styled";
+import {
+  Box,
+  Input,
+  InputGroup,
+  Flex,
+  InputRightElement,
+  Select,
+  Text,
+} from "@chakra-ui/react";
+import { FaSearch } from "react-icons/fa";
+import UserCard from "../UserCard/UserCard";
 const UserList = () => {
   const [input, setInput] = useState();
 
@@ -19,6 +28,9 @@ const UserList = () => {
     e.preventDefault();
     setInput(e.target.value);
   }
+  const handle = (user) => {
+    dispatch(setAddressee(user));
+  };
 
   useEffect(() => {
     dispatch(filterUsers("all"));
@@ -30,23 +42,44 @@ const UserList = () => {
         onChange={(e) => {
           handleInputChange(e);
         }}
+        color="white"
+        focusBorderColor="#FF4e5b"
       >
-        <option value="all">Todos</option>
-        <option value="connected">Conectados</option>
-        <option value="disconnected">Desconectados</option>
+        <option
+          _hover={{ bg: "green" }}
+          style={{ backgroundColor: "#222222" }}
+          value="all"
+        >
+          Todos
+        </option>
+        <option style={{ backgroundColor: "#222222" }} value="connected">
+          Conectados
+        </option>
+        <option style={{ backgroundColor: "#222222" }} value="disconnected">
+          Desconectados
+        </option>
       </Select>
 
       <form>
-        <input
-          onChange={handleInput}
-          value={input}
-          type="search"
-          placeholder="Search..."
-          aria-label="Search"
-        />
+        <Flex justify="center">
+          <InputGroup>
+            <Input
+              color="white"
+              placeholder="Buscar..."
+              onChange={handleInput}
+              value={input}
+              type="search"
+              mb="20px"
+              focusBorderColor="#FF4e5b"
+              style={{ caretColor: "white" }}
+            />
+
+            <InputRightElement children={<FaSearch color="#FF4e5b" />} />
+          </InputGroup>
+        </Flex>
       </form>
       <div>
-        <div className={style.list}>
+        <div className={style.users}>
           {input
             ? listCopy
                 .filter((user) => {
@@ -56,28 +89,38 @@ const UserList = () => {
                     searchUser && user.name.toUpperCase().startsWith(searchUser)
                   );
                 })
-                .map((user) => (
-                  <div key={user.id} id={user.name}>
-                    <StylingUserList
-                      user={user}
-                      handle={() => {
-                        console.log("click");
-                      }}
-                    />
-                  </div>
-                ))
+                .map((user) => {
+                  if (user.email !== "group@talkap") {
+                    return (
+                      <div key={user.id} id={user.name}>
+                        <StylingUserList
+                          user={user}
+                          handle={() => {
+                            console.log("click");
+                          }}
+                        />
+                      </div>
+                    );
+                  } else {
+                    return <UserCard user={user} handle={handle} />;
+                  }
+                })
             : listCopy &&
               listCopy.map((user) => {
-                return (
-                  <Box key={user.email}>
-                    <StylingUserList
-                      user={user}
-                      handle={() => {
-                        console.log("click");
-                      }}
-                    />
-                  </Box>
-                );
+                if (user.email !== "group@talkap") {
+                  return (
+                    <div key={user.id} id={user.name}>
+                      <StylingUserList
+                        user={user}
+                        handle={() => {
+                          console.log("click");
+                        }}
+                      />
+                    </div>
+                  );
+                } else {
+                  return <UserCard user={user} handle={handle} />;
+                }
               })}
         </div>
       </div>

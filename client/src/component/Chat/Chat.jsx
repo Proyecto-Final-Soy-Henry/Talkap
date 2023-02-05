@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 import { errorMessageNull } from "../../services/sweetalert.js";
 import { sendMessage } from "../../services/sockets.js";
+import InitialHome from "./InitialHome";
 
 export default function Chat() {
   const { messages } = useSelector((state) => state.chat);
@@ -22,14 +23,15 @@ export default function Chat() {
   });
   
 
-  const buttonHandler = (message, image, video) => {
-    if (message || image || video) {
+  const buttonHandler = (message, image, video , audio) => {
+    if (message || image || video ||audio) {
       sendMessage("chat", {
         user: my.email,
         message,
         receiver: addressee.email,
         image,
         video,
+        audio
       });
     }
     ///agregue image, video ya que al no completar el input con palabras decia que estaba vacio
@@ -39,9 +41,9 @@ export default function Chat() {
   };
   return (
     <div className={style.chat}>
-      {!addressee && <>{/* <LogoGiratorio/> */}</>}
+      {!addressee && <><InitialHome/></>}
       {addressee && (
-        <ChatCard picture={addressee.picture} email={addressee.email} />
+        <ChatCard picture={addressee.picture} email={addressee.email} name={addressee.name} />
       )}
       {addressee && <ChatRender menssages={message} />}
       {addressee && <ChatInput buttonHandler={buttonHandler} />}

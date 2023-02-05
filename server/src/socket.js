@@ -10,8 +10,14 @@ const {
   updatePic,
   updateInfo,
   getMessagesGroup,
+  updateFriends,
+  deleteFriend,
+  getSocket,
+  upStatus,
+  getAllMessages,
+  setBanned,
+  unBanned
 } = require("./services.js");
-
 let io;
 
 //Inicializo el SOCKET con el httpServer pasado por parámetro
@@ -26,7 +32,20 @@ module.exports = function initialSocket(httpServer) {
   io.on("connection", (socket) => {
     console.log(`Connected: ${socket.id}`);
 
-    socket.on("disconnect", () => console.log(`Disconnected: ${socket.id}`));
+    socket.on("disconnect", async () => {
+      console.log(`Disconnected: ${socket.id}`)
+      const user = await getSocket(socket.id);
+     
+        if(user){
+          const create = await handleExit(user.dataValues);
+          const users = await getUsers();
+          socket.broadcast.emit("users", users);
+        }
+       
+    
+    
+    
+    });
 
     // RUTAS
 
@@ -36,7 +55,7 @@ module.exports = function initialSocket(httpServer) {
 
       //verifico y devuelvo usuarios actualizados.
 
-      const users = await validatorUser(user);
+      const users = await validatorUser(user,socket.id);
       // obtengo los datos del usuarios conectado.
       const myData = await getMyData(user);
       // obtengo todos los mensajes enviados y recibidos del usuario
@@ -44,8 +63,12 @@ module.exports = function initialSocket(httpServer) {
       //obtengo todos los mensajes del grupo.
       const messageGroup = await getMessagesGroup();
       const concat = message.concat(messageGroup);
-
-      await getUsers();
+      // solo si es un admin mando todos los mensajes para el dashboard
+     if(myData.dataValues.type==='admin'){
+      const msjs = await getAllMessages();
+      socket.emit('mensajes',msjs);
+     }
+      
       socket.broadcast.emit("users", users);
       socket.emit("users", users);
       socket.emit(user.email, { myData, message: concat });
@@ -76,6 +99,9 @@ module.exports = function initialSocket(httpServer) {
           socket.broadcast.emit("group", dataValues);
         }
       }
+            //evía los mensajes para los admins
+            const msjs = await getAllMessages();
+            socket.broadcast.emit('mensajes',msjs);
     });
 
     // RUTAS DE UPDATE INFO
@@ -103,6 +129,43 @@ module.exports = function initialSocket(httpServer) {
       socket.broadcast.emit("join", allUsers);
       socket.broadcast.emit("users", allUsers);
     });
+
+    socket.on("friends",async({user,my})=>{
+
+        const info = await updateFriends(user,my)
+        // console.log(info)
+        socket.emit(my.email, { myData : info });
+    })
+
+    socket.on("deleteFriends",async({user,my})=>{
+
+      const info = await deleteFriend(user,my)
+      socket.emit(my.email, { myData : info });
+   })
+
+   socket.on("status",async({user,status})=>{
+    
+      const info = await upStatus(user.email,status)
+      const allUsers = await getUsers();
+      
+      socket.broadcast.emit("users", allUsers);
+      socket.emit(user.email, { myData : info });
+   })
+
+   socket.on("banned",async({user,my})=>{
+    
+
+    const info = await setBanned(my,user)
+    
+    socket.emit(my.email, { myData : info });
+  })
+
+    socket.on("unBanned",async({user,my})=>{
+
+      const info = await unBanned(my,user)
+      socket.emit(my.email, { myData : info });
+    })
+
   });
 
   //retorno la conexion configurada//

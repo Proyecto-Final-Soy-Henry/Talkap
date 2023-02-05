@@ -3,6 +3,7 @@ import { Button } from "@chakra-ui/react";
 import { sendMessage } from "../../services/sockets";
 import { errorExit } from "../../services/sweetalert.js";
 import { BsBoxArrowInRight } from "react-icons/bs";
+
 import "./LogoutButton.css";
 
 const LogoutButton = () => {
@@ -12,8 +13,8 @@ const LogoutButton = () => {
       if (response) {
         sendMessage("exit", user);
         logout({
-          returnTo: 'http://localhost:3000',
-          clientID: 'WawCbbdYBrnbIDvqnhUIyulgHhicovQJ'
+          returnTo: "https://client-deploy-wild-design.vercel.app/",
+          client_id: 'WawCbbdYBrnbIDvqnhUIyulgHhicovQJ',
         });
       }
     });
@@ -22,8 +23,10 @@ const LogoutButton = () => {
   return (
     <Button
       onClick={handler}
-      w="24"
-      h="32px"
+      mb="50px"
+      ml="5px"
+      w="93%"
+      _hover={{bg: "red.500"}}
       rightIcon={<BsBoxArrowInRight />}
       colorScheme="white"
       variant="solid"

@@ -1,0 +1,112 @@
+.container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    color: rgb(255, 255, 255);
+    position: relative;
+    /* background-color: #000000;
+    background: -webkit-linear-gradient(to bottom, #000000,  #ff4f5a);
+    background: linear-gradient(to bottom, #000000,  #ff4f5b); */
+}
+
+.data {
+  background: linear-gradient(90deg,#ff4f5b75, #1d257179) ;
+    width: 120vh;
+    height: 75vh;
+    /* background-image: url("../../assets/FondoInitial.jpg"); */
+    border-radius: 20px;
+}
+
+.divTalkap {
+    display: flex;
+    height: 50%;
+    align-items: center;
+
+}
+
+.talkapText {
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+}
+
+.talkap {
+    color: rgb(253, 253, 253);
+    font-size: 50px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 550;
+}
+
+.infoTalkap {
+    color: rgb(0, 0, 0);
+    margin-top: 2%;
+    font-family: cursive;
+}
+
+
+.img1 {
+    height: 150px;
+    margin-left: 13%
+}
+
+
+
+.divDonacion {
+    display: flex;
+    align-items: center;
+    height: 50%;
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 550;
+}
+
+.donacionLeft {
+    align-items: center;
+    justify-content: center;
+    margin-left: 17%;
+}
+
+.donationButton {
+    color: white;
+    background-color: #ff4f5a;
+    
+    width: 150px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 10px 0;
+    margin-top: 30px;
+    border-radius: 5px;
+    font-family: cursive;
+    transition: 0.3s;
+}
+
+.donationButton:hover {
+    transform: scale(1.05);
+    
+    color: white;
+    background-color: #fa3341;
+}
+
+.img2 {
+    height: 200px;
+    margin-left: 27%
+}
+
+
+.container::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    background: #ff4f5b00;
+    border-radius: 10px;
+  }
