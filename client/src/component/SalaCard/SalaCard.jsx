@@ -14,8 +14,8 @@ export default function SalaCard (props){
  const {addressee} = useSelector(state=>state.users)
 
 
-  let img = "img"
-  let text = "textBox"
+  let img 
+  let text 
   let point = "punto"
   let lastMessage = ""
   let name1 = props.user.name
@@ -50,10 +50,23 @@ useEffect(()=>{
 },[lastMessage,my.email,props.message,addressee])
 
 if(props.user.connected){
- img = "imgA"
- text = "textBoxA"
- point = "puntoA"
+  if(props.user.email !=="group@talkap"){
+    img = "imgA"
+    text = "textBoxA"
+    point = "puntoA"
+  }else {
+    img = "imgG"
+    text="textG"
+  }
+
+}else{
+  if(props.user.email !=="group@talkap"){
+    img = "imgA"
+    text = "textBoxA"
+    point = "puntoA"
+  }
 }
+
 if(props.user.name.includes("@")){
   let newName =[]
   for(let i = 0; props.user.name[i] !== "@"; i++){
@@ -78,10 +91,10 @@ if(props.user.name.includes("@")){
         <div className={text}>
           <div className="textContent">
             <p className="h1">{name1}</p>
-            <span className={point}>•</span>
+            
           </div>
           {
-          lastMessage.length > 25 ?<span className="span2" >Nuevos Mensajes...</span>:<span className="span">{lastMessage}</span>
+          lastMessage.length > 25 ?<span className="span2" >Nuevo Mensaje...</span>:<span className="span">{lastMessage}</span>
           }
           
           <div className="remove">
