@@ -12,6 +12,7 @@ axios.defaults.baseURL ='http://localhost:3001/';//// cambiar a ruta del back en
 function App() {
   return (
     <div className="App">
+      
       <Routes>
         <Route path="/" element={<LandingPageRework />} />
         <Route path="/home" element={<Home />} />
