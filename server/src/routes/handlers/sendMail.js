@@ -91,11 +91,8 @@ module.exports = async function sendMail(mail, typeMail) {
     subject: "Baneo de cuenta",
     html: `<div
     style="
-      display: flex;
       background: linear-gradient(to right, #0b0f2e, #72080f);
       height: 100vh;
-      justify-content: center;
-      flex-direction: column;
       align-items: center;
       width: 500px;
       height: 500px;
@@ -104,13 +101,22 @@ module.exports = async function sendMail(mail, typeMail) {
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     "
   >
-    <img style="width: 150px" src="https://i.postimg.cc/ydb9ddkX/Logo.png" />
-    <h1 style="font-size: 30px; color: rgb(250, 0, 0); text-align: center">
+    <img
+      style="
+        width: 170px;
+        position: relative;
+        margin-left: 170px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      "
+      src="https://i.postimg.cc/ydb9ddkX/Logo.png"
+    />
+    <h1 style="font-size: 25px; color: rgb(250, 0, 0); text-align: center">
       Tu cuenta has sido <strong>Baneada</strong>
     </h1>
     <p
       style="
-        font-size: 20px;
+        font-size: 18px;
         text-align: justify;
         color: #fff;
         letter-spacing: 1px;
