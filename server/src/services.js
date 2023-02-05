@@ -1,6 +1,6 @@
 //MODELOS DB
 const { User, Message } = require("./db");
-
+const sendMail = require('./routes/handlers/sendMail.js')
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
@@ -54,7 +54,8 @@ async function validatorUser(user, socket) {
     }).catch((error) => {
       console.log("");
     });
-
+    //se manda mail de bienvenido
+    sendMail(email,'welcome');
     console.log("Usuario :" + name + " - creado y conectado");
   } else {
     //SI YA ESTABA CREADO ACTUALIZO SU PROPIEDAD CONNECTED
@@ -296,6 +297,20 @@ async function unBanned(my, user) {
 
   return users;
 }
+// black list
+async function setBlackList(email){
+  let boolean; 
+  let user = await User.findByPk(email);
+  if(user.blacklist){
+    boolean =  false;
+  }else{
+    boolean =  true;
+    sendMail(email, 'ban')
+  }
+
+return  await User.update({blacklist:boolean},{where:{email}});
+
+}
 
 module.exports = {
   updateBio,
@@ -316,4 +331,5 @@ module.exports = {
   getAllMessages,
   setBanned,
   unBanned,
+  setBlackList,
 };

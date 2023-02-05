@@ -13,7 +13,7 @@ module.exports = async function sendMail(mail, typeMail) {
   const messageWelcome = {
     from: "talkaphenry@gmail.com",
     to: mail,
-    subject: "Donacion exitosa",
+    subject: "Bienvenidos a Talkap",
     html: `<div
     style="
       display: flex;
@@ -22,8 +22,8 @@ module.exports = async function sendMail(mail, typeMail) {
       justify-content: center;
       flex-direction: column;
       align-items: center;
-      width: 500px;
-      height: 500px;
+      // width: 500px;
+      // height: 500px;
       border-radius: 30px;
       padding: 20px;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

@@ -58,12 +58,12 @@ socket:{
 },
 banned:{
     type:DataTypes.JSON, 
-}
+},
+blacklist:{
+    type:DataTypes.BOOLEAN,
+    defaultValue:false,
+},
 
-
-//comentario
-//comentario dos
-//comentario tres
 
 
 });

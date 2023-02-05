@@ -16,7 +16,8 @@ const {
   upStatus,
   getAllMessages,
   setBanned,
-  unBanned
+  unBanned,
+  setBlackList,
 } = require("./services.js");
 let io;
 
@@ -164,6 +165,16 @@ module.exports = function initialSocket(httpServer) {
 
       const info = await unBanned(my,user)
       socket.emit(my.email, { myData : info });
+    })
+       // black list
+    socket.on('blacklist',async (email)=>{
+      await setBlackList(email)
+     const allUsers = await getUsers()
+     const myData = await getMyData({email:email});
+     socket.broadcast.emit("users", allUsers);
+     socket.broadcast.emit(email,{myData:myData.dataValues})
+
+
     })
 
   });
