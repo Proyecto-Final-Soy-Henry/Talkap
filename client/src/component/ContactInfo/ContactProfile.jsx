@@ -31,7 +31,19 @@ function ContactInfo() {
   const my = useSelector(state => state.users.my)
   const score = [1,2,3,4,5]
   const currentUser = users.find(e => e.email === user.email)
+
   let num = currentUser.stars
+  let myStar
+
+
+  if(currentUser.starTotal){
+    let starT = JSON.parse(currentUser.starTotal)
+    if(starT.length > 0){
+      myStar = starT.find(e => e.email === my.email)
+    }
+  }
+   
+  console.log(myStar)
 
 
     return (
