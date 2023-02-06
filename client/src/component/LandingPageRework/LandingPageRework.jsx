@@ -42,7 +42,7 @@ export default function Landing() {
                 </div>
                 <div className={style.container}>
                     <div className={style.texto}>
-                        <h1>Talkap</h1>
+                        <h1>TALKAP</h1>
                         <h2>¿Porqué elegir Talkap?</h2>
                         <h4 className={style.textoFooter}>Te ofrecemos un aplicacion de mensajeria segura
                             donde podras conocer gente nueva y hacer amigos</h4>
