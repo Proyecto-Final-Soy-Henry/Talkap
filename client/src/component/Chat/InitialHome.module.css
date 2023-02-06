@@ -8,49 +8,51 @@
     overflow-x: hidden;
     color: rgb(255, 255, 255);
     position: relative;
-    /* background-color: #000000;
-    background: -webkit-linear-gradient(to bottom, #000000,  #ff4f5a);
-    background: linear-gradient(to bottom, #000000,  #ff4f5b); */
 }
 
 .data {
-  background: linear-gradient(90deg,#ff4f5b75, #1d257179) ;
+    background: linear-gradient(90deg, #1d257179, #ff4f5b75);
     width: 120vh;
     height: 75vh;
-    /* background-image: url("../../assets/FondoInitial.jpg"); */
     border-radius: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .divTalkap {
     display: flex;
     height: 50%;
     align-items: center;
-
 }
 
 .talkapText {
     align-items: center;
     justify-content: center;
-    margin-left: 5%;
+    width: 50%;
+    margin-left: 3%;
 }
 
 .talkap {
     color: rgb(253, 253, 253);
     font-size: 50px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 550;
 }
 
 .infoTalkap {
-    color: rgb(0, 0, 0);
+    color: white;
     margin-top: 2%;
     font-family: cursive;
 }
 
+.divImg1 {
+    width: 50%;
+    text-align: center;
+    object-fit: fill;
+}
 
 .img1 {
-    height: 150px;
-    margin-left: 13%
+    height: 200px;
 }
 
 
@@ -64,20 +66,27 @@
 .title {
     color: rgb(255, 255, 255);
     font-size: 40px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 550;
+}
+
+.donationText {
+    color: white;
+    margin-top: 2%;
+    font-family: cursive;
 }
 
 .donacionLeft {
     align-items: center;
     justify-content: center;
-    margin-left: 17%;
+    width: 50%;
+    margin-left: 3%;
 }
 
 .donationButton {
     color: white;
     background-color: #ff4f5a;
-    
+
     width: 150px;
     text-align: center;
     text-decoration: none;
@@ -91,22 +100,49 @@
 
 .donationButton:hover {
     transform: scale(1.05);
-    
+
     color: white;
     background-color: #fa3341;
 }
 
+.divImg2 {
+    width: 50%;
+    text-align: center;
+}
+
 .img2 {
-    height: 200px;
-    margin-left: 27%
+    margin-left: 7%;
+    height: 250px;
 }
 
 
 .container::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  .container::-webkit-scrollbar-thumb {
+}
+
+.container::-webkit-scrollbar-thumb {
     background: #ff4f5b00;
     border-radius: 10px;
-  }
+}
+
+
+@media screen and (max-width: 1000px) {
+ .img1{
+    height: 150px;
+ }
+ .img2{
+    height: 200px;
+ }
+ .talkap{
+    font-size: 40px;
+ }
+ .infoTalkap{
+    font-size: 15px;
+ }
+ .title{
+    font-size: 30px;
+ }
+ .donationText{
+    font-size: 15px;
+ }
+}

@@ -10,6 +10,8 @@ import {
 import UserList from "../UserList/UserList.jsx";
 import FriendsList from "../FriendsList/FriendsList.jsx"
 
+import style from "./RightHome.module.css";
+
 const RightHome = () => {
   const colors = useColorModeValue(["#2322239c", "#2322239c"]);
 
@@ -17,7 +19,7 @@ const RightHome = () => {
   const bg = colors[tabIndex];
 
   return (
-    <Tabs isFitted w="19%" onChange={(index) => setTabIndex(index)} bg={bg} color="black">
+    <Tabs className={style.container} isFitted onChange={(index) => setTabIndex(index)} bg={bg} color="black">
       <TabList>
         <Tab
 
