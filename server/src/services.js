@@ -326,12 +326,14 @@ async function setStars(user,star){
   starsDiv.forEach(element => {
     stars += element
   });
-  stars = (stars /( starsDiv.length))
+  stars = Math.round(stars /( starsDiv.length))
+
+
   console.log(starsTotal)
    await User.update({stars,starTotal: JSON.stringify(starsTotal)},{ where: { email : user.email } })
 
   my = await User.findByPk(star.email);
-  console.log(user.starTotal) 
+  
   return my
 }
 
