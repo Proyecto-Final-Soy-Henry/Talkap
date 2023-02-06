@@ -1,10 +1,13 @@
 import style from "./ChatInput.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { ImFilePicture } from "react-icons/im";
+import {BiErrorCircle} from "react-icons/bi"
 import { Spinner } from "@chakra-ui/react";
 import {AudioRecorder,useAudioRecorder} from  'react-audio-voice-recorder'/// npm i react-audio-voice-recorder 
 import axios from 'axios' 
+import swal from 'sweetalert';
+import { useSelector } from "react-redux";
 
 export default function ChatInput({ buttonHandler }) {
   const [message, setMessage] = useState("");
@@ -12,16 +15,21 @@ export default function ChatInput({ buttonHandler }) {
   const [image, setImage] = useState(null); //nuevo
   const [video, setVideo] = useState(null); //nuevo
   const [audio, setAudio] = useState(null); //nuevo
+  const [span, setSpan] = useState(0);
+  let pres = "Escribe un mensaje..."
+  const { messages } = useSelector((state) => state.chat);
+  const { my } = useSelector((state) => state.users);
 
   const transformaraudio = async(blob)=>{
     const formData = new FormData();
     formData.append('file', blob);
+    
     const data= await axios.post('/audioconverter',formData,{
         headers: {
             'Content-Type': 'multipart/form-data'
         }
     })        
-   
+    
     reset()
     setAudio(data.data)
     
@@ -63,6 +71,7 @@ export default function ChatInput({ buttonHandler }) {
     setVideo(null); //seteamos en null al enviar el video e imagen
     setImage(null);
     setAudio(null)
+    setSpan(span+1)
   };
 
   const [name, setName] = useState("");
@@ -75,6 +84,22 @@ export default function ChatInput({ buttonHandler }) {
       setSpinner(false);
     }, 1800);
   };
+
+  useEffect(()=>{
+    if(messages.length){
+      if(messages[messages.length-1].user !== my.email ){
+        setSpan(0);
+      }}
+  },[messages])
+
+  const spans = async () =>{
+
+    setTimeout(() => {
+      setSpan(0);
+      
+    }, 3000);
+  }
+
 
   return (
     <div className={style.container}>
@@ -96,16 +121,19 @@ export default function ChatInput({ buttonHandler }) {
             }}
           />
         </div>
-
-        <input
+            {span < 7 ?<input
           className={style.inputMessage}
-          placeholder="Escribe un mensaje..."
+          placeholder={pres}
           type="text"
           onChange={(e) => {
             setMessage(e.target.value);
           }}
           value={message}
-        />
+        />:<>
+        <p className={style.span} onClick={()=>{spans()}} >Desbloquear input en unos segundos</p>
+
+        </>}
+        
 
           <AudioRecorder 
           onRecordingComplete={(blob)=>transformaraudio(blob)}
@@ -117,15 +145,26 @@ export default function ChatInput({ buttonHandler }) {
             <button  type="button" onClick ={()=>setAudio(null)}>X</button>
           </div>
           }
-
-        <button
+        {span < 6 ? <button
           onSubmit={handleLoad}
           onClick={handleLoad}
           className={style.buttonSubmit}
           type="submit"
         >
           {<IoIosSend />}
-        </button>
+        </button>:
+        <><button
+        onClick={()=>{
+          
+          swal("Muchos Mensajes", "el envio de muchos mensajes consecutivos se considera SPAN y esta prohibido en TalkApp. ", "warning", {
+            button: "Entiendo",
+          });
+        }}
+        className={style.buttonSubmit}
+      >
+        {<IoIosSend />}
+      </button></>}
+       
 
         {name && spinner ? (
           <Spinner
@@ -143,3 +182,4 @@ export default function ChatInput({ buttonHandler }) {
     </div>
   );
 }
+

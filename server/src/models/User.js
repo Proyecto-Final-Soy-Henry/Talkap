@@ -63,7 +63,12 @@ blacklist:{
     type:DataTypes.BOOLEAN,
     defaultValue:false,
 },
-
+stars:{
+    type:DataTypes.REAL
+},
+starTotal:{
+    type:DataTypes.JSON
+}
 
 
 });
