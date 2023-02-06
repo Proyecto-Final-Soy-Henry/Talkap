@@ -26,9 +26,6 @@ export default function SalaCard (props){
  }
 useEffect(()=>{
 
-
-
-
   if(lastMessage==newN.message && props.message[0].user == newN.email&&props.message[0].id ===newN.msgId){setNotif(false)}else{
   if(addressee){
     if( props.message[0].user !== my.email && addressee.email !== props.message[0].user){
