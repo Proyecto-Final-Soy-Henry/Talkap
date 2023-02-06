@@ -1,6 +1,6 @@
 import style from './LandingPageRework.module.css'
 import { Link } from 'react-router-dom';
-import logo from '../../assets/Logo.png'
+import logo from '../../assets/logoRosa.png'
 import FotoLanding from "../../assets/ImagenLanding.png"
 
 import { useAuth0 } from "@auth0/auth0-react";

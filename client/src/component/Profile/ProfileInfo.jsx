@@ -35,17 +35,16 @@ import {AiOutlineClose,} from 'react-icons/ai'
 import { BsBoxArrowInRight } from "react-icons/bs";
 import {GrStatusGoodSmall}from "react-icons/gr";
 import { useEffect } from 'react';
-import {BsInfoCircleFill} from 'react-icons/bs'
-
+import {AiFillStar} from 'react-icons/ai'
 
 function ProfileInfo() {
 
   const { user, logout } = useAuth0();
   const [nombre, setNombre] = useState(user.nickname)
-  
   const currentUser = useSelector(state => state.users.my)
   const [status, setStatus] = useState()
-
+  const score = [1,2,3,4,5]
+  let num = currentUser.stars
 
 
   useEffect(()=>{
@@ -150,6 +149,23 @@ function ProfileInfo() {
               <Input maxLength="20" minLength="3" as={EditableInput} fontSize='2xl' fontWeight="bold" onChange={(e) => setNombre(e.target.value)}/>
               <EditableControls />
           </Editable>
+
+
+        
+          <Text fontSize="sm" color="#ff4f5a" fontWeight="bold" mb="-8" w="full">Tu Calificación</Text>
+
+          <Flex alignItems={"center"} fontSize="18px">
+            {score.map(function(e , i) {
+              
+              if(e <= num) return <Flex key={i}>⭐</Flex>
+              else return <Flex key={i}><AiFillStar/></Flex>
+
+            })}
+
+            <Text ml="10px">{num? num + "/5": "0/5"}</Text>
+          </Flex>
+
+
   
           <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-50" w="full">Tu Estado</Text><br/>
 

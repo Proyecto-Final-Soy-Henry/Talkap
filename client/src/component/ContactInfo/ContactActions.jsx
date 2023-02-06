@@ -51,7 +51,7 @@ function ContactActions({user,my}) {
     <Flex justify="center" direction="column" >
 
         <Button onClick={()=>{dispatch(setAddressee(user))}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
-            <FiSend/> <Text >Enviar mensaje</Text>   
+            <FiSend color="#ff4f5a"/> <Text> Enviar mensaje </Text>   
         </Button>
 
         {friend?<Button onClick={()=>{sendMessage("deleteFriends",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
@@ -71,32 +71,30 @@ function ContactActions({user,my}) {
             <ImBlocked color='red'/><Text>Bloquear</Text>
         </Button>}
         
-        
-        <Button onClick={()=>{setStar(true)}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
-            <AiFillStar/> <Text>Calificar</Text>
-        </Button>
-      {star&&<> 
 
-<Flex  w="110px" mt="0px">
+    <Menu>
 
-  <Menu closeOnSelect={true}>
+    <MenuButton as={Button} display="flex" pl="1" justify={"left"} bg="none"  _hover={{bg:"none", color:"#ff4f5a"}}> <Flex alignItems="center" gap="3"> <AiFillStar color="#ff4f5a"/> <Text>Calificar</Text> </Flex> </MenuButton>
 
-    <MenuButton  as={Button}> {"Calificar⭐"} </MenuButton>
 
-    <MenuList minWidth='240px' >
+     <MenuList minWidth='240px' >
 
-      <MenuOptionGroup  type='radio'>
-        <MenuItemOption value={1} onClick={() =>{sendMessage("stars", {user, star:{star:1, email:my.email}})}}> 1</MenuItemOption>
-        <MenuItemOption value={2} onClick={()=>{sendMessage("stars", {user, star:{star:2, email:my.email}})}}> 2</MenuItemOption>
-        <MenuItemOption value={3} onClick={() =>{sendMessage("stars", {user, star:{star:3, email:my.email}})}}> 3</MenuItemOption>
-        <MenuItemOption value={4} onClick={()=>{sendMessage("stars", {user, star:{star:4, email:my.email}})}}> 4</MenuItemOption>
-        <MenuItemOption value={5} onClick={() =>{sendMessage("stars", {user, star:{star:5, email:my.email}})}}> 5</MenuItemOption>
-      </MenuOptionGroup>
+          <MenuOptionGroup  type='radio'>
+            <MenuItemOption value={1} onClick={() =>{sendMessage("stars", {user, star:{star:1, email:my.email}})}}> 1 ⭐</MenuItemOption>
+            <MenuItemOption value={2} onClick={()=>{sendMessage("stars", {user, star:{star:2, email:my.email}})}}> 2 ⭐⭐</MenuItemOption>
+            <MenuItemOption value={3} onClick={() =>{sendMessage("stars", {user, star:{star:3, email:my.email}})}}> 3 ⭐⭐⭐</MenuItemOption>
+            <MenuItemOption value={4} onClick={()=>{sendMessage("stars", {user, star:{star:4, email:my.email}})}}> 4 ⭐⭐⭐⭐</MenuItemOption>
+            <MenuItemOption value={5} onClick={() =>{sendMessage("stars", {user, star:{star:5, email:my.email}})}}> 5 ⭐⭐⭐⭐⭐</MenuItemOption>
+          </MenuOptionGroup>
 
-    </MenuList>
-  </Menu>
+        </MenuList>
+    </Menu>
 
-</Flex></>}
+
+
+
+
+
      
     </Flex>
   )
