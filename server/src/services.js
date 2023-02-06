@@ -308,11 +308,12 @@ async function setStars(user,star){
   let starsTotal =[]
   let starsDiv=[]
   let stars = 0
-  console.log(s)
-  user.starsTotal && (starsTotal = JSON.parse(user.starsTotal))
+  
+  user.starTotal && (starsTotal = JSON.parse(user.starTotal))
   
   if(starsTotal.some((e)=>{return e.email === star.email})){
   return
+  
   }else {
     starsTotal.push(star)
    
@@ -326,11 +327,11 @@ async function setStars(user,star){
     stars += element
   });
   stars = (stars /( starsDiv.length))
-
-   await User.update({stars,starTotal: starsTotal},{ where: { email : user.email } })
+  console.log(starsTotal)
+   await User.update({stars,starTotal: JSON.stringify(starsTotal)},{ where: { email : user.email } })
 
   my = await User.findByPk(star.email);
-   
+  console.log(user.starTotal) 
   return my
 }
 

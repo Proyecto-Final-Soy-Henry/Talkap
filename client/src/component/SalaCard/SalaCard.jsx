@@ -61,9 +61,9 @@ if(props.user.connected){
 
 }else{
   if(props.user.email !=="group@talkap"){
-    img = "imgA"
-    text = "textBoxA"
-    point = "puntoA"
+    img = "img"
+    text = "textBox"
+    point = "punto"
   }
 }
 
@@ -73,9 +73,6 @@ if(props.user.name.includes("@")){
       newName.push(props.user.name[i])   
   }   
   name1 = newName.join("")}
-
-
-
 
     return(
 
