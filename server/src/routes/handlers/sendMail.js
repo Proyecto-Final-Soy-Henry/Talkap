@@ -13,7 +13,7 @@ module.exports = async function sendMail(mail, typeMail) {
   const messageWelcome = {
     from: "talkaphenry@gmail.com",
     to: mail,
-    subject: "Bienvenidos a Talkap",
+    subject: "Bienvenido/a a Talkap",
     html: `<div
     style="
       background: linear-gradient(to right, #1d2671, #ff4e5b);
@@ -37,7 +37,7 @@ module.exports = async function sendMail(mail, typeMail) {
       src="https://i.postimg.cc/ydb9ddkX/Logo.png"
     />
     <h1 style="font-size: 30px; color: rgb(214, 214, 241); text-align: center">
-      ¡Bien venido a Talkap!
+      ¡Bienvenido a Talkap!
     </h1>
     <p
       style="
@@ -132,8 +132,7 @@ module.exports = async function sendMail(mail, typeMail) {
       Puede hacer que pierdas tu cuenta y todos tus datos registrados.
       <br />
       <br />
-      <strong style="color: #f00">AVISO</strong> Cualquier insulto a uno de los
-      desarrolladores de Talkap bloqueará tu cuenta permanentemente.
+      <strong style="color: #f00">AVISO</strong> Contáctate con nosotros para regularizar tu situación.
     </p>
   </div>`,
   };
