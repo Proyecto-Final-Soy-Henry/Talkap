@@ -96,7 +96,7 @@ if(props.user.name.includes("@")){
           }
           
           <div className="remove">
-            {notif && <EmailIcon  display="flex"  color= "#70e000" _hover={{color: "#007200"}}></EmailIcon>}
+            {notif && <EmailIcon  mt="-3vh"  color= "#70e000" _hover={{color: "#007200"}}></EmailIcon>}
           </div>
         </div>
 
