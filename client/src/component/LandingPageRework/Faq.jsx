@@ -112,7 +112,7 @@ function Faq() {
 
             </AccordionItem>
 
-            <AccordionItem bgColor="blackAlpha.500"  mb="15px">
+            <AccordionItem bgColor="blackAlpha.500">
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
                         ¿Cómo puedo crear una cuenta en Talkap?
@@ -130,14 +130,29 @@ function Faq() {
                         _hover={{bg:"#fe4e5b"}}
                         onClick={() => loginWithRedirect({ screen_hint: 'signup' })}> 
                     Aquí 
-                     </Button> o ingresar al botón "Registrarse" que aparece en la pantalla principal. podrás crear una cuenta con una direccion de email nueva o vincular tu cuenta de google. 
+                     </Button> o ingresar al botón "Registrarse" que aparece en la pantalla principal. podrás crear una cuenta con un email nuevo o vincular tu cuenta de google. 
                 </AccordionPanel>
 
             </AccordionItem>
 
+            <AccordionItem bgColor="blackAlpha.500" mb="15px">
+                <AccordionButton>
+                    <Box as="span" flex='1' textAlign='left'>
+                        ¿Cómo puedo donar a los creadores?
+                    </Box>
+                    <AccordionIcon />
+                </AccordionButton>
+
+                <AccordionPanel pb={5}>
+                   Para apoyarnos solo debes ingresar a Talkap y al lado de tu foto de perfil verás la opcion para donar, al darle click te redireccionara para completar el proceso.
+                </AccordionPanel>
+                </AccordionItem>
+
+               
+
 {/* ------------------------------------------------------------------------------------------ */}
 
-        <Text as="b" fontSize={"lg"} color="#fe4e5b" >Sobre mi cuenta</Text> 
+        <Text as="b" fontSize={"lg"} color="#fe4e5b">Sobre mi cuenta</Text> 
 
             <AccordionItem bgColor="blackAlpha.500" mt="15px">
 
@@ -194,6 +209,19 @@ function Faq() {
 
                 <AccordionPanel pb={5}>
                     Para bloquear a una persona en Talkap, solo debes clickear en su imagen de perfil, ir a la opción "ver perfil" y en la parte de abajo te aparecerá una opción para bloquear a ese usuario.
+                </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem bgColor="blackAlpha.500">
+                <AccordionButton>
+                    <Box as="span" flex='1' textAlign='left'>
+                        ¿Qué pasa si he sido baneado?
+                    </Box>
+                    <AccordionIcon />
+                </AccordionButton>
+
+                <AccordionPanel pb={5}>
+                   Cuando tu cuenta es baneada recibirás un correo de parte del equipo de Talkap dandote más detalles, puedes solicitar ser desbaneado respondiendo a ese mismo correo.
                 </AccordionPanel>
                 </AccordionItem>
 
