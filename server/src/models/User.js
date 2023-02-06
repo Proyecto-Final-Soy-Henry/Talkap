@@ -58,6 +58,12 @@ socket:{
 },
 banned:{
     type:DataTypes.JSON, 
+},
+stars:{
+    type:DataTypes.REAL
+},
+starTotal:{
+    type:DataTypes.JSON
 }
 
 

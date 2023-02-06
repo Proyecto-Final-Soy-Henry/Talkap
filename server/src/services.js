@@ -300,7 +300,39 @@ async function unBanned(my,user){
   return users;
 }
 
+//////////////////// calificar /////////////
 
+async function setStars(user,star){
+
+  let s = star
+  let starsTotal =[]
+  let starsDiv=[]
+  let stars = 0
+  console.log(s)
+  user.starsTotal && (starsTotal = JSON.parse(user.starsTotal))
+  
+  if(starsTotal.some((e)=>{return e.email === star.email})){
+  return
+  }else {
+    starsTotal.push(star)
+   
+    for (let i = 0; i < starsTotal.length; i++) {
+      
+      starsDiv.push(starsTotal[i].star)
+    }
+  }
+   
+  starsDiv.forEach(element => {
+    stars += element
+  });
+  stars = (stars /( starsDiv.length))
+
+   await User.update({stars,starTotal: starsTotal},{ where: { email : user.email } })
+
+  my = await User.findByPk(star.email);
+   
+  return my
+}
 
 module.exports = {
   updateBio,
@@ -320,5 +352,6 @@ module.exports = {
   upStatus,
   getAllMessages,
   setBanned,
-  unBanned
+  unBanned,
+  setStars
 };

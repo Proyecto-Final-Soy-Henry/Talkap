@@ -35,6 +35,8 @@ import {AiOutlineClose,} from 'react-icons/ai'
 import { BsBoxArrowInRight } from "react-icons/bs";
 import {GrStatusGoodSmall}from "react-icons/gr";
 import { useEffect } from 'react';
+import {BsInfoCircleFill} from 'react-icons/bs'
+
 
 function ProfileInfo() {
 
@@ -99,7 +101,7 @@ function ProfileInfo() {
       </ButtonGroup>
     ) : (
       <Flex justifyContent="center">
-        <IconButton size='sm' icon={<FaPencilAlt color='#FF4e5b'/>} {...getEditButtonProps()}/>
+        <IconButton size='sm' mt="10px" icon={<FaPencilAlt color='#FF4e5b'/>} {...getEditButtonProps()}/>
       </Flex>
     )
   }
@@ -127,9 +129,14 @@ function ProfileInfo() {
 
           <Divider mb="-6"/>
 
-          <Tooltip bg='gray.500' label='Será visible para tus contactos' placement='top-start'>
-            <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-20" w="full">Tu Nombre</Text>
-          </Tooltip>
+          
+            <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-20" w="full" >
+            <Tooltip bg='gray.500' label='Será visible para tus contactos' placement='top-start'>
+              Tu Nombre 
+            </Tooltip>
+            
+            </Text>
+          
 
           <Flex alignItems="center"/>
           <Editable
@@ -167,9 +174,12 @@ function ProfileInfo() {
           <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-10" w="full">Tu email</Text>
           <Text  as='abbr' fontSize='2xl' fontWeight="normal" color="gray.500">{currentUser.email}</Text>
 
+         
+          <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-10" w="full">
           <Tooltip bg='gray.500' label='¿Qué estás pensando?' placement='top-start'>
-          <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-10" w="full">Tu Bio</Text>
+            Tu Bio
           </Tooltip>
+          </Text>
           <Flex alignItems="center">
              <ProfileBioInfo/>
           </Flex>

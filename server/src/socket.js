@@ -16,7 +16,8 @@ const {
   upStatus,
   getAllMessages,
   setBanned,
-  unBanned
+  unBanned,
+  setStars
 } = require("./services.js");
 let io;
 
@@ -164,6 +165,18 @@ module.exports = function initialSocket(httpServer) {
 
       const info = await unBanned(my,user)
       socket.emit(my.email, { myData : info });
+    })
+
+    socket.on("stars",async({user,star})=>{
+    
+
+      const info = await setStars(user,star)
+
+      const allUsers = await getUsers();
+      socket.broadcast.emit("users", allUsers);
+      const my = await getMyData(user)
+      socket.broadcast.emit(my.email,{myData : my})
+      
     })
 
   });

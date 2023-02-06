@@ -66,7 +66,7 @@ function ProfileBioInfo() {
 
       ) : (
       <Flex justifyContent='center'>
-          <IconButton size='sm' icon={<FaPencilAlt color="#FF4e5b"/>} {...getEditButtonProps()} />
+          <IconButton  mt="10px" size='sm' icon={<FaPencilAlt color="#FF4e5b"/>} {...getEditButtonProps()} />
       </Flex>
       )
   }
@@ -78,10 +78,11 @@ function ProfileBioInfo() {
       fontSize='2xl'
       width="250px"
       isPreviewFocusable={true}
-      placeholder="Pon una descripcion para que los demas te conozcan"
+      placeholder="¡¡Estoy usando Talkap!!"
+
       >
-      <EditablePreview as='i' mr="4" textAlign="center" maxW="200" fontSize='md' fontWeight="medium" />
-      <Textarea as={EditableTextarea} fontSize='md' maxLength={"123"} fontWeight="medium" wrap='true' onChange={(e) => setBio(e.target.value)}/>
+      <EditablePreview as='i'  mr="4" textAlign="center" maxW="200" fontSize='md' fontWeight="medium" />
+      <Textarea as={EditableTextarea}  fontSize='md' maxLength={"123"} fontWeight="medium" wrap='true' onChange={(e) => setBio(e.target.value)}/>
       <EditableControls />
        
     </Editable>

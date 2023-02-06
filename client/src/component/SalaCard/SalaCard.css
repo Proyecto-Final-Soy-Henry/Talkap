@@ -9,9 +9,9 @@
      backdrop-filter: blur(10px);
     transition: 0.5s ease-in-out;
     box-shadow: 0px 0px 10px 1px #1d1d1d79;
-    margin-bottom: 2px; 
-  } 
-  
+    margin-bottom: 2px;
+  }
+
   .card:hover {
     cursor: pointer;
     
@@ -20,15 +20,14 @@
     border-radius: 10px;
   }
   .punto{
-    flex-direction:"";
+    
     position: absolute;
-    left: 92%;
-    bottom: 40%;
-    color: red;
     font-size: 40px;
+
   }
+   
   .puntoA{
-    flex-direction:"";
+   
     position: absolute;
     left: 92%;
     bottom: 40%;
@@ -40,8 +39,8 @@
     height: 50px;
     margin-left: 10px;
     border-radius: 10px;
-   
-    ;
+   box-shadow:0px 0px 8px 5px rgb(57, 254, 83)
+  
   }
   .img {
  
@@ -49,8 +48,26 @@
     height: 50px;
     margin-left: 10px;
     border-radius: 10px;
-   
+    box-shadow:0px 0px 8px 5px rgb(254, 57, 57); 
     
+  }
+  .imgG {
+ 
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    border-radius: 10px;
+     
+    
+  }
+  .textG{
+   
+    width: calc(100% - 90px);
+    margin-left: 10px;
+    color:#ff4f5a;
+    margin-bottom: 2vh;
+    
+    font-family: 'Poppins' sans-serif;
   }
   .imag-picture{
     width: 50px;

@@ -9,18 +9,34 @@ import {
   Box,
 
 }from '@chakra-ui/react'
+import { 
+  Button, 
+  MenuItemOption,
+  MenuOptionGroup,
+  MenuList,
+  Menu,
+  MenuButton,
+ 
+
+} from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import ContactActions from "./ContactActions";
 import {GrStatusGoodSmall}from "react-icons/gr";
+import { sendMessage } from "../../services/sockets";
+import {AiFillStar} from 'react-icons/ai'
 
 function ContactInfo() {
 
-    const user = useSelector(state => state.users.selected)
-    const my = useSelector(state => state.users.my)
-    
+  const user = useSelector(state => state.users.selected)
+  const my = useSelector(state => state.users.my)
+  const score = [1,2,3,4,5]
+  let num = 2
+
+
     return (
-  
+      
       <Flex justifyContent="center" minH="90vh" alignItems="center">
+      
   
         {user && user.name ?
         
@@ -54,11 +70,28 @@ function ContactInfo() {
               <Text as='i' mr="4" textAlign="center" maxW="200" fontSize='md' fontWeight="medium" >{user.bio ? user.bio : "¡¡Estoy usando Talkap!!"}</Text>
 
 
+              <Text fontSize="sm" color="#ff4f5a" fontWeight="bold" mb="-8" w="full">Calificación</Text>
+
+              <Flex alignItems={"center"} fontSize="18px">
+              {score.map(function(e , i) {
+                
+                if(e <= num) return <Flex key={i}><AiFillStar color="#ff4f5a"/> </Flex>
+                else return <Flex key={i}><AiFillStar/></Flex>
+
+              })}
+
+              <Text ml="10px">{num + "/5"}</Text>
+              </Flex>
+             
+             
+
               <Divider mb="-6"/>
+              <Text fontSize="sm" color="#ff4f5a" fontWeight="bold" mb="-8" w="full">Opciones</Text>
 
               <ContactActions user={user} my={my}/>
 
               <Divider mb="-6"/>
+                     
 
           </Flex>
           
