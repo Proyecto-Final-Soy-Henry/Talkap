@@ -43,8 +43,6 @@ function ContactInfo() {
     }
   }
    
-  console.log(myStar)
-
 
     return (
       
@@ -96,7 +94,17 @@ function ContactInfo() {
 
               <Text ml="10px">{num ? num + "/5" : "0/5"}</Text>
               </Flex>
-             
+              
+              <Flex mt="-15px">
+                
+                {myStar && 
+                  <Text as="cite">
+                    le diste {myStar.star} { myStar.star === 1 ? "estrella" : "estrellas"} a {user.name}
+                  </Text>
+                }
+                
+              </Flex>
+
 
               <Divider mb="-6"/>
               <Text fontSize="sm" color="#ff4f5a" fontWeight="bold" mb="-8" w="full">Opciones</Text>

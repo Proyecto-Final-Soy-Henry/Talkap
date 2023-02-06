@@ -5,7 +5,7 @@ import {ImBlocked} from 'react-icons/im'
 import {AiFillStar} from 'react-icons/ai'
 import {FiSend} from 'react-icons/fi'
 import { setAddressee } from '../../store/slices/users'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { sendMessage } from '../../services/sockets'
 import { useEffect } from 'react'
 import {CgCheckO} from 'react-icons/cg'
@@ -25,8 +25,21 @@ function ContactActions({user,my}) {
     const [banned, setbanned] = useState(false);
     const [friend,setFriend] = useState(false)
     const [star,setStar] = useState(false)
-    let bans = JSON.parse(my.banned)
-    
+    const users = useSelector(state => state.users.list)
+    const currentUser = users.find(e => e.email === user.email)
+
+  let myStar
+  let bans = JSON.parse(my.banned)
+
+  if(currentUser.starTotal){
+    let starT = JSON.parse(currentUser.starTotal)
+    if(starT.length > 0){
+      myStar = starT.find(e => e.email === my.email)
+    }
+  }
+
+  console.log(myStar)
+
     useEffect(()=>{
         if(bans){
             if(bans.some((e)=>{ return e === user.email})){
@@ -74,7 +87,7 @@ function ContactActions({user,my}) {
 
     <Menu>
 
-    <MenuButton as={Button} display="flex" pl="1" justify={"left"} bg="none"  _hover={{bg:"none", color:"#ff4f5a"}}> <Flex alignItems="center" gap="3"> <AiFillStar color="#ff4f5a"/> <Text>Calificar</Text> </Flex> </MenuButton>
+    <MenuButton as={Button} isDisabled={myStar && myStar.star ? true : false} display="flex" pl="1" justify={"left"} bg="none"  _hover={{bg:"none", color:"#ff4f5a"}}> <Flex alignItems="center" gap="3"> <AiFillStar color="#ff4f5a"/> <Text>Calificar</Text> </Flex> </MenuButton>
 
 
      <MenuList minWidth='240px' >
