@@ -35,15 +35,16 @@ import {AiOutlineClose,} from 'react-icons/ai'
 import { BsBoxArrowInRight } from "react-icons/bs";
 import {GrStatusGoodSmall}from "react-icons/gr";
 import { useEffect } from 'react';
+import {AiFillStar} from 'react-icons/ai'
 
 function ProfileInfo() {
 
   const { user, logout } = useAuth0();
   const [nombre, setNombre] = useState(user.nickname)
-  
   const currentUser = useSelector(state => state.users.my)
   const [status, setStatus] = useState()
-
+  const score = [1,2,3,4,5]
+  let num = currentUser.stars
 
 
   useEffect(()=>{
@@ -99,7 +100,7 @@ function ProfileInfo() {
       </ButtonGroup>
     ) : (
       <Flex justifyContent="center">
-        <IconButton size='sm' icon={<FaPencilAlt color='#FF4e5b'/>} {...getEditButtonProps()}/>
+        <IconButton size='sm' mt="10px" icon={<FaPencilAlt color='#FF4e5b'/>} {...getEditButtonProps()}/>
       </Flex>
     )
   }
@@ -115,7 +116,7 @@ function ProfileInfo() {
             borderRadius='full'
             border="1px"
             borderColor="#FF4e5b"
-            marginTop="10"
+            marginTop="2px"
             marginBottom="-5"
             boxSize='200px'
             objectFit='cover'
@@ -127,9 +128,14 @@ function ProfileInfo() {
 
           <Divider mb="-6"/>
 
-          <Tooltip bg='gray.500' label='Será visible para tus contactos' placement='top-start'>
-            <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-20" w="full">Tu Nombre</Text>
-          </Tooltip>
+          
+            <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-20" w="full" >
+            <Tooltip bg='gray.500' label='Será visible para tus contactos' placement='top-start'>
+              Tu Nombre 
+            </Tooltip>
+            
+            </Text>
+          
 
           <Flex alignItems="center"/>
           <Editable
@@ -143,6 +149,23 @@ function ProfileInfo() {
               <Input maxLength="20" minLength="3" as={EditableInput} fontSize='2xl' fontWeight="bold" onChange={(e) => setNombre(e.target.value)}/>
               <EditableControls />
           </Editable>
+
+
+        
+          <Text fontSize="sm" color="#ff4f5a" fontWeight="bold" mb="-8" w="full">Tu Calificación</Text>
+
+          <Flex alignItems={"center"} fontSize="18px">
+            {score.map(function(e , i) {
+              
+              if(e <= num) return <Flex key={i}>⭐</Flex>
+              else return <Flex key={i}><AiFillStar/></Flex>
+
+            })}
+
+            <Text ml="10px">{num? num + "/5": "0/5"}</Text>
+          </Flex>
+
+
   
           <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-50" w="full">Tu Estado</Text><br/>
 
@@ -150,13 +173,13 @@ function ProfileInfo() {
 
               <Menu closeOnSelect={true}>
             
-                <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> {status? <GrStatusGoodSmall color="#00FF00"></GrStatusGoodSmall>:<GrStatusGoodSmall color="	#FF0000"></GrStatusGoodSmall>} </MenuButton>
+                <MenuButton rightIcon={<IoMdArrowDropdown color="#FF4e5b" />} as={Button}> {status? <GrStatusGoodSmall color="#00FF00"/>:<GrStatusGoodSmall color="	#FF0000"/>} </MenuButton>
 
                 <MenuList minWidth='240px' >
 
                   <MenuOptionGroup  type='radio'>
-                    <MenuItemOption value="con" onClick={() =>{sendMessage("status", {user: currentUser, status: "con"})}}> Conectado</MenuItemOption>
-                    <MenuItemOption value="des"onClick={()=>{sendMessage("status", {user: currentUser, status: "des"})}}> Desconectado</MenuItemOption>
+                    <MenuItemOption value="con" onClick={() =>{sendMessage("status", {user: currentUser, status: "con"})}}> <Flex gap="2"  alignItems={"center"}> <GrStatusGoodSmall color="#00FF00"/> Conectado </Flex>  </MenuItemOption>
+                    <MenuItemOption value="des"onClick={()=>{sendMessage("status", {user: currentUser, status: "des"})}}> <Flex gap="2" alignItems={"center"}> <GrStatusGoodSmall color="	#FF0000"/> Desconectado</Flex></MenuItemOption>
                   </MenuOptionGroup>
 
                 </MenuList>
@@ -167,9 +190,12 @@ function ProfileInfo() {
           <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-10" w="full">Tu email</Text>
           <Text  as='abbr' fontSize='2xl' fontWeight="normal" color="gray.500">{currentUser.email}</Text>
 
+         
+          <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-10" w="full">
           <Tooltip bg='gray.500' label='¿Qué estás pensando?' placement='top-start'>
-          <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-10" w="full">Tu Bio</Text>
+            Tu Bio
           </Tooltip>
+          </Text>
           <Flex alignItems="center">
              <ProfileBioInfo/>
           </Flex>

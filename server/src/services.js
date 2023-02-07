@@ -304,6 +304,42 @@ async function setBlackList(email){
 return  await User.update({blacklist:boolean},{where:{email}});
 
 }
+//////////////////// calificar /////////////
+
+async function setStars(user,star){
+
+  let s = star
+  let starsTotal =[]
+  let starsDiv=[]
+  let stars = 0
+  
+  user.starTotal && (starsTotal = JSON.parse(user.starTotal))
+  
+  if(starsTotal.some((e)=>{return e.email === star.email})){
+  return
+  
+  }else {
+    starsTotal.push(star)
+   
+    for (let i = 0; i < starsTotal.length; i++) {
+      
+      starsDiv.push(starsTotal[i].star)
+    }
+  }
+   
+  starsDiv.forEach(element => {
+    stars += element
+  });
+  stars = Math.round(stars /( starsDiv.length))
+
+
+  console.log(starsTotal)
+   await User.update({stars,starTotal: JSON.stringify(starsTotal)},{ where: { email : user.email } })
+
+  my = await User.findByPk(star.email);
+  
+  return my
+}
 
 module.exports = {
   updateBio,
@@ -325,4 +361,5 @@ module.exports = {
   setBanned,
   unBanned,
   setBlackList,
+  setStars
 };
