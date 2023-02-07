@@ -52,6 +52,9 @@ export default function UserCard({ user, handle }) {
           <MdOutlineDangerous size="15px" color="red"></MdOutlineDangerous>
           
         </div>:(!email && (
+
+
+
         <div>
           {" "}
           <img
@@ -63,6 +66,7 @@ export default function UserCard({ user, handle }) {
             alt={name1}
           />
           <p>{name1}</p>
+          
         </div>
       ))}
       {}
