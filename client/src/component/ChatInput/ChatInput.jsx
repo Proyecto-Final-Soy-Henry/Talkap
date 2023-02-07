@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { ImFilePicture } from "react-icons/im";
 import {BiErrorCircle} from "react-icons/bi"
+import {HiMicrophone} from "react-icons/hi"
 import { Spinner } from "@chakra-ui/react";
 import {AudioRecorder,useAudioRecorder} from  'react-audio-voice-recorder'/// npm i react-audio-voice-recorder 
 import axios from 'axios' 
@@ -140,8 +141,8 @@ export default function ChatInput({ buttonHandler }) {
           recorderControls={recorderControls}
           />
          {audio&& 
-           <div>
-            <span style={{color:"white"}}>Audio listo para enviar</span>
+           <div className={style.audio}>
+            <HiMicrophone color="green"/>
             <button  type="button" onClick ={()=>setAudio(null)}>X</button>
           </div>
           }
