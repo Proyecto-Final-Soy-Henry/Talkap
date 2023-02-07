@@ -1,11 +1,11 @@
 import style from "./AboutUs.module.css";
-import coso6 from "../../assets/nosotros/6.png";
 import Guido from "../../assets/nosotros/Guido.jpg";
 import Renzo from "../../assets/nosotros/Renzo.jpg";
 import Nacho from "../../assets/nosotros/Nacho.jfif";
 import Joaquin from "../../assets/nosotros/Joaquin.jfif";
 import Vanessa from "../../assets/nosotros/Vane.jfif";
 import Ale from "../../assets/nosotros/Ale.jpg";
+import Joaco from "../../assets/nosotros/Joaco.jfif";
 import CardDeveloper from "./CardDeveloper";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -23,7 +23,7 @@ const DEVELOPERS = [
   { name: "Guido", img: Guido, facebook: "", gitHub: "", linkedin: "" },
   { name: "Ale", img: Ale, facebook: "", gitHub: "", linkedin: "" },
   { name: "Vannesa", img: Vanessa, facebook: "", gitHub: "", linkedin: "" },
-  { name: "Joa", img: coso6, facebook: "", gitHub: "", linkedin: "" },
+  { name: "Joaco", img: Joaco, facebook: "", gitHub: "", linkedin: "" },
 ];
 const AboutUs = () => {
   return (
