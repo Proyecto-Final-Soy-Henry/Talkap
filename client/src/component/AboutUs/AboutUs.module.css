@@ -1,7 +1,7 @@
 .aboutUsContainer {
   min-height: 100vh;
   background: #1d2671;
-  background: linear-gradient(90deg, #1d2671, #c33764);
+  background: linear-gradient(to right, #1d2671, #ff4e5b);
   color: rgb(205, 205, 216);
   overflow: hidden;
   user-select: none;
