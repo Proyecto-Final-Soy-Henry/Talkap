@@ -20,6 +20,10 @@ export default function Chat() {
     );
   });
 
+    message.sort((a,b)=>{
+      return a.id-b.id;
+    })
+
   const buttonHandler = (message, image, video, audio) => {
     if (message.trim() || image || video || audio) {
       sendMessage("chat", {
