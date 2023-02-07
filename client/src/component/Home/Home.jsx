@@ -3,7 +3,7 @@ import style from "./Home.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect,useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //IMPORTO LAS ACCIONES Y LES CAMBIO EL NOMBRE
 import {  setUserList as actionUserList } from "../../store/slices/users/index.js";
@@ -16,7 +16,7 @@ import Nav from "../Nav/Nav.jsx";
 import Chat from "../Chat/Chat.jsx";
 import RightHome from "../RightHome/RightHome";
 import Dashboard from "../Dashboard/Dashboard";
-
+import Loader from '../Loader/Loader.jsx';
 //IMPORT SERVICE
 import {
   listenUsers,
@@ -35,6 +35,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
+  const {my} = useSelector(state=>state.users)
 
   //EFECTO
   useEffect(() => {
@@ -75,6 +76,8 @@ export default function Home() {
   //RETURN COMPONENTE HOME
   return (
     <div className={style.home}>
+      {!my.name&&<div className={style.loader}><Loader/></div>}
+      { my.name&&<>
       {!modal&&user ? (
         <div className={style.chat}>
           <Nav handle={setModal} />
@@ -83,6 +86,8 @@ export default function Home() {
         </div>
       ) : null}
       {modal&&<Dashboard handle={setModal}/>}
+      </>}
+     
     </div>
   );
 }
