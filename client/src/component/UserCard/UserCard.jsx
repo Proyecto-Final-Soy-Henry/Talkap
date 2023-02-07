@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
 import "./UserCard.css";
+import { 
+  Flex,
+
+} from '@chakra-ui/react'
 
 import {MdOutlineDangerous} from 'react-icons/md'
 export default function UserCard({ user, handle }) {
@@ -37,7 +41,6 @@ export default function UserCard({ user, handle }) {
     <div key={name1} className="user-card">
 
       {banned && banned[0] === user.email ?<div className="banned">
-          {" "}
           
           <img
             onClick={() => {
@@ -45,15 +48,14 @@ export default function UserCard({ user, handle }) {
             }}
             className={conne}
             src={user.picture}
-            alt={name1}
+            
           />
           
           <p>{name1}</p>
           <MdOutlineDangerous size="15px" color="red"></MdOutlineDangerous>
           
         </div>:(!email && (
-        <div>
-          {" "}
+        <Flex direction="column" alignItems="center">
           
           <img
             onClick={() => {
@@ -61,10 +63,10 @@ export default function UserCard({ user, handle }) {
             }}
             className={conne}
             src={user.picture}
-            alt={name1}
+           
           />
           <p>{name1}</p>
-        </div>
+        </Flex>
       ))}
       {}
     </div>
