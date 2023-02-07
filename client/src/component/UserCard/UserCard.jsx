@@ -66,7 +66,7 @@ export default function UserCard({ user, handle }) {
           
         </div>
       ))}
-      {}
+      {} 
     </div>
   );
 }
