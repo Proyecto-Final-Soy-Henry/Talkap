@@ -11,7 +11,6 @@ export const errorMessageNull=()=>{
 }
 export const errorExit = ()=>{
     const msjError= {
-        icon: "warning",
         title: '¿Estás segúro de desconectarte?',
         
         buttons: {

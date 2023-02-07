@@ -1,24 +1,23 @@
-.home{
-  display:flex;
+.home {
+  display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/fondo1.png")
- 
+  background-image: url("../../assets/fondo1.png");
+
+  position: fixed;
 }
-.chat{
+.chat {
   width: 100%;
   height: 100%;
   display: flex;
-
 }
-.home{
-
+.home {
   width: 100%;
   height: 100vh;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  }
+}

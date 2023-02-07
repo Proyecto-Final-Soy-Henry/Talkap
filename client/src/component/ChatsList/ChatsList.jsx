@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { setAddressee } from "../../store/slices/users/index.js";
 import { useDispatch } from "react-redux";
 import SalaCard from "../SalaCard/SalaCard";
-
 export default function ChatsList() {
   const dispatch = useDispatch();
   const handle = (user) => {
@@ -61,10 +60,8 @@ export default function ChatsList() {
     })
 
   return (
-
-
-    <div className="user-list" style={{width:"100%"}}>
-      {banFilter?.map((user, index) => {
+    <div className="userListContainer">
+      {listUser?.map((user, index) => {
         const message = messages.filter((msj) => {
           // msj.user !== my.email ? noti = true : noti = false
 
@@ -76,7 +73,6 @@ export default function ChatsList() {
         //
 
         let lastMessage = [];
-        
         lastMessage.push(message[message.length - 1]);
 
 

@@ -1,10 +1,17 @@
-/* .App{
+.swal-overlay {
+    background-color: rgba(0, 0, 0, 0.801);
+  }
+  .swal-modal {
+    background-color:#FF4e5b;
+    
+  }
+  .swal-title {
+    margin: 0px;
+    color: white;
+   
+  }
+  .swal-button {
 
-  width: 100%;
-  height: 100vh;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  } */
+    background-color: white;
+    color: black;
+  }

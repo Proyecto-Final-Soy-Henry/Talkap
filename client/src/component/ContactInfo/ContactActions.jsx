@@ -64,7 +64,7 @@ function ContactActions({user,my}) {
     <Flex justify="center" direction="column" >
 
         <Button onClick={()=>{dispatch(setAddressee(user))}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
-            <FiSend color="#ff4f5a"/> <Text> Enviar mensaje </Text>   
+            <FiSend color="#8338ec"/> <Text> Enviar mensaje </Text>   
         </Button>
 
         {friend?<Button onClick={()=>{sendMessage("deleteFriends",{user,my})}} bg="none" _hover={{bg:"none", color:"#ff4f5a"}} display={"flex"} pl="1" gap="3" justifyContent={"left"}>
@@ -87,7 +87,7 @@ function ContactActions({user,my}) {
 
     <Menu>
 
-    <MenuButton as={Button} isDisabled={myStar && myStar.star ? true : false} display="flex" pl="1" justify={"left"} bg="none"  _hover={{bg:"none", color:"#ff4f5a"}}> <Flex alignItems="center" gap="3"> <AiFillStar color="#ff4f5a"/> <Text>Calificar</Text> </Flex> </MenuButton>
+    <MenuButton as={Button} isDisabled={myStar && myStar.star ? true : false} display="flex" pl="1" justify={"left"} bg="none"  _hover={{bg:"none", color:"#ff4f5a"}}> <Flex alignItems="center" gap="3"> <AiFillStar color="#ffbe0b"/> <Text>Calificar</Text> </Flex> </MenuButton>
 
 
      <MenuList minWidth='240px' >

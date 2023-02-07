@@ -1,9 +1,8 @@
-const {Router} = require('express');
+const { Router } = require("express");
 
 const router = Router();
-const handleOneUser = require('./handlers/handleCurrentUser.js');
+const handleOneUser = require("./handlers/handleCurrentUser.js");
 
+router.get(`/users/:email`, handleOneUser);
 
-router.get(`/users/:email`, handleOneUser)
-
-module.exports =  router;
+module.exports = router;

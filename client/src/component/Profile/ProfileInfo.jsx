@@ -44,8 +44,22 @@ function ProfileInfo() {
   const currentUser = useSelector(state => state.users.my)
   const [status, setStatus] = useState()
   const score = [1,2,3,4,5]
+
+
+
   let num = currentUser.stars
 
+  let name1 = currentUser.name
+
+  if(currentUser.name){
+  if (currentUser.name.includes("@")) {
+    let newName = [];
+    for (let i = 0; currentUser.name[i] !== "@"; i++) {
+      newName.push(currentUser.name[i]);
+    }
+    name1 = newName.join("");
+  }
+  }
 
   useEffect(()=>{
     if(currentUser.connected){
@@ -82,7 +96,9 @@ function ProfileInfo() {
         updateInfo(user.email, nombre)
       }
     }
-      
+
+  
+   
     return isEditing ? (
 
       <ButtonGroup justifyContent='center' size='sm' gap="10px">
@@ -121,7 +137,7 @@ function ProfileInfo() {
             boxSize='200px'
             objectFit='cover'
             src={currentUser.picture}
-            alt={currentUser.name}
+            
           />
 
           <ProfileImg/>
@@ -140,7 +156,7 @@ function ProfileInfo() {
           <Flex alignItems="center"/>
           <Editable
             textAlign='center'
-            defaultValue={currentUser.name}
+            defaultValue={name1}
             fontSize='2xl'
             width="230px"
             isPreviewFocusable={true}

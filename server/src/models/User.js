@@ -59,17 +59,20 @@ socket:{
 banned:{
     type:DataTypes.JSON, 
 },
+blacklist:{
+    type:DataTypes.BOOLEAN,
+    defaultValue:false,
+},
 stars:{
     type:DataTypes.REAL
 },
 starTotal:{
     type:DataTypes.JSON
+},
+donor:{
+    type:DataTypes.BOOLEAN,
+    defaultValue:false
 }
-
-
-//comentario
-//comentario dos
-//comentario tres
 
 
 });

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+.card{
+    width: 300px;
+    height: 250px;
+    background-color: rgb(219, 214, 207);
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 2px rgba(102, 104, 102, 0.898);
+    font-family: 'Roboto Mono', monospace;
+    font-style: italic;
+}
+.card img {
+    width: 70px;
+    height: 70px;   
+    margin-bottom: 2px;
+    border-radius: 50px;
+    margin: 3px;
+    
+}
+
+.card button{
+    margin: 10px;
+    width: 100px;
+    font-family: 'Roboto Mono', monospace;
+     font-style: italic;
+    border-radius: 6px;
+    color:rgb(255, 255, 255);
+    justify-content: center;
+    user-select: none;
+    cursor:pointer;
+    text-align: center;
+}
+
+.card button:hover{
+    transition:all ease 0.5s;
+    /* background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0); */
+    transform: scale(0.95);
+   
+}
+
+.card button:active {
+    transform: scale(0.90);
+    /* cuando se hace click, se achica el tamaño*/
+    /* Scaling button to 0.98 to its original size */
+
+}
+
+.baned{
+    background-color: rgb(255, 48, 48);
+}
+.unbaned{
+    background-color: rgb(38, 165, 38);
+}
