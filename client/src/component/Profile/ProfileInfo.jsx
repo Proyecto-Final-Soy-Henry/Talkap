@@ -44,8 +44,14 @@ function ProfileInfo() {
   const currentUser = useSelector(state => state.users.my)
   const [status, setStatus] = useState()
   const score = [1,2,3,4,5]
+
+
+
   let num = currentUser.stars
-  let name1 = currentUser
+
+  let name1 = currentUser.name
+
+  if(currentUser.name){
   if (currentUser.name.includes("@")) {
     let newName = [];
     for (let i = 0; currentUser.name[i] !== "@"; i++) {
@@ -53,7 +59,7 @@ function ProfileInfo() {
     }
     name1 = newName.join("");
   }
-  console.log(name1)
+  }
 
   useEffect(()=>{
     if(currentUser.connected){
