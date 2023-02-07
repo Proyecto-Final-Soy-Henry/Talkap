@@ -7,7 +7,7 @@ import {
   Text,
   Heading,
   Box,
-
+  Avatar
 }from '@chakra-ui/react'
 import { 
   Button, 

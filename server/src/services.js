@@ -178,6 +178,7 @@ async function setMessage(msj) {
   return result;
 }
 
+
 async function handleExit({ email }) {
   await User.update({ connected: false }, { where: { email } });
   console.log("usuario :" + email + " - desconectado");

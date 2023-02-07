@@ -37,7 +37,7 @@ const UserList = () => {
   }, [list, dispatch]);
 
   return (
-    <div className={style.userList}>
+    <div className={style.userList}> 
       <Select
         onChange={(e) => {
           handleInputChange(e);
