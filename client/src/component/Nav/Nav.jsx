@@ -36,35 +36,41 @@ export default function Nav({handle}) {
 
       <Flex direction={{base:"column", lg:"row"}} p="3px" mb="20px" justify="space-between" alignItems="center"> 
         <Profile />
-        {my.type==='admin'&&<Flex>
-        <Button 
-          leftIcon={<MdBuild />} 
-          colorScheme='gray' 
-          color="white"
-          _hover={{color:"black", bg:"white"}}
-          variant='outline' 
-          size='sm'
-          mt="10px"
-          mr="10px"
-          onClick={()=>{handle(true)}}
-          >
-          Admin
-          </Button>
-       </Flex>}
+        {my.type === "admin" && (
+          <Flex>
+            <Button
+              leftIcon={<MdBuild />}
+              colorScheme="gray"
+              color="white"
+              _hover={{ color: "black", bg: "white" }}
+              variant="outline"
+              size="sm"
+              mt="10px"
+              mr="10px"
+              onClick={() => {
+                handle(true);
+              }}
+            >
+              Admin
+            </Button>
+          </Flex>
+        )}
       </Flex>
     
 
-    <Flex justify="center">
-      <Text as="b" color="white" > Chats Activos </Text>
-    </Flex>
-
+      <Flex justify="center">
+        <Text as="b" color="white">
+          {" "}
+          Chats Activos{" "}
+        </Text>
+      </Flex>
 
       <Flex mx="2">
         <ChatsList />
       </Flex>
        
 
-      <Flex justifyContent={"center"} bg="red">
+      {/* <Flex justifyContent={"center"} bg="red">
       <Button
             onClick={handler}
             bg="#FF4e5b"
@@ -78,7 +84,7 @@ export default function Nav({handle}) {
           >
             Cerrar Sesión   
         </Button>
-      </Flex>
+      </Flex> */}
 
     </Flex>
   );

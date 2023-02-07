@@ -63,6 +63,7 @@ export default function UserCard({ user, handle }) {
             alt={name1}
           />
           <p>{name1}</p>
+          
         </div>
       ))}
       {}
