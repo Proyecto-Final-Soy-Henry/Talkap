@@ -52,7 +52,7 @@ export default function UserCard({ user, handle }) {
           <MdOutlineDangerous size="15px" color="red"></MdOutlineDangerous>
           
         </div>:(!email && (
-        <div>
+        <div className="user-card">
           {" "}
           <img
             onClick={() => {

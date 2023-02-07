@@ -7,18 +7,8 @@ import {
   Text,
   Heading,
   Box,
-
+  Avatar
 }from '@chakra-ui/react'
-import { 
-  Button, 
-  MenuItemOption,
-  MenuOptionGroup,
-  MenuList,
-  Menu,
-  MenuButton,
- 
-
-} from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import ContactActions from "./ContactActions";
 import {GrStatusGoodSmall}from "react-icons/gr";
@@ -53,7 +43,7 @@ function ContactInfo() {
         
           <Flex direction="column" alignSelf={'flex-start'} alignItems="center" gap="10" >
             
-            <Image
+            <Avatar
               borderRadius='full'
               border="1px"
               borderColor="#fe4e5b"
