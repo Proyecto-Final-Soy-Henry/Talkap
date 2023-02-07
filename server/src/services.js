@@ -2,6 +2,7 @@
 const { User, Message } = require("./db");
 const sendMail = require('./routes/handlers/sendMail.js')
 const cloudinary = require("cloudinary").v2;
+const stripe = require("stripe") ("sk_test_51MUvUdLFWXfNVGMT22fgX4hLo2hDVGvPUYl3ZhvFyrAOkcMHZkYuRVEbUwAx54HG2QlaX9RIp3Bcd6wRpQkvGiQv00gal07pBB");
 
 cloudinary.config({
   //configuramos cloudinary
@@ -27,7 +28,12 @@ async function validatorUser(user, socket) {
   //desestructuro props
   const { email, name, picture } = user;
   //valida si existe en mi DB
+  
+  const donadores = await Donadores()
   const value = await User.findByPk(email);
+  await donadores.forEach(i=>{
+    SetDonor(i)
+  })
   if (!value) {
     //Users admins
     const admins = [
@@ -51,6 +57,7 @@ async function validatorUser(user, socket) {
       connected: true,
       type: typeUser,
       socket,
+      donor:donadores.includes(email)
     }).catch((error) => {
       console.log("");
     });
@@ -339,7 +346,99 @@ async function setStars(user,star){
   my = await User.findByPk(star.email);
   
   return my
+
+  
 }
+///////////donaciones
+
+async function SetDonor(email){//establecemos donador
+
+
+  const newDonor= await User.update(
+   {donor:true},
+   {where:{email:email}}
+  )
+  return newDonor
+}
+async function Donadores(){
+ 
+   
+   const paylist = await stripe.charges.list({ limit: 1000 })//traemos lista de las ultimas 1000 donaciones
+   const filtrado = paylist.data.map(i=>{
+      return{
+        name:i.billing_details.name,
+        email:i.billing_details.email,
+        created:new Date(i.created * 1000)
+      }
+   }).filter(i=>i.name||i.email)//nos quedamos con el nombre , mail, y fecha de donacion
+ 
+   const donadores =  filtrado.filter((item, index, self) => 
+   self.findIndex(t => t.email === item.email) === index
+ );///sacamos los repetidos(solo nos interes quienes donaron alguna vez en este caso)
+  
+ const cambiar = await donadores.forEach( i => {
+    SetDonor(i.email)
+ });///por cada donador nos fijamos el mail y en nuestro usuarios quienes coincidan le cambiamos su propiedad donador a true
+
+ const emails = donadores.map(i=>i.email)///nos quedamos solo con el mail de cada donador 
+ // console.log(emails) por si quieren ver todos los donadores
+ return emails
+}
+
+async function getUsertodonate(email) {//usuarios que van a donar 
+ const Donors = await User.findOne({
+   where:{
+     email:email,
+     donor:false,
+   }
+ });
+
+ return Donors;
+}
+async function getDonors(email) {///para obtener donadores true
+ const Donors = await User.findAll({
+   where:{
+     email:email,
+     donor:true
+   }
+ });
+
+ return Donors;
+}
+
+async function getlastDonates(){
+ const paylist = await stripe.charges.list({ limit: 1000 })//nos quedamos con las ultimas 1000 donaciones
+ const filtrado = paylist.data.map(i=>{
+    return{
+      name:i.billing_details.name,
+      email:i.billing_details.email,
+      created:new Date(i.created * 1000)
+    }///nos quedamos con los nombres , mails y FECHAS DE DONACION,
+ }).filter(i=>i.name||i.email)//eliminamos los null(donadores anonimos)
+ return filtrado
+}
+
+const getClosestObject = (objects, currentTime) => {///funcion que va a recibir al objeto de donadores y en base a su fecha y hora hara una comparacion
+ const sortedObjects = objects.filter(object => { /// se quedara con el ultimo donador , o ultima donacion del usuario que luego le digamos, 
+   const timeDiff = currentTime - new Date(object.created);//la idea es que en base a una comparacion nos enteremos que X usuario hizo una donacion hace menos de un minuto
+   return timeDiff < 60 * 1000;                            //y en base a eso devolvemos el mensaje de gracias por donar(menos de un minuto ya que al donar redirige al home y ahi ve el mensaje) 
+ }).sort((a, b) => {
+   const timeDiffA = Math.abs(currentTime - new Date(a.created));
+   const timeDiffB = Math.abs(currentTime - new Date(b.created));
+   
+   return timeDiffA - timeDiffB;
+ });
+ 
+ return sortedObjects[0];//retornamos la donacion de un usuario espesifico , mas reciente(falta mejorar pero esta funcional, faltaria ajustar el rango de error para que sea minimo)
+};
+
+// async function updatedonor(email){///no funcional pero podria servir para un servicio premium mas adelante, y darle la baja si no paga xd
+//   const newDonor= await User.update(
+//    {donor:false},
+//    {where:{email:email}}
+//   )
+//   return newDonor
+// }
 
 module.exports = {
   updateBio,
@@ -361,5 +460,11 @@ module.exports = {
   setBanned,
   unBanned,
   setBlackList,
-  setStars
+  setStars,
+  getDonors,
+  SetDonor,
+ Donadores,
+ getUsertodonate,
+ getlastDonates,
+ getClosestObject,
 };

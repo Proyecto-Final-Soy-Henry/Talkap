@@ -68,6 +68,10 @@ stars:{
 },
 starTotal:{
     type:DataTypes.JSON
+},
+donor:{
+    type:DataTypes.BOOLEAN,
+    defaultValue:false
 }
 
 
