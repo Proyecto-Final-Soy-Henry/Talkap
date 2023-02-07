@@ -64,7 +64,7 @@ export default function Nav({handle}) {
       </Flex>
        
 
-      <Flex justifyContent={"center"} bg="red">
+      {/* <Flex justifyContent={"center"} bg="red">
       <Button
             onClick={handler}
             bg="#FF4e5b"
@@ -78,7 +78,7 @@ export default function Nav({handle}) {
           >
             Cerrar Sesión   
         </Button>
-      </Flex>
+      </Flex> */}
 
     </Flex>
   );

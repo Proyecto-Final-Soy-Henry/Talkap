@@ -3,8 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterUsers, setAddressee } from "../../store/slices/users/index";
 import { useEffect, useState } from "react";
 import StylingUserList from "./StylingUserList";
-import { Box, Input, InputGroup, Flex, InputRightElement, Select, Text } from "@chakra-ui/react";
-import {FaSearch} from 'react-icons/fa'
+import {
+  Box,
+  Input,
+  InputGroup,
+  Flex,
+  InputRightElement,
+  Select,
+  Text,
+} from "@chakra-ui/react";
+import { FaSearch } from "react-icons/fa";
 import UserCard from "../UserCard/UserCard";
 const UserList = () => {
   const [input, setInput] = useState();
@@ -29,7 +37,7 @@ const UserList = () => {
   }, [list, dispatch]);
 
   return (
-    <div className={style.userList}> 
+    <div className={style.userList}>
       <Select
         onChange={(e) => {
           handleInputChange(e);
@@ -37,32 +45,41 @@ const UserList = () => {
         color="white"
         focusBorderColor="#FF4e5b"
       >
-        <option _hover={{bg:"green"}} style={{ backgroundColor:"#222222", }} value="all">Todos</option>
-        <option style={{ backgroundColor:"#222222" }} value="connected">Conectados</option>
-        <option style={{ backgroundColor:"#222222" }} value="disconnected">Desconectados</option>
+        <option
+          _hover={{ bg: "green" }}
+          style={{ backgroundColor: "#222222" }}
+          value="all"
+        >
+          Todos
+        </option>
+        <option style={{ backgroundColor: "#222222" }} value="connected">
+          Conectados
+        </option>
+        <option style={{ backgroundColor: "#222222" }} value="disconnected">
+          Desconectados
+        </option>
       </Select>
 
-      <form >
+      <form>
+        <Flex justify="center">
+          <InputGroup>
+            <Input
+              color="white"
+              placeholder="Buscar..."
+              onChange={handleInput}
+              value={input}
+              type="search"
+              mb="20px"
+              focusBorderColor="#FF4e5b"
+              style={{ caretColor: "white" }}
+            />
 
-      <Flex justify="center">
-      <InputGroup>
-      <Input 
-      color="white"
-        placeholder='Buscar...' 
-        onChange={handleInput}
-        value={input}
-        type="search"
-        mb="20px"
-        focusBorderColor="#FF4e5b"
-        style={{caretColor:"white"}}
-      />
-
-<InputRightElement children={<FaSearch color="#FF4e5b"/>} />
-</InputGroup>
-</Flex>
-</form>
+            <InputRightElement children={<FaSearch color="#FF4e5b" />} />
+          </InputGroup>
+        </Flex>
+      </form>
       <div>
-        <div>
+        <div className={style.users}>
           {input
             ? listCopy
                 .filter((user) => {
@@ -72,37 +89,39 @@ const UserList = () => {
                     searchUser && user.name.toUpperCase().startsWith(searchUser)
                   );
                 })
-                .map((user) => 
-                 
-                 { if(user.email !== "group@talkap" ){
-                   return( <div key={user.id} id={user.name}>
-                    <StylingUserList
-                      user={user}
-                      handle={() => {
-                        console.log("click");
-                      }}
-                    />
-                   </div>)
-               }else{
-               return <UserCard user={user} handle={handle}/>
-               } }
-                )
+                .map((user) => {
+                  if (user.email !== "group@talkap") {
+                    return (
+                      <div key={user.id} id={user.name}>
+                        <StylingUserList
+                          user={user}
+                          handle={() => {
+                            console.log("click");
+                          }}
+                        />
+                      </div>
+                    );
+                  } else {
+                    return <UserCard user={user} handle={handle} />;
+                  }
+                })
             : listCopy &&
-              listCopy.map((user) => 
-                 
-              { if(user.email !== "group@talkap" ){
-                return( <div key={user.id} id={user.name}>
-                 <StylingUserList
-                   user={user}
-                   handle={() => {
-                     console.log("click");
-                   }}
-                 />
-                </div>)
-            }else{
-            return <UserCard user={user} handle={handle}/>
-            } }
-             )}
+              listCopy.map((user) => {
+                if (user.email !== "group@talkap") {
+                  return (
+                    <div key={user.id} id={user.name}>
+                      <StylingUserList
+                        user={user}
+                        handle={() => {
+                          console.log("click");
+                        }}
+                      />
+                    </div>
+                  );
+                } else {
+                  return <UserCard user={user} handle={handle} />;
+                }
+              })}
         </div>
       </div>
     </div>

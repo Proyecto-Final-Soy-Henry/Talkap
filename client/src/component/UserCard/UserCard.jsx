@@ -54,6 +54,7 @@ export default function UserCard({ user, handle }) {
         </div>:(!email && (
         <div>
           {" "}
+          
           <img
             onClick={() => {
               handle(user);
