@@ -19,6 +19,8 @@
     }
 
 .container img {
+    width: 100px;
+    height: 100px;
         position: fixed;
     margin-left: 25%;
     width: 6vh;

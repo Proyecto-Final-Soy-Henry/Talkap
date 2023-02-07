@@ -184,6 +184,7 @@ module.exports = function initialSocket(httpServer) {
 
       const allUsers = await getUsers();
       socket.broadcast.emit("users", allUsers);
+      socket.emit("users", allUsers)
       const my = await getMyData(user)
       socket.broadcast.emit(my.email,{myData : my})
       
