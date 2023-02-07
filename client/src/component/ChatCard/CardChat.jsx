@@ -37,6 +37,8 @@ export default function ChatCard({ picture, email, name }) {
         <img alt={email} src={picture} />
         <p>{name1.toUpperCase()}</p>
       </div>
+      <div></div>{" "}
+      {/*este div no tiene nada pero no lo quiten porque si hace algo aunque no paresca*/}
     </div>
     // </div>
   );
