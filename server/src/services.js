@@ -223,7 +223,11 @@ async function updateFriends(user, my) {
 
 async function deleteFriend(user, my) {
   const dataUser = await User.findByPk(my.email);
-  let friends = JSON.parse(dataUser.dataValues.friends);
+  let friends = []
+  if(dataUser.dataValues){
+   friends = JSON.parse(dataUser.dataValues.friends);
+  }
+ 
 
   let filterFriend = friends.filter((e) => {
     return e.email !== user.email;
