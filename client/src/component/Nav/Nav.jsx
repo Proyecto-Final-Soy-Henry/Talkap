@@ -71,7 +71,7 @@ export default function Nav({ handle }) {
 
 
           <Flex justify="center">
-            <Text as="b" color="white" > Chats Activos </Text>
+            <Text as="b" color="white" mb="20px"> Chats Activos </Text>
           </Flex>
 
 
