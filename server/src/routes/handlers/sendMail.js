@@ -96,7 +96,7 @@ module.exports = async function sendMail(mail, typeMail) {
     subject: "Baneo de cuenta",
     html: `<div
     style="
-      background: linear-gradient(to right, #0b0f2e, #72080f);
+      background: linear-gradient(to right, #121318, #0e0d0f);
       height: 100vh;
       align-items: center;
       width: 500px;
@@ -108,13 +108,13 @@ module.exports = async function sendMail(mail, typeMail) {
   >
     <img
       style="
-        width: 170px;
+        width: 400px;
         position: relative;
-        margin-left: 170px;
+        margin-left: 60px;
         margin-top: 20px;
-        margin-bottom: 20px;
+        /* margin-bottom: 10px; */
       "
-      src="https://i.postimg.cc/ydb9ddkX/Logo.png"
+      src="https://i.postimg.cc/RFGg9gcD/logo-2.png"
     />
     <h1 style="font-size: 25px; color: rgb(250, 0, 0); text-align: center">
       Tu cuenta has sido <strong>Baneada</strong>
@@ -127,12 +127,13 @@ module.exports = async function sendMail(mail, typeMail) {
         letter-spacing: 1px;
       "
     >
-      En <strong>Talkap</strong> permitimos muchas cosas, pero insultar a
-      personas, compartir contenido explicito, sexual y que se yo cuanto...
-      Puede hacer que pierdas tu cuenta y todos tus datos registrados.
+      En <strong>Talkap</strong> permitimos muchas cosas pero...<br />
+      insultar apersonas, compartir contenido explicito, sexual y que se yo
+      cuanto... Puede hacer que pierdas tu cuenta y todos tus datos registrados.
       <br />
       <br />
-      <strong style="color: #f00">AVISO</strong> Contáctate con nosotros para regularizar tu situación.
+      <strong style="color: #f00">AVISO:</strong> Contáctate con nosotros mediante
+      esta mail para regularizar tu situación.
     </p>
   </div>`,
   };
