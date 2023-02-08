@@ -133,3 +133,27 @@
   background: #ff4f5ba2;
   border-radius: 10px;
 }
+
+.divMensMeAudio {
+  margin-left: 40%;
+  text-align: right;
+  margin-bottom: 15px;
+  border-radius: 10px 0px 15px 10px;
+
+}
+@media screen and (max-width: 600px) {
+  .divMensMe audio{
+    width: 100px;
+  }
+  .divMens audio{
+    width: 100px;
+  }
+}
+@media screen and (max-width: 1527px) {
+  .divMensMe audio{
+    width: 100px;
+  }
+  .divMens audio{
+    width: 100px;
+  }
+}
