@@ -8,6 +8,8 @@ import {sendMessage} from '../../services/sockets'
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import style from "./Nav.module.css";
+
 export default function Nav({handle}) {
 
   const { user, logout } = useAuth0();
@@ -25,10 +27,10 @@ export default function Nav({handle}) {
   };
 
   return (
+    <div className={style.container}>
     <Flex
       justifyContent="flex-start"
       flexDirection={"column"}
-      minW="18%"
       bg="#232223"
       direction="column"
       gap="3" 
@@ -81,5 +83,6 @@ export default function Nav({handle}) {
       </Flex> */}
 
     </Flex>
+    </div>
   );
 }

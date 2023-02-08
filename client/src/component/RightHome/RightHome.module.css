@@ -1,0 +1,81 @@
+.container {
+    width: 19%;
+    height: 100vh;
+    background-color: #2322239c;
+}
+
+@media screen and (max-width: 1400px) {
+    .container {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .container {
+        width: 25%;
+    }
+}
+
+.rightHead {
+    position: absolute;
+    top: -700px;
+    left: -2000px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.rightHead.active {
+    z-index: 1;
+    background-color: #2b2a2b;
+    width: 30%;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    margin-left: 0;
+    margin-right: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 1400px) {
+    .container {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .buttonRight {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .rightHead {
+        position: initial;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .container {
+        width: 7%;
+        background-color: transparent;
+        margin-left: 0;
+        margin-right: 1%;
+        margin-top: 2%;
+    }
+
+    .buttonRight {
+        z-index: 2;
+    }
+}

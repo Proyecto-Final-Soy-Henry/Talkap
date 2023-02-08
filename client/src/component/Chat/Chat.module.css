@@ -4,10 +4,23 @@
   width: 75%;
   height: 100%;
   /* background: linear-gradient(to right,#C33764,#1D2671); */
- 
+
 }
 
 .chat img {
   max-width: 80%;
   max-height: 80%;
+}
+
+@media screen and (max-width: 1400px) {
+  .chat {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .chat {
+    width: 60%;
+    margin-left: 2%;
+  }
 }

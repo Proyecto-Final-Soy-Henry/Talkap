@@ -40,8 +40,6 @@ export default function ChatRender({ menssages }) {
             "https://res.cloudinary.com/daekdf1sh/image/private"
           )
         ) {
-          video = false;
-          audio = false;
           img = true;
         } else if (
           msj.message.includes(
@@ -49,12 +47,8 @@ export default function ChatRender({ menssages }) {
           ) &&
           !msj.message.includes("audioschatapp")
         ) {
-          img = false;
-          audio = false;
           video = true;
         } else if (msj.message.includes("audioschatapp75281abc.mp3")) {
-          img = false;
-          video = false;
           audio = true;
         } else {
           img = false;
@@ -120,21 +114,21 @@ export default function ChatRender({ menssages }) {
 
           return (
             <div key={index}>
-                {img ? (
-                  <div className="divMens">
-                    <img onClick={handleSrcImg} src={msj.message} alt="" />
-                    {prev ? (
-                      <img
-                        onClick={handlePrev}
-                        className="imgOther"
-                        src={link}
-                        alt=""
-                      />
-                    ) : (
-                      <span></span>
-                    )}
-                    <span className="span">enviado por {name1}</span>
-                  </div>
+              {img ? (
+                <div className="divMens">
+                  <img onClick={handleSrcImg} src={msj.message} alt="" />
+                  {prev ? (
+                    <img
+                      onClick={handlePrev}
+                      className="imgOther"
+                      src={link}
+                      alt=""
+                    />
+                  ) : (
+                    <span></span>
+                  )}
+                  <span className="span">enviado por {name1}</span>
+                </div>
               ) : video ? (
                 <div className="divMens">
                   <span className="span">{name1} :</span>
