@@ -1,0 +1,58 @@
+/* button */
+.button{
+    width: 35px;
+    height: 30px;
+    margin: 10px 10px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .button span{
+    background-color:#fff;
+    position: absolute;
+    border-radius: 2px;
+    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+    width:100%;
+    height: 4px;
+  }
+  .button span:nth-child(1){
+    top:0px;
+    left: 0px;
+  }
+  .button span:nth-child(2){
+    top:13px;
+    left: 0px;
+  }
+  .button span:nth-child(3){
+    bottom:0px;
+    left: 0px;
+  }
+  .button:not(.open):hover span:nth-child(1){
+    transform:  scaleY(1.2);
+    left: -5px;
+  }
+  .button:not(.open):hover span:nth-child(2){
+    transform: rotate(5deg) scaleY(1.1);
+  }
+  .button:not(.open):hover span:nth-child(3){
+    transform:  scaleY(1.2);
+    left: 5px;
+  }
+  .button.open span:nth-child(1){
+    transform: rotate(45deg) scaleX(0.7);
+    top: 13PX;
+    left: -8px;
+  }
+  .button.open span:nth-child(2){
+    transform: scale(0);
+    transition-duration: 50ms
+  }
+  .button.open span:nth-child(3){
+    transform: rotate(-45deg) scaleX(0.7);
+    top: 13PX;
+    left: 7px;
+  }
+
+  .abierto{
+    background-color: black;
+  }
