@@ -35,6 +35,12 @@
   }
 }
 
+@media screen and (max-width: 850px) {
+  .container {
+    width: 35%;
+  }
+}
+
 @media screen and (min-width: 600px) {
   .navButton {
     display: none;

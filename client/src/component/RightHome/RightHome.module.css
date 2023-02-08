@@ -69,7 +69,6 @@
 
 @media screen and (max-width: 850px) {
     .container {
-
         position: absolute;
         top: 1.1%;
         right: 2%;
@@ -80,10 +79,16 @@
         margin-right: 2%;
         margin-top: 2%;
     }
+    .buttonRight {
+        margin-left: 60%;
+    }
 }
 
 @media screen and (max-width: 600px) {
     .container {
         top: 1.1%;
+    }
+    .buttonRight{
+        margin-left: 1%;
     }
 }
