@@ -7,9 +7,11 @@
   border-bottom: 1px solid #fff;
   color: #fff;
 }
-.home{
+
+.home {
   cursor: pointer;
 }
+
 .userContainer {
   display: flex;
   align-items: center;
@@ -17,6 +19,7 @@
   gap: 10px;
   font-size: 14px;
 }
+
 .userContainer img {
   border-radius: 50%;
   width: 45px;
@@ -25,4 +28,10 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+}
+
+@media screen and (max-width: 600px) {
+  .userContainer {
+    font-size: 17px;
+  }
 }
