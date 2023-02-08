@@ -305,15 +305,16 @@ async function unBanned(my, user) {
 async function setBlackList(email){
   let boolean; 
   let user = await User.findByPk(email);
-  if(user.blacklist){
-    boolean =  false;
-  }else{
-    boolean =  true;
-    sendMail(email, 'ban')
+  if(user.type==='user'){
+    if(user.blacklist){
+      boolean =  false;
+    }else{
+      boolean =  true;
+      sendMail(email, 'ban')
+    }
+    await User.update({blacklist:boolean},{where:{email}});
   }
-
-return  await User.update({blacklist:boolean},{where:{email}});
-
+return true;
 }
 //////////////////// calificar /////////////
 
