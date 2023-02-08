@@ -41,6 +41,8 @@ export default function ChatRender({ menssages }) {
           )
         ) {
           img = true;
+          video = false;
+          audio = false;
         } else if (
           msj.message.includes(
             "https://res.cloudinary.com/daekdf1sh/video/private"
@@ -48,8 +50,12 @@ export default function ChatRender({ menssages }) {
           !msj.message.includes("audioschatapp")
         ) {
           video = true;
+          audio = false;
+          img = false;
         } else if (msj.message.includes("audioschatapp75281abc.mp3")) {
           audio = true;
+          img = false;
+          video = false;
         } else {
           img = false;
           video = false;
