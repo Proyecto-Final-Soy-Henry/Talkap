@@ -42,10 +42,26 @@ export default function ChatsList() {
       });
     }
   });
+  
+  let bans = []
+
+  if(my.banned){
+   bans = JSON.parse(my.banned)
+  }
+
+
+  const banFilter = listUser.filter((e)=>{
+
+    if(bans){return !bans.some((el)=>{
+      return el === e.email
+    })}else return true
+    
+    
+  })
 
   return (
     <div className="userListContainer">
-      {listUser?.map((user, index) => {
+      {banFilter?.map((user, index) => {
         const message = messages.filter((msj) => {
           // msj.user !== my.email ? noti = true : noti = false
 
@@ -60,6 +76,7 @@ export default function ChatsList() {
 
         lastMessage.push(message[message.length - 1]);
 
+     
         return (
           <SalaCard
             key={index}
