@@ -10,4 +10,4 @@ conn.sync({ force: true }).then(() => {
   server.listen(PORT, () => {
     console.log("listening at PORT " + PORT);
   });
-});
+}); 
