@@ -134,7 +134,7 @@ function ProfileInfo() {
             borderColor="#FF4e5b"
             marginTop="2px"
             marginBottom="-5"
-            boxSize='200px'
+            boxSize='150px'
             objectFit='cover'
             src={currentUser.picture}
             
@@ -142,7 +142,7 @@ function ProfileInfo() {
 
           <ProfileImg/>
 
-          <Divider mb="-6"/>
+          <Divider mb="-8"/>
 
           
             <Text fontSize="sm" color="#FF4e5b" fontWeight="bold" mb="-20" w="full" >

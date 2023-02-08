@@ -46,10 +46,10 @@ export default function CardDeveloper({
           <a className={style.facebook} href="#">
             {<BsFacebook />}
           </a>
-          <a className={style.linkedin} href={linkedin}>
-            {<BsLinkedin />}
+          <a className={style.linkedin} href={linkedin} target="_blank">
+            {<BsLinkedin />}      
           </a>
-          <a className={style.gitHub} href={gitHub}>
+          <a className={style.gitHub} href={gitHub} target="_blank">
             {<BsGithub />}
           </a>
         </div>

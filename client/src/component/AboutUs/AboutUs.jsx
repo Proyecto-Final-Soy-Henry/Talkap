@@ -16,21 +16,21 @@ const DEVELOPERS = [
     img: Joaquin,
     facebook: "",
     gitHub: "https://github.com/Wild-Design",
-    linkedin: "https://www.linkedin.com/in/joaquin-bustelo-0593a9242/",
+    linkedin: "https://www.linkedin.com/in/joaquin-bustelo-0593a9242/", 
   },
-  { name: "Renzo", img: Renzo, facebook: "", gitHub: "", linkedin: "" },
-  { name: "Nacho", img: Nacho, facebook: "", gitHub: "", linkedin: "" },
+  { name: "Renzo", img: Renzo, facebook: "", gitHub: "https://github.com/RenzoDoratto", linkedin: "https://www.linkedin.com/in/renzo-doratto-rodriguez-77528b195/" },
+  { name: "Nacho", img: Nacho, facebook: "", gitHub: "https://github.com/nacho337", linkedin: "https://www.linkedin.com/in/ignacio-rossatti-47b60522a/" },
   { name: "Guido", img: Guido, facebook: "", gitHub: "", linkedin: "" },
-  { name: "Ale", img: Ale, facebook: "", gitHub: "", linkedin: "" },
-  { name: "Vannesa", img: Vanessa, facebook: "", gitHub: "", linkedin: "" },
-  { name: "Joaco", img: Joaco, facebook: "", gitHub: "", linkedin: "" },
+  { name: "Ale", img: Ale, facebook: "", gitHub: "https://github.com/rgcandia", linkedin: "https://www.linkedin.com/in/ale-gonzalez-candia-4a7ab2230/" },
+  { name: "Vannesa", img: Vanessa, facebook: "", gitHub: "https://github.com/VanessaRiosm", linkedin: "https://www.linkedin.com/in/vanessa-rios-3b520a1a8/" },
+  { name: "Joaco", img: Joaco, facebook: "", gitHub: "https://github.com/joaxd69", linkedin: "https://www.linkedin.com/in/joaquin-garcia-392a9a259/" },
 ];
 const AboutUs = () => {
   return (
     <div className={style.aboutUsContainer}>
       <Link to="/">
         <motion.span animate={{ scale: 1.5 }} initial={{ scale: 1 }}>
-          <IoMdArrowRoundBack />
+          <IoMdArrowRoundBack />  
         </motion.span>
       </Link>
 
