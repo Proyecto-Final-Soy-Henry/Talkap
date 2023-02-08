@@ -1,6 +1,7 @@
 .container {
     width: 19%;
     height: 100vh;
+    background-color: #2322239c;
 }
 
 @media screen and (max-width: 1400px) {
