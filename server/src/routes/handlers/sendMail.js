@@ -96,7 +96,7 @@ module.exports = async function sendMail(mail, typeMail) {
     subject: "Baneo de cuenta",
     html: `<div
     style="
-      background: linear-gradient(to right, #121318, #0e0d0f);
+      background: linear-gradient(to right, #000000, #242424);
       height: 100vh;
       align-items: center;
       width: 500px;
@@ -111,7 +111,6 @@ module.exports = async function sendMail(mail, typeMail) {
         width: 400px;
         position: relative;
         margin-left: 60px;
-        margin-top: 20px;
         /* margin-bottom: 10px; */
       "
       src="https://i.postimg.cc/RFGg9gcD/logo-2.png"
