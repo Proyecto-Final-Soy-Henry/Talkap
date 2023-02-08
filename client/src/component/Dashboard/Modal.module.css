@@ -44,3 +44,10 @@
 .unbaned{
   background-color: rgb(38, 165, 38);
 }
+.modal th{
+  padding: 5px;
+  }
+  .title{
+    font-style: oblique;
+    background-color: rgba(255, 0, 0, 0.527);
+  }

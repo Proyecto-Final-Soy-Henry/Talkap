@@ -26,6 +26,7 @@ function Faq() {
     <Flex display="column" className={style.body}>
 
     <Box maxH="100px" mt="-20px">
+    <div className={style.btn}>
         <Link to="/">
             <Button 
             leftIcon={<AiOutlineArrowLeft />} 
@@ -39,6 +40,7 @@ function Faq() {
                 Volver
             </Button>
         </Link>
+        </div>
 
     <Flex justify="space-around">
         

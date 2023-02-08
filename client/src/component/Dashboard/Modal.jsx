@@ -93,7 +93,7 @@ export default function Modal({ setModal }) {
       >
         Cerrar
       </button>
-      <h3>IMPORTANTE !  Para Bloquear un usuario haga click en su identificador único (E-MAIL)</h3>
+      <h3 className={style.title}>IMPORTANTE !  Para Bloquear un usuario haga click en su identificador único (E-MAIL)</h3>
       <div className={style.modal}>
       <div>
          
