@@ -16,8 +16,8 @@
 .divMenssage {
   padding: 5px;
   margin-top: 0px;
-  margin-right: 70%;
-  margin-bottom: 15px;
+  margin-right: 65%;
+  margin-bottom: 0px;
   background-color: #385a64;
   border-radius: 0px 10px 10px 15px;
   margin-left: 2%;
@@ -39,7 +39,7 @@
 }
 .divMenssageMe {
   overflow: auto;
-  margin-left: 70%;
+  margin-left: 65%;
   text-align: right;
   margin-bottom: 15px;
   background-color: #ff4f5a;
@@ -148,12 +148,65 @@
   .divMens audio{
     width: 100px;
   }
+  .divMenssageMe{
+    margin-left: 35%;
+  }
+  .divMenssage{
+    margin-right: 35%;
+  }
 }
-@media screen and (max-width: 1527px) {
+@media screen and (max-width: 800px) {
   .divMensMe audio{
-    width: 100px;
+    height: 40px;
+   width: 100px;
   }
   .divMens audio{
-    width: 100px;
+  
+   height: 40px;
+   width: 100px;
   }
+  .divMenssageMe{
+    margin-left: 50%;
+  }
+  .divMenssage{
+    margin-right: 50%;
+  }
+  
+}
+@media screen and (max-width: 1400px) {
+
+  .divMenssageMe{
+    margin-left: 50%;
+  }
+  .divMenssage{
+    margin-right: 50%;
+  }
+  .divMens audio{
+    margin-left: 50%;
+   
+   }
+   .divMensMe audio{
+    margin-left: -65%;
+   
+  }
+}
+@media screen and (max-width: 1920px) and (min-width : 1401px) {
+
+
+
+   .divMensMe audio{
+    margin-left: -18%;
+   
+  }
+}
+
+.divMensMe audio{
+  height: 40px;
+ width: 80%;
+
+}
+.divMens audio{
+
+ height: 40px;
+ width: 80%;
 }
