@@ -1,6 +1,10 @@
+import { useEffect } from 'react'
 import style from './Card.module.css'
 export default function Card  ({user,handle}){
+
+    useEffect(()=>{},[user]);
     return (<div key={user.email} className={style.card}>
+
 
 
             <img src={user.picture} alt={user.email}/>

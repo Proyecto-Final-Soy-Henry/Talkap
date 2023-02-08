@@ -187,7 +187,7 @@ export default function Dashboard({ handle }) {
                 setModal(true);
               }}
             >
-              Banear Usuarios
+              Información de Usuarios
             </button>
           </div>
 
