@@ -183,3 +183,28 @@
         font-size: 15px;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .img1 {
+        height: 100px;
+    }
+    .img2 {
+        height: 140px;
+    }
+
+    .talkap {
+        font-size: 40px;
+    }
+
+    .infoTalkap {
+        font-size: 17px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .donationText {
+        font-size: 17px;
+    }
+}
