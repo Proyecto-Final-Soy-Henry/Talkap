@@ -29,3 +29,9 @@
     height: 70vh;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .users {
+    height: 70vh;
+  }
+}
