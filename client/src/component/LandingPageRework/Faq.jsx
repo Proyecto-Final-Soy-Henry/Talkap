@@ -13,10 +13,11 @@ import {
     Text
   } from '@chakra-ui/react'
 import faq from "../../assets/faq.png"
-import {AiOutlineArrowLeft} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { Badge } from '@chakra-ui/react'
 import { useAuth0 } from "@auth0/auth0-react";
+import { motion } from "framer-motion";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 function Faq() {
 
@@ -24,21 +25,19 @@ function Faq() {
   return (
 
     <Flex display="column" className={style.body}>
-
+    
     <Box maxH="100px" mt="-20px">
-        <Link to="/">
-            <Button 
-            leftIcon={<AiOutlineArrowLeft />} 
-            bg="#fe4e5b" 
-            _hover={{bg:"#e1495e"}} 
-            variant='solid' 
-            w="75px"
-            position="fixed"
-            top="5"
-            >
-                Volver
-            </Button>
-        </Link>
+
+    <div className={style.btn}>
+    
+    <Link to="/">
+        <motion.span animate={{ scale: 1.5 }} initial={{ scale: 1 }}>
+          <IoMdArrowRoundBack />
+        </motion.span>
+      </Link>
+      
+    </div>
+    
 
     <Flex justify="space-around">
         
