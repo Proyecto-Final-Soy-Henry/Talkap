@@ -47,6 +47,12 @@
 
 @media screen and (max-height: 600px) {
   .users {
-    height: 60vh;
+    height: 65vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .users {
+    height: 65vh;
   }
 }
